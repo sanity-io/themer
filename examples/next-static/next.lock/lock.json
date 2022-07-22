@@ -1,0 +1,7 @@
+{
+  "https://themer.sanity.build/api/hues?preset=pink-synth&min=1": {
+    "integrity": "sha512-94JBEqnjJkziu8HeM5gz/tJo/HVDU6cgcq8uYdB5GN1YLIzuzS9b4eNMhDjt1sv/pAOy4Jzmrb4d3+YYzILbdw==",
+    "contentType": "application/javascript; charset=utf-8"
+  },
+  "version": 1
+}

@@ -275,7 +275,7 @@ export default createConfig({
     'themer.d.ts',
     ['esmUrl'],
     `
-    module ${dummies.esmUrl} {
+    declare module ${dummies.esmUrl} {
       interface Hue extends Omit<import('@sanity/color').ColorHueConfig, 'title' | 'midPoint'> {
         midPoint: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950
       }
@@ -292,7 +292,7 @@ export default createConfig({
       const createTheme = (hues: Hues): Theme => theme
       const theme: Theme
 
-  export { hues, createTheme, theme }
+export { createTheme, hues, theme }
 }
 
     `,

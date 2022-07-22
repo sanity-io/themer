@@ -24,8 +24,8 @@ console.log(theme)
 export default createConfig({
   theme,
 
-  name: 'basic',
-  title: 'Basic Example',
+  name: 'advanced',
+  title: 'Advanced Example',
   projectId: 'c8jibo38',
   dataset: 'themer-movies',
   plugins: [deskTool()],

@@ -1,14 +1,6 @@
 import type { ResizeObserverEntry } from '@juggle/resize-observer'
 import { ResizeObserver } from '@juggle/resize-observer'
-import {
-  Badge,
-  Box,
-  Card,
-  Flex,
-  Inline,
-  Stack,
-  Text,
-} from '@sanity/ui'
+import { Badge, Box, Card, Flex, Inline, Stack, Text } from '@sanity/ui'
 import CodeSnippet from 'components/CodeSnippet'
 import { Button } from 'components/Sidebar.styles'
 import { useIdleCallback } from 'hooks/useIdleCallback'

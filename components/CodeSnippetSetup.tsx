@@ -63,7 +63,7 @@ const CodeSnippetSetup = ({
           </FilenameBadge>{' '}
           .{' '}
           <a
-            href="https://github.com/stipsan/example-v3-studio/tree/main/more/next-build-time"
+            href="https://github.com/sanity-io/themer/tree/main/examples/next-static"
             target="_blank"
             rel="noreferrer"
           >
@@ -80,7 +80,7 @@ const CodeSnippetSetup = ({
           theme to load. You got the full SSR capabilities of Next.js at your
           disposal.{' '}
           <a
-            href="https://github.com/stipsan/example-v3-studio-next-runtime"
+            href="https://github.com/sanity-io/themer/tree/main/examples/next-dynamic"
             target="_blank"
             rel="noreferrer"
           >

@@ -1,10 +1,17 @@
-# Sanity Movies Content Studio
+# Advanced example
 
-Congratulations, you have now installed the Sanity Content Studio, an open source real-time content editing environment connected to the Sanity backend.
+Shows how to use `createTheme` and using `_document.tsx` to add a `<link rel="modulepreload">` to speed up the load times for the custom theme.
 
-Now you can do the following things:
+It loads a custom theme:
+<img width="920" alt="image" src="https://user-images.githubusercontent.com/81981/180381906-c477532e-74f4-4178-9032-e752142911ee.png">
 
-- [Read “getting started” in the docs](https://www.sanity.io/docs/introduction/getting-started?utm_source=readme)
-- Check out one of the example frontends: [React](https://github.com/sanity-io/example-frontend-next-js) | [React Native](https://github.com/sanity-io/example-app-react-native) | [Vue](https://github.com/sanity-io/example-frontend-vue-js) | [PHP](https://github.com/sanity-io/example-frontend-silex-twig)
-- [Join the community Slack](https://slack.sanity.io/?utm_source=readme)
-- [Extend and build plugins](https://www.sanity.io/docs/content-studio/extending?utm_source=readme)
+## Live example
+
+https://themer-example-advanced.sanity.build
+
+It only lets you see the login screen in the theme, to see the full studio:
+
+1. Create a new project: https://www.sanity.io/get-started
+2. Fork this repo/path.
+3. Modify the `projectId` and `dataset` in `sanity.config.ts`.
+4. `npm start` and open `http://localhost:3333`.

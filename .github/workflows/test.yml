@@ -1,0 +1,23 @@
+name: Test
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: lts/*
+          cache: 'npm'
+      - run: npm install --ignore-scripts
+        env:
+          PUPPETEER_SKIP_DOWNLOAD: 'true'
+      - run: npm run lint
+      - run: npm run build
+      - run: npm run test --if-present

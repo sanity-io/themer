@@ -222,7 +222,8 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
                             ? 'sanity.config.ts'
                             : 'sanity.config.js',
                           contents: snippet('studio-config-create-theme')(
-                            state.load === 'build-time'
+                            state.build === 'next build' &&
+                              state.load === 'build-time'
                               ? snippet('import-create-theme-static')(
                                   JSON5.stringify(esmUrl)
                                 )

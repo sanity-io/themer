@@ -9,7 +9,7 @@
     "next": "^12.2.3",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
-    "react-icons": "^3.11.0",
+    "react-icons": "^4.0.0",
     "react-is": "^18.0.0",
     "sanity": "dev-preview",
     "styled-components": "^5.2.0"

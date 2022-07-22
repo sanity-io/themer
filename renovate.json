@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>stipsan/renovate-presets:base",
+    "github>stipsan/renovate-presets:labels",
+    "github>stipsan/renovate-presets:schedule",
+    "github>stipsan/renovate-presets:strategy"
+  ],
+  "packageRules": [
+    {
+      "updateTypes": ["major"],
+      "extends": ["github>stipsan/renovate-presets:group"]
+    },
+    {
+      "depTypeList": ["dependencies"],
+      "updateTypes": ["patch", "minor"],
+      "groupName": "dependencies (non-major)"
+    },
+    {
+      "depTypeList": ["devDependencies"],
+      "updateTypes": ["patch", "minor"],
+      "groupName": "devDependencies (non-major)"
+    },
+    {
+      "depTypeList": ["resolutions"],
+      "updateTypes": ["patch", "minor"],
+      "groupName": "resolutions (non-major)"
+    }
+  ]
+}

@@ -238,7 +238,7 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
                         You can make the studio load faster by adding a
                         modulepreload tag for the theme.{' '}
                         <a
-                          href="https://github.com/stipsan/example-v3-studio/tree/main/more/sanity-build"
+                          href="https://github.com/sanity-io/themer/tree/main/examples/advanced"
                           target="_blank"
                           rel="noreferrer"
                         >

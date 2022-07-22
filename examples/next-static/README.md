@@ -3,7 +3,7 @@
 Shows how to make Next.js download and cache URL ESM imports, letting you import your custom themes with the ease of URLs but at the performance of local bundling.
 
 It loads a pinker version of Pink Synth:
-<img width="920" alt="image" src="https://user-images.githubusercontent.com/81981/180381906-c477532e-74f4-4178-9032-e752142911ee.png">
+<img width="920" alt="Screenshot 2022-07-22 at 14 07 40" src="https://user-images.githubusercontent.com/81981/180437659-82dc626e-8ae5-4788-bad1-e4a549d558e1.png">
 
 ## Live example
 

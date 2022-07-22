@@ -1,4 +1,4 @@
-import {MdPerson as icon} from 'react-icons/md'
+import { MdPerson as icon } from 'react-icons/md'
 
 export default {
   name: 'person',
@@ -31,6 +31,6 @@ export default {
     },
   ],
   preview: {
-    select: {title: 'name', media: 'image'},
+    select: { title: 'name', media: 'image' },
   },
 }

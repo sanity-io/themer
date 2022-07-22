@@ -12,7 +12,7 @@ export default {
       name: 'summaries',
       title: 'Summaries',
       type: 'array',
-      of: [{type: 'plotSummary'}],
+      of: [{ type: 'plotSummary' }],
     },
   ],
 }

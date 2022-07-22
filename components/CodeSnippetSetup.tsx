@@ -39,7 +39,7 @@ const CodeSnippetSetup = ({
             </>
           )}
           <a
-            href="https://github.com/stipsan/example-v3-studio"
+            href="https://github.com/sanity-io/themer/tree/main/examples/basic"
             target="_blank"
             rel="noreferrer"
           >
@@ -319,9 +319,9 @@ const CodeSnippetSetup = ({
   }
 
   return (
-    <>
+    
       <FilesViewer lead={lead} initial={initial} files={files} />
-    </>
+    
   )
 }
 

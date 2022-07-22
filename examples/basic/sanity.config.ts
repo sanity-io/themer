@@ -1,21 +1,20 @@
-import {createConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-//import {googleMapsInput} from '@sanity/google-maps-input'
-import {schemaTypes} from './schemas'
+import { createConfig } from 'sanity'
+import { deskTool } from 'sanity/desk'
+
+import { schemaTypes } from './schemas'
+
+const { theme } = (await import(
+  // @ts-expect-error -- TODO setup themer.d.ts to get correct typings
+  'https://themer.sanity.build/api/hues?preset=verdant&min=1'
+)) as { theme: import('sanity').StudioTheme }
 
 export default createConfig({
-  name: 'default',
-  title: 'Structured Layout',
+  theme,
 
+  name: 'basic',
+  title: 'Basic Example',
   projectId: 'c8jibo38',
   dataset: 'themer-movies',
-
-  plugins: [
-    deskTool(),
-    //googleMapsInput(),
-  ],
-
-  schema: {
-    types: schemaTypes,
-  },
+  plugins: [deskTool()],
+  schema: { types: schemaTypes },
 })

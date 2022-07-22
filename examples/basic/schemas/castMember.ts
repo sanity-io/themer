@@ -12,7 +12,7 @@ export default {
       name: 'person',
       title: 'Actor',
       type: 'reference',
-      to: [{type: 'person'}],
+      to: [{ type: 'person' }],
     },
     {
       name: 'externalId',

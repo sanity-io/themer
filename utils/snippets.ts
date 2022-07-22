@@ -231,7 +231,7 @@ export default createConfig({
 )`
 
     case 'themer.d.ts':
-      return (first: string) => `module ${first} {
+      return (first: string) => `declare module ${first} {
   interface Hue
     extends Omit<import('@sanity/color').ColorHueConfig, 'title' | 'midPoint'> {
     midPoint: 50 | 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 950
@@ -244,12 +244,10 @@ export default createConfig({
     caution: Hue
     critical: Hue
   }
-  const hues: Hues
+  export const hues: Hues
   type Theme = import('sanity').StudioTheme
-  const createTheme = (hues: Hues): Theme => theme
-  const theme: Theme
-
-  export {hues, createTheme, theme}
+  export function createTheme(_hues: Hues): Theme
+  export const theme: Theme
 }`
 
     case 'tsconfig':

@@ -107,3 +107,4 @@ dist
 # Compiled stuff
 edge-utils
 
+.DS_Store

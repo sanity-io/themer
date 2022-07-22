@@ -318,11 +318,7 @@ const CodeSnippetSetup = ({
     return null
   }
 
-  return (
-    
-      <FilesViewer lead={lead} initial={initial} files={files} />
-    
-  )
+  return <FilesViewer lead={lead} initial={initial} files={files} />
 }
 
 export default memo(CodeSnippetSetup)

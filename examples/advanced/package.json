@@ -1,0 +1,20 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "sanity build",
+    "start": "sanity start"
+  },
+  "dependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-icons": "^3.11.0",
+    "react-is": "^17.0.0",
+    "sanity": "dev-preview",
+    "styled-components": "^5.2.0"
+  },
+  "devDependencies": {
+    "@sanity/eslint-config-studio": "^2.0.0",
+    "eslint": "^8.6.0",
+    "typescript": "^4.0.0"
+  }
+}

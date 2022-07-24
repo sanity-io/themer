@@ -118,11 +118,11 @@ export default createConfig({
 
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
-// 1. Add the import to the theme.js you downloaded
-import {theme} from './theme'
 
 import { schemaTypes } from './schemas'
 
+// 1. Add the import to the theme.js you downloaded
+import {theme} from './theme'
 
 export default createConfig({
   theme, // <-- 2. add the theme here

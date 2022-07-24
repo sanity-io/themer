@@ -1,6 +1,7 @@
 import type { ColorTints } from '@sanity/color'
 import type {
   PartialThemeColorBuilderOpts,
+  RGB,
   ThemeColorSchemes,
   ThemeColorSpotKey,
 } from '@sanity/ui'
@@ -27,8 +28,10 @@ interface Options {
   // if there's a color property on the studioTheme it will be overridden/ignored, thus we change the typing allowing it to be omitted
   // but at the same time not _enforcing_ it to be omitted and create unnecessary TS errors for those passing `import {studioTheme} from '@sanity/ui'` directly
   studioTheme: Omit<StudioTheme, 'color'> & { color?: unknown }
-  multiply: (bg: string, fg: string) => string
-  screen: (bg: string, fg: string) => string
+  parseColor: (color: string) => RGB
+  rgbToHex: (rgb: RGB) => string
+  multiply: (bg: RGB, fg: RGB) => RGB
+  screen: (bg: RGB, fg: RGB) => RGB
   rgba: (color: unknown, a: number) => string
   createColorTheme: (
     partialOpts: PartialThemeColorBuilderOpts
@@ -63,11 +66,28 @@ function getTint(key: ThemeColorSpotKey): ColorTints {
 export function themeFromHues({
   hues: partialHues,
   studioTheme,
-  multiply,
-  screen,
+  multiply: _multiply,
+  screen: _screen,
+  parseColor,
+  rgbToHex,
   rgba,
   createColorTheme,
 }: Options): StudioTheme {
+  function multiply(bg: string, fg: string): string {
+    const b = parseColor(bg)
+    const s = parseColor(fg)
+    const hex = rgbToHex(_multiply(b, s))
+
+    return hex
+  }
+  function screen(bg: string, fg: string): string {
+    const b = parseColor(bg)
+    const s = parseColor(fg)
+    const hex = rgbToHex(_screen(b, s))
+
+    return hex
+  }
+
   const hues = applyHues(partialHues)
   // These variables are made top-level to keep the body of createColorTheme largely the same.
   // This makes it much easier to sync it with new releases of @sanity/ui should its implementation details change.

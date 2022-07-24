@@ -81,39 +81,25 @@ const buildTemplateString = async () => {
   import {studioTheme} from './node_modules/@sanity/ui/src/theme/studioTheme/theme.ts'
   import {themeFromHues} from 'utils/themeFromHues'
   import {
-    multiply as _multiply,
+    multiply,
     parseColor,
     rgbToHex,
-    screen as _screen,
+    screen,
     rgba,
   } from './node_modules/@sanity/ui/src/theme/lib/color-fns/index.ts'
   import {createColorTheme} from './node_modules/@sanity/ui/src/theme/lib/theme/color/factory.ts'
-  
-  function multiply(bg: string, fg: string): string {
-    const b = parseColor(bg)
-    const s = parseColor(fg)
-    const hex = rgbToHex(_multiply(b, s))
-  
-    return hex
-  }
-  
-  function screen(bg: string, fg: string): string {
-    const b = parseColor(bg)
-    const s = parseColor(fg)
-    const hex = rgbToHex(_screen(b, s))
-  
-    return hex
-  }
 
 export const hues = process.env.__HUES__
   
 export const createTheme = (_hues) => themeFromHues({
-  hues: _hues, 
-  studioTheme,
-  multiply,
-  screen,
-  rgba,
   createColorTheme,
+  hues: _hues, 
+  multiply,
+  parseColor,
+  rgba,
+  rgbToHex,
+  screen,
+  studioTheme,
 })
 
 export const theme = createTheme(hues)

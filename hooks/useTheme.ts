@@ -1,8 +1,15 @@
-import { createColorTheme, rgba, studioTheme } from '@sanity/ui'
+import {
+  createColorTheme,
+  multiply,
+  parseColor,
+  rgba,
+  rgbToHex,
+  screen,
+  studioTheme,
+} from '@sanity/ui'
 import { useMemo } from 'react'
 import type { StudioTheme } from 'sanity'
 import type { PartialDeep } from 'type-fest'
-import { multiply, screen } from 'utils/color-fns'
 import { themeFromHues } from 'utils/themeFromHues'
 import type { Hues } from 'utils/types'
 
@@ -15,6 +22,8 @@ export function createTheme({ hues }: CreateThemeProps): StudioTheme {
     studioTheme,
     multiply,
     screen,
+    parseColor,
+    rgbToHex,
     rgba,
     createColorTheme,
   })

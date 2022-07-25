@@ -88,7 +88,7 @@ function PresetsMenu({
 }: Props) {
   const [open, setOpen] = useState<
     'import' | 'share' | 'export' | 'export-dialog' | false
-  >(false)
+  >('import')
 
   const searchParams = useMemo(() => {
     const searchParams = new URLSearchParams()

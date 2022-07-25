@@ -3,7 +3,7 @@ import { type WorkspaceOptions, defineType } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import slugify from 'slugify'
 
-const projectId = process.env.NEXT_PUBLIC_SANITY_BLOG_PROJECT_ID
+const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
 const dataset = process.env.NEXT_PUBLIC_SANITY_BLOG_DATASET
 
 const postType = defineType({

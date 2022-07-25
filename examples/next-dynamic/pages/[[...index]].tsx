@@ -10,7 +10,7 @@ export default function IndexPage() {
   useEffect(
     () =>
       void import(
-        /* webpackIgnore: true */ 'https://themer.sanity.build/api/hues?preset=dew&min=1'
+        /* webpackIgnore: true */ 'https://themer.sanity.build/api/hues?preset=dew'
       ).then(({ theme }) => setConfig((config) => ({ ...config, theme }))),
     []
   )
@@ -40,7 +40,7 @@ export default function IndexPage() {
         {/* Speed up the theme loading significantly */}
         <link
           rel="modulepreload"
-          href={'https://themer.sanity.build/api/hues?preset=dew&min=1'}
+          href={'https://themer.sanity.build/api/hues?preset=dew'}
         />
       </Head>
     </>

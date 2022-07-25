@@ -5,7 +5,7 @@ import { schemaTypes } from './schemas'
 
 const { theme } = (await import(
   // @ts-expect-error -- TODO setup themer.d.ts to get correct typings
-  'https://themer.sanity.build/api/hues?preset=verdant&min=1'
+  'https://themer.sanity.build/api/hues?preset=verdant'
 )) as { theme: import('sanity').StudioTheme }
 
 export default createConfig({

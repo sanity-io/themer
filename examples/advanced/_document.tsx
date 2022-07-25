@@ -1,4 +1,4 @@
-// This is to generate a <link rel="modulepreload" href='https://themer.sanity.build/api/hues?default=975e86&primary=2c6ebd&transparent=975e86&positive=43d675;300&caution=fbd024;200&lightest=fdfcfd&darkest=150d13&min=1'> to the <head>
+// This is to generate a <link rel="modulepreload" href='https://themer.sanity.build/api/hues?default=975e86&primary=2c6ebd&transparent=975e86&positive=43d675;300&caution=fbd024;200&lightest=fdfcfd&darkest=150d13'> to the <head>
 // As Studio v3 is in developer preview there's not yet a simple way to just add a <link> tag to the <head>
 // Thus we have to re-implement DefaultDocument to make it happen.
 // Expect this to get much easier before v3 hits stable
@@ -57,7 +57,7 @@ export default function DefaultDocument(
         <link
           rel="modulepreload"
           href={
-            'https://themer.sanity.build/api/hues?default=975e86&primary=2c6ebd&transparent=975e86&positive=43d675;300&caution=fbd024;200&lightest=fdfcfd&darkest=150d13&min=1'
+            'https://themer.sanity.build/api/hues?default=975e86&primary=2c6ebd&transparent=975e86&positive=43d675;300&caution=fbd024;200&lightest=fdfcfd&darkest=150d13'
           }
         />
 

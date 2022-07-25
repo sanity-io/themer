@@ -1,7 +1,7 @@
 import {
   createTheme,
   hues,
-} from 'https://themer.sanity.build/api/hues?preset=pink-synth&min=1'
+} from 'https://themer.sanity.build/api/hues?preset=pink-synth'
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 

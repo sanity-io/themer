@@ -1,4 +1,7 @@
 {
-  "https://themer.sanity.build/api/hues?preset=pink-synth": { "integrity": "sha512-/olYsciNM5Al9F5aL14D0nF6IWdpDMx9AULhJfzO73Hmyw1EiRnNsWg91Z+4hJeTZvPBGTLPfIGkd0jy5p6NyQ==", "contentType": "application/javascript; charset=utf-8" },
+  "https://themer.sanity.build/api/hues?preset=pink-synth": {
+    "integrity": "sha512-/olYsciNM5Al9F5aL14D0nF6IWdpDMx9AULhJfzO73Hmyw1EiRnNsWg91Z+4hJeTZvPBGTLPfIGkd0jy5p6NyQ==",
+    "contentType": "application/javascript; charset=utf-8"
+  },
   "version": 1
 }

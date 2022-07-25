@@ -5,8 +5,8 @@ import type { ThemePreset } from 'utils/types'
 
 const createApiUrl = (search: string) => {
   const searchParams = new URLSearchParams(search)
-  if (process.env.NODE_ENV === 'production') {
-    searchParams.set('min', '1')
+  if (process.env.NODE_ENV === 'development') {
+    searchParams.set('min', '0')
   }
   return `/api/hues?${decodeURIComponent(searchParams.toString())}`
 }

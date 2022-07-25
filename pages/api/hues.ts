@@ -35,7 +35,7 @@ export default async function handler(req: NextRequest) {
     serverTiming.start('themeFromHuesTemplate')
     const res = themeFromHuesTemplate(
       applyHuesFromPreset(presetParams, searchParams),
-      searchParams.has('min')
+      searchParams.get('min') !== '0'
     )
     serverTiming.end('themeFromHuesTemplate')
 

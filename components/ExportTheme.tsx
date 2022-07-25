@@ -67,8 +67,8 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
     if (params.get('preset') === 'default') {
       params.delete('preset')
     }
-    if (process.env.NODE_ENV === 'production') {
-      params.set('min', '1')
+    if (process.env.NODE_ENV === 'development') {
+      params.set('min', '0')
     }
     const search = decodeURIComponent(params.toString())
     return new URL(

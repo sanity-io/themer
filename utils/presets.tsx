@@ -62,11 +62,38 @@ const dugg: ThemePreset = {
   // https://cdn.sanity.io/images/32a3sayd/blog/994c6a38c71357af600e7d4856d5fd1340338f6c-2148x1611.png
 }
 
+export const stereofidelic: ThemePreset = {
+  slug: 'stereofidelic',
+  title: 'Stereofidelic',
+  url: createApiUrl(
+    '?default=678e9a&primary=f13009&transparent=678e9a&positive=43d675;300&caution=fbd024;200&critical=f02f35&lightest=fcfdfd&darkest=0e1315'
+  ),
+}
+
+export const pixelart: ThemePreset = {
+  slug: 'pixel-art',
+  title: 'Pixel Art',
+  url: createApiUrl(
+    '?default=57619c;600&primary=f10784&transparent=5b6498;600&positive=43d675;300&caution=fbd024;200&lightest=fcfcfd&darkest=0d0e15'
+  ),
+}
+
+export const retrocolonial: ThemePreset = {
+  slug: 'retro-colonial',
+  title: 'Retro Colonial',
+  url: createApiUrl(
+    '?default=8bb9b5;400&primary=fa7a78;400&transparent=8bb9b5;400&positive=43d675;300&caution=fbd024;200&critical=f02f53&lightest=fcfdfd&darkest=0d1515'
+  ),
+}
+
 export const presets: ThemePreset[] = [
   defaultPreset,
   dugg,
   pinkSynth,
+  pixelart,
+  retrocolonial,
   rosabel,
+  stereofidelic,
   twCyan,
   verdant,
 ]

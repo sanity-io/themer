@@ -3,9 +3,12 @@ import {
   DownloadIcon,
   DropIcon,
   HeartIcon,
+  IceCreamIcon,
+  JoystickIcon,
   LemonIcon,
   MasterDetailIcon,
   PackageIcon,
+  RobotIcon,
   SelectIcon,
   UploadIcon,
 } from '@sanity/icons'
@@ -65,6 +68,12 @@ const iconFromSlug = (slug: string) => {
     ? HeartIcon
     : slug === 'verdant'
     ? LemonIcon
+    : slug === 'stereofidelic'
+    ? JoystickIcon
+    : slug === 'pixel-art'
+    ? RobotIcon
+    : slug === 'retro-colonial'
+    ? IceCreamIcon
     : MasterDetailIcon
 }
 

@@ -1,6 +1,7 @@
 import { BiMoviePlay } from 'react-icons/bi'
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
+import { muxInput } from 'sanity-plugin-mux-input'
 
 import { schemaTypes } from './schemas'
 
@@ -14,7 +15,7 @@ export const config = createConfig({
   icon: BiMoviePlay,
   projectId,
   dataset,
-  plugins: [deskTool()],
+  plugins: [deskTool(), muxInput({ mp4_support: 'standard' })],
   schema: {
     types: schemaTypes,
   },

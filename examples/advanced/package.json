@@ -10,6 +10,7 @@
     "react-icons": "^4.0.0",
     "react-is": "^18.0.0",
     "sanity": "dev-preview",
+    "sanity-plugin-mux-input": "studio-v3",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {

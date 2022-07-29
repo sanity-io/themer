@@ -1,5 +1,6 @@
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
+import { muxInput } from 'sanity-plugin-mux-input'
 
 import { schemaTypes } from './schemas'
 
@@ -15,6 +16,6 @@ export default createConfig({
   title: 'Basic Example',
   projectId: 'c8jibo38',
   dataset: 'themer-movies',
-  plugins: [deskTool()],
+  plugins: [deskTool(), muxInput()],
   schema: { types: schemaTypes },
 })

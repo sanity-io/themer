@@ -62,5 +62,10 @@ export const blockContent = defineType({
       type: 'image',
       options: { hotspot: true },
     },
+    {
+      name: 'video',
+      title: 'Video',
+      type: 'mux.video',
+    },
   ],
 })

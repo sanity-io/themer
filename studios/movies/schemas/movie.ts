@@ -22,6 +22,11 @@ export const movie = defineType({
       },
     },
     {
+      name: 'trailer',
+      title: 'Trailer',
+      type: 'mux.video',
+    },
+    {
       name: 'overview',
       title: 'Overview',
       type: 'blockContent',

@@ -22,7 +22,6 @@ const postType = defineType({
       options: { source: 'title' },
       validation: (Rule) => {
         return Rule.required().custom(async (value) => {
-          // @ts-expect-error -- missing typings
           const currentSlug = value && value.current
           if (!currentSlug) {
             return true

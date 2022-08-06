@@ -1,5 +1,8 @@
+import {
+  StudioPageGlobalStyle,
+  StudioPageHead,
+} from '@sanity/next-studio-layout'
 import { useRootTheme } from '@sanity/ui'
-import NextHead from 'next/head'
 import png from 'public/favicon.png'
 import svg from 'public/favicon.svg'
 import { memo } from 'react'
@@ -21,28 +24,20 @@ function Head({ presetUrl }: Props) {
     }
   })
   // */
-
   return (
-    <NextHead>
-      {/* Use Edge Middleware to set this preload as a header to work with custom presets */}
-      <link rel="modulepreload" href={presetUrl} />
-      <meta name="viewport" content="width=device-width, viewport-fit=cover" />
-      <title>{title}</title>
-      <meta
-        key="theme-color-light"
-        name="theme-color"
-        content={light.default.base.bg}
-        media="(prefers-color-scheme: light)"
-      />
-      <meta
-        key="theme-color-dark"
-        name="theme-color"
-        content={dark.default.base.bg}
-        media="(prefers-color-scheme: dark)"
-      />
-      <link rel="icon" type="image/svg" href={svg.src} />
-      <link rel="icon" type="image/png" href={png.src} />
-    </NextHead>
+    <>
+      <StudioPageHead
+        title={title}
+        themeColorLight={light.default.base.bg}
+        themeColorDark={dark.default.base.bg}
+      >
+        {/* Use Edge Middleware to set this preload as a header to work with custom presets */}
+        <link rel="modulepreload" href={presetUrl} />
+        <link rel="icon" type="image/svg" href={svg.src} />
+        <link rel="icon" type="image/png" href={png.src} />
+      </StudioPageHead>
+      <StudioPageGlobalStyle bg={light.default.base.bg} />
+    </>
   )
 }
 

@@ -1,5 +1,3 @@
-import 'style.css'
-
 import CounterSnippet from 'components/CounterSnippet'
 import type { AppProps } from 'next/app'
 

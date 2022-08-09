@@ -46,7 +46,7 @@
     "@types/prettier": "^2.7.0",
     "@types/react": "^18.0.15",
     "@types/styled-components": "^5.1.25",
-    "esbuild": "^0.14.53",
+    "esbuild": "^0.14.54",
     "esbuild-plugin-replace": "^1.2.0",
     "eslint": "^8.21.0",
     "eslint-config-next": "^12.2.4",

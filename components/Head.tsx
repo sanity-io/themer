@@ -1,8 +1,8 @@
-import {
-  StudioPageGlobalStyle,
-  StudioPageHead,
-} from '@sanity/next-studio-layout'
 import { useRootTheme } from '@sanity/ui'
+import {
+  NextStudioGlobalStyle,
+  NextStudioHead,
+} from 'next-sanity/studio'
 import png from 'public/favicon.png'
 import svg from 'public/favicon.svg'
 import { memo } from 'react'
@@ -26,7 +26,7 @@ function Head({ presetUrl }: Props) {
   // */
   return (
     <>
-      <StudioPageHead
+      <NextStudioHead
         title={title}
         themeColorLight={light.default.base.bg}
         themeColorDark={dark.default.base.bg}
@@ -35,8 +35,8 @@ function Head({ presetUrl }: Props) {
         <link rel="modulepreload" href={presetUrl} />
         <link rel="icon" type="image/svg" href={svg.src} />
         <link rel="icon" type="image/png" href={png.src} />
-      </StudioPageHead>
-      <StudioPageGlobalStyle bg={light.default.base.bg} />
+      </NextStudioHead>
+      <NextStudioGlobalStyle bg={light.default.base.bg} />
     </>
   )
 }

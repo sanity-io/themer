@@ -1,4 +1,4 @@
-import { StudioPageLayout } from '@sanity/next-studio-layout'
+import { NextStudio } from 'next-sanity/studio'
 import { useEffect, useState } from 'react'
 
 import _config from '../sanity.config'
@@ -15,7 +15,7 @@ export default function IndexPage() {
   )
 
   return (
-    <StudioPageLayout
+    <NextStudio
       config={config}
       unstable__head={
         <link

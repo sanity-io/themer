@@ -1,7 +1,7 @@
-import { StudioPageLayout } from '@sanity/next-studio-layout'
+import { NextStudio } from 'next-sanity/studio'
 
 import config from '../sanity.config'
 
 export default function IndexPage() {
-  return <StudioPageLayout config={config} />
+  return <NextStudio config={config} />
 }

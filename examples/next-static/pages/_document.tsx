@@ -1,3 +1,3 @@
-import { ServerStyleSheetDocument } from '@sanity/next-studio-layout'
+import { ServerStyleSheetDocument } from 'next-sanity/studio'
 
 export default class Document extends ServerStyleSheetDocument {}

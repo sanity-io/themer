@@ -32,7 +32,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
-    "sanity": "^3.0.0-dev-preview.12",
+    "sanity": "^3.0.0-dev-preview.13",
     "sanity-plugin-mux-input": "studio-v3",
     "scroll-into-view-if-needed": "^2.2.29",
     "slugify": "^1.6.5",

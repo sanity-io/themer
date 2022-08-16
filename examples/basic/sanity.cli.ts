@@ -1,8 +1,11 @@
 import { createCliConfig } from 'sanity/cli'
 import type { UserConfig } from 'vite'
 
+const projectId = process.env.SANITY_STUDIO_API_PROJECT_ID
+const dataset = process.env.SANITY_STUDIO_API_DATASET
+
 export default createCliConfig({
-  api: { projectId: 'c8jibo38', dataset: 'themer-movies' },
+  api: { projectId, dataset },
   vite: (config: UserConfig): UserConfig => ({
     ...config,
     // Target needs to be es2022 to enable top-level await

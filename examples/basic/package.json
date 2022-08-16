@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "dev": "npx vercel env pull .env.development && sanity start",
     "build": "sanity build",
     "start": "sanity start"
   },

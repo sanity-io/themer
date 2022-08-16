@@ -1,8 +1,8 @@
 import { theme } from 'https://themer.sanity.build/api/hues?preset=verdant'
 import { createConfig } from 'sanity'
+import { theme } from 'https://themer.sanity.build/api/hues?preset=verdant'
 import { deskTool } from 'sanity/desk'
 import { muxInput } from 'sanity-plugin-mux-input'
-
 import { schemaTypes } from './schemas'
 
 const projectId = import.meta.env.SANITY_STUDIO_API_PROJECT_ID

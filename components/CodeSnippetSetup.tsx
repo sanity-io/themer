@@ -126,7 +126,7 @@ const CodeSnippetSetup = ({
     const pageDocumentJs = {
       id: 'pages/_document',
       filename: 'pages/_document.js',
-      contents: snippet('pages/_document.js')(),
+      contents: snippet('pages/_document')(),
     }
 
     if (state.build === 'sanity build') {
@@ -186,7 +186,7 @@ const CodeSnippetSetup = ({
             {
               id: 'pages/_document',
               filename: 'pages/_document.tsx',
-              contents: snippet('pages/_document.tsx')(),
+              contents: snippet('pages/_document')(),
             },
             themerDts,
           ]
@@ -224,7 +224,7 @@ const CodeSnippetSetup = ({
             {
               id: 'pages/_document',
               filename: 'pages/_document.tsx',
-              contents: snippet('pages/_document.tsx')(),
+              contents: snippet('pages/_document')(),
             },
             themerDts,
           ]

@@ -223,7 +223,9 @@ export default createConfig({
     import { createCliConfig } from 'sanity/cli'
     import type { UserConfig } from "vite";
     
-    export default createCliConfig({api: {projectId: ${projectId},dataset: ${dataset}}, vite: (config: UserConfig): UserConfig => ({...config,build: {...config.build,target: "esnext"},})})
+    export default createCliConfig({api: {projectId: ${projectId},dataset: ${dataset}}, vite: (config: UserConfig): UserConfig => ({...config,build: {...config.build,
+      // esbuild requires es2022 or later to allow top-level await: https://esbuild.github.io/content-types/#javascript
+      target: "es2022"},})})
 `,
   ],
   [
@@ -233,7 +235,9 @@ export default createConfig({
 
     import { createCliConfig } from 'sanity/cli'
     
-    export default createCliConfig({api: {projectId: ${projectId},dataset: ${dataset}},vite: (config) => ({...config, build: {...config.build,target: "esnext"},})})
+    export default createCliConfig({api: {projectId: ${projectId},dataset: ${dataset}},vite: (config) => ({...config, build: {...config.build,
+      // esbuild requires es2022 or later to allow top-level await: https://esbuild.github.io/content-types/#javascript
+      target: "es2022"},})})
 `,
   ],
   [
@@ -304,7 +308,7 @@ declare module ${dummies.esmUrl} {
   {
     "compilerOptions": {
       // target needs to be es2017 or newer to allow top-level await
-      "target": "es2017",
+      "target": "esnext",
   
       "lib": ["dom", "dom.iterable", "esnext"],
       "allowJs": true,
@@ -500,71 +504,14 @@ module.exports = nextConfig
     `,
   ],
   [
-    'pages/_document.tsx',
+    'pages/_document',
     [],
     `
     // This is necessary for SSR to work correctly and prevents broken CSS
     
-    import Document, { type DocumentContext } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+    import { ServerStyleSheetDocument } from 'next-sanity/studio'
 
-export default class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
-
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        })
-
-      const initialProps = await Document.getInitialProps(ctx)
-      return {
-        ...initialProps,
-        styles: [initialProps.styles, sheet.getStyleElement()],
-      }
-    } finally {
-      sheet.seal()
-    }
-  }
-}
-
-    `,
-  ],
-  [
-    'pages/_document.js',
-    [],
-    `
-    // This is necessary for SSR to work correctly and prevents broken CSS
-    
-    import Document from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
-
-export default class CustomDocument extends Document {
-  static async getInitialProps(ctx) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
-
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        })
-
-      const initialProps = await Document.getInitialProps(ctx)
-      return {
-        ...initialProps,
-        styles: [initialProps.styles, sheet.getStyleElement()],
-      }
-    } finally {
-      sheet.seal()
-    }
-  }
-}
-
+    export default class Document extends ServerStyleSheetDocument {}
     `,
   ],
   [
@@ -600,7 +547,7 @@ export default createConfig({
 
     import Head from 'next/head'
     import {useEffect, useState} from 'react'
-    import {Studio} from 'sanity'
+    import {NextStudio} from 'next-sanity'
     
     import _config from '../sanity.config'
     
@@ -620,7 +567,7 @@ export default createConfig({
         []
       )
     
-      return <Studio config={config} />
+      return <NextStudio config={config} />
     }
 `,
   ],

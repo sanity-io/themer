@@ -35,8 +35,7 @@ export function snippet(
 export function snippet(
   id: 'next-config-build-time-ts'
 ): (first: string) => string
-export function snippet(id: 'pages/_document.tsx'): () => string
-export function snippet(id: 'pages/_document.js'): () => string
+export function snippet(id: 'pages/_document'): () => string
 export function snippet(
   id: 'studio-config-create-theme-static-import'
 ): (first: string) => string
@@ -189,7 +188,11 @@ export default createCliConfig({
   api: {projectId: ${projectId}, dataset: ${dataset}},
   vite: (config: UserConfig): UserConfig => ({
     ...config,
-    build: {...config.build, target: 'esnext'}
+    build: {
+      ...config.build,
+      // esbuild requires es2022 or later to allow top-level await: https://esbuild.github.io/content-types/#javascript
+      target: 'es2022'
+    }
   })
 })`
 
@@ -200,7 +203,14 @@ import {createCliConfig} from 'sanity/cli'
 
 export default createCliConfig({
   api: {projectId: ${projectId}, dataset: ${dataset}},
-  vite: config => ({...config, build: {...config.build, target: 'esnext'}})
+  vite: config => ({
+    ...config,
+    build: {
+      ...config.build,
+      // esbuild requires es2022 or later to allow top-level await: https://esbuild.github.io/content-types/#javascript
+      target: 'es2022'
+    }
+  })
 })`
 
     case 'studio-config-create-theme':
@@ -258,7 +268,7 @@ export default createConfig({
       return () => `{
   "compilerOptions": {
     // target needs to be es2017 or newer to allow top-level await
-    "target": "es2017",
+    "target": "esnext",
 
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -454,61 +464,12 @@ const nextConfig = {
 
 module.exports = nextConfig`
 
-    case 'pages/_document.tsx':
+    case 'pages/_document':
       return () => `// This is necessary for SSR to work correctly and prevents broken CSS
 
-import Document, {type DocumentContext} from 'next/document'
-import {ServerStyleSheet} from 'styled-components'
+import {ServerStyleSheetDocument} from 'next-sanity/studio'
 
-export default class CustomDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
-
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
-        })
-
-      const initialProps = await Document.getInitialProps(ctx)
-      return {
-        ...initialProps,
-        styles: [initialProps.styles, sheet.getStyleElement()]
-      }
-    } finally {
-      sheet.seal()
-    }
-  }
-}`
-
-    case 'pages/_document.js':
-      return () => `// This is necessary for SSR to work correctly and prevents broken CSS
-
-import Document from 'next/document'
-import {ServerStyleSheet} from 'styled-components'
-
-export default class CustomDocument extends Document {
-  static async getInitialProps(ctx) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
-
-    try {
-      ctx.renderPage = () =>
-        originalRenderPage({
-          enhanceApp: App => props => sheet.collectStyles(<App {...props} />)
-        })
-
-      const initialProps = await Document.getInitialProps(ctx)
-      return {
-        ...initialProps,
-        styles: [initialProps.styles, sheet.getStyleElement()]
-      }
-    } finally {
-      sheet.seal()
-    }
-  }
-}`
+export default class Document extends ServerStyleSheetDocument {}`
 
     case 'studio-config-create-theme-static-import':
       return (
@@ -540,7 +501,7 @@ export default createConfig({
 
 import Head from 'next/head'
 import {useEffect, useState} from 'react'
-import {Studio} from 'sanity'
+import {NextStudio} from 'next-sanity'
 
 import _config from '../sanity.config'
 
@@ -558,7 +519,7 @@ export default function IndexPage() {
     []
   )
 
-  return <Studio config={config} />
+  return <NextStudio config={config} />
 }`
 
     default:
@@ -587,8 +548,7 @@ export const snippets = [
   '_document.js',
   'next-config-build-time-js',
   'next-config-build-time-ts',
-  'pages/_document.tsx',
-  'pages/_document.js',
+  'pages/_document',
   'studio-config-create-theme-static-import',
   'pages-index',
 ] as const

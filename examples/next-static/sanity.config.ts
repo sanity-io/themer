@@ -14,7 +14,6 @@ export default createConfig({
     default: { ...hues.default, lightest: '#ece3e9' },
   }),
 
-  name: 'next-static',
   title: 'Next Static Import Example',
   projectId: 'c8jibo38',
   dataset: 'themer-movies',

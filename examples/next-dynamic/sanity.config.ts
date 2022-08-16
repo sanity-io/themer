@@ -8,7 +8,6 @@ export default createConfig({
   // allows reading the default theme variables while the custom theme is loading
   theme: defaultTheme,
 
-  name: 'next-dynamic',
   title: 'Next Dynamic Import Example',
   projectId: 'c8jibo38',
   dataset: 'themer-movies',

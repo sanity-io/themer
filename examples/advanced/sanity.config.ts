@@ -29,7 +29,7 @@ export default createConfig({
   projectId,
   dataset,
   theme,
-  
+
   title: 'Advanced Example',
   plugins: [deskTool(), muxInput({ mp4_support: 'standard' })],
   schema: { types: schemaTypes },

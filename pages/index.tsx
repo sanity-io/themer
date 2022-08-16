@@ -1,6 +1,7 @@
 import { usePrefersDark } from '@sanity/ui'
 import Themer from 'components/Themer'
 import ThemerFallback from 'components/ThemerFallback'
+import { NextStudioNoScript } from 'next-sanity/studio'
 import { Suspense, useEffect, useState } from 'react'
 import { defaultPreset, presets } from 'utils/presets'
 import type { ThemePreset } from 'utils/types'
@@ -50,17 +51,26 @@ export default function Index() {
     setPreset({ ...inheritFrom, url: url.toString() })
   }, [])
 
-  if (!initialPreset) return <ThemerFallback />
+  if (!initialPreset)
+    return (
+      <>
+        <ThemerFallback />
+        <NextStudioNoScript />
+      </>
+    )
 
   return (
-    <Suspense fallback={<ThemerFallback />}>
-      <Themer
-        initialPreset={initialPreset}
-        sidebarWidth={300}
-        systemScheme={prefersDark ? 'dark' : 'light'}
-        unstable_noAuthBoundary={unstable_noAuthBoundary}
-        unstable_showParsedUrl={process.env.NODE_ENV === 'development'}
-      />
-    </Suspense>
+    <>
+      <Suspense fallback={<ThemerFallback />}>
+        <Themer
+          initialPreset={initialPreset}
+          sidebarWidth={300}
+          systemScheme={prefersDark ? 'dark' : 'light'}
+          unstable_noAuthBoundary={unstable_noAuthBoundary}
+          unstable_showParsedUrl={process.env.NODE_ENV === 'development'}
+        />
+      </Suspense>
+      <NextStudioNoScript />
+    </>
   )
 }

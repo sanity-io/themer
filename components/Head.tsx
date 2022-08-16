@@ -1,8 +1,5 @@
 import { useRootTheme } from '@sanity/ui'
-import {
-  NextStudioGlobalStyle,
-  NextStudioHead,
-} from 'next-sanity/studio'
+import { NextStudioGlobalStyle, NextStudioHead } from 'next-sanity/studio'
 import png from 'public/favicon.png'
 import svg from 'public/favicon.svg'
 import { memo } from 'react'

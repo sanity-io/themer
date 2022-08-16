@@ -5,12 +5,12 @@
     "start": "sanity start"
   },
   "dependencies": {
-    "react": "^18.0.0",
-    "react-dom": "^18.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-icons": "^4.4.0",
-    "react-is": "^18.0.0",
+    "react-is": "^17.0.2",
     "sanity": "dev-preview",
-    "sanity-plugin-mux-input": "studio-v3",
+    "sanity-plugin-mux-input": "^2.0.0-v3-studio.5",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

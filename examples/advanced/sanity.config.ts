@@ -4,6 +4,9 @@ import { muxInput } from 'sanity-plugin-mux-input'
 
 import { schemaTypes } from './schemas'
 
+const projectId = import.meta.env.SANITY_STUDIO_API_PROJECT_ID
+const dataset = import.meta.env.SANITY_STUDIO_API_DATASET
+
 console.time('await theme')
 const { createTheme, hues } = await import(
   'https://themer.sanity.build/api/hues?default=975e86&primary=2c6ebd&transparent=975e86&positive=43d675;300&caution=fbd024;200&lightest=fdfcfd&darkest=150d13'
@@ -23,12 +26,11 @@ const theme = createTheme({
 console.log(theme)
 
 export default createConfig({
+  projectId,
+  dataset,
   theme,
-
-  name: 'advanced',
+  
   title: 'Advanced Example',
-  projectId: 'c8jibo38',
-  dataset: 'themer-movies',
   plugins: [deskTool(), muxInput({ mp4_support: 'standard' })],
   schema: { types: schemaTypes },
 })

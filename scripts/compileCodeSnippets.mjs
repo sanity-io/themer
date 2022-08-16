@@ -75,7 +75,6 @@ ${dummies.import}
 export default createConfig({
   theme, // <-- 2. add the theme here
 
-  name: 'default',
   title: 'My Sanity Project',
   projectId: ${projectId},
   dataset:  ${dataset},
@@ -102,7 +101,6 @@ import { schemaTypes } from './schemas'
 export default createConfig({
   theme, // <-- 2. add the theme here
 
-  name: 'default',
   title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
@@ -129,7 +127,6 @@ import {theme} from './theme'
 export default createConfig({
   theme, // <-- 2. add the theme here
 
-  name: 'default',
   title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
@@ -159,7 +156,6 @@ const theme = _theme as import('sanity').StudioTheme
 export default createConfig({
   theme, // <-- 3. add the theme here
 
-  name: 'default',
   title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
@@ -181,7 +177,6 @@ import { schemaTypes } from './schemas'
 
 
 export default createConfig({
-  name: 'default',
   title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
@@ -205,7 +200,6 @@ import { schemaTypes } from './schemas'
 export default createConfig({
   theme: defaultTheme,
 
-  name: 'default',
   title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
@@ -255,7 +249,6 @@ ${dummies.import}
 export default createConfig({
   theme: createTheme({...hues, primary: { ...hues.primary, mid: '#22fca8' } }),
 
-  name: 'default',
   title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
@@ -530,7 +523,6 @@ import { schemaTypes } from './schemas'
 export default createConfig({
   theme: createTheme({...hues, primary: { ...hues.primary, mid: '#22fca8' } }),
 
-  name: 'default',
   title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},

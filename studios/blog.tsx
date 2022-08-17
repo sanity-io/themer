@@ -1,6 +1,7 @@
 import { BookIcon } from '@sanity/icons'
 import { type WorkspaceOptions, defineType } from 'sanity'
 import { deskTool } from 'sanity/desk'
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import slugify from 'slugify'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
@@ -97,6 +98,6 @@ export const config: WorkspaceOptions = {
   icon: BookIcon,
   projectId,
   dataset,
-  plugins: [deskTool()],
+  plugins: [deskTool(), unsplashImageAsset()],
   schema: { types },
 }

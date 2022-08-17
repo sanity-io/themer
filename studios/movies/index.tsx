@@ -2,6 +2,7 @@ import { BiMoviePlay } from 'react-icons/bi'
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { muxInput } from 'sanity-plugin-mux-input'
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 
 import { schemaTypes } from './schemas'
 
@@ -15,7 +16,11 @@ export const config = createConfig({
   icon: BiMoviePlay,
   projectId,
   dataset,
-  plugins: [deskTool(), muxInput({ mp4_support: 'standard' })],
+  plugins: [
+    deskTool(),
+    muxInput({ mp4_support: 'standard' }),
+    unsplashImageAsset(),
+  ],
   schema: {
     types: schemaTypes,
   },

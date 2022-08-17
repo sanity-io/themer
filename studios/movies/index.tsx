@@ -1,8 +1,8 @@
 import { BiMoviePlay } from 'react-icons/bi'
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
-import { muxInput } from 'sanity-plugin-mux-input'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
+import { muxInput } from 'sanity-plugin-mux-input'
 
 import { schemaTypes } from './schemas'
 

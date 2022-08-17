@@ -11,7 +11,7 @@
     "react-icons": "^4.4.0",
     "react-is": "^17.0.2",
     "sanity": "3.0.0-dev-preview.14",
-    "sanity-plugin-mux-input": "^2.0.0-v3-studio.7",
+    "sanity-plugin-mux-input": "^2.0.0-v3-studio.9",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {

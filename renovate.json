@@ -3,5 +3,16 @@
   "extends": [
     "github>sanity-io/renovate-presets//ecosystem/auto",
     "github>sanity-io/renovate-presets//ecosystem/studio-v3"
+  ],
+  "packageRules": [
+    {
+      "groupName": "sanity-studio-v3-pin-override",
+      "packageNames": ["sanity"],
+      "depTypeList": ["dependencies", "devDependencies", "resolutions"],
+      "rangeStrategy": "pin",
+      "ignoreUnstable": true,
+      "followTag": "dev-preview",
+      "schedule": ["at any time"]
+    }
   ]
 }

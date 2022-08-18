@@ -12,6 +12,7 @@
       "rangeStrategy": "pin",
       "ignoreUnstable": true,
       "followTag": "dev-preview",
+      "allowedVersions": "/3\\.0\\.0-dev-preview\\.[0-9]+$/",
       "schedule": ["at any time"]
     }
   ]

@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
-    "@juggle/resize-observer": "^3.3.1",
+    "@juggle/resize-observer": "^3.4.0",
     "@sanity/client": "^3.4.0-beta.esm.4",
     "@sanity/ui": "^0.37.12",
     "culori": "^2.0.3",

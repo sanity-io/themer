@@ -6,15 +6,11 @@ import { memo, useLayoutEffect, useState } from 'react'
 import styled from 'styled-components'
 import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
 
-
 const ShareIcon = styled(_ShareIcon)`
   transform: translateX(-1px);
   width: 16px;
   stroke-width: 1.4;
 `
-
-
-
 
 const title = 'Themer'
 const text = 'Create Sanity Studio v3 Themes'

@@ -4,7 +4,7 @@ import { Badge, Box, Card, Flex, Inline, Stack, Text } from '@sanity/ui'
 import CodeSnippet from 'components/CodeSnippet'
 import { Button } from 'components/Sidebar.styles'
 import { useIdleCallback } from 'hooks/useIdleCallback'
-import { animate, spring } from 'motion'
+import { animate } from 'motion'
 import {
   type ReactNode,
   useCallback,
@@ -68,9 +68,7 @@ export const TransitionHeight = ({ children }: TransitionHeightProps) => {
     }
     animate(
       animated.current,
-      { height: `${height}px`, opacity: 1 },
-      { easing: spring() }
-    )
+      { height: `${height}px`, opacity: 1 }    )
   }, [height])
 
   return (
@@ -99,7 +97,6 @@ export const TransitionMinHeight = ({ children }: TransitionMinHeightProps) => {
       animate(
         animated.current,
         { minHeight: `${minHeight}px` },
-        { easing: spring() }
       )
     }, [minHeight])
   )

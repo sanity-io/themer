@@ -66,9 +66,7 @@ export const TransitionHeight = ({ children }: TransitionHeightProps) => {
     if (!canOverflowClip.current) {
       animated.current.scrollTop = 0
     }
-    animate(
-      animated.current,
-      { height: `${height}px`, opacity: 1 }    )
+    animate(animated.current, { height: `${height}px`, opacity: 1 })
   }, [height])
 
   return (
@@ -94,10 +92,7 @@ export const TransitionMinHeight = ({ children }: TransitionMinHeightProps) => {
   )
   const startAnimation = useIdleCallback(
     useCallback(() => {
-      animate(
-        animated.current,
-        { minHeight: `${minHeight}px` },
-      )
+      animate(animated.current, { minHeight: `${minHeight}px` })
     }, [minHeight])
   )
 

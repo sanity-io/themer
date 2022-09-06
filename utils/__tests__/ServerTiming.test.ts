@@ -26,7 +26,7 @@ test('Forgot to end a timing? We gotchu', async () => {
   expect(Number(handlerDur)).toBeGreaterThanOrEqual(100)
   expect(Number(fetchDur)).toBeGreaterThanOrEqual(100)
   expect(`${serverTiming}`.replace(numberRegex, '100')).toMatchInlineSnapshot(
-    `"handler;dur=100,fetch;desc=\\"GROQ query\\";dur=100"`
+    `"handler;dur=100,fetch;desc="GROQ query";dur=100"`
   )
 })
 

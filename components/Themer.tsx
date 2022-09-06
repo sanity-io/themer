@@ -29,9 +29,7 @@ const StyledGrid = styled(Grid)`
   row-gap: 1px;
   @media screen and (min-width: 600px) {
     && {
-      grid-template-columns: ${
-          ({ sidebarWidth }) => sidebarWidth
-        }px 1fr;
+      grid-template-columns: ${({ sidebarWidth }) => sidebarWidth}px 1fr;
     }
   }
 `

@@ -30,7 +30,6 @@ const StyledGrid = styled(Grid)`
   @media screen and (min-width: 600px) {
     && {
       grid-template-columns: ${
-          // @ts-expect-error
           ({ sidebarWidth }) => sidebarWidth
         }px 1fr;
     }
@@ -148,7 +147,6 @@ export default function Themer({
         <StyledGrid
           columns={[1, 1]}
           height="stretch"
-          // @ts-expect-error
           sidebarWidth={sidebarWidth}
         >
           <ToastProvider paddingY={7} zOffset={Z_OFFSET.toast}>

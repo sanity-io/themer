@@ -38,7 +38,7 @@
     "sanity-plugin-mux-input": "2.0.0-v3-studio.12",
     "scroll-into-view-if-needed": "^2.2.29",
     "slugify": "^1.6.5",
-    "styled-components": "^5.3.5",
+    "styled-components": "6.0.0-beta.2",
     "suspend-react": "^0.0.8"
   },
   "devDependencies": {

@@ -18,7 +18,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@heroicons/react": "^1.0.6",
+    "@heroicons/react": "^2.0.12",
     "@juggle/resize-observer": "^3.4.0",
     "@sanity/client": "^3.4.0-beta.esm.4",
     "@sanity/ui": "^0.38.0",

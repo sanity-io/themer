@@ -24,16 +24,19 @@ const CodeSnippetSetup = ({
     if (state.build === 'sanity build') {
       return (
         <>
-          
           {state.typescript ? (
             <>
-              Before you can add the import snippet to your <FilenameBadge>sanity.config.ts</FilenameBadge>
-              you&#39;ll need to add {' '}
-              <FilenameBadge>themer.d.ts</FilenameBadge> to your project.
+              Before you can add the import snippet to your{' '}
+              <FilenameBadge>sanity.config.ts</FilenameBadge>
+              you&#39;ll need to add <FilenameBadge>
+                themer.d.ts
+              </FilenameBadge>{' '}
+              to your project.
             </>
           ) : (
             <>
-              <FilenameBadge>sanity.config.js</FilenameBadge> supports URL ESM imports out of the box.
+              <FilenameBadge>sanity.config.js</FilenameBadge> supports URL ESM
+              imports out of the box.
             </>
           )}
           <a

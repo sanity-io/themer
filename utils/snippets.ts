@@ -3,19 +3,13 @@ import JSON5 from 'json5'
 const projectId = JSON5.stringify(process.env.NEXT_PUBLIC_SANITY_PROJECT_ID)
 const dataset = JSON5.stringify(process.env.NEXT_PUBLIC_SANITY_DATASET)
 
-export function snippet(id: 'import-dynamic-js'): (first: string) => string
 export function snippet(id: 'import-dynamic-ts'): (first: string) => string
 export function snippet(id: 'import-static'): (first: string) => string
 export function snippet(id: 'studio-config'): (first: string) => string
-export function snippet(
-  id: 'studio-config-static-import'
-): (first: string) => string
 export function snippet(id: 'studio-config-local-import'): () => string
 export function snippet(id: 'studio-config-local-import-ts'): () => string
 export function snippet(id: 'studio-config-next-runtime-1'): () => string
 export function snippet(id: 'studio-config-next-runtime-2'): () => string
-export function snippet(id: 'sanity.cli.ts'): () => string
-export function snippet(id: 'sanity.cli.js'): () => string
 export function snippet(
   id: 'studio-config-create-theme'
 ): (first: string) => string
@@ -42,9 +36,6 @@ export function snippet(
 export function snippet(id: 'pages-index'): (first: string) => string
 export function snippet(id) {
   switch (id) {
-    case 'import-dynamic-js':
-      return (first: string) => `const {theme} = await import(${first})`
-
     case 'import-dynamic-ts':
       return (first: string) => `const {theme} = (await import(
   // @ts-expect-error -- TODO setup themer.d.ts to get correct typings
@@ -55,53 +46,24 @@ export function snippet(id) {
       return (first: string) => `import {theme} from ${first}`
 
     case 'studio-config':
-      return (first: string) => `// Add two lines of code to your workspace
+      return (first: string) => `// 1. Add the import
+${first}
 
 import {createConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
 
-import {schemaTypes} from './schemas'
-
-// 1. Add the import
-${first}
-
 export default createConfig({
   theme, // <-- 2. add the theme here
 
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: {types: schemaTypes}
-})`
-
-    case 'studio-config-static-import':
-      return (first: string) => `// Add two lines of code to your workspace
-
-import {createConfig} from 'sanity'
-import {deskTool} from 'sanity/desk'
-// 1. Add the import
-${first}
-
-import {schemaTypes} from './schemas'
-
-export default createConfig({
-  theme, // <-- 2. add the theme here
-
-  title: 'My Sanity Project',
-  projectId: ${projectId},
-  dataset: ${dataset},
-  plugins: [deskTool()],
-  schema: {types: schemaTypes}
+  schema: {types: []}
 })`
 
     case 'studio-config-local-import':
-      return () => `// Add two lines of code to your workspace
-
-import {createConfig} from 'sanity'
+      return () => `import {createConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
-
-import {schemaTypes} from './schemas'
 
 // 1. Add the import to the theme.js you downloaded
 import {theme} from './theme'
@@ -109,11 +71,10 @@ import {theme} from './theme'
 export default createConfig({
   theme, // <-- 2. add the theme here
 
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: {types: schemaTypes}
+  schema: {types: []}
 })`
 
     case 'studio-config-local-import-ts':
@@ -121,8 +82,6 @@ export default createConfig({
 
 import {createConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
-
-import {schemaTypes} from './schemas'
 
 // 1. Add the import to the theme.js you downloaded
 import {theme as _theme} from './theme'
@@ -133,11 +92,10 @@ const theme = _theme as import('sanity').StudioTheme
 export default createConfig({
   theme, // <-- 3. add the theme here
 
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: {types: schemaTypes}
+  schema: {types: []}
 })`
 
     case 'studio-config-next-runtime-1':
@@ -145,14 +103,12 @@ export default createConfig({
 
 import {createConfig} from 'sanity'
 import {deskTool} from 'sanity/desk'
-import {schemaTypes} from './schemas'
 
 export default createConfig({
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: {types: schemaTypes}
+  schema: {types: []}
 })`
 
     case 'studio-config-next-runtime-2':
@@ -160,51 +116,14 @@ export default createConfig({
 
 import {createConfig, defaultTheme} from 'sanity'
 import {deskTool} from 'sanity/desk'
-import {schemaTypes} from './schemas'
 
 export default createConfig({
   theme: defaultTheme,
 
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: {types: schemaTypes}
-})`
-
-    case 'sanity.cli.ts':
-      return () => `// Change target to allow top-level await in sanity.config.ts
-
-import {createCliConfig} from 'sanity/cli'
-import type {UserConfig} from 'vite'
-
-export default createCliConfig({
-  api: {projectId: ${projectId}, dataset: ${dataset}},
-  vite: (config: UserConfig): UserConfig => ({
-    ...config,
-    build: {
-      ...config.build,
-      // esbuild requires es2022 or later to allow top-level await: https://esbuild.github.io/content-types/#javascript
-      target: 'es2022'
-    }
-  })
-})`
-
-    case 'sanity.cli.js':
-      return () => `// Change target to allow top-level await in sanity.config.js
-
-import {createCliConfig} from 'sanity/cli'
-
-export default createCliConfig({
-  api: {projectId: ${projectId}, dataset: ${dataset}},
-  vite: config => ({
-    ...config,
-    build: {
-      ...config.build,
-      // esbuild requires es2022 or later to allow top-level await: https://esbuild.github.io/content-types/#javascript
-      target: 'es2022'
-    }
-  })
+  schema: {types: []}
 })`
 
     case 'studio-config-create-theme':
@@ -520,17 +439,13 @@ export default function IndexPage() {
 }
 
 export const snippets = [
-  'import-dynamic-js',
   'import-dynamic-ts',
   'import-static',
   'studio-config',
-  'studio-config-static-import',
   'studio-config-local-import',
   'studio-config-local-import-ts',
   'studio-config-next-runtime-1',
   'studio-config-next-runtime-2',
-  'sanity.cli.ts',
-  'sanity.cli.js',
   'studio-config-create-theme',
   'import-create-theme-static',
   'import-create-theme-dynamic',

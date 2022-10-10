@@ -24,18 +24,16 @@ const CodeSnippetSetup = ({
     if (state.build === 'sanity build') {
       return (
         <>
-          Before you can add the import snippet to your
+          
           {state.typescript ? (
             <>
-              <FilenameBadge>sanity.config.ts</FilenameBadge>
-              you&#39;ll need to make a few changes to{' '}
-              <FilenameBadge>sanity.cli.ts</FilenameBadge> and{' '}
-              <FilenameBadge>tsconfig.json</FilenameBadge> .
+              Before you can add the import snippet to your <FilenameBadge>sanity.config.ts</FilenameBadge>
+              you&#39;ll need to add {' '}
+              <FilenameBadge>themer.d.ts</FilenameBadge> to your project.
             </>
           ) : (
             <>
-              <FilenameBadge>sanity.config.js</FilenameBadge> you&#39;ll need to
-              make a change to <FilenameBadge>sanity.cli.js</FilenameBadge>.
+              <FilenameBadge>sanity.config.js</FilenameBadge> supports URL ESM imports out of the box.
             </>
           )}
           <a
@@ -136,18 +134,8 @@ const CodeSnippetSetup = ({
               id: 'sanity.config',
               filename: 'sanity.config.ts',
               contents: snippet('studio-config')(
-                snippet('import-dynamic-js')(JSON5.stringify(esmUrl))
+                snippet('import-static')(JSON5.stringify(esmUrl))
               ),
-            },
-            {
-              id: 'sanity.cli',
-              filename: 'sanity.cli.ts',
-              contents: snippet('sanity.cli.ts')(),
-            },
-            {
-              filename: 'tsconfig.json',
-              contents: snippet('tsconfig')(),
-              language: 'json' as const,
             },
             themerDts,
           ]
@@ -156,13 +144,8 @@ const CodeSnippetSetup = ({
               id: 'sanity.config',
               filename: 'sanity.config.js',
               contents: snippet('studio-config')(
-                snippet('import-dynamic-js')(JSON5.stringify(esmUrl))
+                snippet('import-static')(JSON5.stringify(esmUrl))
               ),
-            },
-            {
-              id: 'sanity.cli',
-              filename: 'sanity.cli.js',
-              contents: snippet('sanity.cli.js')(),
             },
           ]
     }
@@ -173,7 +156,7 @@ const CodeSnippetSetup = ({
             {
               id: 'sanity.config',
               filename: 'sanity.config.ts',
-              contents: snippet('studio-config-static-import')(
+              contents: snippet('studio-config')(
                 snippet('import-static')(JSON5.stringify(esmUrl))
               ),
             },
@@ -194,7 +177,7 @@ const CodeSnippetSetup = ({
             {
               id: 'sanity.config',
               filename: 'sanity.config.js',
-              contents: snippet('studio-config-static-import')(
+              contents: snippet('studio-config')(
                 snippet('import-static')(JSON5.stringify(esmUrl))
               ),
             },

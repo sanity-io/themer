@@ -35,13 +35,6 @@ const dataset = `'production'`
 
 const snippets = [
   [
-    'import-dynamic-js',
-    ['esmUrl'],
-    `
-const {theme} = await import(${dummies.esmUrl})
-`,
-  ],
-  [
     'import-dynamic-ts',
     ['esmUrl'],
     `
@@ -62,50 +55,19 @@ const {theme} = await import(${dummies.esmUrl})
     'studio-config',
     ['import'],
     `
-    // Add two lines of code to your workspace
+// 1. Add the import
+${dummies.import}
 
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 
-import { schemaTypes } from './schemas'
-
-// 1. Add the import
-${dummies.import}
-
 export default createConfig({
   theme, // <-- 2. add the theme here
 
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset:  ${dataset},
   plugins: [deskTool()],
-  schema: { types: schemaTypes,},
-})
-
-`,
-  ],
-  [
-    'studio-config-static-import',
-    ['import'],
-    `
-    // Add two lines of code to your workspace
-
-import { createConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
-// 1. Add the import
-${dummies.import}
-
-import { schemaTypes } from './schemas'
-
-
-export default createConfig({
-  theme, // <-- 2. add the theme here
-
-  title: 'My Sanity Project',
-  projectId: ${projectId},
-  dataset: ${dataset},
-  plugins: [deskTool()],
-  schema: { types: schemaTypes,},
+  schema: { types: [],},
 })
 
 `,
@@ -114,12 +76,8 @@ export default createConfig({
     'studio-config-local-import',
     [],
     `
-    // Add two lines of code to your workspace
-
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
-
-import { schemaTypes } from './schemas'
 
 // 1. Add the import to the theme.js you downloaded
 import {theme} from './theme'
@@ -127,11 +85,10 @@ import {theme} from './theme'
 export default createConfig({
   theme, // <-- 2. add the theme here
 
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: { types: schemaTypes,},
+  schema: { types: [],},
 })
 
 `,
@@ -145,7 +102,6 @@ export default createConfig({
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 
-import { schemaTypes } from './schemas'
 
 // 1. Add the import to the theme.js you downloaded
 import {theme as _theme} from './theme'
@@ -156,11 +112,10 @@ const theme = _theme as import('sanity').StudioTheme
 export default createConfig({
   theme, // <-- 3. add the theme here
 
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: { types: schemaTypes,},
+  schema: { types: [],},
 })
 
 `,
@@ -173,15 +128,13 @@ export default createConfig({
 
 import {createConfig} from 'sanity'
 import { deskTool } from 'sanity/desk'
-import { schemaTypes } from './schemas'
 
 
 export default createConfig({
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: { types: schemaTypes,},
+  schema: { types: [],},
 })
 
 `,
@@ -194,44 +147,17 @@ export default createConfig({
 
 import {createConfig, defaultTheme} from 'sanity'
 import { deskTool } from 'sanity/desk'
-import { schemaTypes } from './schemas'
 
 
 export default createConfig({
   theme: defaultTheme,
 
-  title: 'My Sanity Project',
   projectId: ${projectId},
   dataset: ${dataset},
   plugins: [deskTool()],
-  schema: { types: schemaTypes,},
+  schema: { types: [],},
 })
 
-`,
-  ],
-  [
-    'sanity.cli.ts',
-    [],
-    `// Change target to allow top-level await in sanity.config.ts
-
-    import { createCliConfig } from 'sanity/cli'
-    import type { UserConfig } from "vite";
-    
-    export default createCliConfig({api: {projectId: ${projectId},dataset: ${dataset}}, vite: (config: UserConfig): UserConfig => ({...config,build: {...config.build,
-      // esbuild requires es2022 or later to allow top-level await: https://esbuild.github.io/content-types/#javascript
-      target: "es2022"},})})
-`,
-  ],
-  [
-    'sanity.cli.js',
-    [],
-    `// Change target to allow top-level await in sanity.config.js
-
-    import { createCliConfig } from 'sanity/cli'
-    
-    export default createCliConfig({api: {projectId: ${projectId},dataset: ${dataset}},vite: (config) => ({...config, build: {...config.build,
-      // esbuild requires es2022 or later to allow top-level await: https://esbuild.github.io/content-types/#javascript
-      target: "es2022"},})})
 `,
   ],
   [

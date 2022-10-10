@@ -4,8 +4,7 @@
 // Expect this to get much easier before v3 hits stable
 
 import React from 'react'
-import { type DefaultDocumentProps } from 'sanity'
-import { GlobalErrorHandler } from 'sanity/_unstable'
+import { type DefaultDocumentProps, GlobalErrorHandler } from 'sanity'
 
 const globalStyles = `
   html {

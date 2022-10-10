@@ -6,19 +6,19 @@
     "start": "next start"
   },
   "dependencies": {
-    "next": "^12.2.5",
-    "next-sanity": "^0.8.4",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "next": "^12.3.1",
+    "next-sanity": "0.9.0-new-preview-mode.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-icons": "^4.4.0",
-    "react-is": "^17.0.2",
-    "sanity": "3.0.0-dev-preview.15",
-    "sanity-plugin-mux-input": "2.0.0-v3-studio.12",
-    "styled-components": "^5.3.5"
+    "react-is": "^18.2.0",
+    "sanity": "3.0.0-purple-unicorn.6",
+    "sanity-plugin-mux-input": "2.0.0-v3-studio.19",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "@types/node": "^18.6.4",
-    "@types/react": "^18.0.15",
-    "typescript": "^4.7.4"
+    "@types/node": "^18.8.4",
+    "@types/react": "^18.0.21",
+    "typescript": "^4.8.4"
   }
 }

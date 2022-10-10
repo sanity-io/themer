@@ -15,7 +15,7 @@ import {
   useCallback,
   useMemo,
 } from 'react'
-import { MediaPreview } from 'sanity/_unstable'
+import { MediaPreview } from 'sanity'
 import styled from 'styled-components'
 import { suspend } from 'suspend-react'
 import { applyHues } from 'utils/applyHues'

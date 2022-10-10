@@ -1,4 +1,4 @@
-import { ShareIcon as _ShareIcon } from '@heroicons/react/outline'
+import { ShareIcon as _ShareIcon } from '@heroicons/react/24/outline'
 import { ClipboardIcon, LockIcon } from '@sanity/icons'
 import { Grid, Stack, useToast } from '@sanity/ui'
 import { Button, Label } from 'components/Sidebar.styles'

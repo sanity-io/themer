@@ -1,4 +1,4 @@
-import { MusicNoteIcon } from '@heroicons/react/outline'
+import { MusicalNoteIcon } from '@heroicons/react/24/outline'
 import {
   DownloadIcon,
   DropIcon,
@@ -39,7 +39,7 @@ import { expandPresetSearchParams } from 'utils/expandPresetSearchParams'
 import { presets } from 'utils/presets'
 import type { Hues, ThemePreset } from 'utils/types'
 
-const SynthWaveIcon = styled(MusicNoteIcon)`
+const SynthWaveIcon = styled(MusicalNoteIcon)`
   transform: translateX(-1px);
   width: 16px;
   stroke-width: 1.4;

@@ -1,7 +1,7 @@
 import { BookIcon } from '@sanity/icons'
+import { visionTool } from '@sanity/vision'
 import { type WorkspaceOptions, defineType } from 'sanity'
 import { deskTool } from 'sanity/desk'
-import { visionTool } from '@sanity/vision'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import slugify from 'slugify'
 

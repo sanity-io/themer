@@ -1,9 +1,9 @@
+import { visionTool } from '@sanity/vision'
 import { BiMoviePlay } from 'react-icons/bi'
 import { createConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import { muxInput } from 'sanity-plugin-mux-input'
-import { visionTool } from '@sanity/vision'
 
 import { schemaTypes } from './schemas'
 

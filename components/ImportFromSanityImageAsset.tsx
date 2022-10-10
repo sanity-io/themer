@@ -11,11 +11,13 @@ import {
   type Dispatch,
   type SetStateAction,
   type TransitionStartFunction,
+  JSXElementConstructor,
   memo,
+  ReactElement,
   useCallback,
   useMemo,
 } from 'react'
-import { MediaPreview } from 'sanity'
+import { type PreviewLayoutKey, type PreviewProps,MediaPreview } from 'sanity'
 import styled from 'styled-components'
 import { suspend } from 'suspend-react'
 import { applyHues } from 'utils/applyHues'
@@ -56,11 +58,14 @@ const ColorMediaPreview = ({
   const subtitle = formatter.format(Math.max(population / 100, 0.0001))
   return (
     <MediaPreview
+    renderDefault={function (props: PreviewProps<PreviewLayoutKey>): ReactElement<any, string | JSXElementConstructor<any>> {
+      throw new Error('Function not implemented.')
+    } }  
       media={<ColorPreview style={{ background: color }} />}
       title={color}
       subtitle={dominant === color ? `${subtitle}, dominant` : subtitle}
-      withRadius
-    />
+      withRadius 
+      />
   )
 }
 
@@ -78,6 +83,9 @@ const PaletteImagePreview = ({ url }: { url: string }) => {
 
   return (
     <MediaPreview
+    renderDefault={function (props: PreviewProps<PreviewLayoutKey>): ReactElement<any, string | JSXElementConstructor<any>> {
+      throw new Error('Function not implemented.')
+    } }  
       media={
         // eslint-disable-next-line @next/next/no-img-element
         <img

@@ -25,7 +25,7 @@ import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
 import type { Hue, Hues, ThemePreset } from 'utils/types'
 
 // @TODO read the media query from the theme context instead of hardcoding to 600px
-const StyledGrid = styled(Grid)`
+const StyledGrid = styled<any>(Grid)`
   row-gap: 1px;
   @media screen and (min-width: 600px) {
     && {

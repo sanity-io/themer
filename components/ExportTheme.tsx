@@ -109,7 +109,7 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
               text="Copy JS"
               toastTitle="Copied JS snippet to the clipboard"
               // code={`const {theme} = await import(${JSON.stringify(esmUrl)})`}
-              code={snippet('import-dynamic-js')(JSON5.stringify(esmUrl))}
+              code={snippet('import-static')(JSON5.stringify(esmUrl))}
             />
             <CopySnippetButton
               text="Copy TS"

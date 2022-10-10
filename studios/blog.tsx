@@ -23,7 +23,7 @@ const postType = defineType({
       type: 'slug',
       options: { source: 'title' },
       validation: (Rule) => {
-        return Rule.required().custom(async (value) => {
+        return Rule.required().custom(async (value: any) => {
           const currentSlug = value && value.current
           if (!currentSlug) {
             return true

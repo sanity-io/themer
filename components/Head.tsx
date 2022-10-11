@@ -13,7 +13,6 @@ function Head({ presetUrl }: Props) {
   const theme = useRootTheme().theme
   const { light, dark } = theme.color
 
-
   // @TODO find a better way to override the page title
   // Page title is overriden by StudioLayout
   /*
@@ -35,7 +34,10 @@ function Head({ presetUrl }: Props) {
         <link rel="icon" type="image/svg" href={svg.src} />
         <link rel="icon" type="image/png" href={png.src} />
       </NextStudioHead>
-      <NextStudioGlobalStyle bg={light.default.base.bg} fontFamily={theme.fonts.text.family} />
+      <NextStudioGlobalStyle
+        bg={light.default.base.bg}
+        fontFamily={theme.fonts.text.family}
+      />
     </>
   )
 }

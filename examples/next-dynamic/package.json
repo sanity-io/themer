@@ -10,7 +10,7 @@
     "next-sanity": "^1.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.4.0",
+    "react-icons": "^4.6.0",
     "react-is": "^18.2.0",
     "sanity": "3.0.0-dev-preview.22",
     "sanity-plugin-mux-input": "2.0.0-v3-studio.19",

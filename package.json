@@ -42,7 +42,7 @@
     "suspend-react": "^0.0.8"
   },
   "devDependencies": {
-    "@edge-runtime/jest-environment": "^1.1.0",
+    "@edge-runtime/jest-environment": "^2.0.1",
     "@types/jest": "^29.2.0",
     "@types/node": "^18.11.5",
     "@types/prettier": "^2.7.1",

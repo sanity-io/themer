@@ -18,7 +18,7 @@
     "singleQuote": true
   },
   "dependencies": {
-    "@heroicons/react": "^2.0.12",
+    "@heroicons/react": "^2.0.13",
     "@juggle/resize-observer": "^3.4.0",
     "@sanity/client": "^3.4.1",
     "@sanity/ui": "1.0.0-beta.32",
@@ -26,9 +26,9 @@
     "culori": "^2.0.3",
     "history": "^5.3.0",
     "json5": "^2.2.1",
-    "motion": "^10.14.2",
-    "next": "^13.0.0",
-    "next-sanity": "1.0.2",
+    "motion": "^10.14.3",
+    "next": "^13.0.1",
+    "next-sanity": "1.0.3",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

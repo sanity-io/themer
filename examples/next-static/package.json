@@ -13,7 +13,7 @@
     "react-icons": "^4.6.0",
     "react-is": "^18.2.0",
     "sanity": "3.0.0-rc.2",
-    "sanity-plugin-mux-input": "2.0.0-v3-studio.21",
+    "sanity-plugin-mux-input": "2.0.0-v3-studio.22",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

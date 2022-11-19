@@ -28,7 +28,7 @@
     "json5": "^2.2.1",
     "motion": "^10.14.3",
     "next": "^13.0.4",
-    "next-sanity": "2.0.1",
+    "next-sanity": "2.0.2",
     "polished": "^4.2.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

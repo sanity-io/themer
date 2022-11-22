@@ -4,7 +4,7 @@ import { NextStudioHead } from 'next-sanity/studio/head'
 import png from 'public/favicon.png'
 import svg from 'public/favicon.svg'
 import { memo } from 'react'
-import {createGlobalStyle, css} from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 
 interface NextStudioGlobalStyleProps {
   fontFamily?: string
@@ -12,7 +12,7 @@ interface NextStudioGlobalStyleProps {
   unstable__tailwindSvgFix?: boolean
 }
 const NextStudioGlobalStyle = createGlobalStyle<NextStudioGlobalStyleProps>`
-${({bg}) =>
+${({ bg }) =>
   bg
     ? css`
         html {
@@ -30,7 +30,7 @@ body {
   overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
 }
-${({fontFamily}) =>
+${({ fontFamily }) =>
   fontFamily
     ? css`
         #__next {
@@ -38,7 +38,7 @@ ${({fontFamily}) =>
         }
       `
     : ''}
-${({unstable__tailwindSvgFix}) =>
+${({ unstable__tailwindSvgFix }) =>
   unstable__tailwindSvgFix
     ? css`
         /* override tailwind reset */
@@ -68,18 +68,16 @@ function CustomHead({ presetUrl }: Props) {
   // */
   return (
     <>
-    <Head>
-      <title>{title}</title>
-      <NextStudioHead favicons={false}  />
+      <Head>
+        <title>{title}</title>
+        <NextStudioHead favicons={false} />
         title={title}
         themeColorLight={light.default.base.bg}
         themeColorDark={dark.default.base.bg}
-      
         {/* Use Edge Middleware to set this preload as a header to work with custom presets */}
         <link rel="modulepreload" href={presetUrl} />
         <link rel="icon" type="image/svg" href={svg.src} />
         <link rel="icon" type="image/png" href={png.src} />
-
       </Head>
       <NextStudioGlobalStyle
         bg={light.default.base.bg}

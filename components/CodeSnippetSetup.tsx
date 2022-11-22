@@ -58,8 +58,7 @@ const CodeSnippetSetup = ({
             sanity.config.{state.typescript ? 'ts' : 'js'}
           </FilenameBadge>
           you&#39;ll need to make a few changes to{' '}
-          <FilenameBadge>next.config.js</FilenameBadge>{' '}
-          .{' '}
+          <FilenameBadge>next.config.js</FilenameBadge> .{' '}
           <a
             href="https://github.com/sanity-io/themer/tree/main/examples/next-static"
             target="_blank"

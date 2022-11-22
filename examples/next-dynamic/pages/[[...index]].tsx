@@ -1,4 +1,6 @@
+import Head from 'next/head'
 import { NextStudio } from 'next-sanity/studio'
+import { NextStudioHead } from 'next-sanity/studio/head'
 import { useEffect, useState } from 'react'
 
 import _config from '../sanity.config'
@@ -15,15 +17,16 @@ export default function IndexPage() {
   )
 
   return (
-    <NextStudio
-      config={config}
-      unstable__head={
+    <>
+      <Head>
+        <NextStudioHead />
         <link
           // Speed up the theme loading significantly
           rel="modulepreload"
           href={'https://themer.sanity.build/api/hues?preset=dew'}
         />
-      }
-    />
+      </Head>
+      <NextStudio config={config} />
+    </>
   )
 }

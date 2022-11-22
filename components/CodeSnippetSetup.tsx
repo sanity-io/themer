@@ -58,11 +58,7 @@ const CodeSnippetSetup = ({
             sanity.config.{state.typescript ? 'ts' : 'js'}
           </FilenameBadge>
           you&#39;ll need to make a few changes to{' '}
-          <FilenameBadge>next.config.js</FilenameBadge> and{' '}
-          <FilenameBadge>
-            pages/_document.{state.typescript ? 'tsx' : 'js'}
-          </FilenameBadge>{' '}
-          .{' '}
+          <FilenameBadge>next.config.js</FilenameBadge> .{' '}
           <a
             href="https://github.com/sanity-io/themer/tree/main/examples/next-static"
             target="_blank"
@@ -124,11 +120,6 @@ const CodeSnippetSetup = ({
       filename: 'themer.d.ts',
       contents: snippet('themer.d.ts')(JSON5.stringify(esmUrlDTS)),
     }
-    const pageDocumentJs = {
-      id: 'pages/_document',
-      filename: 'pages/_document.js',
-      contents: snippet('pages/_document')(),
-    }
 
     if (state.build === 'sanity build') {
       return state.typescript
@@ -169,11 +160,6 @@ const CodeSnippetSetup = ({
                 JSON5.stringify(esmUrlOrigin)
               ),
             },
-            {
-              id: 'pages/_document',
-              filename: 'pages/_document.tsx',
-              contents: snippet('pages/_document')(),
-            },
             themerDts,
           ]
         : [
@@ -190,7 +176,6 @@ const CodeSnippetSetup = ({
                 JSON5.stringify(esmUrlOrigin)
               ),
             },
-            pageDocumentJs,
           ]
     }
 
@@ -207,11 +192,6 @@ const CodeSnippetSetup = ({
               filename: 'sanity.config.ts',
               contents: snippet('studio-config-next-runtime-1')(),
             },
-            {
-              id: 'pages/_document',
-              filename: 'pages/_document.tsx',
-              contents: snippet('pages/_document')(),
-            },
             themerDts,
           ]
         : [
@@ -225,7 +205,6 @@ const CodeSnippetSetup = ({
               filename: 'sanity.config.js',
               contents: snippet('studio-config-next-runtime-1')(),
             },
-            pageDocumentJs,
           ]
     }
 

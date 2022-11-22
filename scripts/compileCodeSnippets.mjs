@@ -423,17 +423,6 @@ module.exports = nextConfig
     `,
   ],
   [
-    'pages/_document',
-    [],
-    `
-    // This is necessary for SSR to work correctly and prevents broken CSS
-    
-    import { ServerStyleSheetDocument } from 'next-sanity/studio'
-
-    export default class Document extends ServerStyleSheetDocument {}
-    `,
-  ],
-  [
     'studio-config-create-theme-static-import',
     ['import'],
     `// Import createTheme and hues to quickly modify your theme without changing the import URL

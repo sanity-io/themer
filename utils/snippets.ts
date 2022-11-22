@@ -29,7 +29,6 @@ export function snippet(
 export function snippet(
   id: 'next-config-build-time-ts'
 ): (first: string) => string
-export function snippet(id: 'pages/_document'): () => string
 export function snippet(
   id: 'studio-config-create-theme-static-import'
 ): (first: string) => string
@@ -376,13 +375,6 @@ const nextConfig = {
 
 module.exports = nextConfig`
 
-    case 'pages/_document':
-      return () => `// This is necessary for SSR to work correctly and prevents broken CSS
-
-import {ServerStyleSheetDocument} from 'next-sanity/studio'
-
-export default class Document extends ServerStyleSheetDocument {}`
-
     case 'studio-config-create-theme-static-import':
       return (
         first: string
@@ -455,7 +447,6 @@ export const snippets = [
   '_document.js',
   'next-config-build-time-js',
   'next-config-build-time-ts',
-  'pages/_document',
   'studio-config-create-theme-static-import',
   'pages-index',
 ] as const

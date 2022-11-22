@@ -6,5 +6,11 @@
   ],
   "ignorePresets": [
     "github>sanity-io/renovate-presets//ecosystem/workaround-esm"
-  ]
+  ],
+   "packageRules": [
+   {
+      "packageNames": ["next-sanity"],
+      "followTag": "app-dir",
+     "schedule": ["at any time"]
+    }]
 }

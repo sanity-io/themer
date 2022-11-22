@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import {NextStudio} from 'next-sanity/studio'
-import {NextStudioHead} from 'next-sanity/studio/head'
+import { NextStudio } from 'next-sanity/studio'
+import { NextStudioHead } from 'next-sanity/studio/head'
 import { useEffect, useState } from 'react'
 
 import _config from '../sanity.config'

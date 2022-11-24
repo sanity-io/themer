@@ -235,35 +235,36 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
                       ]}
                     />
                   )}
-                {state.build === 'sanity build' && state.typescript !== null && (
-                  <FilesViewer
-                    key="sanity build _document"
-                    lead={
-                      <>
-                        You can make the studio load faster by adding a
-                        modulepreload tag for the theme.{' '}
-                        <a
-                          href="https://github.com/sanity-io/themer/tree/main/examples/advanced"
-                          target="_blank"
-                          rel="noreferrer"
-                        >
-                          Example studio
-                        </a>
-                      </>
-                    }
-                    files={[
-                      {
-                        id: '_document',
-                        filename: state.typescript
-                          ? '_document.tsx'
-                          : '_document.js',
-                        contents: state.typescript
-                          ? snippet('_document.tsx')(JSON5.stringify(esmUrl))
-                          : snippet('_document.js')(JSON5.stringify(esmUrl)),
-                      },
-                    ]}
-                  />
-                )}
+                {state.build === 'sanity build' &&
+                  state.typescript !== null && (
+                    <FilesViewer
+                      key="sanity build _document"
+                      lead={
+                        <>
+                          You can make the studio load faster by adding a
+                          modulepreload tag for the theme.{' '}
+                          <a
+                            href="https://github.com/sanity-io/themer/tree/main/examples/advanced"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            Example studio
+                          </a>
+                        </>
+                      }
+                      files={[
+                        {
+                          id: '_document',
+                          filename: state.typescript
+                            ? '_document.tsx'
+                            : '_document.js',
+                          contents: state.typescript
+                            ? snippet('_document.tsx')(JSON5.stringify(esmUrl))
+                            : snippet('_document.js')(JSON5.stringify(esmUrl)),
+                        },
+                      ]}
+                    />
+                  )}
               </Stack>
             </TransitionMinHeight>
           </Box>

@@ -58,11 +58,6 @@ const ColorMediaPreview = ({
   const subtitle = formatter.format(Math.max(population / 100, 0.0001))
   return (
     <MediaPreview
-      renderDefault={function (
-        props: PreviewProps<PreviewLayoutKey>
-      ): ReactElement<any, string | JSXElementConstructor<any>> {
-        throw new Error('Function not implemented.')
-      }}
       media={<ColorPreview style={{ background: color }} />}
       title={color}
       subtitle={dominant === color ? `${subtitle}, dominant` : subtitle}
@@ -85,11 +80,6 @@ const PaletteImagePreview = ({ url }: { url: string }) => {
 
   return (
     <MediaPreview
-      renderDefault={function (
-        props: PreviewProps<PreviewLayoutKey>
-      ): ReactElement<any, string | JSXElementConstructor<any>> {
-        throw new Error('Function not implemented.')
-      }}
       media={
         // eslint-disable-next-line @next/next/no-img-element
         <img

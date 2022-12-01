@@ -36,7 +36,7 @@
     "sanity": "3.0.0",
     "sanity-plugin-asset-source-unsplash": "1.0.1",
     "sanity-plugin-mux-input": "2.0.1",
-    "scroll-into-view-if-needed": "^2.2.31",
+    "scroll-into-view-if-needed": "^3.0.1",
     "slugify": "^1.6.5",
     "styled-components": "^5.3.6",
     "suspend-react": "^0.0.8"

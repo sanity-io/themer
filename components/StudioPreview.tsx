@@ -1,15 +1,39 @@
 import {
   type ThemeColorSchemeKey,
+  ThemeProvider,
   // type ThemeProviderProps,
 } from '@sanity/ui'
 import SyncColorScheme from 'components/SyncColorScheme'
-import { memo, useMemo } from 'react'
+import { createContext, memo, useContext, useMemo } from 'react'
 import {
+  type LayoutProps,
   type StudioProviderProps,
   type WorkspaceOptions,
+  definePlugin,
+  Studio,
   StudioLayout,
   StudioProvider,
 } from 'sanity'
+
+const ThemerThemeContext = createContext(null)
+const ThemerSchemeContext = createContext<ThemeColorSchemeKey>('light')
+
+function ThemerPreview(props: LayoutProps){
+console.log('ThemerPreview', props)
+const theme = useContext(ThemerThemeContext)
+const scheme = useContext(ThemerSchemeContext)
+
+return <ThemeProvider theme={theme} scheme={scheme}>{props.renderDefault(props)}</ThemeProvider>
+}
+
+const themerPlugin = definePlugin({
+  name: 'themer',
+  studio: {
+    components: {
+      layout: ThemerPreview
+    }
+  }
+})
 
 interface Props
   extends Pick<
@@ -27,11 +51,23 @@ const StudioPreview = ({
   unstable_history,
   unstable_noAuthBoundary,
 }: Props) => {
+  /*
   // It's necessary to add the theme to each workspace as it's used for toast notifications and more
   const config = useMemo(
-    () => _config.map((workspace) => ({ ...workspace, theme })),
+    () => _config.map((workspace) => ({ ...workspace, theme, plugins: [...workspace.plugins, themerPlugin()] })),
     [_config, theme]
   )
+  // */
+  const config = useMemo(
+    () => _config.map((workspace) => ({ ...workspace, plugins: [...workspace.plugins, themerPlugin()] })),
+    [_config]
+  )
+  console.log('config', config)
+  return <ThemerSchemeContext.Provider value={scheme}><ThemerThemeContext.Provider value={theme}><Studio config={config}
+  unstable_noAuthBoundary={unstable_noAuthBoundary}
+  unstable_history={unstable_history}
+  scheme={scheme}  /></ThemerThemeContext.Provider>
+  </ThemerSchemeContext.Provider>
 
   return (
     <StudioProvider

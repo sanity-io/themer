@@ -7,13 +7,13 @@
   },
   "dependencies": {
     "next": "^13.0.7",
-    "next-sanity": "3.1.4",
+    "next-sanity": "^3.1.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "react-is": "^18.2.0",
-    "sanity": "3.0.6",
-    "sanity-plugin-mux-input": "2.0.2",
+    "sanity": "^3.0.6",
+    "sanity-plugin-mux-input": "^2.0.2",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

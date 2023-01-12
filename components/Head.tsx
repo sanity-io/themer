@@ -9,7 +9,6 @@ import { createGlobalStyle, css } from 'styled-components'
 interface NextStudioGlobalStyleProps {
   fontFamily?: string
   bg?: string
-  unstable__tailwindSvgFix?: boolean
 }
 const NextStudioGlobalStyle = createGlobalStyle<NextStudioGlobalStyleProps>`
 ${({ bg }) =>
@@ -35,15 +34,6 @@ ${({ fontFamily }) =>
     ? css`
         #__next {
           font-family: ${fontFamily};
-        }
-      `
-    : ''}
-${({ unstable__tailwindSvgFix }) =>
-  unstable__tailwindSvgFix
-    ? css`
-        /* override tailwind reset */
-        :root svg {
-          display: inline;
         }
       `
     : ''}`
@@ -82,7 +72,6 @@ function CustomHead({ presetUrl }: Props) {
       <NextStudioGlobalStyle
         bg={light.default.base.bg}
         fontFamily={theme.fonts.text.family}
-        unstable__tailwindSvgFix
       />
     </>
   )

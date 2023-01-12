@@ -34,7 +34,7 @@
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
     "sanity": "^3.2.0",
-    "sanity-plugin-asset-source-unsplash": "^1.0.3",
+    "sanity-plugin-asset-source-unsplash": "^1.0.4",
     "sanity-plugin-mux-input": "^2.0.3",
     "scroll-into-view-if-needed": "^3.0.4",
     "slugify": "^1.6.5",

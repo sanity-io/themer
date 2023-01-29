@@ -15,10 +15,10 @@ import ImportFromSanityImageAsset from 'components/ImportFromSanityImageAsset'
 import { Button, Label } from 'components/Sidebar.styles'
 import {
   type Dispatch,
-  type SetStateAction,
-  type TransitionStartFunction,
   memo,
+  type SetStateAction,
   Suspense,
+  type TransitionStartFunction,
   useId,
   useMemo,
   useState,

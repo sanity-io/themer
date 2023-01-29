@@ -2,8 +2,8 @@
 // Then uses startTransition to let React know other updates can interrupt this one
 
 import {
-  type TransitionStartFunction,
   startTransition as _startTransition,
+  type TransitionStartFunction,
   useCallback,
   useRef,
 } from 'react'

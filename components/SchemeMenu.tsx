@@ -1,18 +1,18 @@
 import { DesktopIcon, MoonIcon, SelectIcon, SunIcon } from '@sanity/icons'
 import {
-  type ThemeColorSchemeKey,
   Button,
   Card,
   Label,
   Menu,
   MenuButton,
   MenuItem,
+  type ThemeColorSchemeKey,
 } from '@sanity/ui'
 import {
   type Dispatch,
+  memo,
   type SetStateAction,
   type TransitionStartFunction,
-  memo,
   useCallback,
   useState,
 } from 'react'

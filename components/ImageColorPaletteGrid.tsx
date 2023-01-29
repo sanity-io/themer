@@ -1,5 +1,5 @@
 import { Box, Grid, Skeleton } from '@sanity/ui'
-import { type ReactNode, memo } from 'react'
+import { memo,type ReactNode } from 'react'
 import styled from 'styled-components'
 
 interface Props {

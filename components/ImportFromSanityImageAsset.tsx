@@ -9,15 +9,15 @@ import { parseToHsl, setLightness, setSaturation } from 'polished'
 import spacer from 'public/1x1.png'
 import {
   type Dispatch,
-  type SetStateAction,
-  type TransitionStartFunction,
   JSXElementConstructor,
   memo,
   ReactElement,
+  type SetStateAction,
+  type TransitionStartFunction,
   useCallback,
   useMemo,
 } from 'react'
-import { type PreviewLayoutKey, type PreviewProps, MediaPreview } from 'sanity'
+import { MediaPreview,type PreviewLayoutKey, type PreviewProps } from 'sanity'
 import styled from 'styled-components'
 import { suspend } from 'suspend-react'
 import { applyHues } from 'utils/applyHues'

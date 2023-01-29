@@ -1,9 +1,9 @@
 import {
+  createHashHistory,
+  createMemoryHistory,
   type History,
   type Listener,
   type MemoryHistory,
-  createHashHistory,
-  createMemoryHistory,
 } from 'history'
 import { useMemo } from 'react'
 

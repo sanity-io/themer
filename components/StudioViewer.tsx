@@ -1,14 +1,14 @@
 import {
-  type ThemeColorSchemeKey,
   Grid,
+  type ThemeColorSchemeKey,
   ThemeProvider,
   useElementRect,
 } from '@sanity/ui'
 import StudioPreview from 'components/StudioPreview'
 import { useMagicRouter } from 'hooks/useMagicRouter'
 import {
-  type TransitionStartFunction,
   memo,
+  type TransitionStartFunction,
   useCallback,
   useMemo,
   useRef,

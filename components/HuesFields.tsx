@@ -1,12 +1,12 @@
 import { COLOR_TINTS } from '@sanity/color'
-import { type CardTone, Card, Grid, Skeleton, Stack, Text } from '@sanity/ui'
+import { Card, type CardTone, Grid, Skeleton, Stack, Text } from '@sanity/ui'
 import { Label, RangeInput } from 'components/Sidebar.styles'
 import {
   type ChangeEventHandler,
-  type TransitionStartFunction,
   lazy,
   memo,
   Suspense,
+  type TransitionStartFunction,
   useCallback,
   useEffect,
   useId,

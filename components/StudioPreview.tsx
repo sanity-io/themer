@@ -5,10 +5,10 @@ import {
 import SyncColorScheme from 'components/SyncColorScheme'
 import { memo, useMemo } from 'react'
 import {
-  type StudioProviderProps,
-  type WorkspaceOptions,
   StudioLayout,
   StudioProvider,
+  type StudioProviderProps,
+  type WorkspaceOptions,
 } from 'sanity'
 
 interface Props

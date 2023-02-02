@@ -1,5 +1,5 @@
 import { ClipboardIcon } from '@sanity/icons'
-import { type CodeProps, Box, Button, Card, Code } from '@sanity/ui'
+import { Box, Button, Card, Code,type CodeProps } from '@sanity/ui'
 import { useToast } from '@sanity/ui'
 import { memo } from 'react'
 import styled from 'styled-components'

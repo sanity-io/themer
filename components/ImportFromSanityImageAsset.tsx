@@ -17,7 +17,7 @@ import {
   useCallback,
   useMemo,
 } from 'react'
-import { MediaPreview,type PreviewLayoutKey, type PreviewProps } from 'sanity'
+import { MediaPreview, type PreviewLayoutKey, type PreviewProps } from 'sanity'
 import styled from 'styled-components'
 import { suspend } from 'suspend-react'
 import { applyHues } from 'utils/applyHues'

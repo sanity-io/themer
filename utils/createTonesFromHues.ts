@@ -1,4 +1,4 @@
-import { COLOR_TINTS,type ColorTints } from '@sanity/color'
+import { COLOR_TINTS, type ColorTints } from '@sanity/color'
 import { mix } from 'polished'
 import type { Hue, Hues } from 'utils/types'
 

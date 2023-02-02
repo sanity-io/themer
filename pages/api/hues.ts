@@ -2,7 +2,7 @@ import { themeFromHuesTemplate } from 'edge-utils/themeFromHuesTemplate.mjs'
 import type { NextRequest } from 'next/server'
 import { applyHuesFromPreset } from 'utils/applyHuesFromPreset'
 import { getPreset } from 'utils/presets'
-import { ServerTiming,type ServerTimingInstance } from 'utils/ServerTiming'
+import { ServerTiming, type ServerTimingInstance } from 'utils/ServerTiming'
 import { ValidationError } from 'utils/ValidationError'
 
 export const config = {

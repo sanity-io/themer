@@ -1,4 +1,4 @@
-import { Card, Text,type ThemeColorSchemeKey } from '@sanity/ui'
+import { Card, Text, type ThemeColorSchemeKey } from '@sanity/ui'
 import Logo from 'components/Logo'
 import {
   memo,

@@ -11,7 +11,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",
-    "sanity-plugin-mux-input": "^2.0.9"
+    "sanity-plugin-mux-input": "^2.0.10"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

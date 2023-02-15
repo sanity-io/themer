@@ -1,4 +1,4 @@
-import createClient from '@sanity/client'
+import { createClient } from '@sanity/client'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { ServerTiming } from 'utils/ServerTiming'
 

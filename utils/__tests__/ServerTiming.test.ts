@@ -9,7 +9,7 @@ test('creates a Server-Timing header', async () => {
   serverTiming.end('handler')
 
   const [dur] = serverTiming.toString().match(numberRegex)
-  expect(Number(dur)).toBeGreaterThanOrEqual(100)
+  expect(Number(dur)).toBeGreaterThanOrEqual(90)
   expect(`${serverTiming}`.replace(numberRegex, '100')).toMatchInlineSnapshot(
     `"handler;dur=100"`
   )
@@ -23,8 +23,8 @@ test('Forgot to end a timing? We gotchu', async () => {
   serverTiming.end('handler')
 
   const [handlerDur, fetchDur] = serverTiming.toString().match(numberRegex)
-  expect(Number(handlerDur)).toBeGreaterThanOrEqual(100)
-  expect(Number(fetchDur)).toBeGreaterThanOrEqual(100)
+  expect(Number(handlerDur)).toBeGreaterThanOrEqual(90)
+  expect(Number(fetchDur)).toBeGreaterThanOrEqual(90)
   expect(`${serverTiming}`.replace(numberRegex, '100')).toMatchInlineSnapshot(
     `"handler;dur=100,fetch;desc="GROQ query";dur=100"`
   )

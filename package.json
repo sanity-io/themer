@@ -20,7 +20,7 @@
   "dependencies": {
     "@heroicons/react": "^2.0.15",
     "@juggle/resize-observer": "^3.4.0",
-    "@sanity/client": "^4.0.1",
+    "@sanity/client": "^5.2.1",
     "@sanity/ui": "^1.2.4",
     "@sanity/vision": "^3.4.0",
     "culori": "^2.0.4",

@@ -133,7 +133,7 @@ const buildSanityClient = async () => {
     stdin: {
       contents: `
 globalThis.exports = {};
-import createClient from './node_modules/@sanity/client/dist/sanityClient.browser.mjs'
+import {createClient} from './node_modules/@sanity/client/dist/index.browser.js'
 export {createClient}
     `,
       resolveDir,

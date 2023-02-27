@@ -35,7 +35,7 @@
     "react-icons": "^4.7.1",
     "sanity": "^3.5.0",
     "sanity-plugin-asset-source-unsplash": "^1.0.6",
-    "sanity-plugin-mux-input": "^2.0.11",
+    "sanity-plugin-mux-input": "^2.0.12",
     "scroll-into-view-if-needed": "^3.0.6",
     "slugify": "^1.6.5",
     "styled-components": "^5.3.6",

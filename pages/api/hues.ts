@@ -11,10 +11,10 @@ export const config = {
 
 const headers = (serverTiming: ServerTimingInstance) => ({
   'Access-Control-Allow-Origin': '*',
-  // @TODO force no caching until we have a better solution that limits bandwidth without causing trouble
-  // 'cache-control': 'no-cache',
   // Test https://vercel.com/docs/concepts/functions/serverless-functions/edge-caching#stale-while-revalidate
   'Cache-Control': `s-maxage=1, stale-while-revalidate`,
+  // @TODO enable the below cache header once we have a migration path
+  // 'Cache-Control': 'public,max-age=31536000,immutable',
   'Content-Type': 'application/javascript; charset=utf-8',
   'Server-Timing': `${serverTiming}`,
 })

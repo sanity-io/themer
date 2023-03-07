@@ -18,6 +18,8 @@ importers:
       '@heroicons/react': ^2.0.16
       '@juggle/resize-observer': ^3.4.0
       '@sanity/client': ^5.2.2
+      '@sanity/color': ^2.2.3
+      '@sanity/icons': ^2.2.2
       '@sanity/ui': ^1.2.5
       '@sanity/vision': ^3.5.0
       '@types/jest': ^29.4.0
@@ -59,6 +61,8 @@ importers:
       '@heroicons/react': 2.0.16_react@18.2.0
       '@juggle/resize-observer': 3.4.0
       '@sanity/client': 5.2.2
+      '@sanity/color': 2.2.3
+      '@sanity/icons': 2.2.2_react@18.2.0
       '@sanity/ui': 1.3.0_twebgoqjkqellgizumyhahsaxe
       '@sanity/vision': 3.5.1_26idtpd4nozja4fdthxj3urb5y
       culori: 3.0.1

@@ -1,9 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "build": "next build",
-    "dev": "npx vercel env pull && next dev",
-    "start": "next start"
+    "build": "sanity build",
+    "dev": "PORT=3005 sanity dev"
   },
   "dependencies": {
     "next": "^13.2.1",

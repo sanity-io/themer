@@ -2,8 +2,7 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "dev": "npx vercel env pull && next dev",
-    "start": "next start"
+    "dev": "PORT=3004 next dev"
   },
   "dependencies": {
     "next": "^13.2.1",

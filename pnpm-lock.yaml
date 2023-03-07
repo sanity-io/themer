@@ -103,6 +103,31 @@ importers:
       typescript: 4.9.5
       write-file-atomic: 5.0.0
 
+  apps/v2:
+    specifiers:
+      '@sanity/eslint-config-studio': ^2.0.1
+      eslint: ^8.35.0
+      react: ^18.2.0
+      react-dom: ^18.2.0
+      react-icons: ^4.7.1
+      react-is: ^18.2.0
+      sanity: ^3.5.0
+      sanity-plugin-mux-input: ^2.0.13
+      styled-components: ^5.3.6
+      typescript: ^4.9.5
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+      react-icons: 4.8.0_react@18.2.0
+      react-is: 18.2.0
+      sanity: 3.5.1_lfoodr2hdmy7hzfgwjnbclkduy
+      sanity-plugin-mux-input: 2.0.15_wlec3vd3krcjdoyoxssttiqcum
+      styled-components: 5.3.8_7i5myeigehqah43i5u7wbekgba
+    devDependencies:
+      '@sanity/eslint-config-studio': 2.0.1_ycpbpc6yetojsgtrx3mwntkhsu
+      eslint: 8.35.0
+      typescript: 4.9.5
+
   examples/advanced:
     specifiers:
       '@sanity/eslint-config-studio': ^2.0.1

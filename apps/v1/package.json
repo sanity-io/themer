@@ -47,13 +47,13 @@
     "suspend-react": "^0.0.9"
   },
   "devDependencies": {
-    "@edge-runtime/jest-environment": "^2.0.5",
+    "@edge-runtime/jest-environment": "^2.0.8",
     "@types/jest": "^29.4.0",
     "@types/node": "^18.14.6",
     "@types/prettier": "^2.7.2",
     "@types/react": "^18.0.28",
     "@types/styled-components": "^5.1.26",
-    "esbuild": "^0.17.10",
+    "esbuild": "^0.17.11",
     "esbuild-plugin-replace": "^1.3.0",
     "eslint": "^8.35.0",
     "eslint-config-next": "^13.2.1",

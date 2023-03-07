@@ -24,6 +24,16 @@ import { expandPresetSearchParams } from 'utils/expandPresetSearchParams'
 import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
 import type { Hue, Hues, ThemePreset } from 'utils/types'
 
+// @TODO read the media query from the theme context instead of hardcoding to 600px
+const StyledGrid = styled<any>(Grid)`
+  row-gap: 1px;
+  @media screen and (min-width: 600px) {
+    && {
+      grid-template-columns: ${({ sidebarWidth }) => sidebarWidth}px 1fr;
+    }
+  }
+`
+
 const Sidebar = styled(Card)`
   /* the z-index is necessary to overlay the mobile off-canvas menu */
   z-index: 200;

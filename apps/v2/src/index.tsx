@@ -7,6 +7,8 @@ import {
   Menu,
   MenuButton,
   MenuItem,
+  Text,
+  type ThemeColorSchemeKey,
   ThemeProvider,
 } from '@sanity/ui'
 import { theme as dew } from 'https://themer.sanity.build/api/hues?preset=dew'
@@ -17,9 +19,24 @@ import { theme as rosabel } from 'https://themer.sanity.build/api/hues?preset=ro
 import { theme as stereofidelic } from 'https://themer.sanity.build/api/hues?preset=stereofidelic'
 import { theme as twCyan } from 'https://themer.sanity.build/api/hues?preset=tw-cyan'
 import { theme as verdant } from 'https://themer.sanity.build/api/hues?preset=verdant'
-import { useState, useTransition } from 'react'
-import { defaultTheme, definePlugin, type StudioTheme } from 'sanity'
+import {
+  memo,
+  type TransitionStartFunction,
+  useCallback,
+  useEffect,
+  useState,
+  useSyncExternalStore,
+  useTransition,
+} from 'react'
+import {
+  defaultTheme,
+  definePlugin,
+  useColorScheme,
+  type StudioTheme,
+} from 'sanity'
 import styled from 'styled-components'
+
+import Logo from './Logo'
 
 type Preset = { slug: string; title: string; theme: StudioTheme }
 const presets = [
@@ -71,12 +88,40 @@ const StyledGrid = styled<any>(Grid)`
   }
 `
 
+const Sidebar = styled(Card)`
+  /* the z-index is necessary to overlay the mobile off-canvas menu */
+  z-index: 200;
+  height: calc(50vh - 1px);
+  max-height: calc(50dvh - 1px);
+
+  @media (min-width: ${({ theme }) => theme.sanity.media[1]}px) {
+    height: 100vh;
+    max-height: 100dvh;
+  }
+`
+
+const noop = () => {
+  return () => {}
+}
+const localKey = 'themer:preset'
+
 function Layout({
   children,
   sidebarWidth,
 }: { children: React.ReactNode } & ThemerToolConfig) {
   const [isPending, startTransition] = useTransition()
-  const [selected, setSelected] = useState(presets[0])
+  const initialSlug = useSyncExternalStore(
+    noop,
+    () => localStorage.getItem(localKey),
+    () => presets[0].slug
+  )
+  const [selected, setSelected] = useState(
+    () => presets.find((preset) => preset.slug === initialSlug) || presets[0]
+  )
+
+  useEffect(() => {
+    localStorage.setItem(localKey, selected.slug)
+  }, [selected.slug])
 
   return (
     <ThemeProvider theme={selected.theme}>
@@ -86,58 +131,130 @@ function Layout({
           height="stretch"
           sidebarWidth={sidebarWidth}
         >
-          <Card paddingX={[4]} paddingBottom={2}>
-            <Label htmlFor="presets" size={0} muted>
-              Presets
-            </Label>
-            <Card paddingY={2}>
-              <MenuButton
-                button={
-                  <Button
-                    loading={isPending}
-                    fontSize={1}
-                    paddingY={2}
-                    paddingX={3}
-                    tone="default"
-                    mode="ghost"
-                    iconRight={SelectIcon}
-                    text={selected.title}
+          <Sidebar height="fill" overflow="auto">
+            <HeaderCard spins={isPending ? 0 : 1} transition={isPending} />
+            <Card borderRight height="fill" tone="default">
+              <Card paddingX={[4]} paddingBottom={2} paddingTop={4}>
+                <Label htmlFor="presets" size={0} muted>
+                  Presets
+                </Label>
+                <Card paddingY={2}>
+                  <MenuButton
+                    button={
+                      <Button
+                        loading={isPending}
+                        fontSize={1}
+                        paddingY={2}
+                        paddingX={3}
+                        tone="default"
+                        mode="ghost"
+                        iconRight={SelectIcon}
+                        text={selected.title}
+                      />
+                    }
+                    id="presets"
+                    menu={
+                      <Menu>
+                        {presets.map((_preset) => {
+                          const { slug, title } = _preset
+                          const active = selected.slug === slug
+                          return (
+                            <MenuItem
+                              fontSize={1}
+                              paddingY={2}
+                              paddingX={3}
+                              key={slug}
+                              text={title}
+                              tone={active ? 'primary' : 'default'}
+                              selected={active}
+                              onClick={
+                                active
+                                  ? undefined
+                                  : () =>
+                                      startTransition(() =>
+                                        setSelected(_preset)
+                                      )
+                              }
+                            />
+                          )
+                        })}
+                      </Menu>
+                    }
+                    placement="bottom-start"
+                    popover={{ portal: true }}
                   />
-                }
-                id="presets"
-                menu={
-                  <Menu>
-                    {presets.map((_preset) => {
-                      const { slug, title } = _preset
-                      const active = selected.slug === slug
-                      return (
-                        <MenuItem
-                          fontSize={1}
-                          paddingY={2}
-                          paddingX={3}
-                          key={slug}
-                          text={title}
-                          tone={active ? 'primary' : 'default'}
-                          selected={active}
-                          onClick={
-                            active
-                              ? undefined
-                              : () =>
-                                  startTransition(() => setSelected(_preset))
-                          }
-                        />
-                      )
-                    })}
-                  </Menu>
-                }
-                placement="bottom-start"
-                popover={{ portal: true }}
-              />
+                </Card>
+              </Card>
             </Card>
-          </Card>
+          </Sidebar>
           {children}
         </StyledGrid>
       </Card>
     </ThemeProvider>
   )
 }
+
+interface Props {
+  spins: number
+  transition: boolean
+}
+export const HeaderCard = memo(function HeaderCard({
+  spins,
+  transition,
+}: Props) {
+  const { scheme } = useColorScheme()
+  return (
+    <RootCard
+      paddingLeft={[4]}
+      paddingY={[2]}
+      scheme="dark"
+      shadow={scheme === 'dark' ? 1 : undefined}
+    >
+      <Card
+        borderRight
+        style={{
+          display: 'grid',
+          gridTemplateColumns: '32px 1fr',
+          alignItems: 'center',
+          paddingLeft: 'env(safe-area-inset-left)',
+        }}
+      >
+        <Logo spin={spins} transition={transition} />
+        <Card paddingY={[3]} paddingX={[3]}>
+          <Text weight="semibold" muted style={{ flex: 2 }}>
+            Themer
+          </Text>
+        </Card>
+      </Card>
+    </RootCard>
+  )
+})
+
+interface UseHeaderCard {
+  spin: () => void
+  spins: number
+  transition: boolean
+  startTransition: TransitionStartFunction
+}
+export const useHeaderCard = (): UseHeaderCard => {
+  const [transition, startTransition] = useTransition()
+  const [spins, setSpin] = useState(1)
+  const spin = useCallback(
+    () => startTransition(() => setSpin((spins) => ++spins)),
+    []
+  )
+
+  return {
+    spins,
+    spin,
+    transition,
+    startTransition,
+  }
+}
+
+// @TODO find a better z-index than 101
+const RootCard = styled(Card)`
+  position: sticky;
+  top: 0;
+  z-index: 101;
+`

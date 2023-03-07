@@ -10,6 +10,7 @@
     "@sanity/icons": "^2.2.2",
     "@sanity/ui": "^1.2.5",
     "@types/styled-components": "^5.1.26",
+    "motion": "^10.15.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.7.1",

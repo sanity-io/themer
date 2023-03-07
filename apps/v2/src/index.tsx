@@ -125,17 +125,13 @@ function Layout({
   )
 
   useEffect(() => {
-    startTransition(() =>
-      setSelected(
-        (current) =>
-          presets.find((preset) => preset.slug === localStorageSlug) || current
-      )
+    const nextPreset = presets.find(
+      (preset) => preset.slug === localStorageSlug
     )
+    if (nextPreset) {
+      startTransition(() => setSelected(nextPreset))
+    }
   }, [localStorageSlug])
-
-  useEffect(() => {
-    localStorage.setItem(localKey, selected.slug)
-  }, [selected.slug])
 
   return (
     <ThemeProvider theme={selected.theme}>
@@ -181,13 +177,11 @@ function Layout({
                               text={title}
                               tone={active ? 'primary' : 'default'}
                               selected={active}
-                              onClick={
-                                active
-                                  ? undefined
-                                  : () =>
-                                      startTransition(() =>
-                                        setSelected(_preset)
-                                      )
+                              onClick={() =>
+                                startTransition(() => {
+                                  localStorage.setItem(localKey, _preset.slug)
+                                  setSelected(_preset)
+                                })
                               }
                             />
                           )

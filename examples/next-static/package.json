@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "sanity build",
-    "dev": "PORT=3005 sanity dev"
+    "build": "next build",
+    "dev": "PORT=3005 next dev"
   },
   "dependencies": {
     "next": "^13.2.1",

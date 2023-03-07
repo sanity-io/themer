@@ -4,6 +4,7 @@ import { deskTool } from 'sanity/desk'
 import { muxInput } from 'sanity-plugin-mux-input'
 
 import { schemaTypes } from './schemas'
+import { themerTool } from './src'
 
 const projectId = 'c8jibo38'
 const dataset = 'themer-movies'
@@ -13,6 +14,6 @@ export default defineConfig({
   dataset,
   theme,
   title: 'Basic Example',
-  plugins: [deskTool(), muxInput()],
+  plugins: [deskTool(), muxInput(), themerTool()],
   schema: { types: schemaTypes },
 })

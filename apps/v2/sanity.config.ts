@@ -1,4 +1,3 @@
-import { theme } from 'https://themer.sanity.build/api/hues?preset=verdant'
 import { defineConfig } from 'sanity'
 import { deskTool } from 'sanity/desk'
 import { muxInput } from 'sanity-plugin-mux-input'
@@ -12,8 +11,7 @@ const dataset = 'themer-movies'
 export default defineConfig({
   projectId,
   dataset,
-  theme,
-  title: 'Basic Example',
+  title: 'Themer v2',
   plugins: [deskTool(), muxInput(), themerTool()],
   schema: { types: schemaTypes },
 })

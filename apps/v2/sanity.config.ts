@@ -11,7 +11,6 @@ const dataset = 'themer-movies'
 export default defineConfig({
   projectId,
   dataset,
-  title: 'Themer v2',
   plugins: [deskTool(), muxInput(), themerTool()],
   schema: { types: schemaTypes },
 })

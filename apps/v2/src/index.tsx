@@ -110,14 +110,28 @@ function Layout({
   sidebarWidth,
 }: { children: React.ReactNode } & ThemerToolConfig) {
   const [isPending, startTransition] = useTransition()
-  const initialSlug = useSyncExternalStore(
-    noop,
+  const localStorageSlug = useSyncExternalStore(
+    useCallback((onStoreChange) => {
+      const handle = () => onStoreChange()
+      window.addEventListener('storage', handle)
+      return () => window.removeEventListener('storage', handle)
+    }, []),
     () => localStorage.getItem(localKey),
     () => presets[0].slug
   )
   const [selected, setSelected] = useState(
-    () => presets.find((preset) => preset.slug === initialSlug) || presets[0]
+    () =>
+      presets.find((preset) => preset.slug === localStorageSlug) || presets[0]
   )
+
+  useEffect(() => {
+    startTransition(() =>
+      setSelected(
+        (current) =>
+          presets.find((preset) => preset.slug === localStorageSlug) || current
+      )
+    )
+  }, [localStorageSlug])
 
   useEffect(() => {
     localStorage.setItem(localKey, selected.slug)

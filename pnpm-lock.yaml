@@ -4068,7 +4068,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001462
-      electron-to-chromium: 1.4.322
+      electron-to-chromium: 1.4.323
       node-releases: 2.0.10
       update-browserslist-db: 1.0.10_browserslist@4.21.5
 
@@ -4649,8 +4649,8 @@ packages:
       stream-shift: 1.0.1
     dev: false
 
-  /electron-to-chromium/1.4.322:
-    resolution: {integrity: sha512-KovjizNC9XB7dno/2GjxX8VS0SlfPpCjtyoKft+bCO+UfD8bFy16hY4Sh9s0h9BDxbRH2U0zX5VBjpM1LTcNlg==}
+  /electron-to-chromium/1.4.323:
+    resolution: {integrity: sha512-+a0hMEQxE8u1F1vOHcE0M18kQ2+4AwOXdRrU4avZ1LeR/sa9WAallYE3uES/PNcEGt/wCFcOgWcArSLx5C+WNQ==}
 
   /emittery/0.13.1:
     resolution: {integrity: sha512-DeWwawk6r5yR9jFgnDKYt4sLS0LmHJJi3ZOnb5/JdbYwj3nW+FxQnHIjhBKz8YLC7oRNPVM9NQ47I3CVx34eqQ==}
@@ -6936,8 +6936,8 @@ packages:
     resolution: {integrity: sha512-QBJSFpsedXUl/Lgs4ySdB2XCzUEcJ3ujpbagdZCkRaYIaC0kFnID8jhc84KEiVv6dNFtIrmW7bqow0lDxgJi6A==}
     dev: false
 
-  /media-chrome/0.18.5:
-    resolution: {integrity: sha512-fNKuNALWR6z8T4bAOm4SUG3bF3McO+b1dQFtRF4sw/hxKqpt5oKW6NU5nTKHkVi3wR62+xAb3YSz4iAzLMIFNA==}
+  /media-chrome/0.18.6:
+    resolution: {integrity: sha512-0uIm4nqismqXsf2wmu8DkVV32XrgFhn+MHyP/Qg/bGqDERuibtdC/ifpw5OMpYsBdqaMu4OJYmUNnDcXhQOREg==}
     dev: false
 
   /memoize-resolver/1.0.0:
@@ -8113,7 +8113,7 @@ packages:
       '@sanity/uuid': 3.0.1
       classnames: 2.3.2
       jsonwebtoken-esm: 2.0.1
-      media-chrome: 0.18.5
+      media-chrome: 0.18.6
       motion: 10.15.5
       react: 18.2.0
       react-is: 18.2.0
@@ -8148,7 +8148,7 @@ packages:
       '@sanity/uuid': 3.0.1
       classnames: 2.3.2
       jsonwebtoken-esm: 2.0.1
-      media-chrome: 0.18.5
+      media-chrome: 0.18.6
       motion: 10.15.5
       react: 18.2.0
       react-is: 18.2.0

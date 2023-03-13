@@ -17,7 +17,7 @@ importers:
       '@edge-runtime/jest-environment': ^2.0.8
       '@heroicons/react': ^2.0.16
       '@juggle/resize-observer': ^3.4.0
-      '@sanity/client': ^5.2.2
+      '@sanity/client': ^5.3.0
       '@sanity/color': ^2.2.3
       '@sanity/icons': ^2.2.2
       '@sanity/ui': ^1.3.0
@@ -60,7 +60,7 @@ importers:
     dependencies:
       '@heroicons/react': 2.0.16_react@18.2.0
       '@juggle/resize-observer': 3.4.0
-      '@sanity/client': 5.2.2
+      '@sanity/client': 5.3.0
       '@sanity/color': 2.2.3
       '@sanity/icons': 2.2.2_react@18.2.0
       '@sanity/ui': 1.3.0_twebgoqjkqellgizumyhahsaxe
@@ -2912,8 +2912,8 @@ packages:
       - supports-color
     dev: false
 
-  /@sanity/client/5.2.2:
-    resolution: {integrity: sha512-AhOLSIZI0IO6/vDYYQekhAokqiAmDW2bVvNx3xW8T2hpJLRKHsw98Y+iOcX4dnH6y1Y7IO6upgb76D35xa2Szg==}
+  /@sanity/client/5.3.0:
+    resolution: {integrity: sha512-GUu33gDy5Lx9FNyRGeRNrn2ZYNNthn3Qj2y4GPtb3MkdUtdWHKXmCi3S7nqusTshwS0Uz/w+wX9/h5Nbq9iofg==}
     engines: {node: '>=14.18'}
     dependencies:
       '@sanity/eventsource': 4.0.0
@@ -3166,7 +3166,7 @@ packages:
   /@sanity/types/3.6.0:
     resolution: {integrity: sha512-oYZBKLdQK9mPonNq023FtbzeiQa3EqXs9X4nul5yH63hDF9qghAop9W9ODohr5V15Gf4oEEBcM9F7pp+vtawzg==}
     dependencies:
-      '@sanity/client': 5.2.2
+      '@sanity/client': 5.3.0
       '@types/react': 18.0.28
     transitivePeerDependencies:
       - supports-color
@@ -7116,7 +7116,7 @@ packages:
       sanity: ^3
       styled-components: ^5.2
     dependencies:
-      '@sanity/client': 5.2.2
+      '@sanity/client': 5.3.0
       '@sanity/icons': 2.2.2_react@18.2.0
       '@sanity/preview-kit': 1.3.5_react@18.2.0
       '@sanity/types': 3.6.0
@@ -8202,7 +8202,7 @@ packages:
       '@sanity/bifur-client': 0.3.1
       '@sanity/block-tools': 3.6.0
       '@sanity/cli': 3.6.0
-      '@sanity/client': 5.2.2
+      '@sanity/client': 5.3.0
       '@sanity/color': 2.2.3
       '@sanity/diff': 3.6.0
       '@sanity/eventsource': 3.0.3
@@ -8330,7 +8330,7 @@ packages:
       '@sanity/bifur-client': 0.3.1
       '@sanity/block-tools': 3.6.0
       '@sanity/cli': 3.6.0
-      '@sanity/client': 5.2.2
+      '@sanity/client': 5.3.0
       '@sanity/color': 2.2.3
       '@sanity/diff': 3.6.0
       '@sanity/eventsource': 3.0.3
@@ -8458,7 +8458,7 @@ packages:
       '@sanity/bifur-client': 0.3.1
       '@sanity/block-tools': 3.6.0
       '@sanity/cli': 3.6.0
-      '@sanity/client': 5.2.2
+      '@sanity/client': 5.3.0
       '@sanity/color': 2.2.3
       '@sanity/diff': 3.6.0
       '@sanity/eventsource': 3.0.3

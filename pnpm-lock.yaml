@@ -46,10 +46,10 @@ importers:
       react: ^18.2.0
       react-dom: ^18.2.0
       react-icons: ^4.8.0
-      rimraf: ^4.3.1
+      rimraf: ^4.4.0
       sanity: ^3.6.0
       sanity-plugin-asset-source-unsplash: ^1.0.6
-      sanity-plugin-mux-input: ^2.0.15
+      sanity-plugin-mux-input: ^2.0.16
       scroll-into-view-if-needed: ^3.0.6
       slugify: ^1.6.5
       styled-components: ^5.3.8
@@ -75,7 +75,7 @@ importers:
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-icons: 4.8.0_react@18.2.0
-      rimraf: 4.3.1
+      rimraf: 4.4.0
       sanity: 3.6.0_k6sezsnuuqsrw67umjdc67fgum
       sanity-plugin-asset-source-unsplash: 1.0.6_uetpmzpkcpauslikj5nbmpwg5u
       sanity-plugin-mux-input: 2.0.16_jnrik7fs4rtubd7mmmmb3gmfum
@@ -117,7 +117,7 @@ importers:
       react-icons: ^4.8.0
       react-is: ^18.2.0
       sanity: ^3.6.0
-      sanity-plugin-mux-input: ^2.0.15
+      sanity-plugin-mux-input: ^2.0.16
       styled-components: ^5.3.8
       typescript: ^4.9.5
     dependencies:
@@ -147,7 +147,7 @@ importers:
       react-icons: ^4.8.0
       react-is: ^18.2.0
       sanity: ^3.6.0
-      sanity-plugin-mux-input: ^2.0.15
+      sanity-plugin-mux-input: ^2.0.16
       styled-components: ^5.3.8
       typescript: ^4.9.5
     dependencies:
@@ -172,7 +172,7 @@ importers:
       react-icons: ^4.8.0
       react-is: ^18.2.0
       sanity: ^3.6.0
-      sanity-plugin-mux-input: ^2.0.15
+      sanity-plugin-mux-input: ^2.0.16
       styled-components: ^5.3.8
       typescript: ^4.9.5
     dependencies:
@@ -199,7 +199,7 @@ importers:
       react-icons: ^4.8.0
       react-is: ^18.2.0
       sanity: ^3.6.0
-      sanity-plugin-mux-input: ^2.0.15
+      sanity-plugin-mux-input: ^2.0.16
       styled-components: ^5.3.8
       typescript: ^4.9.5
     dependencies:
@@ -228,7 +228,7 @@ importers:
       react-icons: ^4.8.0
       react-is: ^18.2.0
       sanity: ^3.6.0
-      sanity-plugin-mux-input: ^2.0.15
+      sanity-plugin-mux-input: ^2.0.16
       styled-components: ^5.3.8
       typescript: ^4.9.5
     dependencies:
@@ -8003,8 +8003,8 @@ packages:
     dependencies:
       glob: 7.2.3
 
-  /rimraf/4.3.1:
-    resolution: {integrity: sha512-GfHJHBzFQra23IxDzIdBqhOWfbtdgS1/dCHrDy+yvhpoJY5TdwdT28oWaHWfRpKFDLd3GZnGTx6Mlt4+anbsxQ==}
+  /rimraf/4.4.0:
+    resolution: {integrity: sha512-X36S+qpCUR0HjXlkDe4NAOhS//aHH0Z+h8Ckf2auGJk3PTnx5rLmrHkwNdbVQuCSUhOyFrlRvFEllZOYE+yZGQ==}
     engines: {node: '>=14'}
     hasBin: true
     dependencies:

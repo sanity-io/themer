@@ -55,7 +55,7 @@ jobs:
       # A test failing on windows doesn't mean it'll fail on macos. It's useful to let all tests run to its completion to get the full picture
       fail-fast: false
       matrix:
-        node: [lts/-2, lts/-1, lts/*, current]
+        node: [lts/-1, lts/*, current]
         os: [ubuntu-latest]
         # Also test the LTS on mac and windows
         include:

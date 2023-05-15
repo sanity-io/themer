@@ -44,7 +44,7 @@
     "scroll-into-view-if-needed": "^3.0.6",
     "slugify": "^1.6.5",
     "styled-components": "^5.3.8",
-    "suspend-react": "^0.0.9"
+    "suspend-react": "^0.0.10"
   },
   "devDependencies": {
     "@edge-runtime/jest-environment": "^2.0.8",

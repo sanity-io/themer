@@ -89,8 +89,8 @@ importers:
         specifier: ^5.3.8
         version: 5.3.9(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)
       suspend-react:
-        specifier: ^0.0.9
-        version: 0.0.9(react@18.2.0)
+        specifier: ^0.0.10
+        version: 0.0.10(react@18.2.0)
     devDependencies:
       '@edge-runtime/jest-environment':
         specifier: ^2.0.8
@@ -8651,6 +8651,14 @@ packages:
   /supports-preserve-symlinks-flag@1.0.0:
     resolution: {integrity: sha512-ot0WnXS9fgdkgIcePe6RHNk1WA8+muPa6cSjeR3V8K27q9BB1rTE3R1p7Hv0z1ZyAc8s6Vvv8DIyWf681MAt0w==}
     engines: {node: '>= 0.4'}
+
+  /suspend-react@0.0.10(react@18.2.0):
+    resolution: {integrity: sha512-7yyJ1aBr9Ap4XZQOBaYlOelNcRc42zv50C0pVNOHfhW/DwTbHGFVZKKJsVndyQvQTv/fAkIO9TAMvGiSCjT0Zw==}
+    peerDependencies:
+      react: '>=17.0'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /suspend-react@0.0.9(react@18.2.0):
     resolution: {integrity: sha512-668Pxy4z54fhjpnPqw6olj3vvpV03VywFNXazyNSYSTuHaRw3NJJjO5l8R49AUk5fMTkJXGVGaaVSgdaO01S3w==}

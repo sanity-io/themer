@@ -138,8 +138,8 @@ importers:
         specifier: ^2.4.5
         version: 2.4.5(prettier@2.8.8)
       type-fest:
-        specifier: ^3.13.1
-        version: 3.13.1
+        specifier: ^4.1.0
+        version: 4.1.0
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
@@ -9164,9 +9164,9 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
-  /type-fest@3.13.1:
-    resolution: {integrity: sha512-tLq3bSNx+xSpwvAJnzrK0Ep5CLNWjvFTOp71URMaAEWBfRb9nnJiBoUe0tF8bI4ZFO3omgBR6NvnbzVUT3Ly4g==}
-    engines: {node: '>=14.16'}
+  /type-fest@4.1.0:
+    resolution: {integrity: sha512-VJGJVepayd8OWavP+rgXt4i3bfLk+tSomTV7r4mca2XD/oTCWnkJlNkpXavkxdmtU2aKdAmFGeHvoQutOVHCZg==}
+    engines: {node: '>=16'}
     dev: true
 
   /typed-array-length@1.0.4:

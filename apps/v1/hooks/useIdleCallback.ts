@@ -1,19 +1,14 @@
 // Uses requestIdleCallback to let the browser throttle the queue as needed, to reduce jank
 // Then uses startTransition to let React know other updates can interrupt this one
 
-import {
-  startTransition as _startTransition,
-  type TransitionStartFunction,
-  useCallback,
-  useRef,
-} from 'react'
+import { startTransition as _startTransition, useCallback, useRef } from 'react'
 
 const canIdle = typeof requestIdleCallback === 'function'
 
 // Provide both requestTransition and startTransition from useTransition to allow a rich
 // activity indicator to respond to work that is scheduled, and transitions that React is doing behind the scenes
 interface Props {
-  startTransition?: TransitionStartFunction
+  startTransition?: typeof _startTransition
   requestTransition?: () => void
 }
 export function useIdleCallback(

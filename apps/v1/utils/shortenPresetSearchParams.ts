@@ -32,7 +32,7 @@ export function shortenPresetSearchParams(searchParams: URLSearchParams) {
       } else {
         lightestMap.set(
           hues[tone].lightest,
-          lightestMap.get(hues[tone].lightest) + 1
+          lightestMap.get(hues[tone].lightest) + 1,
         )
       }
     }
@@ -42,7 +42,7 @@ export function shortenPresetSearchParams(searchParams: URLSearchParams) {
       } else {
         darkestMap.set(
           hues[tone].darkest,
-          darkestMap.get(hues[tone].darkest) + 1
+          darkestMap.get(hues[tone].darkest) + 1,
         )
       }
     }

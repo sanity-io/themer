@@ -78,8 +78,8 @@ test('midPoints reset to 500 if not provided and mid changes', () => {
           mid: '#f00',
         },
       },
-      defaultHues
-    )
+      defaultHues,
+    ),
   ).toMatchObject({
     default: { midPoint: 500 },
     primary: { midPoint: 500 },
@@ -119,8 +119,8 @@ test('midPoints are overridable even when reset', () => {
           midPoint: 800,
         },
       },
-      defaultHues
-    )
+      defaultHues,
+    ),
   ).toMatchObject({
     default: { midPoint: 100 },
     primary: { midPoint: 200 },
@@ -170,7 +170,7 @@ test('undefined keys are handled', () => {
         mid: undefined,
         midPoint: undefined,
       },
-    })
+    }),
   ).toMatchObject({
     default: { lightest, darkest, mid, midPoint },
     primary: { lightest, darkest, mid, midPoint },

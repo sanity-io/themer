@@ -57,7 +57,7 @@ export const useHeaderCard = (): UseHeaderCard => {
   const [spins, setSpin] = useState(1)
   const spin = useCallback(
     () => startTransition(() => setSpin((spins) => ++spins)),
-    []
+    [],
   )
 
   return {

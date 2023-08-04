@@ -538,8 +538,8 @@ const cases = snippets.map(
     const callback = `(${getArgs(length)}) => \`${code}\``
     overloads.push(
       `export function snippet(id: ${JSON5.stringify(
-        id
-      )}): ${`(${argsString}) => string`}`
+        id,
+      )}): ${`(${argsString}) => string`}`,
     )
     const template = `
   case ${JSON5.stringify(id)}:
@@ -548,7 +548,7 @@ const cases = snippets.map(
     console.log(template)
     console.groupEnd()
     return template
-  }
+  },
 )
 console.groupCollapsed()
 

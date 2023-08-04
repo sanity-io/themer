@@ -4,7 +4,7 @@ import { ServerTiming } from 'utils/ServerTiming'
 
 export default async function handler(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const serverTiming = new ServerTiming()
   serverTiming.start('handler')
@@ -20,7 +20,7 @@ export default async function handler(
     serverTiming.start('fetch', 'query sanity.imageAsset.metadata.palette')
     const palette = await client.fetch(
       /* groq */ `*[ _type == "sanity.imageAsset" && _id == $id ][0].metadata.palette`,
-      { id: Array.isArray(id) ? id[0] : id }
+      { id: Array.isArray(id) ? id[0] : id },
     )
     serverTiming.end('fetch')
 

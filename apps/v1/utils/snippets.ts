@@ -11,26 +11,26 @@ export function snippet(id: 'studio-config-local-import-ts'): () => string
 export function snippet(id: 'studio-config-next-runtime-1'): () => string
 export function snippet(id: 'studio-config-next-runtime-2'): () => string
 export function snippet(
-  id: 'studio-config-create-theme'
+  id: 'studio-config-create-theme',
 ): (first: string) => string
 export function snippet(
-  id: 'import-create-theme-static'
+  id: 'import-create-theme-static',
 ): (first: string) => string
 export function snippet(
-  id: 'import-create-theme-dynamic'
+  id: 'import-create-theme-dynamic',
 ): (first: string) => string
 export function snippet(id: 'themer.d.ts'): (first: string) => string
 export function snippet(id: 'tsconfig'): () => string
 export function snippet(id: '_document.tsx'): (first: string) => string
 export function snippet(id: '_document.js'): (first: string) => string
 export function snippet(
-  id: 'next-config-build-time-js'
+  id: 'next-config-build-time-js',
 ): (first: string) => string
 export function snippet(
-  id: 'next-config-build-time-ts'
+  id: 'next-config-build-time-ts',
 ): (first: string) => string
 export function snippet(
-  id: 'studio-config-create-theme-static-import'
+  id: 'studio-config-create-theme-static-import',
 ): (first: string) => string
 export function snippet(id: 'pages-index'): (first: string) => string
 export function snippet(id) {
@@ -127,7 +127,7 @@ export default createConfig({
 
     case 'studio-config-create-theme':
       return (
-        first: string
+        first: string,
       ) => `// Import createTheme and hues to quickly modify your theme without changing the import URL
 
 import {createConfig} from 'sanity'
@@ -201,7 +201,7 @@ export default createConfig({
 
     case '_document.tsx':
       return (
-        first: string
+        first: string,
       ) => `// This is to generate a <link rel="modulepreload" href=${first}> to the <head>
 // As Studio v3 is in developer preview there's not yet a simple way to just add a <link> tag to the <head>
 // Thus we have to re-implement DefaultDocument to make it happen.
@@ -284,7 +284,7 @@ export default function DefaultDocument(
 
     case '_document.js':
       return (
-        first: string
+        first: string,
       ) => `// This is to generate a <link rel="modulepreload" href=${first}> to the <head>
 // As Studio v3 is in developer preview there's not yet a simple way to just add a <link> tag to the <head>
 // Thus we have to re-implement DefaultDocument to make it happen.
@@ -377,7 +377,7 @@ module.exports = nextConfig`
 
     case 'studio-config-create-theme-static-import':
       return (
-        first: string
+        first: string,
       ) => `// Import createTheme and hues to quickly modify your theme without changing the import URL
 
 import {createConfig} from 'sanity'
@@ -399,7 +399,7 @@ export default createConfig({
 
     case 'pages-index':
       return (
-        first: string
+        first: string,
       ) => `// Loading the custom theme on the page level instead of in sanity.config
 
 import Head from 'next/head'

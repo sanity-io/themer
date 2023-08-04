@@ -39,7 +39,7 @@ export function createTintsFromHue(hue: Hue, title: string): ColorTints {
 function getColorHex(
   // Making title optional as it's not used but we don't consider it a type error if it's provided
   hue: Hue & { title?: string },
-  tint: string
+  tint: string,
 ): string {
   const tintNum = Number(tint)
   const midPoint = hue.midPoint

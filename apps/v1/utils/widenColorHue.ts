@@ -11,7 +11,7 @@ export function widenColorHue(
   a: string,
   b: string,
   lower: number,
-  upper: number
+  upper: number,
 ): string {
   const aHsl = parseToHsl(a)
   const bHsl = parseToHsl(b)
@@ -26,7 +26,7 @@ export function widenColorHue(
     Math.max(aHsl.hue - lower, bHsl.hue),
     Math.min(aHsl.hue + upper, bHsl.hue),
     aHsl.hue < bHsl.hue + lower,
-    aHsl.hue < bHsl.hue - upper
+    aHsl.hue < bHsl.hue - upper,
   )
   const withinLowerBounds = aHsl.hue > bHsl.hue && aHsl.hue < bHsl.hue + lower
   const withinUpperBounds = aHsl.hue < bHsl.hue && aHsl.hue > bHsl.hue - upper

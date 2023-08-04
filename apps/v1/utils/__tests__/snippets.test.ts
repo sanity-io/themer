@@ -7,8 +7,8 @@ describe.skip('snippets', () => {
     test(id, () => {
       expect(
         JSON.stringify(
-          (snippet(id as any) as any)(JSON5.stringify('${first}}'))
-        )
+          (snippet(id as any) as any)(JSON5.stringify('${first}}')),
+        ),
       ).toMatchSnapshot(id)
     })
   }

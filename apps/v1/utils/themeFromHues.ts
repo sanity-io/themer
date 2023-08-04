@@ -34,7 +34,7 @@ interface Options {
   screen: (bg: RGB, fg: RGB) => RGB
   rgba: (color: unknown, a: number) => string
   createColorTheme: (
-    partialOpts: PartialThemeColorBuilderOpts
+    partialOpts: PartialThemeColorBuilderOpts,
   ) => ThemeColorSchemes
 }
 

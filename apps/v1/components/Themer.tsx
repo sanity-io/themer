@@ -96,7 +96,7 @@ export default function Themer({
   // Now we can create the theme from the memoed hues
   const themeFromHues = useMemo(
     () => createTheme(memoHues),
-    [memoHues, createTheme]
+    [memoHues, createTheme],
   )
 
   // Backup hue edits to the current URL
@@ -114,12 +114,12 @@ export default function Themer({
       }
       window.history.replaceState({}, '', decodeURIComponent(url.href))
     }, [memoHues, preset.slug]),
-    { requestTransition: spin, startTransition }
+    { requestTransition: spin, startTransition },
   )
   useEffect(() => void backupToUrl(), [backupToUrl])
 
   const [forceScheme, setForceScheme] = useState<ThemeColorSchemeKey | null>(
-    null
+    null,
   )
   const scheme = forceScheme ?? systemScheme
 
@@ -127,11 +127,11 @@ export default function Themer({
     useCallback((tone: CardTone, hue: Hue) => {
       setHuesState((prev) => ({ ...prev, [tone]: hue }))
     }, []),
-    { requestTransition: spin, startTransition }
+    { requestTransition: spin, startTransition },
   )
   const onChangePreset = useIdleCallback(
     useCallback((nextPreset: ThemePreset) => setPreset(nextPreset), []),
-    { requestTransition: spin, startTransition }
+    { requestTransition: spin, startTransition },
   )
 
   return (

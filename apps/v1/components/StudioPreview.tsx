@@ -30,7 +30,7 @@ const StudioPreview = ({
   // It's necessary to add the theme to each workspace as it's used for toast notifications and more
   const config = useMemo(
     () => _config.map((workspace) => ({ ...workspace, theme })),
-    [_config, theme]
+    [_config, theme],
   )
 
   return (

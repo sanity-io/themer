@@ -5,17 +5,17 @@ import type { Hues } from 'utils/types'
 
 export function expandPresetSearchParams(
   searchParams: URLSearchParams,
-  hues: Hues
+  hues: Hues,
 ) {
   for (const tone of TONES) {
     const hue = hues[tone]
     searchParams.set(
       tone,
       `${stringifyColorSearchParam(hue.mid)};${roundMidPoint(
-        hue.midPoint
+        hue.midPoint,
       )};lightest:${stringifyColorSearchParam(
-        hue.lightest
-      )};darkest:${stringifyColorSearchParam(hue.darkest)}`
+        hue.lightest,
+      )};darkest:${stringifyColorSearchParam(hue.darkest)}`,
     )
   }
 }

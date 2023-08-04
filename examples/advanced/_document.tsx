@@ -39,7 +39,7 @@ function Favicons({ basePath }: FaviconProps) {
 
 const EMPTY_ARRAY: never[] = []
 export default function DefaultDocument(
-  props: DefaultDocumentProps
+  props: DefaultDocumentProps,
 ): React.ReactElement {
   const { entryPath, css = EMPTY_ARRAY, basePath = '/' } = props
   return (

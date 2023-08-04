@@ -45,10 +45,10 @@ const ShareTab = ({ searchParams }: Props) => {
               navigator.clipboard.writeText(
                 new URL(
                   `${location.pathname}?${decodeURIComponent(
-                    params.toString()
+                    params.toString(),
                   )}`,
-                  location.origin
-                ).toString()
+                  location.origin,
+                ).toString(),
               )
               pushToast({
                 closable: true,
@@ -74,9 +74,9 @@ const ShareTab = ({ searchParams }: Props) => {
                     text,
                     url: new URL(
                       `${location.pathname}?${decodeURIComponent(
-                        params.toString()
+                        params.toString(),
                       )}`,
-                      location.origin
+                      location.origin,
                     ).toString(),
                   })
                 } catch {
@@ -101,8 +101,8 @@ const ShareTab = ({ searchParams }: Props) => {
             navigator.clipboard.writeText(
               new URL(
                 `${location.pathname}?${decodeURIComponent(params.toString())}`,
-                location.origin
-              ).toString()
+                location.origin,
+              ).toString(),
             )
             pushToast({
               closable: true,

@@ -54,7 +54,7 @@ export const StudioViewer = memo(function StudioViewer({
             ]
           : [360 + sidebarWidth, 600 + sidebarWidth / 2, 900, 1200, 1800, 2400],
     }),
-    [_theme, sidebarWidth, view]
+    [_theme, sidebarWidth, view],
   )
 
   return (
@@ -122,9 +122,9 @@ export const useStudioViewer = ({
   const toggleView = useCallback(
     () =>
       startTransition(() =>
-        setView((view) => (view === 'default' ? 'split' : 'default'))
+        setView((view) => (view === 'default' ? 'split' : 'default')),
       ),
-    [startTransition]
+    [startTransition],
   )
 
   return { view, toggleView }

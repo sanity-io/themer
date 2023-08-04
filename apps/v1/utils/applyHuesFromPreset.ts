@@ -4,7 +4,7 @@ import type { Hues } from 'utils/types'
 
 export function applyHuesFromPreset(
   presetParams: URLSearchParams,
-  searchParams: URLSearchParams
+  searchParams: URLSearchParams,
 ): Hues {
   const presetHues = applyHues(parseHuesFromSearchParams(presetParams))
 

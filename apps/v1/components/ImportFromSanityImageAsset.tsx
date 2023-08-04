@@ -53,7 +53,7 @@ const ColorMediaPreview = ({
         style: 'percent',
         maximumFractionDigits: 2,
       }),
-    []
+    [],
   )
   const subtitle = formatter.format(Math.max(population / 100, 0.0001))
   return (
@@ -118,7 +118,7 @@ function ImportFromSanityImageAsset({
     const [, ref, dimensions, ext] = id.split('-')
     const url = new URL(
       `/images/${projectId}/${dataset}/${ref}-${dimensions}.${ext}`,
-      'https://cdn.sanity.io'
+      'https://cdn.sanity.io',
     )
     url.searchParams.set('w', `${imageSize}`)
     url.searchParams.set('h', `${imageSize}`)
@@ -130,17 +130,17 @@ function ImportFromSanityImageAsset({
 
   const createNextPreset = useCallback(
     () => [new URL('/api/hues', location.origin), applyHues({})] as const,
-    []
+    [],
   )
   const setNextPreset = useCallback(
     (url: URL) => {
       prepareTransition()
       startTransition(() =>
         // @TODO update the preset name and slug instead of re-using the existing one, show in the MenuDropdown that a custom preset is in effect
-        setPreset({ ...defaultPreset, url: `${url.pathname}${url.search}` })
+        setPreset({ ...defaultPreset, url: `${url.pathname}${url.search}` }),
       )
     },
-    [prepareTransition, setPreset, startTransition]
+    [prepareTransition, setPreset, startTransition],
   )
   const setHueSearchParam = useCallback(
     (
@@ -148,7 +148,7 @@ function ImportFromSanityImageAsset({
       _mid: string,
       _lightest: string,
       _darkest: string,
-      searchParams: URLSearchParams
+      searchParams: URLSearchParams,
     ) => {
       const mid = _mid.replace(/^#/, '')
       const midPoint = getMidPointFromLuminance(_mid)
@@ -156,10 +156,10 @@ function ImportFromSanityImageAsset({
       const darkest = _darkest.replace(/^#/, '')
       searchParams.set(
         tone,
-        `${mid};${midPoint};lightest:${lightest};darkest:${darkest}`
+        `${mid};${midPoint};lightest:${lightest};darkest:${darkest}`,
       )
     },
-    []
+    [],
   )
 
   const setPositiveCautionCritical = useCallback(
@@ -168,7 +168,7 @@ function ImportFromSanityImageAsset({
       defaults: Hues,
       primary: string,
       lightest: string,
-      darkest: string
+      darkest: string,
     ) => {
       const { searchParams } = url
 
@@ -181,7 +181,7 @@ function ImportFromSanityImageAsset({
         positiveMid,
         lightest,
         darkest,
-        searchParams
+        searchParams,
       )
       setHueSearchParam('caution', cautionMid, lightest, darkest, searchParams)
       setHueSearchParam(
@@ -189,10 +189,10 @@ function ImportFromSanityImageAsset({
         criticalMid,
         lightest,
         darkest,
-        searchParams
+        searchParams,
       )
     },
-    [setHueSearchParam]
+    [setHueSearchParam],
   )
   const createThemeFromPalette = useCallback(
     (
@@ -212,7 +212,7 @@ function ImportFromSanityImageAsset({
         saturation: number
         vibrant: string
         transparentSaturation: number
-      }
+      },
     ) => {
       const { searchParams } = url
 
@@ -250,12 +250,12 @@ function ImportFromSanityImageAsset({
         transparent,
         lightest,
         darkest,
-        searchParams
+        searchParams,
       )
 
       setPositiveCautionCritical(url, defaults, primaryMid, lightest, darkest)
     },
-    [setHueSearchParam, setPositiveCautionCritical]
+    [setHueSearchParam, setPositiveCautionCritical],
   )
 
   const experimentalTheme = useCallback(() => {

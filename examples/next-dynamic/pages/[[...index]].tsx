@@ -13,7 +13,7 @@ export default function IndexPage() {
       void import(
         /* webpackIgnore: true */ 'https://themer.sanity.build/api/hues?preset=dew'
       ).then(({ theme }) => setConfig((config) => ({ ...config, theme }))),
-    []
+    [],
   )
 
   return (

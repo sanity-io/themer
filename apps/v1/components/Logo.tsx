@@ -70,7 +70,7 @@ function Logo({ spin, transition }: Props) {
           {
             // direction: transition ? 'alternate' : undefined,
             easing,
-          }
+          },
         )
 
         const animation2 = animate(
@@ -79,7 +79,7 @@ function Logo({ spin, transition }: Props) {
             opacity: transition ? 0.7 : 0.6,
             scale: transition ? 1.08 : 1,
           },
-          { easing }
+          { easing },
         )
         return () => {
           if (transition) {

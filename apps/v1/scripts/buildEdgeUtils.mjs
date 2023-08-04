@@ -145,11 +145,11 @@ export {createClient}
 const buildThemeFromHuesTemplate = async () => {
   const prebuiltFromEsbuild = await fs.readFile(
     path.resolve(resolveDir, 'edge-utils/themeFromHues.mjs'),
-    'utf8'
+    'utf8',
   )
   const minifiedPrebuiltFromEsbuild = await fs.readFile(
     path.resolve(resolveDir, 'edge-utils/themeFromHues.min.mjs'),
-    'utf8'
+    'utf8',
   )
 
   return esbuild.build({
@@ -161,13 +161,13 @@ import JSON5 from "json5/dist/index.mjs";
 
 export function themeFromHuesTemplate(hues, minified) {
   const template = minified ? ${JSON.stringify(
-    minifiedPrebuiltFromEsbuild
+    minifiedPrebuiltFromEsbuild,
   )} : ${JSON.stringify(prebuiltFromEsbuild)}
   const tip = minified ? ${JSON.stringify(
-    '// Minified build, append `?min=0` for easier debugging'
+    '// Minified build, append `?min=0` for easier debugging',
   )} : ${JSON.stringify(
-        '// Not minified, remove `?min=0` from the request for much smaller output'
-      )}
+    '// Not minified, remove `?min=0` from the request for much smaller output',
+  )}
   return "// Generated " + new Date().toJSON() + "\\n" + tip + "\\n\\n" + template.replace(
     'process.env.__HUES__',
     JSON5.stringify(hues, null, minified ? 0 : 2),

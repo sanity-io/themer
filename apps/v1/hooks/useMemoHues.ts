@@ -26,7 +26,7 @@ export function useMemoHues(hues: Hues): Hues {
       positiveMemo,
       primaryMemo,
       transparentMemo,
-    ]
+    ],
   )
 
   return useMemo(() => JSON.parse(hashed), [hashed])
@@ -35,7 +35,7 @@ export function useMemoHues(hues: Hues): Hues {
 function useMemoHue({ mid, midPoint, lightest, darkest }: Hue): Hue {
   const hashed = useMemo(
     () => JSON.stringify({ mid, midPoint, lightest, darkest }),
-    [darkest, lightest, mid, midPoint]
+    [darkest, lightest, mid, midPoint],
   )
 
   return useMemo(() => JSON.parse(hashed), [hashed])

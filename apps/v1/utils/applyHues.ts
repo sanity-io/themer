@@ -50,7 +50,7 @@ const defaultHues: Hues = {
 
 export function applyHues(
   _hues: PartialDeep<Hues>,
-  defaults: Hues = defaultHues
+  defaults: Hues = defaultHues,
 ): Hues {
   // Filter out undefined keys etc
   const hues = JSON.parse(JSON.stringify(_hues))

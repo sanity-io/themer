@@ -117,16 +117,16 @@ function Layout({
       return () => window.removeEventListener('storage', handle)
     }, []),
     () => localStorage.getItem(localKey),
-    () => presets[0].slug
+    () => presets[0].slug,
   )
   const [selected, setSelected] = useState(
     () =>
-      presets.find((preset) => preset.slug === localStorageSlug) || presets[0]
+      presets.find((preset) => preset.slug === localStorageSlug) || presets[0],
   )
 
   useEffect(() => {
     const nextPreset = presets.find(
-      (preset) => preset.slug === localStorageSlug
+      (preset) => preset.slug === localStorageSlug,
     )
     if (nextPreset) {
       startTransition(() => setSelected(nextPreset))
@@ -249,7 +249,7 @@ export const useHeaderCard = (): UseHeaderCard => {
   const [spins, setSpin] = useState(1)
   const spin = useCallback(
     () => startTransition(() => setSpin((spins) => ++spins)),
-    []
+    [],
   )
 
   return {

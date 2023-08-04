@@ -73,7 +73,7 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
     const search = decodeURIComponent(params.toString())
     return new URL(
       `/api/hues${search ? `?${search}` : ''}`,
-      location.origin
+      location.origin,
     ).toString()
   }, [searchParams])
   const esmUrlDTS = useMemo(() => {
@@ -225,11 +225,11 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
                             state.build === 'next build' &&
                               state.load === 'build-time'
                               ? snippet('import-create-theme-static')(
-                                  JSON5.stringify(esmUrl)
+                                  JSON5.stringify(esmUrl),
                                 )
                               : snippet('import-create-theme-dynamic')(
-                                  JSON5.stringify(esmUrl)
-                                )
+                                  JSON5.stringify(esmUrl),
+                                ),
                           ),
                         },
                       ]}

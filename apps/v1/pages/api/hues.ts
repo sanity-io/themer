@@ -28,14 +28,14 @@ export default async function handler(req: NextRequest) {
     serverTiming.start('getPreset')
     const { searchParams: presetParams } = new URL(
       getPreset(searchParams.get('preset')).url,
-      'http://localhost'
+      'http://localhost',
     )
     serverTiming.end('getPreset')
 
     serverTiming.start('themeFromHuesTemplate')
     const res = themeFromHuesTemplate(
       applyHuesFromPreset(presetParams, searchParams),
-      searchParams.get('min') !== '0'
+      searchParams.get('min') !== '0',
     )
     serverTiming.end('themeFromHuesTemplate')
 
@@ -44,7 +44,7 @@ export default async function handler(req: NextRequest) {
     if (err instanceof ValidationError) {
       return new Response(
         `throw new TypeError(${JSON.stringify(err.message)})`,
-        { headers: headers(serverTiming) }
+        { headers: headers(serverTiming) },
       )
     }
     throw err

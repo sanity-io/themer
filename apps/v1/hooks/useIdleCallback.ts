@@ -18,7 +18,7 @@ interface Props {
 }
 export function useIdleCallback(
   cb: (...args) => void,
-  { requestTransition, startTransition = _startTransition }: Props = {}
+  { requestTransition, startTransition = _startTransition }: Props = {},
 ) {
   // startTransition alone is not enough, so we use a combo of requestIdleCallback if available, with a fallback to requestAnimationFrame
   // This is to avoid as much main thread jank as we can, while keeping the color picking experience as fast and delightful as the hardware allows
@@ -41,6 +41,6 @@ export function useIdleCallback(
         throttleRef.current = requestAnimationFrame(scheduleTransition)
       }
     },
-    [cb, requestTransition, startTransition]
+    [cb, requestTransition, startTransition],
   )
 }

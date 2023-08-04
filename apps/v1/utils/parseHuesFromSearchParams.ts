@@ -12,7 +12,7 @@ import type { Hue, Hues } from 'utils/types'
 import { ValidationError } from 'utils/ValidationError'
 
 export function parseHuesFromSearchParams(
-  searchParams: URLSearchParams
+  searchParams: URLSearchParams,
 ): PartialDeep<Hues> {
   const lightest = searchParams.has('lightest')
     ? assertValidColor(`#${searchParams.get('lightest').toLowerCase()}`)
@@ -30,7 +30,7 @@ export function parseHuesFromSearchParams(
       positive: parseHue('positive', searchParams, lightest, darkest),
       caution: parseHue('caution', searchParams, lightest, darkest),
       critical: parseHue('critical', searchParams, lightest, darkest),
-    })
+    }),
   )
 }
 
@@ -39,7 +39,7 @@ function parseHue(
   key: string,
   searchParams: URLSearchParams,
   defaultLightest: string | null,
-  defaultDarkest: string | null
+  defaultDarkest: string | null,
 ): ParsedHue {
   if (!searchParams.has(key)) {
     return { lightest: defaultLightest, darkest: defaultDarkest }
@@ -56,7 +56,7 @@ function parseHue(
     throw new ValidationError(
       `Invalid number of params for the ${key} hue, it should be 4 or less instead it's ${
         params.length
-      }: ${JSON.stringify(params)}`
+      }: ${JSON.stringify(params)}`,
     )
   }
   for (const param of params) {
@@ -107,7 +107,7 @@ function throwDuplicate(key: string, a: unknown, b: unknown, input: string) {
       a === b
         ? `one of the ${JSON.stringify(`${a}`)}`
         : `${JSON.stringify(`${a}`)} or ${JSON.stringify(`${b}`)}`
-    } from the ${key} hue: ${JSON.stringify(input)}`
+    } from the ${key} hue: ${JSON.stringify(input)}`,
   )
 }
 

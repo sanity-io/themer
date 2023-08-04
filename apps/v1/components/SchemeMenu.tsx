@@ -33,7 +33,7 @@ const SchemeMenu = ({
       setScheme(nextScheme)
       startTransition(() => setForceScheme(nextScheme))
     },
-    [setForceScheme, startTransition]
+    [setForceScheme, startTransition],
   )
   return (
     <>

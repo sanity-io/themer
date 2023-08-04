@@ -128,7 +128,7 @@ const CodeSnippetSetup = ({
               id: 'sanity.config',
               filename: 'sanity.config.ts',
               contents: snippet('studio-config')(
-                snippet('import-static')(JSON5.stringify(esmUrl))
+                snippet('import-static')(JSON5.stringify(esmUrl)),
               ),
             },
             themerDts,
@@ -138,7 +138,7 @@ const CodeSnippetSetup = ({
               id: 'sanity.config',
               filename: 'sanity.config.js',
               contents: snippet('studio-config')(
-                snippet('import-static')(JSON5.stringify(esmUrl))
+                snippet('import-static')(JSON5.stringify(esmUrl)),
               ),
             },
           ]
@@ -151,13 +151,13 @@ const CodeSnippetSetup = ({
               id: 'sanity.config',
               filename: 'sanity.config.ts',
               contents: snippet('studio-config')(
-                snippet('import-static')(JSON5.stringify(esmUrl))
+                snippet('import-static')(JSON5.stringify(esmUrl)),
               ),
             },
             {
               filename: 'next.config.js',
               contents: snippet('next-config-build-time-ts')(
-                JSON5.stringify(esmUrlOrigin)
+                JSON5.stringify(esmUrlOrigin),
               ),
             },
             themerDts,
@@ -167,13 +167,13 @@ const CodeSnippetSetup = ({
               id: 'sanity.config',
               filename: 'sanity.config.js',
               contents: snippet('studio-config')(
-                snippet('import-static')(JSON5.stringify(esmUrl))
+                snippet('import-static')(JSON5.stringify(esmUrl)),
               ),
             },
             {
               filename: 'next.config.js',
               contents: snippet('next-config-build-time-js')(
-                JSON5.stringify(esmUrlOrigin)
+                JSON5.stringify(esmUrlOrigin),
               ),
             },
           ]

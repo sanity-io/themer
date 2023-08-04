@@ -87,13 +87,13 @@ export const TransitionMinHeight = ({ children }: TransitionMinHeightProps) => {
     useCallback(
       (entries: ResizeObserverEntry[]) =>
         setMinHeight(entries[0].borderBoxSize[0].blockSize),
-      []
-    )
+      [],
+    ),
   )
   const startAnimation = useIdleCallback(
     useCallback(() => {
       animate(animated.current, { minHeight: `${minHeight}px` })
-    }, [minHeight])
+    }, [minHeight]),
   )
 
   useEffect(() => {
@@ -127,7 +127,7 @@ export const FilesViewer = ({ lead, files, initial }: FilesViewerProps) => {
   const [open, setOpen] = useState(initial)
   const active = useMemo(
     () => files.find(({ filename, id = filename }) => id === open),
-    [files, open]
+    [files, open],
   )
   const selectedRef = useRef<HTMLButtonElement>(null)
 

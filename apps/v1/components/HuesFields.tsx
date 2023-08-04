@@ -74,11 +74,11 @@ const HueFields = memo(function HueFields({
   const [mid, setMid] = useState<string>(() => initialHue.mid)
   const [darkest, setDarkest] = useState<string>(() => initialHue.darkest)
   const [midPoint, setMidPoint] = useState<string>(
-    () => `${initialHue.midPoint}`
+    () => `${initialHue.midPoint}`,
   )
   const midPointRounded = useMemo<Hue['midPoint']>(
     () => roundMidPoint(Number(midPoint)),
-    [midPoint]
+    [midPoint],
   )
 
   // Correct state, uses a transition
@@ -110,7 +110,7 @@ const HueFields = memo(function HueFields({
         }
       })
     },
-    [prepareTransition, startTransition]
+    [prepareTransition, startTransition],
   )
   const lightestChangeHandler = useCallback<
     ChangeEventHandler<HTMLInputElement>
@@ -126,7 +126,7 @@ const HueFields = memo(function HueFields({
         }
       })
     },
-    [prepareTransition, startTransition]
+    [prepareTransition, startTransition],
   )
   const darkestChangeHandler = useCallback<
     ChangeEventHandler<HTMLInputElement>
@@ -142,7 +142,7 @@ const HueFields = memo(function HueFields({
         }
       })
     },
-    [prepareTransition, startTransition]
+    [prepareTransition, startTransition],
   )
 
   useEffect(() => {

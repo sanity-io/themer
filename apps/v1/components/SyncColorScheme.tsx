@@ -9,7 +9,7 @@ const SyncColorScheme = ({ forceScheme }: Props) => {
   const { scheme, setScheme } = useColorScheme()
 
   useLayoutEffect(() => {
-    if (scheme !== forceScheme) {
+    if (scheme !== forceScheme && setScheme) {
       console.count('Force syncing scheme')
       setScheme(forceScheme)
     }

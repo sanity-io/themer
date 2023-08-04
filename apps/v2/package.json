@@ -20,9 +20,9 @@
     "styled-components": "^5.3.8"
   },
   "devDependencies": {
-    "@sanity/eslint-config-studio": "^2.0.1",
-    "@types/react": "^18.0.28",
-    "eslint": "^8.36.0",
-    "typescript": "^5.0.0"
+    "@sanity/eslint-config-studio": "^2.0.4",
+    "@types/react": "^18.2.18",
+    "eslint": "^8.46.0",
+    "typescript": "^5.1.6"
   }
 }

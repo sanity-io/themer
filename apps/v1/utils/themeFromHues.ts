@@ -72,7 +72,9 @@ export function themeFromHues({
   rgbToHex,
   rgba,
   createColorTheme,
-}: Options): StudioTheme {
+}: Options): StudioTheme & {
+  __themer: true
+} {
   function multiply(bg: string, fg: string): string {
     const b = parseColor(bg)
     const s = parseColor(fg)
@@ -730,5 +732,5 @@ export function themeFromHues({
     },
   })
 
-  return { ...studioTheme, color }
+  return { ...studioTheme, color, __themer: true }
 }

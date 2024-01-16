@@ -1,6 +1,6 @@
-import { createConfig } from 'sanity'
+import { defineConfig } from 'sanity'
 
 import { config as blog } from './blog'
 import { config as movies } from './movies'
 
-export const config = createConfig([movies, blog])
+export const config = defineConfig([movies, blog])

@@ -5,7 +5,7 @@ import type {
   ThemeColorSchemes,
   ThemeColorSpotKey,
 } from '@sanity/ui'
-import type { StudioTheme } from 'sanity'
+import { BaseTheme } from '@sanity/ui/theme'
 import type { PartialDeep } from 'type-fest'
 import { applyHues } from 'utils/applyHues'
 import {
@@ -27,7 +27,7 @@ interface Options {
   hues: PartialDeep<Hues>
   // if there's a color property on the studioTheme it will be overridden/ignored, thus we change the typing allowing it to be omitted
   // but at the same time not _enforcing_ it to be omitted and create unnecessary TS errors for those passing `import {studioTheme} from '@sanity/ui'` directly
-  studioTheme: Omit<StudioTheme, 'color'> & { color?: unknown }
+  studioTheme: Omit<BaseTheme, 'color'> & { color?: unknown }
   parseColor: (color: string) => RGB
   rgbToHex: (rgb: RGB) => string
   multiply: (bg: RGB, fg: RGB) => RGB
@@ -72,7 +72,7 @@ export function themeFromHues({
   rgbToHex,
   rgba,
   createColorTheme,
-}: Options): StudioTheme & {
+}: Options): BaseTheme & {
   __themer: true
   /**
    * This needs to be set as undefined, given it will be created internally by @sanity/ui

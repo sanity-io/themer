@@ -7,6 +7,7 @@ import {
   ThemeProvider,
   ToastProvider,
 } from '@sanity/ui'
+import { BaseTheme } from '@sanity/ui/theme'
 import Head from 'components/Head'
 import { HeaderCard, useHeaderCard } from 'components/HeaderCard'
 import HuesFields from 'components/HuesFields'
@@ -74,7 +75,7 @@ export default function Themer({
     )
 
     return {
-      createTheme: createTheme as (hues: Hues) => StudioTheme,
+      createTheme: createTheme as (hues: Hues) => BaseTheme,
       initialHues: hues as Hues,
     }
   }, [preset.url])

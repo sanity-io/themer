@@ -12,7 +12,7 @@ declare module 'https://themer.sanity.build/api/hues?*' {
     critical: Hue
   }
   export const hues: Hues
-  type Theme = import('sanity').StudioTheme
+  type Theme = import('sanity').BaseTheme
   export function createTheme(_hues: Hues): Theme
   export const theme: Theme
 }

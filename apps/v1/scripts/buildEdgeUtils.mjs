@@ -78,7 +78,7 @@ const buildTemplateString = async () => {
    **/
   const stdin = {
     contents: `
-  import {studioTheme} from './node_modules/@sanity/ui/src/theme/studioTheme/theme.ts'
+  import {studioTheme} from './node_modules/@sanity/ui/src/core/_compat.ts'
   import {themeFromHues} from 'utils/themeFromHues'
   import {
     multiply,
@@ -86,8 +86,8 @@ const buildTemplateString = async () => {
     rgbToHex,
     screen,
     rgba,
-  } from './node_modules/@sanity/ui/src/theme/lib/color-fns/index.ts'
-  import {createColorTheme} from './node_modules/@sanity/ui/src/theme/lib/theme/color/factory.ts'
+  } from './node_modules/@sanity/ui/src/theme/build/lib/color-fns/index.ts'
+  import {createColorTheme} from './node_modules/@sanity/ui/src/theme/build/_deprecated/color/factory.ts'
 
 export const hues = process.env.__HUES__
   

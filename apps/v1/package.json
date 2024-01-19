@@ -23,7 +23,7 @@
     "@heroicons/react": "^2.0.18",
     "@juggle/resize-observer": "^3.4.0",
     "@sanity/client": "^6.4.0",
-    "@sanity/color": "^2.2.5",
+    "@sanity/color": "^3.0.0",
     "@sanity/icons": "^2.4.1",
     "@sanity/ui": "^2.0.0",
     "@sanity/vision": "^3.25.0",

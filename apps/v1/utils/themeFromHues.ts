@@ -5,7 +5,7 @@ import type {
   ThemeColorSchemes,
   ThemeColorSpotKey,
 } from '@sanity/ui'
-import type { StudioTheme } from 'sanity'
+import { BaseTheme } from '@sanity/ui/theme'
 import type { PartialDeep } from 'type-fest'
 import { applyHues } from 'utils/applyHues'
 import {
@@ -27,7 +27,7 @@ interface Options {
   hues: PartialDeep<Hues>
   // if there's a color property on the studioTheme it will be overridden/ignored, thus we change the typing allowing it to be omitted
   // but at the same time not _enforcing_ it to be omitted and create unnecessary TS errors for those passing `import {studioTheme} from '@sanity/ui'` directly
-  studioTheme: Omit<StudioTheme, 'color'> & { color?: unknown }
+  studioTheme: Omit<BaseTheme, 'color'> & { color?: unknown }
   parseColor: (color: string) => RGB
   rgbToHex: (rgb: RGB) => string
   multiply: (bg: RGB, fg: RGB) => RGB
@@ -72,8 +72,12 @@ export function themeFromHues({
   rgbToHex,
   rgba,
   createColorTheme,
-}: Options): StudioTheme & {
+}: Options): BaseTheme & {
   __themer: true
+  /**
+   * This needs to be set as undefined, given it will be created internally by @sanity/ui
+   */
+  v2: undefined
 } {
   function multiply(bg: string, fg: string): string {
     const b = parseColor(bg)
@@ -194,6 +198,7 @@ export function themeFromHues({
           bg2: mix2(bg, tints[dark ? 50 : 950].hex),
           border: mix(base.bg, tints[dark ? 800 : 200].hex),
           fg: mix(base.bg, dark ? black.hex : white.hex),
+          icon: mix(base.bg, dark ? black.hex : white.hex),
           muted: {
             fg: mix(base.bg, tints[dark ? 950 : 50].hex),
           },
@@ -223,6 +228,7 @@ export function themeFromHues({
           bg2: mix2(bg, tints[dark ? 50 : 950].hex),
           border: mix(base.bg, tints[dark ? 300 : 600].hex),
           fg: mix(base.bg, dark ? black.hex : white.hex),
+          icon: mix(base.bg, dark ? black.hex : white.hex),
           muted: {
             fg: mix(base.bg, tints[dark ? 800 : 200].hex),
           },
@@ -252,6 +258,7 @@ export function themeFromHues({
           bg2: mix2(bg, tints[dark ? 50 : 950].hex),
           border: mix(base.bg, tints[dark ? 200 : 800].hex),
           fg: mix(base.bg, dark ? black.hex : white.hex),
+          icon: mix(base.bg, dark ? black.hex : white.hex),
           muted: {
             fg: mix(base.bg, tints[dark ? 800 : 200].hex),
           },
@@ -285,6 +292,7 @@ export function themeFromHues({
           bg2: mix2(bg, tints[dark ? 50 : 950].hex),
           border: mix(base.bg, tints[dark ? 200 : 800].hex),
           fg: mix(base.bg, dark ? black.hex : white.hex),
+          icon: mix(base.bg, dark ? black.hex : white.hex),
           muted: {
             fg: mix(base.bg, tints[dark ? 800 : 200].hex),
           },
@@ -314,6 +322,7 @@ export function themeFromHues({
         bg2: mix2(bg, tints[dark ? 50 : 950].hex),
         border: mix(base.bg, tints[dark ? 400 : 500].hex),
         fg: mix(base.bg, dark ? black.hex : white.hex),
+        icon: mix(base.bg, dark ? black.hex : white.hex),
         muted: {
           fg: mix(base.bg, tints[dark ? 900 : 100].hex),
         },
@@ -353,6 +362,7 @@ export function themeFromHues({
           bg2: mix(bg, tints[dark ? 950 : 50].hex),
           border: mix(bg, tints[dark ? 950 : 50].hex),
           fg: mix(bg, tints[dark ? 800 : 200].hex),
+          icon: mix(bg, tints[dark ? 800 : 200].hex),
           muted: {
             fg: mix(bg, tints[dark ? 900 : 100].hex),
           },
@@ -386,6 +396,7 @@ export function themeFromHues({
           bg2: mix(bg, tints[dark ? 950 : 50].hex),
           border: mix(bg, tints[dark ? 900 : 100].hex),
           fg: mix(base.bg, tints[dark ? 200 : 800].hex),
+          icon: mix(base.bg, tints[dark ? 200 : 800].hex),
           muted: {
             fg: mix(base.bg, tints[dark ? 400 : 600].hex),
           },
@@ -419,6 +430,7 @@ export function themeFromHues({
           bg2: mix(bg, tints[dark ? 950 : 50].hex),
           border: mix(bg, tints[dark ? 900 : 100].hex),
           fg: mix(base.bg, tints[dark ? 200 : 800].hex),
+          icon: mix(base.bg, tints[dark ? 200 : 800].hex),
           muted: {
             fg: mix(base.bg, tints[dark ? 400 : 600].hex),
           },
@@ -452,6 +464,7 @@ export function themeFromHues({
           bg2: mix(bg, tints[dark ? 950 : 50].hex),
           border: mix(bg, tints[dark ? 900 : 100].hex),
           fg: mix(base.bg, tints[dark ? 200 : 800].hex),
+          icon: mix(base.bg, tints[dark ? 200 : 800].hex),
           muted: {
             fg: mix(base.bg, tints[dark ? 400 : 600].hex),
           },
@@ -480,6 +493,7 @@ export function themeFromHues({
         bg2: mix(bg, tints[dark ? 950 : 50].hex),
         border: mix(bg, tints[dark ? 900 : 100].hex),
         fg: mix(base.bg, tints[dark ? 300 : 700].hex),
+        icon: mix(base.bg, tints[dark ? 300 : 700].hex),
         muted: {
           fg: mix(base.bg, tints[dark ? 400 : 600].hex),
         },
@@ -576,6 +590,7 @@ export function themeFromHues({
         bg,
         bg2: mix(bg, tints[dark ? 950 : 50].hex),
         fg: base.fg,
+        icon: base.fg,
         border: base.border,
         muted: {
           fg: mix(base.bg, tints[dark ? 400 : 600].hex),
@@ -605,6 +620,7 @@ export function themeFromHues({
 
         return {
           bg: mix(base.bg, tints[dark ? 950 : 50].hex),
+          bg2: mix(base.bg, tints[dark ? 800 : 200].hex),
           fg: mix(base.bg, tints[dark ? 400 : 600].hex),
           border: mix(base.bg, tints[dark ? 800 : 200].hex),
           placeholder: mix(base.bg, tints[dark ? 600 : 400].hex),
@@ -614,6 +630,7 @@ export function themeFromHues({
       if (state === 'hovered') {
         return {
           bg: base.bg,
+          bg2: mix(base.bg, gray[dark ? 700 : 300].hex),
           fg: base.fg,
           border: mix(base.bg, gray[dark ? 700 : 300].hex),
           placeholder: mix(base.bg, gray[dark ? 600 : 400].hex),
@@ -623,6 +640,7 @@ export function themeFromHues({
       if (state === 'disabled') {
         return {
           bg: mix(base.bg, gray[dark ? 950 : 50].hex),
+          bg2: mix(base.bg, gray[dark ? 900 : 100].hex),
           fg: mix(base.bg, gray[dark ? 700 : 300].hex),
           border: mix(base.bg, gray[dark ? 900 : 100].hex),
           placeholder: mix(base.bg, gray[dark ? 800 : 200].hex),
@@ -632,6 +650,7 @@ export function themeFromHues({
       if (state === 'readOnly') {
         return {
           bg: mix(base.bg, gray[dark ? 950 : 50].hex),
+          bg2: mix(base.bg, gray[dark ? 800 : 200].hex),
           fg: mix(base.bg, gray[dark ? 200 : 800].hex),
           border: mix(base.bg, gray[dark ? 800 : 200].hex),
           placeholder: mix(base.bg, gray[dark ? 600 : 400].hex),
@@ -640,6 +659,7 @@ export function themeFromHues({
 
       return {
         bg: base.bg,
+        bg2: base.border,
         fg: base.fg,
         border: base.border,
         placeholder: mix(base.bg, gray[dark ? 600 : 400].hex),
@@ -732,5 +752,5 @@ export function themeFromHues({
     },
   })
 
-  return { ...studioTheme, color, __themer: true }
+  return { ...studioTheme, color, __themer: true, v2: undefined }
 }

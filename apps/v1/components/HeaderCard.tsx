@@ -20,12 +20,7 @@ export const HeaderCard = memo(function HeaderCard({
   transition,
 }: Props) {
   return (
-    <RootCard
-      paddingLeft={[4]}
-      paddingY={[2]}
-      scheme="dark"
-      shadow={scheme === 'dark' ? 1 : undefined}
-    >
+    <RootCard paddingLeft={[4]} scheme={scheme} borderBottom>
       <Card
         borderRight
         style={{
@@ -33,6 +28,8 @@ export const HeaderCard = memo(function HeaderCard({
           gridTemplateColumns: '32px 1fr',
           alignItems: 'center',
           paddingLeft: 'env(safe-area-inset-left)',
+          paddingTop: '7px', // To match navbar height
+          paddingBottom: '7px',
         }}
       >
         <Logo spin={spins} transition={transition} />

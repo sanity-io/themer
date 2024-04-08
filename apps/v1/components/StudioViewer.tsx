@@ -15,7 +15,7 @@ import {
   useState,
 } from 'react'
 import { type StudioProviderProps, type WorkspaceOptions } from 'sanity'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export type View = 'default' | 'split'
 

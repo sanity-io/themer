@@ -3,7 +3,7 @@ import { ClipboardIcon, LockIcon } from '@sanity/icons'
 import { Grid, Stack, useToast } from '@sanity/ui'
 import { Button, Label } from 'components/Sidebar.styles'
 import { memo, useLayoutEffect, useState } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
 
 const ShareIcon = styled(_ShareIcon)`

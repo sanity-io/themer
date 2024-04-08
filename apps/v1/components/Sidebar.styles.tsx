@@ -1,6 +1,6 @@
 import { Button as UiButton, Text } from '@sanity/ui'
 import { transparentize } from 'polished'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 export const Button = styled(UiButton).attrs({
   fontSize: 1,

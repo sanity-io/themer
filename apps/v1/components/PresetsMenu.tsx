@@ -34,7 +34,7 @@ import {
   useMemo,
   useState,
 } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { expandPresetSearchParams } from 'utils/expandPresetSearchParams'
 import { presets } from 'utils/presets'
 import type { Hues, ThemePreset } from 'utils/types'

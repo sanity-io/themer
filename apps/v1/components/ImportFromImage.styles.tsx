@@ -3,7 +3,7 @@ import { Box, Card, Grid, Skeleton, Stack, Text } from '@sanity/ui'
 import { ImageColorPaletteGridSkeleton } from 'components/ImageColorPaletteGrid'
 import { Label } from 'components/Sidebar.styles'
 import { memo, type ReactNode } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 const ButtonSkeleton = styled(Skeleton).attrs({ radius: 2, animated: true })`
   /* Magic number, equals 25px, the height of the variant buttons */

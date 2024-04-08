@@ -2,7 +2,7 @@ import { ClipboardIcon } from '@sanity/icons'
 import { Box, Button, Card, Code, type CodeProps } from '@sanity/ui'
 import { useToast } from '@sanity/ui'
 import { memo } from 'react'
-import styled from 'styled-components'
+import {styled} from 'styled-components'
 
 const StyledCode = styled(Code)`
   padding-right: 2rem;

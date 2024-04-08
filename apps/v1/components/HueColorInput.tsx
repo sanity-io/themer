@@ -1,7 +1,7 @@
 import { Stack, Text } from '@sanity/ui'
 import { ColorInput, Label } from 'components/Sidebar.styles'
 import { type ChangeEventHandler, memo, useId } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 interface Props {
   label: string

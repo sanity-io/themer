@@ -9,7 +9,6 @@
   "dependencies": {
     "@sanity/icons": "^2.4.1",
     "@sanity/ui": "^2.0.0",
-    "@types/styled-components": "^5.1.26",
     "motion": "^10.16.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -17,7 +16,7 @@
     "react-is": "^18.2.0",
     "sanity": "^3.25.0",
     "sanity-plugin-mux-input": "^2.2.1",
-    "styled-components": "^5.3.11"
+    "styled-components": "^6.1.8"
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^3.0.0",

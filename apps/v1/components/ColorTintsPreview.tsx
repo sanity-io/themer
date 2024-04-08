@@ -1,6 +1,6 @@
 import { Box, Card, Stack, Text, Tooltip, useToast } from '@sanity/ui'
 import { memo } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { createTintsFromHue } from 'utils/createTonesFromHues'
 import type { Hue } from 'utils/types'
 

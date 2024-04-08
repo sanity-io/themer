@@ -13,7 +13,7 @@ import {
   useMemo,
   useState,
 } from 'react'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 import { TONES } from 'utils/colors'
 import { isColor } from 'utils/parseHuesFromSearchParams'
 import { roundMidPoint } from 'utils/roundMidPoint'

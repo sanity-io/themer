@@ -1,6 +1,6 @@
 import { animate, spring } from 'motion'
 import { memo, useEffect, useRef } from 'react'
-import styled from 'styled-components'
+import {styled} from 'styled-components'
 
 const Svg = styled.svg`
   position: relative;

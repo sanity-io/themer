@@ -15,7 +15,7 @@ import {
   useState,
 } from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
-import styled from 'styled-components'
+import { styled } from 'styled-components'
 
 interface QuizRowProps {
   children: ReactNode

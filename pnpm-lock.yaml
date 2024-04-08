@@ -78,8 +78,8 @@ importers:
         specifier: ^3.25.0
         version: 3.25.0(@types/node@18.17.11)(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       sanity-plugin-asset-source-unsplash:
-        specifier: ^1.1.0
-        version: 1.1.2(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.25.0)(styled-components@6.1.8)
+        specifier: ^2.0.0
+        version: 2.0.1(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.25.0)(styled-components@6.1.8)
       sanity-plugin-mux-input:
         specifier: ^2.2.1
         version: 2.2.1(@types/react@18.2.21)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.25.0)(styled-components@6.1.8)
@@ -8262,8 +8262,8 @@ packages:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
     dev: false
 
-  /react-photo-album@2.3.0(react@18.2.0):
-    resolution: {integrity: sha512-CU+UMK4ZQHIoPZ672TSst9loKE5bxy6w0+bf7bY4XOw1g1C7+VdDWCW+wD8wPpbg2ve38QBTS73HVe6xYLAQ3w==}
+  /react-photo-album@2.3.1(react@18.2.0):
+    resolution: {integrity: sha512-c7ofDx2DAbQa9AW9wUWOBX9zUKf/QjvdQK+fPNKEiKprks/n8t4c2viyBZ6EWpQLFLU0ad3yVBTgFvxEZ46/Iw==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '>=16.8.0'
@@ -8602,19 +8602,20 @@ packages:
       '@sanity/diff-match-patch': 3.1.1
     dev: false
 
-  /sanity-plugin-asset-source-unsplash@1.1.2(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.25.0)(styled-components@6.1.8):
-    resolution: {integrity: sha512-eBK6iaQ8AFqOHUP2s2rZKeiRJIbOGzy1HXXfOeDG6IQIYMJSmwKRiVEfI7XFcnTIwKHYJavLHp7zzBT+8m9D3A==}
+  /sanity-plugin-asset-source-unsplash@2.0.1(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.25.0)(styled-components@6.1.8):
+    resolution: {integrity: sha512-KpKPFV98JRJwv2iT3VzzSZvIjRSrLRSI40udB+fjnAQ+GhFbWwZUSgo2xibJSbbh2VRu+yq0OgfzHFz2nnoUdA==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^18
       sanity: ^3
       styled-components: ^5.2 || ^6
     dependencies:
+      '@sanity/icons': 2.11.7(react@18.2.0)
       '@sanity/incompatible-plugin': 1.0.4(react-dom@18.2.0)(react@18.2.0)
-      '@sanity/ui': 1.7.11(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8)
+      '@sanity/ui': 2.1.0(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       react: 18.2.0
       react-infinite-scroll-component: 6.1.0(react@18.2.0)
-      react-photo-album: 2.3.0(react@18.2.0)
+      react-photo-album: 2.3.1(react@18.2.0)
       rxjs: 7.8.1
       sanity: 3.25.0(@types/node@18.17.11)(@types/react@18.2.21)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       styled-components: 6.1.8(react-dom@18.2.0)(react@18.2.0)

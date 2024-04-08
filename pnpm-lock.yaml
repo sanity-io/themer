@@ -69,8 +69,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-icons:
-        specifier: ^4.10.1
-        version: 4.10.1(react@18.2.0)
+        specifier: ^5.0.0
+        version: 5.0.1(react@18.2.0)
       rimraf:
         specifier: ^4.4.1
         version: 4.4.1
@@ -166,8 +166,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-icons:
-        specifier: ^4.10.1
-        version: 4.10.1(react@18.2.0)
+        specifier: ^5.0.0
+        version: 5.0.1(react@18.2.0)
       react-is:
         specifier: ^18.2.0
         version: 18.2.0
@@ -203,8 +203,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-icons:
-        specifier: ^4.10.1
-        version: 4.10.1(react@18.2.0)
+        specifier: ^5.0.0
+        version: 5.0.1(react@18.2.0)
       react-is:
         specifier: ^18.2.0
         version: 18.2.0
@@ -237,8 +237,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-icons:
-        specifier: ^4.10.1
-        version: 4.10.1(react@18.2.0)
+        specifier: ^5.0.0
+        version: 5.0.1(react@18.2.0)
       react-is:
         specifier: ^18.2.0
         version: 18.2.0
@@ -277,8 +277,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-icons:
-        specifier: ^4.10.1
-        version: 4.10.1(react@18.2.0)
+        specifier: ^5.0.0
+        version: 5.0.1(react@18.2.0)
       react-is:
         specifier: ^18.2.0
         version: 18.2.0
@@ -317,8 +317,8 @@ importers:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-icons:
-        specifier: ^4.10.1
-        version: 4.10.1(react@18.2.0)
+        specifier: ^5.0.0
+        version: 5.0.1(react@18.2.0)
       react-is:
         specifier: ^18.2.0
         version: 18.2.0
@@ -8235,8 +8235,8 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
     dev: false
 
-  /react-icons@4.10.1(react@18.2.0):
-    resolution: {integrity: sha512-/ngzDP/77tlCfqthiiGNZeYFACw85fUjZtLbedmJ5DTlNDIwETxhwBzdOJ21zj4iJdvc0J3y7yOsX3PpxAJzrw==}
+  /react-icons@5.0.1(react@18.2.0):
+    resolution: {integrity: sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==}
     peerDependencies:
       react: '*'
     dependencies:

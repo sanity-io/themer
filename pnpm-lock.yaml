@@ -42,8 +42,8 @@ importers:
         specifier: ^3.25.0
         version: 3.25.0(@babel/runtime@7.23.8)(@codemirror/lint@6.4.0)(@codemirror/state@6.2.1)(@codemirror/theme-one-dark@6.1.2)(@lezer/common@1.0.4)(codemirror@6.0.1)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       culori:
-        specifier: ^3.2.0
-        version: 3.2.0
+        specifier: ^4.0.0
+        version: 4.0.1
       history:
         specifier: ^5.3.0
         version: 5.3.0
@@ -4550,8 +4550,8 @@ packages:
   /csstype@3.1.2:
     resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
 
-  /culori@3.2.0:
-    resolution: {integrity: sha512-HIEbTSP7vs1mPq/2P9In6QyFE0Tkpevh0k9a+FkjhD+cwsYm9WRSbn4uMdW9O0yXlNYC3ppxL3gWWPOcvEl57w==}
+  /culori@4.0.1:
+    resolution: {integrity: sha512-LSnjA6HuIUOlkfKVbzi2OlToZE8OjFi667JWN9qNymXVXzGDmvuP60SSgC+e92sd7B7158f7Fy3Mb6rXS5EDPw==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
     dev: false
 

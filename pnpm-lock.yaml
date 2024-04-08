@@ -81,8 +81,8 @@ importers:
         specifier: ^3.0.0
         version: 3.0.0(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
       sanity-plugin-mux-input:
-        specifier: 2.3.3
-        version: 2.3.3(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
+        specifier: 2.3.4
+        version: 2.3.4(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
       scroll-into-view-if-needed:
         specifier: ^3.0.10
         version: 3.1.0
@@ -175,8 +175,8 @@ importers:
         specifier: ^3.25.0
         version: 3.36.4(@types/node@18.17.11)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       sanity-plugin-mux-input:
-        specifier: 2.3.3
-        version: 2.3.3(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
+        specifier: 2.3.4
+        version: 2.3.4(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
       styled-components:
         specifier: ^6.1.8
         version: 6.1.8(react-dom@18.2.0)(react@18.2.0)
@@ -212,8 +212,8 @@ importers:
         specifier: ^3.25.0
         version: 3.36.4(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       sanity-plugin-mux-input:
-        specifier: 2.3.3
-        version: 2.3.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
+        specifier: 2.3.4
+        version: 2.3.4(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
       styled-components:
         specifier: ^6.1.8
         version: 6.1.8(react-dom@18.2.0)(react@18.2.0)
@@ -246,8 +246,8 @@ importers:
         specifier: ^3.25.0
         version: 3.36.4(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       sanity-plugin-mux-input:
-        specifier: 2.3.3
-        version: 2.3.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
+        specifier: 2.3.4
+        version: 2.3.4(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
       styled-components:
         specifier: ^6.1.8
         version: 6.1.8(react-dom@18.2.0)(react@18.2.0)
@@ -286,8 +286,8 @@ importers:
         specifier: ^3.25.0
         version: 3.36.4(@types/node@18.17.11)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       sanity-plugin-mux-input:
-        specifier: 2.3.3
-        version: 2.3.3(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
+        specifier: 2.3.4
+        version: 2.3.4(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
       styled-components:
         specifier: ^6.1.8
         version: 6.1.8(react-dom@18.2.0)(react@18.2.0)
@@ -326,8 +326,8 @@ importers:
         specifier: ^3.25.0
         version: 3.36.4(@types/node@18.17.11)(@types/react@18.2.74)(react-dom@18.2.0)(react@18.2.0)(styled-components@6.1.8)
       sanity-plugin-mux-input:
-        specifier: 2.3.3
-        version: 2.3.3(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
+        specifier: 2.3.4
+        version: 2.3.4(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8)
       styled-components:
         specifier: ^6.1.8
         version: 6.1.8(react-dom@18.2.0)(react@18.2.0)
@@ -8806,8 +8806,8 @@ packages:
       - react-is
     dev: false
 
-  /sanity-plugin-mux-input@2.3.3(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8):
-    resolution: {integrity: sha512-rv6Rar3dAkXyWZRfawlrj0xmTwSHYIdo3GjU6ak3yzdnA1kBCNiU05I/QDfj2Z00MLbrVIwWNuTtGLte8bGjjQ==}
+  /sanity-plugin-mux-input@2.3.4(@types/react@18.2.74)(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8):
+    resolution: {integrity: sha512-GHIFWKXDzYIZreeC/ExEsaIBU7ATgAfjacB8Yo9SN2K1C9YMhdHYbl8S+aCa2QcmrmvHtkAKG3oukg/U0JfUCQ==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^18
@@ -8834,15 +8834,14 @@ packages:
       suspend-react: 0.1.3(react@18.2.0)
       swr: 2.2.5(react@18.2.0)
       type-fest: 4.15.0
-      use-error-boundary: 2.0.6(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
       - react-dom
     dev: false
 
-  /sanity-plugin-mux-input@2.3.3(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8):
-    resolution: {integrity: sha512-rv6Rar3dAkXyWZRfawlrj0xmTwSHYIdo3GjU6ak3yzdnA1kBCNiU05I/QDfj2Z00MLbrVIwWNuTtGLte8bGjjQ==}
+  /sanity-plugin-mux-input@2.3.4(react-dom@18.2.0)(react-is@18.2.0)(react@18.2.0)(sanity@3.36.4)(styled-components@6.1.8):
+    resolution: {integrity: sha512-GHIFWKXDzYIZreeC/ExEsaIBU7ATgAfjacB8Yo9SN2K1C9YMhdHYbl8S+aCa2QcmrmvHtkAKG3oukg/U0JfUCQ==}
     engines: {node: '>=14'}
     peerDependencies:
       react: ^18
@@ -8869,7 +8868,6 @@ packages:
       suspend-react: 0.1.3(react@18.2.0)
       swr: 2.2.5(react@18.2.0)
       type-fest: 4.15.0
-      use-error-boundary: 2.0.6(react-dom@18.2.0)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
       - '@types/react-dom'
@@ -10115,19 +10113,6 @@ packages:
       react: '>=16.8.0'
     dependencies:
       react: 18.2.0
-    dev: false
-
-  /use-error-boundary@2.0.6(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-AWCVKSAanLe6R/on/ZkHYtGKfXs8BQX6z/TUGYqtvkajLqQyrGKJJscbahtq8OyN8L3LqTRjJWx4gCOLmfIObw==}
-    peerDependencies:
-      react: '>=16.9.0'
-      react-dom: '>=16.9.0'
-    peerDependenciesMeta:
-      react-dom:
-        optional: true
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /use-hot-module-reload@1.0.3(react@18.2.0):

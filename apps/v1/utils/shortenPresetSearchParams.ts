@@ -89,16 +89,16 @@ export function shortenPresetSearchParams(searchParams: URLSearchParams) {
       baseHue.mid !== hue.mid && hue.midPoint && hue.midPoint !== 500
         ? true
         : baseHue.mid === hue.mid &&
-          baseHue.midPoint !== hue.midPoint &&
-          hue.midPoint !== 500
-        ? true
-        : baseHue.mid !== hue.mid && hue.midPoint !== 500
-        ? true
-        : baseHue.mid === hue.mid &&
-          baseHue.midPoint !== 500 &&
-          hue.midPoint === 500
-        ? true
-        : false
+            baseHue.midPoint !== hue.midPoint &&
+            hue.midPoint !== 500
+          ? true
+          : baseHue.mid !== hue.mid && hue.midPoint !== 500
+            ? true
+            : baseHue.mid === hue.mid &&
+                baseHue.midPoint !== 500 &&
+                hue.midPoint === 500
+              ? true
+              : false
     const param = [
       (shouldIncludeMid || shouldIncludeMidPoint) &&
         stringifyColorSearchParam(hue.mid),
@@ -106,17 +106,17 @@ export function shortenPresetSearchParams(searchParams: URLSearchParams) {
       shouldSkipLightest
         ? false
         : lightest && hue.lightest !== lightest
-        ? `lightest:${stringifyColorSearchParam(hue.lightest)}`
-        : hue.lightest &&
-          baseHue.lightest !== hue.lightest &&
-          `lightest:${stringifyColorSearchParam(hue.lightest)}`,
+          ? `lightest:${stringifyColorSearchParam(hue.lightest)}`
+          : hue.lightest &&
+            baseHue.lightest !== hue.lightest &&
+            `lightest:${stringifyColorSearchParam(hue.lightest)}`,
       shouldSkipDarkest
         ? false
         : darkest && hue.darkest !== darkest
-        ? `darkest:${stringifyColorSearchParam(hue.darkest)}`
-        : hue.darkest &&
-          baseHue.darkest !== hue.darkest &&
-          `darkest:${stringifyColorSearchParam(hue.darkest)}`,
+          ? `darkest:${stringifyColorSearchParam(hue.darkest)}`
+          : hue.darkest &&
+            baseHue.darkest !== hue.darkest &&
+            `darkest:${stringifyColorSearchParam(hue.darkest)}`,
     ]
       .filter(Boolean)
       .join(';')

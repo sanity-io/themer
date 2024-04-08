@@ -61,20 +61,20 @@ const iconFromSlug = (slug: string) => {
   return slug === 'pink-synth'
     ? SynthWaveIcon
     : slug === 'tw-cyan'
-    ? TwLogo
-    : slug === 'dew'
-    ? DropIcon
-    : slug === 'rosabel'
-    ? HeartIcon
-    : slug === 'verdant'
-    ? LemonIcon
-    : slug === 'stereofidelic'
-    ? JoystickIcon
-    : slug === 'pixel-art'
-    ? RobotIcon
-    : slug === 'retro-colonial'
-    ? IceCreamIcon
-    : MasterDetailIcon
+      ? TwLogo
+      : slug === 'dew'
+        ? DropIcon
+        : slug === 'rosabel'
+          ? HeartIcon
+          : slug === 'verdant'
+            ? LemonIcon
+            : slug === 'stereofidelic'
+              ? JoystickIcon
+              : slug === 'pixel-art'
+                ? RobotIcon
+                : slug === 'retro-colonial'
+                  ? IceCreamIcon
+                  : MasterDetailIcon
 }
 
 interface Props {

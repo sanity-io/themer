@@ -53,16 +53,16 @@ const SchemeMenu = ({
                 scheme === 'light'
                   ? SunIcon
                   : scheme === 'dark'
-                  ? MoonIcon
-                  : DesktopIcon
+                    ? MoonIcon
+                    : DesktopIcon
               }
               iconRight={SelectIcon}
               text={
                 scheme === 'light'
                   ? 'Light'
                   : scheme === 'dark'
-                  ? 'Dark'
-                  : 'System'
+                    ? 'Dark'
+                    : 'System'
               }
             />
           }

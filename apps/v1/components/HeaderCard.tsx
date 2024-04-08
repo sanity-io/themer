@@ -32,7 +32,7 @@ export const HeaderCard = memo(function HeaderCard({
           paddingBottom: '7px',
         }}
       >
-        <Logo spin={spins} transition={transition} />
+        <Logo scheme={scheme} spin={spins} transition={transition} />
         <Card paddingY={[3]} paddingX={[3]}>
           <Text weight="semibold" muted style={{ flex: 2 }}>
             Studio v3 Themer

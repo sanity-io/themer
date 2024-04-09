@@ -12,5 +12,15 @@
     "prettier-plugin-packagejson": "^2.4.14",
     "turbo": "^1.13.2"
   },
-  "packageManager": "pnpm@8.15.6"
+  "dependencies": {
+    "sanity": "3.37.1-canary.16",
+    "@sanity/vision": "3.37.1-canary.16"
+  },
+  "packageManager": "pnpm@8.15.6",
+  "pnpm": {
+    "overrides": {
+      "@sanity/vision": "$@sanity/vision",
+      "sanity": "$sanity"
+    }
+  }
 }

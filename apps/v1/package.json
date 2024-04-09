@@ -51,7 +51,7 @@
     "@types/jest": "^29.5.12",
     "@types/node": "^18.17.11",
     "@types/prettier": "^3.0.0",
-    "@types/react": "^18.2.74",
+    "@types/react": "^18.2.75",
     "esbuild": "^0.20.2",
     "esbuild-plugin-replace": "^1.4.0",
     "eslint": "^8.57.0",

@@ -7,14 +7,14 @@
     "lint": "turbo run lint",
     "test": "turbo run test"
   },
+  "dependencies": {
+    "@sanity/vision": "3.37.1-canary.16",
+    "sanity": "3.37.1-canary.16"
+  },
   "devDependencies": {
     "prettier": "^3.2.5",
     "prettier-plugin-packagejson": "^2.4.14",
     "turbo": "^1.13.2"
-  },
-  "dependencies": {
-    "sanity": "3.37.1-canary.16",
-    "@sanity/vision": "3.37.1-canary.16"
   },
   "packageManager": "pnpm@8.15.6",
   "pnpm": {

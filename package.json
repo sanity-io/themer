@@ -8,8 +8,8 @@
     "test": "turbo run test"
   },
   "dependencies": {
-    "@sanity/vision": "3.37.1-canary.16",
-    "sanity": "3.37.1-canary.16"
+    "@sanity/vision": "3.37.1",
+    "sanity": "3.37.1"
   },
   "devDependencies": {
     "prettier": "^3.2.5",

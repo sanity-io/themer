@@ -5,7 +5,7 @@
  **/
 const nextConfig = {
   experimental: { urlImports: ['https://themer.sanity.build/'] },
-  transpilePackages: ['refractor'],
+  transpilePackages: ['sanity'],
 }
 
 module.exports = nextConfig

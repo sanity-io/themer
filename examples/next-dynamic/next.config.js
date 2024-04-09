@@ -4,7 +4,7 @@
  * @type {import('next').NextConfig}
  **/
 const nextConfig = {
-  transpilePackages: ['refractor'],
+  transpilePackages: ['sanity'],
 }
 
 module.exports = nextConfig

@@ -9,7 +9,7 @@ const nextConfig = {
     domains: ['cdn.sanity.io', 'source.unsplash.com'],
     formats: ['image/avif', 'image/webp'],
   },
-  transpilePackages: ['refractor'],
+  transpilePackages: ['sanity'],
 }
 
 module.exports = nextConfig

@@ -1,6 +1,6 @@
 import { defineConfig } from 'sanity'
-import { deskTool } from 'sanity/desk'
 import { muxInput } from 'sanity-plugin-mux-input'
+import { structureTool } from 'sanity/structure'
 
 import { schemaTypes } from './schemas'
 import { themerTool } from './src'
@@ -11,6 +11,6 @@ const dataset = 'themer-movies'
 export default defineConfig({
   projectId,
   dataset,
-  plugins: [deskTool(), muxInput(), themerTool()],
+  plugins: [structureTool(), muxInput(), themerTool()],
   schema: { types: schemaTypes },
 })

@@ -8,6 +8,7 @@ const createApiUrl = (search: string) => {
   if (process.env.NODE_ENV === 'development') {
     searchParams.set('min', '0')
   }
+  // @TODO stop pointing to API
   return `/api/hues?${decodeURIComponent(searchParams.toString())}`
 }
 

@@ -1,4 +1,9 @@
 import {
+  buildThemeFromUrl,
+  createTheme,
+  parseHuesFromUrl,
+} from '@sanity/themer/legacy'
+import {
   Card,
   type CardTone,
   Grid,
@@ -7,7 +12,6 @@ import {
   ThemeProvider,
   ToastProvider,
 } from '@sanity/ui'
-import { BaseTheme } from '@sanity/ui/theme'
 import Head from 'components/Head'
 import { HeaderCard, useHeaderCard } from 'components/HeaderCard'
 import HuesFields from 'components/HuesFields'
@@ -20,7 +24,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { StudioProviderProps, StudioTheme } from 'sanity'
 import { config } from 'studios'
 import { styled } from 'styled-components'
-import { suspend } from 'suspend-react'
 import { expandPresetSearchParams } from 'utils/expandPresetSearchParams'
 import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
 import type { Hue, Hues, ThemePreset } from 'utils/types'
@@ -67,18 +70,10 @@ export default function Themer({
   unstable_showParsedUrl,
 }: Props) {
   const [preset, setPreset] = useState(() => initialPreset)
-
-  const { createTheme, initialHues } = suspend(async () => {
-    const url = new URL(preset.url, location.origin)
-    const { createTheme, hues } = await import(
-      /* webpackIgnore: true */ url.toString()
-    )
-
-    return {
-      createTheme: createTheme as (hues: Hues) => BaseTheme,
-      initialHues: hues as Hues,
-    }
-  }, [preset.url])
+  const initialHues = useMemo(
+    () => parseHuesFromUrl(new URL(preset.url, location.origin).toString()),
+    [preset.url],
+  )
   // used by useMemoHues, is updated by local state when syncing
   const [huesState, setHuesState] = useState(initialHues)
 
@@ -95,10 +90,7 @@ export default function Themer({
   // Test if the JSON stringify and parsing is too costly
   const memoHues = huesState
   // Now we can create the theme from the memoed hues
-  const themeFromHues = useMemo(
-    () => createTheme(memoHues),
-    [memoHues, createTheme],
-  )
+  const themeFromHues = useMemo(() => createTheme(memoHues), [memoHues])
 
   // Backup hue edits to the current URL
   const backupToUrl = useIdleCallback(
@@ -136,7 +128,11 @@ export default function Themer({
   )
 
   return (
-    <ThemeProvider theme={themeFromHues} scheme={scheme}>
+    <ThemeProvider
+      // @ts-expect-error - themeFromHues is a valid theme
+      theme={themeFromHues}
+      scheme={scheme}
+    >
       <Head presetUrl={preset.url} />
       <Card
         height="fill"
@@ -198,6 +194,7 @@ export default function Themer({
             config={config}
             scheme={scheme}
             sidebarWidth={sidebarWidth}
+            // @ts-expect-error - themeFromHues is a valid theme
             theme={themeFromHues}
             unstable_noAuthBoundary={unstable_noAuthBoundary}
             view={view}

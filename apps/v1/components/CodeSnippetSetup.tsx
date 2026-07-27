@@ -39,7 +39,6 @@ const CodeSnippetSetup = ({
               imports out of the box.
             </>
           )}
-
         </>
       )
     }

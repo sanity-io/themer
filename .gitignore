@@ -113,3 +113,4 @@ edge-utils
 
 .sanity
 .turbo
+apps/v1/.env.local

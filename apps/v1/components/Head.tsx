@@ -45,7 +45,7 @@ interface Props {
 }
 function CustomHead({ presetUrl }: Props) {
   const theme = useRootTheme().theme
-  const { light, dark } = theme.color
+  const { light } = theme.color
 
   // @TODO find a better way to override the page title
   // Page title is overriden by StudioLayout
@@ -61,11 +61,6 @@ function CustomHead({ presetUrl }: Props) {
       <Head>
         <title>{title}</title>
         <NextStudioHead favicons={false} />
-        title={title}
-        themeColorLight={light.default.base.bg}
-        themeColorDark={dark.default.base.bg}
-        {/* Use Edge Middleware to set this preload as a header to work with custom presets */}
-        <link rel="modulepreload" href={presetUrl} />
         <link rel="icon" type="image/svg" href={svg.src} />
         <link rel="icon" type="image/png" href={png.src} />
       </Head>

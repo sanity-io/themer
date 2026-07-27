@@ -1,56 +1,14 @@
 import { InfoOutlineIcon } from '@sanity/icons'
-import { Box, Dialog, Grid, Stack } from '@sanity/ui'
-import CodeSnippetSetup from 'components/CodeSnippetSetup'
+import { Box, Dialog, Stack } from '@sanity/ui'
 import CopySnippetButton from 'components/CopySnippetButton'
-import {
-  FilesViewer,
-  QuizButton,
-  QuizRow,
-  TransitionMinHeight,
-} from 'components/ExportTheme.styles'
+import { FilenameBadge, FilesViewer } from 'components/ExportTheme.styles'
 import { Button, Label } from 'components/Sidebar.styles'
 import JSON5 from 'json5'
-import { type Dispatch, memo, useMemo, useReducer } from 'react'
+import { memo, useMemo } from 'react'
 import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
 import { snippet } from 'utils/snippets'
 
-// Support for URL Imports in TS isn't quite there yet
-// Setting up a themer.d.ts is a decent workaround for now
-// https://github.com/microsoft/TypeScript/issues/35749
-type QuizBuild = 'sanity build' | 'next build' | 'other'
-type QuizLoad = 'build-time' | 'runtime'
-type QuizTypeScript = boolean
-type QuizAction =
-  | { type: 'build'; payload: QuizBuild }
-  | { type: 'load'; payload: QuizLoad }
-  | { type: 'typescript'; payload: QuizTypeScript }
-
-export type QuizDispatch = Dispatch<QuizAction>
-
-export interface QuizState {
-  build?: QuizBuild
-  load?: QuizLoad
-  typescript?: QuizTypeScript
-}
-
-const initialQuizState: QuizState = {
-  build: null,
-  load: null,
-  typescript: null,
-}
-
-function quizReducer(state: QuizState, action: QuizAction): QuizState {
-  switch (action.type) {
-    case 'build':
-      return { ...state, build: action.payload }
-    case 'load':
-      return { ...state, load: action.payload }
-    case 'typescript':
-      return { ...state, typescript: action.payload }
-    default:
-      return state
-  }
-}
+const installCommand = 'npm install @sanity/themer'
 
 interface Props {
   searchParams: URLSearchParams
@@ -59,16 +17,12 @@ interface Props {
   onClose: () => void
 }
 const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
-  const [state, dispatch] = useReducer(quizReducer, initialQuizState)
-
-  const esmUrl = useMemo(() => {
+  // `@sanity/themer/legacy` reads the hues straight out of this URL, it never fetches it
+  const themerUrl = useMemo(() => {
     const params = new URLSearchParams(searchParams)
     shortenPresetSearchParams(params)
     if (params.get('preset') === 'default') {
       params.delete('preset')
-    }
-    if (process.env.NODE_ENV === 'development') {
-      params.set('min', '0')
     }
     const search = decodeURIComponent(params.toString())
     return new URL(
@@ -76,19 +30,7 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
       location.origin,
     ).toString()
   }, [searchParams])
-  const esmUrlDTS = useMemo(() => {
-    const url = new URL(esmUrl)
-    return `${url.origin}${url.pathname}?*`
-  }, [esmUrl])
-  const esmUrlOrigin = useMemo(() => {
-    const url = new URL(esmUrl)
-    return `${url.origin}/`
-  }, [esmUrl])
-  const downloadUrl = useMemo(() => {
-    const url = new URL(esmUrl)
-    url.searchParams.delete('min')
-    return url.toString()
-  }, [esmUrl])
+  const themerUrlArg = useMemo(() => JSON5.stringify(themerUrl), [themerUrl])
 
   return (
     <>
@@ -104,162 +46,69 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
         </Stack>
         <Stack space={2}>
           <Label>Paste this into your sanity.config.ts 🧑‍💻</Label>
-          <Grid columns={2} gap={2}>
-            <CopySnippetButton
-              text="Copy JS"
-              toastTitle="Copied JS snippet to the clipboard"
-              // code={`const {theme} = await import(${JSON.stringify(esmUrl)})`}
-              code={snippet('import-static')(JSON5.stringify(esmUrl))}
-            />
-            <CopySnippetButton
-              text="Copy TS"
-              toastTitle="Copied TS snippet to the clipboard"
-              code={snippet('import-dynamic-ts')(JSON5.stringify(esmUrl))}
-            />
-          </Grid>
+          <CopySnippetButton
+            text="Copy snippet"
+            toastTitle="Copied the theme snippet to the clipboard"
+            code={snippet('theme-import')(themerUrlArg)}
+          />
         </Stack>
       </Stack>
       {open === 'export-dialog' && (
         <Dialog
           key="export"
-          header="Theme Export Wizard 🧙"
-          id="dialog-download-preset"
+          header="Theme Export Guide 🪄"
+          id="dialog-export-theme"
           onClose={onClose}
           zOffset={1000}
           width={2}
         >
           <Box padding={4}>
-            <QuizRow key="state.build" text="How do you build your studio?">
-              <QuizButton
-                text="sanity build"
-                onClick={() =>
-                  dispatch({ type: 'build', payload: 'sanity build' })
+            <Stack space={4}>
+              <FilesViewer
+                key="install"
+                initial="sanity.config"
+                lead={
+                  <>
+                    Install <FilenameBadge>@sanity/themer</FilenameBadge> and
+                    the same snippet works in every Studio, no matter how you
+                    build it. TypeScript typings are included.
+                  </>
                 }
-                selected={state.build === 'sanity build'}
+                files={[
+                  {
+                    id: 'install',
+                    filename: 'Terminal',
+                    contents: installCommand,
+                    language: 'bash',
+                  },
+                  {
+                    id: 'sanity.config',
+                    filename: 'sanity.config.ts',
+                    contents: snippet('studio-config')(themerUrlArg),
+                  },
+                ]}
               />
-              <QuizButton
-                text="next build"
-                onClick={() =>
-                  dispatch({ type: 'build', payload: 'next build' })
+              <FilesViewer
+                key="createTheme"
+                lead={
+                  <>
+                    If you&#39;re quickly iterating on your theme in the comfort
+                    of your own Studio it&#39;s annoying to keep changing the
+                    URL to change your theme. You can read the hues out of the
+                    URL and tweak them in code instead.
+                  </>
                 }
-                selected={state.build === 'next build'}
+                files={[
+                  {
+                    id: 'studio.config',
+                    filename: 'sanity.config.ts',
+                    contents: snippet('studio-config-create-theme')(
+                      themerUrlArg,
+                    ),
+                  },
+                ]}
               />
-              <QuizButton
-                text="custom"
-                onClick={() => dispatch({ type: 'build', payload: 'other' })}
-                selected={state.build === 'other'}
-              />
-            </QuizRow>
-            <TransitionMinHeight key="state.typescript">
-              {state.build && (
-                <QuizRow text="Are you using TypeScript?">
-                  <QuizButton
-                    text="Yes"
-                    mode="bleed"
-                    onClick={() =>
-                      dispatch({ type: 'typescript', payload: true })
-                    }
-                    selected={state.typescript === true}
-                  />
-                  <QuizButton
-                    text="No, but I should be"
-                    mode="bleed"
-                    onClick={() =>
-                      dispatch({ type: 'typescript', payload: false })
-                    }
-                    selected={state.typescript === false}
-                  />
-                </QuizRow>
-              )}
-            </TransitionMinHeight>
-            <TransitionMinHeight key="state.load">
-              {state.typescript !== null && state.build === 'next build' && (
-                <QuizRow text="Load the theme at?">
-                  <QuizButton
-                    text="Build time"
-                    onClick={() =>
-                      dispatch({ type: 'load', payload: 'build-time' })
-                    }
-                    selected={state.load === 'build-time'}
-                  />
-                  <QuizButton
-                    text="Runtime"
-                    onClick={() =>
-                      dispatch({ type: 'load', payload: 'runtime' })
-                    }
-                    selected={state.load === 'runtime'}
-                  />
-                </QuizRow>
-              )}
-            </TransitionMinHeight>
-            <TransitionMinHeight key="snippets">
-              <Stack space={4}>
-                <CodeSnippetSetup
-                  state={state}
-                  esmUrl={esmUrl}
-                  esmUrlDTS={esmUrlDTS}
-                  esmUrlOrigin={esmUrlOrigin}
-                  downloadUrl={downloadUrl}
-                />
-                {(state.build === 'sanity build' ||
-                  (state.build === 'next build' &&
-                    state.load === 'build-time')) &&
-                  state.typescript !== null && (
-                    <FilesViewer
-                      key="createTheme"
-                      lead={
-                        <>
-                          If you&#39;re quickly iterating on your theme in the
-                          comfort of your own Studio it&#39;s annoying to keep
-                          changing the import URL to change your theme. You can
-                          use the createTheme utility instead.
-                        </>
-                      }
-                      files={[
-                        {
-                          id: 'studio.config',
-                          filename: state.typescript
-                            ? 'sanity.config.ts'
-                            : 'sanity.config.js',
-                          contents: snippet('studio-config-create-theme')(
-                            state.build === 'next build' &&
-                              state.load === 'build-time'
-                              ? snippet('import-create-theme-static')(
-                                  JSON5.stringify(esmUrl),
-                                )
-                              : snippet('import-create-theme-dynamic')(
-                                  JSON5.stringify(esmUrl),
-                                ),
-                          ),
-                        },
-                      ]}
-                    />
-                  )}
-                {state.build === 'sanity build' &&
-                  state.typescript !== null && (
-                    <FilesViewer
-                      key="sanity build _document"
-                      lead={
-                        <>
-                          You can make the studio load faster by adding a
-                          modulepreload tag for the theme.{' '}
-                        </>
-                      }
-                      files={[
-                        {
-                          id: '_document',
-                          filename: state.typescript
-                            ? '_document.tsx'
-                            : '_document.js',
-                          contents: state.typescript
-                            ? snippet('_document.tsx')(JSON5.stringify(esmUrl))
-                            : snippet('_document.js')(JSON5.stringify(esmUrl)),
-                        },
-                      ]}
-                    />
-                  )}
-              </Stack>
-            </TransitionMinHeight>
+            </Stack>
           </Box>
         </Dialog>
       )}

@@ -1,6 +1,6 @@
 import type { ResizeObserverEntry } from '@juggle/resize-observer'
 import { ResizeObserver } from '@juggle/resize-observer'
-import { Badge, Box, Card, Flex, Inline, Stack, Text } from '@sanity/ui'
+import { Badge, Box, Card, Flex, Text } from '@sanity/ui'
 import CodeSnippet from 'components/CodeSnippet'
 import { Button } from 'components/Sidebar.styles'
 import { useIdleCallback } from 'hooks/useIdleCallback'
@@ -16,25 +16,6 @@ import {
 } from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
 import { styled } from 'styled-components'
-
-interface QuizRowProps {
-  children: ReactNode
-  text: ReactNode
-}
-export const QuizRow = ({ children, text }: QuizRowProps) => {
-  return (
-    <TransitionHeight>
-      <Stack space={2} paddingBottom={4}>
-        <Text muted size={1}>
-          {text}
-        </Text>
-        <Inline space={1}>{children}</Inline>
-      </Stack>
-    </TransitionHeight>
-  )
-}
-
-export const QuizButton = styled(Button).attrs({ mode: 'bleed' })``
 
 type TransitionHeightProps = {
   children: ReactNode
@@ -118,7 +99,7 @@ interface FilesViewerProps {
     filename: string
     contents?: string
     component?: ReactNode
-    language?: 'json'
+    language?: string
   }[]
   initial?: string
   lead: ReactNode

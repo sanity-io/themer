@@ -39,13 +39,7 @@ const CodeSnippetSetup = ({
               imports out of the box.
             </>
           )}
-          <a
-            href="https://github.com/sanity-io/themer/tree/main/examples/basic"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Example studio
-          </a>
+
         </>
       )
     }
@@ -59,13 +53,6 @@ const CodeSnippetSetup = ({
           </FilenameBadge>
           you&#39;ll need to make a few changes to{' '}
           <FilenameBadge>next.config.js</FilenameBadge> .{' '}
-          <a
-            href="https://github.com/sanity-io/themer/tree/main/examples/next-static"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Example studio
-          </a>
         </>
       )
     }
@@ -76,13 +63,6 @@ const CodeSnippetSetup = ({
           The benefit of loading at runtime is you can dynamically choose what
           theme to load. You got the full SSR capabilities of Next.js at your
           disposal.{' '}
-          <a
-            href="https://github.com/sanity-io/themer/tree/main/examples/next-dynamic"
-            target="_blank"
-            rel="noreferrer"
-          >
-            Example studio
-          </a>
         </>
       )
     }

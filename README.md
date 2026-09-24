@@ -12,14 +12,14 @@ Themer used to hand you an ESM URL to import straight into your Studio config:
 import { theme } from 'https://themer.sanity.build/api/hues?preset=verdant'
 ```
 
-That endpoint keeps serving themes so existing Studios don't break, but it now logs a migration notice to the console on every load. The same colors are generated locally by [`@sanity/themer`](https://www.npmjs.com/package/@sanity/themer), with no network request and with TypeScript typings included:
+That endpoint keeps serving themes so existing Studios don't break, but it now logs a migration notice to the console on every load. The same colors are generated locally by [`@sanity/themer-legacy`](https://www.npmjs.com/package/@sanity/themer-legacy), with no network request and with TypeScript typings included:
 
 ```sh
-npm install @sanity/themer
+npm install @sanity/themer-legacy
 ```
 
 ```ts
-import { buildThemeFromUrl } from '@sanity/themer/legacy'
+import { buildThemeFromUrl } from '@sanity/themer-legacy'
 
 const theme = buildThemeFromUrl(
   'https://themer.sanity.build/api/hues?preset=verdant',
@@ -28,7 +28,14 @@ const theme = buildThemeFromUrl(
 
 The URL is only a carrier for the hues, `buildThemeFromUrl` never fetches it. Keep using [themer.sanity.build](https://themer.sanity.build) to preview and tweak your theme, then paste the URL it gives you into `buildThemeFromUrl`.
 
-The full guide lives in the [`@sanity/themer` README](https://github.com/sanity-io/ui/blob/main/packages/themer/README.md#migrating-from-themersanitybuild). It covers the `createTheme` + `hues` variant (now `createTheme` + `parseHuesFromUrl`), preset-only URLs like `'?preset=verdant'`, and the one intentional difference from the hosted module (the `__themer` font flag).
+The full guide lives in the [`@sanity/themer-legacy` README](https://github.com/sanity-io/ui/blob/main/packages/themer-legacy/README.md#migrating-from-themersanitybuild). It covers the `createTheme` + `hues` variant (now `createTheme` + `parseHuesFromUrl`), preset-only URLs like `'?preset=verdant'`, and the one intentional difference from the hosted module (the `__themer` font flag).
+
+If you already migrated to `@sanity/themer/legacy`, that subpath keeps working as a deprecated re-export of `@sanity/themer-legacy` until `@sanity/themer@1.0` removes it. Swap the import to finish the move:
+
+```diff
+-import { buildThemeFromUrl } from '@sanity/themer/legacy'
++import { buildThemeFromUrl } from '@sanity/themer-legacy'
+```
 
 ## Check your Studio for leftovers
 

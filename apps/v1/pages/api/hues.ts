@@ -24,20 +24,46 @@ const migrationNotice = (requestUrl: string) => {
     // Leave the URL percent-encoded, it parses back to the same hues either way
   }
 
-  return `console.error(${JSON.stringify(`Themer: importing your Studio theme from ${url.origin} is deprecated.
-Install @sanity/themer to get the exact same theme from npm, without a network request:
+  const message =
+    JSON.stringify(`Themer: importing your Studio theme from ${url.origin} is deprecated.
+Install @sanity/themer-legacy to get the exact same theme from npm, without a network request:
 
-  npm install @sanity/themer
+  npm install @sanity/themer-legacy
 
 Then replace the import with:
 
-  import {buildThemeFromUrl} from '@sanity/themer/legacy'
+  import {buildThemeFromUrl} from '@sanity/themer-legacy'
 
   const theme = buildThemeFromUrl(
     '${importUrl}'
   )
 
-Read more: https://www.npmjs.com/package/@sanity/themer`)})`
+Read more: https://www.npmjs.com/package/@sanity/themer-legacy`)
+
+  // `window.reportError` routes the notice through `window.onerror`, so error
+  // tooling like Sentry surfaces it to the team, not just whoever has the console
+  // open. Outside a browser (SSR, build-time URL imports) it stays a console.error.
+  // A static URL import evaluates this module before most error tooling has
+  // installed its `onerror` handler, so in the browser the report waits for the
+  // `load` event plus one task; if the document already finished loading (dynamic
+  // imports), only the extra task remains.
+  return `(function () {
+  var message = ${message}
+  function report() {
+    if (typeof window.reportError === 'function') {
+      window.reportError(new Error(message))
+    } else {
+      console.error(message)
+    }
+  }
+  if (typeof window === 'undefined') {
+    console.error(message)
+  } else if (document.readyState === 'complete') {
+    setTimeout(report, 0)
+  } else {
+    window.addEventListener('load', function () { setTimeout(report, 0) }, { once: true })
+  }
+})();`
 }
 
 const headers = (serverTiming: ServerTimingInstance) => ({

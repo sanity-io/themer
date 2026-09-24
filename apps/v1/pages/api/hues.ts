@@ -49,6 +49,7 @@ Read more: https://www.npmjs.com/package/@sanity/themer-legacy`)
   // imports), only the extra task remains.
   return `(function () {
   var message = ${message}
+  console.error(message)
   function report() {
     if (typeof window.reportError === 'function') {
       window.reportError(new Error(message))

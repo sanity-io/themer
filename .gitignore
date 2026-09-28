@@ -15,7 +15,7 @@ coverage
 
 # apps/v1 (Next.js) build output, and the edge utils its `build:edge` script generates
 .next
-edge-utils
+/apps/v1/edge-utils
 
 # Vitest browser mode failure screenshots and attachments
 __screenshots__

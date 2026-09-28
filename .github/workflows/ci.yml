@@ -66,6 +66,9 @@ jobs:
       - name: Install Playwright browsers
         if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
         run: pnpm --filter sanity-themer-storybook exec playwright install --with-deps chromium
+      - name: Install Playwright system deps (cache hit)
+        if: steps.cache-playwright-browsers.outputs.cache-hit == 'true'
+        run: pnpm --filter sanity-themer-storybook exec playwright install-deps chromium
       - run: pnpm test:browser
       - uses: actions/upload-artifact@v7
         if: failure()

@@ -1,3 +1,4 @@
+import { describe, expect, test } from 'vitest'
 import JSON5 from 'json5'
 import { snippet, snippets } from 'utils/snippets'
 

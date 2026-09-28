@@ -1,4 +1,134 @@
 packages:
   - 'apps/*'
-  - 'examples/*'
   - 'packages/*'
+
+linkWorkspacePackages: deep
+strictPeerDependencies: false
+autoDedupe: true
+
+
+# `pnpm add` writes `catalog:` when the requested version is covered by an
+# existing catalog entry, or when the dependency is not cataloged yet (the
+# entry is then added to `catalog` below). A version outside an existing
+# entry's range warns and is kept as a direct range (`strict` would error).
+catalogMode: prefer
+
+# Version ranges for dependencies used by more than one workspace package.
+# Referenced from package.json files via the `catalog:` protocol.
+# apps/v1 (the hosted themer.sanity.build app) keeps its own exact pins instead:
+# its `/api/hues` endpoint bundles the source of the `@sanity/ui` 2 it pins to
+# serve the themes that `@sanity/themer-legacy` replicates byte-for-byte, so its
+# React 18 / Next.js 14 stack can't move to these ranges.
+catalog:
+  '@sanity/color': ^3.0.8
+  '@sanity/icons': ^5.2.2
+  '@sanity/tsdown-config': ^0.28.2
+  '@sanity/ui': ^4.2.7
+  '@types/node': ^24.19.0
+  '@types/react': ^19.3.0
+  '@types/react-dom': ^19.3.0
+  '@vitejs/plugin-react': ^6.1.1
+  oxc-transform-react: ^0.151.0
+  react: ^19.3.0
+  react-dom: ^19.3.0
+  rimraf: ^5.0.5
+  sanity: ^6.16.0
+  styled-components: ^6.5.3
+  tsdown: ^0.23.0
+  typescript: 7.0.2
+  vite: ^8.3.1
+  vitest: ^5.0.2
+
+allowBuilds:
+  # Like esbuild, @swc/core's postinstall is only a fallback downloader — the
+  # native binary arrives through platform-specific optionalDependencies
+  '@swc/core': false
+  core-js: false
+  esbuild: false
+  fsevents: false
+  sharp: true
+  unrs-resolver: true
+
+# Sanity-owned build tooling releases frequently; don't gate it on the
+# default minimum release age (1 day). tsdown and its lightningcss / verkit /
+# @tsdown/* / publint transitive deps are included for the same reason when we
+# deliberately bump the catalog to `latest`.
+# Version-pinned entries approve one specific release we deliberately picked
+# before it aged out of the gate; the lockfile is re-verified against these on
+# every install, so they have to stay until the version is a day old.
+minimumReleaseAgeExclude:
+  - '@oxc-transform-react/*'
+  - '@portabletext/*'
+  - '@sanity/*'
+  - '@tsdown/*'
+  - lightningcss
+  - lightningcss-*
+  - oxc-transform-react
+  - publint
+  - sanity
+  - tsdown
+  - verkit
+  - use-effect-event@2.0.4
+  - '@types/react-dom@19.3.0'
+  - '@types/react@19.3.0'
+  - react-dom@19.3.0
+  - react-is@19.3.0
+  - react@19.3.0
+  - scheduler@0.28.0
+  - '@oxfmt/binding-android-arm-eabi@0.71.0'
+  - '@oxfmt/binding-android-arm64@0.71.0'
+  - '@oxfmt/binding-darwin-arm64@0.71.0'
+  - '@oxfmt/binding-darwin-x64@0.71.0'
+  - '@oxfmt/binding-freebsd-x64@0.71.0'
+  - '@oxfmt/binding-linux-arm-gnueabihf@0.71.0'
+  - '@oxfmt/binding-linux-arm-musleabihf@0.71.0'
+  - '@oxfmt/binding-linux-arm64-gnu@0.71.0'
+  - '@oxfmt/binding-linux-arm64-musl@0.71.0'
+  - '@oxfmt/binding-linux-ppc64-gnu@0.71.0'
+  - '@oxfmt/binding-linux-riscv64-gnu@0.71.0'
+  - '@oxfmt/binding-linux-riscv64-musl@0.71.0'
+  - '@oxfmt/binding-linux-s390x-gnu@0.71.0'
+  - '@oxfmt/binding-linux-x64-gnu@0.71.0'
+  - '@oxfmt/binding-linux-x64-musl@0.71.0'
+  - '@oxfmt/binding-openharmony-arm64@0.71.0'
+  - '@oxfmt/binding-win32-arm64-msvc@0.71.0'
+  - '@oxfmt/binding-win32-ia32-msvc@0.71.0'
+  - '@oxfmt/binding-win32-x64-msvc@0.71.0'
+  - oxfmt@0.71.0
+  - '@oxlint/binding-android-arm-eabi@1.86.0'
+  - '@oxlint/binding-android-arm64@1.86.0'
+  - '@oxlint/binding-darwin-arm64@1.86.0'
+  - '@oxlint/binding-darwin-x64@1.86.0'
+  - '@oxlint/binding-freebsd-x64@1.86.0'
+  - '@oxlint/binding-linux-arm-gnueabihf@1.86.0'
+  - '@oxlint/binding-linux-arm-musleabihf@1.86.0'
+  - '@oxlint/binding-linux-arm64-gnu@1.86.0'
+  - '@oxlint/binding-linux-arm64-musl@1.86.0'
+  - '@oxlint/binding-linux-ppc64-gnu@1.86.0'
+  - '@oxlint/binding-linux-riscv64-gnu@1.86.0'
+  - '@oxlint/binding-linux-riscv64-musl@1.86.0'
+  - '@oxlint/binding-linux-s390x-gnu@1.86.0'
+  - '@oxlint/binding-linux-x64-gnu@1.86.0'
+  - '@oxlint/binding-linux-x64-musl@1.86.0'
+  - '@oxlint/binding-openharmony-arm64@1.86.0'
+  - '@oxlint/binding-win32-arm64-msvc@1.86.0'
+  - '@oxlint/binding-win32-ia32-msvc@1.86.0'
+  - '@oxlint/binding-win32-x64-msvc@1.86.0'
+  - oxlint@1.86.0
+  - '@oxlint-tsgolint/darwin-arm64@7.0.2003'
+  - '@oxlint-tsgolint/darwin-x64@7.0.2003'
+  - '@oxlint-tsgolint/linux-arm64@7.0.2003'
+  - '@oxlint-tsgolint/linux-x64@7.0.2003'
+  - '@oxlint-tsgolint/win32-arm64@7.0.2003'
+  - '@oxlint-tsgolint/win32-x64@7.0.2003'
+  - oxlint-tsgolint@7.0.2003
+  - '@lezer/highlight@1.2.5'
+
+minimumReleaseAgeExcludePrune: true
+
+# sanity-io/ui overrides `react` and `react-dom` workspace-wide, which apps/v1
+# (React 18) can't take. Storybook's docs addon depends on them directly with a
+# range that both majors satisfy, so dedupe could otherwise hand it React 18.
+overrides:
+  '@storybook/addon-docs>react': 'catalog:'
+  '@storybook/addon-docs>react-dom': 'catalog:'

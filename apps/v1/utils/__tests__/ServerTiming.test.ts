@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { ServerTiming } from 'utils/ServerTiming'
 
 const numberRegex = /([0-9]*[.])?[0-9]+/g

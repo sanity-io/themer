@@ -6,9 +6,9 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['cdn.sanity.io', 'source.unsplash.com'],
+    remotePatterns: [{hostname: 'cdn.sanity.io'}, {hostname: 'source.unsplash.com'}],
     formats: ['image/avif', 'image/webp'],
   },
 }
 
-module.exports = nextConfig
+export default nextConfig

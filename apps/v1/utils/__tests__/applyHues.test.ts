@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { applyHues } from 'utils/applyHues'
 import type { Hues } from 'utils/types'
 

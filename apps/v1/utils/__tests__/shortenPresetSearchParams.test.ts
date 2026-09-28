@@ -1,3 +1,4 @@
+import { expect, test } from 'vitest'
 import { applyHuesFromPreset } from 'utils/applyHuesFromPreset'
 import { defaultPreset, getPreset } from 'utils/presets'
 import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'

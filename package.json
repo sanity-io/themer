@@ -1,16 +1,39 @@
 {
+  "name": "sanity-themer-monorepo",
+  "version": "0.0.0",
   "private": true,
+  "license": "MIT",
+  "author": "Sanity.io <hello@sanity.io>",
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "format": "prettier --cache --write .",
-    "lint": "turbo run lint",
-    "test": "turbo run test"
+    "build": "pnpm --filter @sanity/themer-legacy build",
+    "changeset": "changeset",
+    "clean": "pnpm --recursive clean",
+    "dev": "pnpm --filter sanity-themer-storybook dev",
+    "dev:v1": "pnpm --filter v1 dev",
+    "format": "oxfmt . --no-error-on-unmatched-pattern",
+    "knip": "knip --treat-config-hints-as-errors",
+    "lint": "pnpm run oxlint",
+    "lint:fix": "pnpm lint --fix --fix-suggestions",
+    "oxlint": "oxlint --disable-nested-config",
+    "release": "changeset publish",
+    "storybook:build": "pnpm --filter sanity-themer-storybook build",
+    "test": "pnpm --filter @sanity/themer-legacy --filter v1 test",
+    "test:browser": "pnpm --filter sanity-themer-storybook test",
+    "watch": "pnpm --filter @sanity/themer-legacy watch"
   },
   "devDependencies": {
-    "prettier": "3.2.5",
-    "prettier-plugin-packagejson": "2.4.14",
-    "turbo": "1.13.2"
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
+    "@types/node": "catalog:",
+    "eslint-plugin-storybook": "^10.6.0",
+    "knip": "^6.38.0",
+    "oxfmt": "^0.71.0",
+    "oxlint": "^1.86.0",
+    "oxlint-tsgolint": "^7.0.2003",
+    "typescript": "catalog:"
   },
-  "packageManager": "pnpm@8.15.7"
+  "engines": {
+    "node": ">=22.13"
+  },
+  "packageManager": "pnpm@12.6.0"
 }

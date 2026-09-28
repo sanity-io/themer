@@ -1,0 +1,13 @@
+{
+  "$schema": "https://unpkg.com/@changesets/config/schema.json",
+  "changelog": ["@changesets/changelog-github", {"repo": "sanity-io/themer"}],
+  "access": "public",
+  "baseBranch": "main",
+  "format": "oxfmt",
+  "privatePackages": false,
+  "bumpVersionsWithWorkspaceProtocolOnly": true,
+  "___experimentalUnsafeOptions_WILL_CHANGE_IN_PATCH": {
+    "updateInternalDependents": "always",
+    "onlyUpdatePeerDependentsWhenOutOfRange": true
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "workspaces": {
+    ".": {},
+    "apps/storybook": {},
+    "apps/v1": {
+      // `scripts/buildEdgeUtils.mjs` bundles the `/api/hues` theme generator
+      // with esbuild from an inline `stdin` module, which knip can't follow
+      "entry": ["utils/themeFromHues.ts"],
+    },
+    "packages/themer-legacy": {
+      "ignoreDependencies": [
+        // The React Compiler (oxc-transform-react, target '18') injects imports of
+        // this runtime package into the compiled dist output, so it is never
+        // imported in source
+        "react-compiler-runtime",
+      ],
+    },
+  },
+}

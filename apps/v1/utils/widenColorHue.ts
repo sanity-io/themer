@@ -16,18 +16,6 @@ export function widenColorHue(
   const aHsl = parseToHsl(a)
   const bHsl = parseToHsl(b)
 
-  console.debug(
-    'widen',
-    a,
-    b,
-    aHsl.hue,
-    bHsl.hue,
-    { lower, upper },
-    Math.max(aHsl.hue - lower, bHsl.hue),
-    Math.min(aHsl.hue + upper, bHsl.hue),
-    aHsl.hue < bHsl.hue + lower,
-    aHsl.hue < bHsl.hue - upper,
-  )
   const withinLowerBounds = aHsl.hue > bHsl.hue && aHsl.hue < bHsl.hue + lower
   const withinUpperBounds = aHsl.hue < bHsl.hue && aHsl.hue > bHsl.hue - upper
   if (withinLowerBounds || withinUpperBounds) {

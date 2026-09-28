@@ -1,14 +1,18 @@
 // @ts-check
 // Compiles snippets so they have prettier formatting pre-applied
 
+/** @import {Options} from 'prettier' */
+
+import {writeFile} from 'node:fs/promises'
+
 import JSON5 from 'json5'
 import * as parserBabel from 'prettier/plugins/babel'
 // The estree plugin does the actual printing for both the babel and typescript parsers
 import * as parserEstree from 'prettier/plugins/estree'
 import * as parserTypescript from 'prettier/plugins/typescript'
 import * as prettier from 'prettier/standalone'
-import writeFileAtomic from 'write-file-atomic'
 
+/** @type {Options} */
 const options = {
   arrowParens: 'avoid',
   bracketSpacing: false,
@@ -18,6 +22,7 @@ const options = {
   singleQuote: true,
   trailingComma: 'none',
 }
+/** @type {Options} */
 const jsonOptions = {
   bracketSpacing: false,
   parser: 'json',
@@ -33,6 +38,7 @@ const dummies = {
 const projectId = `'b5vzhxkv'`
 const dataset = `'production'`
 
+/** @type {Array<[id: string, placeholders: Array<keyof typeof dummies>, snippet: string, format?: 'json' | 'typescript']>} */
 const snippets = [
   [
     'theme-import',
@@ -102,6 +108,7 @@ for (const [id] of snippets) {
 }
 
 const overloads = []
+/** @param {number} argsLength */
 const getArgs = (argsLength) => {
   const input = args.map((_) => `${_}: string`)
   switch (argsLength) {
@@ -114,23 +121,17 @@ const getArgs = (argsLength) => {
   }
 }
 
-const idsList = `export [${[...idsChecked]
-  .map((id) => JSON5.stringify(id))
-  .join(',')}]`
-
 console.group('snippets.map')
 const cases = []
 // Sequential so the generated overloads keep the order the snippets are declared in
 for (const [id, placeholders, snippet, format = 'typescript'] of snippets) {
   console.group('prettier')
-  let code = (
-    await prettier.format(snippet, format === 'json' ? jsonOptions : options)
-  ).trim()
+  // oxlint-disable-next-line no-await-in-loop
+  const formatted = await prettier.format(snippet, format === 'json' ? jsonOptions : options)
+  let code = formatted.trim()
   console.log(code)
   console.groupEnd()
-  // @ts-expect-error -- dunno what to do with the typing of placeholders, maybe try the `const snippets = as const` trick?
-  for (const i in placeholders) {
-    const key = placeholders[i]
+  for (const [i, key] of placeholders.entries()) {
     const dummy = dummies[key]
     const arg = `\${${args[i]}}`
     code = code
@@ -149,11 +150,7 @@ for (const [id, placeholders, snippet, format = 'typescript'] of snippets) {
   const { length } = placeholders
   const argsString = getArgs(length)
   const callback = `(${getArgs(length)}) => \`${code}\``
-  overloads.push(
-    `export function snippet(id: ${JSON5.stringify(
-      id,
-    )}): ${`(${argsString}) => string`}`,
-  )
+  overloads.push(`export function snippet(id: ${JSON5.stringify(id)}): (${argsString}) => string`)
   const template = `
   case ${JSON5.stringify(id)}:
     return ${callback}
@@ -185,4 +182,4 @@ export const snippets = [${[...idsChecked]
 `
 
 const dest = new URL('../utils/snippets.ts', import.meta.url)
-await writeFileAtomic(dest.pathname, codeSnippets)
+await writeFile(dest, codeSnippets)

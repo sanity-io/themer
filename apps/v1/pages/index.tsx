@@ -43,7 +43,6 @@ export default function Index() {
       }
     }
 
-    console.log(searchParams.toString())
     const url = new URL(
       `${pathname}?${decodeURIComponent(searchParams.toString())}`,
       location.origin,

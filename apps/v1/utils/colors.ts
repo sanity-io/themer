@@ -1,4 +1,4 @@
-import { black, hues, white } from '@sanity/color'
+import {black, hues, white} from '@sanity/color'
 
 export const lightest = white.hex.toLowerCase()
 export const darkest = black.hex.toLowerCase()
@@ -14,5 +14,4 @@ export const TONES = [
   'critical',
 ] as const
 
-export const { blue, cyan, gray, green, magenta, orange, purple, red, yellow } =
-  hues
+export const {blue, cyan, gray, green, magenta, orange, purple, red, yellow} = hues

@@ -31,9 +31,7 @@ export class ServerTiming {
     for (const [id, start] of this.#started) {
       const end = this.#ended.has(id) ? this.#ended.get(id) : getNow()
       const dur = end - start
-      const desc = this.#desc.has(id)
-        ? JSON.stringify(this.#desc.get(id))
-        : null
+      const desc = this.#desc.has(id) ? JSON.stringify(this.#desc.get(id)) : null
       const timing = `${id}${desc ? `;desc=${desc}` : ''};dur=${dur}`
       timings.push(timing)
     }

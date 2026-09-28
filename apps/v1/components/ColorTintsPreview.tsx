@@ -1,15 +1,15 @@
-import { Box, Card, Stack, Text, Tooltip, useToast } from '@sanity/ui'
-import { memo } from 'react'
-import { styled } from 'styled-components'
-import { createTintsFromHue } from 'utils/createTonesFromHues'
-import type { Hue } from 'utils/types'
+import {Box, Card, Stack, Text, Tooltip, useToast} from '@sanity/ui'
+import {memo} from 'react'
+import {styled} from 'styled-components'
+import {createTintsFromHue} from 'utils/createTonesFromHues'
+import type {Hue} from 'utils/types'
 
 interface Props extends Hue {
   tone: string
 }
-function ColorTintsPreview({ mid, midPoint, lightest, darkest, tone }: Props) {
-  const { push: pushToast } = useToast()
-  const tints = createTintsFromHue({ mid, midPoint, lightest, darkest }, tone)
+function ColorTintsPreview({mid, midPoint, lightest, darkest, tone}: Props) {
+  const {push: pushToast} = useToast()
+  const tints = createTintsFromHue({mid, midPoint, lightest, darkest}, tone)
   return (
     <>
       {Object.entries(tints).map(([tint, color]) => (
@@ -17,7 +17,7 @@ function ColorTintsPreview({ mid, midPoint, lightest, darkest, tone }: Props) {
           key={tint}
           content={
             <Card key={tint} radius={2}>
-              <SwatchPreview style={{ background: color.hex }} />
+              <SwatchPreview style={{background: color.hex}} />
               <Stack space={2} padding={2}>
                 <Text size={0} weight="medium">
                   {tint}
@@ -33,7 +33,7 @@ function ColorTintsPreview({ mid, midPoint, lightest, darkest, tone }: Props) {
           portal
         >
           <SwatchThumb
-            style={{ background: color.hex }}
+            style={{background: color.hex}}
             onClick={() => {
               navigator.clipboard.writeText(color.hex)
               pushToast({
@@ -49,14 +49,14 @@ function ColorTintsPreview({ mid, midPoint, lightest, darkest, tone }: Props) {
   )
 }
 
-const SwatchPreview = styled(Box).attrs({ paddingTop: 3, paddingBottom: 4 })`
+const SwatchPreview = styled(Box).attrs({paddingTop: 3, paddingBottom: 4})`
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
   min-width: 52px;
 `
 
 // @TODO these should now be <Button> now that they have click events
-const SwatchThumb = styled(Box).attrs({ paddingY: 2 })`
+const SwatchThumb = styled(Box).attrs({paddingY: 2})`
   cursor: pointer;
   box-shadow: var(--card-shadow-outline-color) -1px 0px 0 0;
 `

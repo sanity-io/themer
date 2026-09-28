@@ -3,13 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "pnpm run build:edge",
     "build": "next build",
-    "prebuild:edge": "rimraf edge-utils",
     "build:edge": "node scripts/buildEdgeUtils.mjs",
     "build:snippets": "node scripts/compileCodeSnippets.mjs && oxfmt utils/snippets.ts",
-    "predev": "pnpm run build:edge",
     "dev": "PORT=3001 next dev",
+    "prebuild": "pnpm run build:edge",
+    "prebuild:edge": "rimraf edge-utils",
+    "predev": "pnpm run build:edge",
     "start": "next start",
     "test": "vitest run"
   },
@@ -41,6 +41,7 @@
     "suspend-react": "0.1.3"
   },
   "devDependencies": {
+    "@edge-runtime/vm": "^5.0.0",
     "@types/node": "catalog:",
     "@types/prettier": "3.0.0",
     "@types/react": "18.2.75",
@@ -49,7 +50,6 @@
     "prettier": "3.2.5",
     "type-fest": "4.15.0",
     "typescript": "5.4.2",
-    "@edge-runtime/vm": "^5.0.0",
     "vitest": "catalog:"
   }
 }

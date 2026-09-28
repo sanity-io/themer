@@ -1,6 +1,6 @@
-import { Stack, Text } from '@sanity/ui'
-import { ColorInput, Label } from 'components/Sidebar.styles'
-import { type ChangeEventHandler, memo, useId } from 'react'
+import {Stack, Text} from '@sanity/ui'
+import {ColorInput, Label} from 'components/Sidebar.styles'
+import {type ChangeEventHandler, memo, useId} from 'react'
 
 interface Props {
   label: string
@@ -8,7 +8,7 @@ interface Props {
   // @TODO use TS template string types to make sure a valid hex string is given
   value: string
 }
-const HueColorInput = ({ label, onChange, value }: Props) => {
+const HueColorInput = ({label, onChange, value}: Props) => {
   const id = useId()
 
   return (

@@ -1,9 +1,18 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "github>sanity-io/renovate-config",
-    "github>sanity-io/renovate-config:studio-v3",
-    ":reviewer(team:ecosystem)"
-  ],
-  "ignorePresets": [":ignoreModulesAndTests"]
+  "extends": ["github>sanity-io/renovate-config"],
+  "ignorePresets": ["github>sanity-io/renovate-config:group-non-major"],
+  "packageRules": [
+    {
+      "matchDepTypes": ["dependencies"],
+      "semanticCommitType": "fix",
+      "rangeStrategy": "bump"
+    },
+    {
+      "description": "The hosted /api/hues endpoint in apps/v1 bundles the source of the @sanity/ui 2 it pins to generate its themes, which @sanity/themer-legacy replicates byte-for-byte, so its theme generation stack stays where it is",
+      "matchFileNames": ["apps/v1/package.json"],
+      "matchPackageNames": ["@sanity/color", "@sanity/ui"],
+      "enabled": false
+    }
+  ]
 }

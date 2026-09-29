@@ -7,7 +7,7 @@
     "build": "next build",
     "prebuild:edge": "rimraf edge-utils",
     "build:edge": "node scripts/buildEdgeUtils.mjs",
-    "build:snippets": "node scripts/compileCodeSnippets.mjs && oxfmt utils/snippets.ts",
+    "build:snippets": "node scripts/compileCodeSnippets.mjs && prettier --write utils/snippets.ts",
     "predev": "pnpm run build:edge",
     "dev": "PORT=3001 next dev",
     "start": "next start",
@@ -51,5 +51,9 @@
     "typescript": "5.4.2",
     "@edge-runtime/vm": "^5.0.0",
     "vitest": "catalog:"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }

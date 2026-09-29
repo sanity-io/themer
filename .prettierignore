@@ -1,0 +1,20 @@
+.vercel
+.next
+edge-utils
+public/favicon.svg
+.cache
+.vercel
+.turbo
+.sanity
+apps/*/.next
+apps/*/build
+apps/*/dist
+examples/*/.next
+examples/*/build
+examples/*/dist
+packages/*/dist
+pnpm-lock.yaml
+# The moved package and the Storybook keep sanity-io/ui's formatting until the
+# repository moves to oxfmt
+apps/storybook
+packages/themer-legacy

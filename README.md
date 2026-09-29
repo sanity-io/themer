@@ -95,8 +95,7 @@ Storybook resolves `@sanity/themer-legacy` to its TypeScript source through the 
 | `pnpm test`         | Unit tests (`@sanity/themer-legacy` and `apps/v1`) |
 | `pnpm test:browser` | Storybook browser tests (Chromium via Playwright)  |
 | `pnpm lint`         | Lint + type-check (oxlint)                         |
-| `pnpm format`       | Format with oxfmt                                  |
-| `pnpm knip`         | Unused files / dependencies / exports              |
+| `pnpm format`       | Format with prettier                               |
 | `pnpm changeset`    | Add a changeset for a release                      |
 
 ## Contributing & releasing

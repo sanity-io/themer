@@ -26,9 +26,11 @@ Standard scripts live in the root `package.json` (`lint`, `test`, `build`,
   predates; everything else applies to it as well. Run `pnpm lint:fix` to
   auto-fix issues when possible. Suppressions use `oxlint-disable-next-line`
   comments.
-- `pnpm knip` runs [knip](https://knip.dev) (config in `knip.jsonc`, also a CI
-  job) with `--treat-config-hints-as-errors`, so stale knip config fails too.
-  Anything only used within its own module should not be exported.
+- `pnpm format` formats with prettier (`.prettierrc.cjs`), like `main` did
+  before this repository took on sanity-io/ui's tooling; `.prettierignore`
+  leaves out `packages/themer-legacy` and `apps/storybook`, which keep
+  sanity-io/ui's formatting. The prettier workflow formats `main` after each
+  push.
 - `packages/themer-legacy` is built with [tsdown](https://tsdown.dev) via
   `@sanity/tsdown-config`. Its package.json `exports` resolve to the
   TypeScript source for every tool in the workspace; the publishable dist
@@ -65,7 +67,7 @@ Standard scripts live in the root `package.json` (`lint`, `test`, `build`,
   previews need the Vercel project's `NEXT_PUBLIC_SANITY_*` environment
   variables in `apps/v1/.env.local`.
 - Releases are managed with Changesets (`.changeset/config.json` matches
-  sanity-io/ui's): run `pnpm changeset` to add a changeset to a PR that should
+  sanity-io/ui's, except that it formats with prettier): run `pnpm changeset` to add a changeset to a PR that should
   trigger a release. Merging to `main` opens/updates a "Version Packages" PR,
   and merging that publishes to npm from `.github/workflows/release.yml`
   (npm trusted publishing, OIDC) under the `latest` dist-tag.

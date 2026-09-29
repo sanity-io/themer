@@ -3,7 +3,7 @@
 
 /** @import {Options} from 'prettier' */
 
-import {writeFile} from 'node:fs/promises'
+import { writeFile } from 'node:fs/promises'
 
 import JSON5 from 'json5'
 import * as parserBabel from 'prettier/plugins/babel'
@@ -127,7 +127,10 @@ const cases = []
 for (const [id, placeholders, snippet, format = 'typescript'] of snippets) {
   console.group('prettier')
   // oxlint-disable-next-line no-await-in-loop
-  const formatted = await prettier.format(snippet, format === 'json' ? jsonOptions : options)
+  const formatted = await prettier.format(
+    snippet,
+    format === 'json' ? jsonOptions : options,
+  )
   let code = formatted.trim()
   console.log(code)
   console.groupEnd()
@@ -150,7 +153,9 @@ for (const [id, placeholders, snippet, format = 'typescript'] of snippets) {
   const { length } = placeholders
   const argsString = getArgs(length)
   const callback = `(${getArgs(length)}) => \`${code}\``
-  overloads.push(`export function snippet(id: ${JSON5.stringify(id)}): (${argsString}) => string`)
+  overloads.push(
+    `export function snippet(id: ${JSON5.stringify(id)}): (${argsString}) => string`,
+  )
   const template = `
   case ${JSON5.stringify(id)}:
     return ${callback}

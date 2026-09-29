@@ -58,14 +58,14 @@ If it still matches, delete whatever it finds. The setup snippets Themer used to
 
 pnpm workspace for the hosted Themer ([themer.sanity.build](https://themer.sanity.build)) and [`@sanity/themer-legacy`](packages/themer-legacy), the package that replicates it.
 
-| Package                                              | Description                                                                          |
-| ---------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [`@sanity/themer-legacy`](packages/themer-legacy)    | The hosted Themer's theme generator as an npm package, and a Studio tool to edit its themes |
+| Package                                           | Description                                                                                 |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [`@sanity/themer-legacy`](packages/themer-legacy) | The hosted Themer's theme generator as an npm package, and a Studio tool to edit its themes |
 
-| App                                | Description                                                                      |
-| ---------------------------------- | -------------------------------------------------------------------------------- |
+| App                                | Description                                                                                                 |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | [`apps/v1`](apps/v1)               | [themer.sanity.build](https://themer.sanity.build) (Next.js), including the deprecated `/api/hues` endpoint |
-| [`apps/storybook`](apps/storybook) | Storybook for `@sanity/themer-legacy` ([localhost:6006](http://localhost:6006) via `pnpm dev`) |
+| [`apps/storybook`](apps/storybook) | Storybook for `@sanity/themer-legacy` ([localhost:6006](http://localhost:6006) via `pnpm dev`)              |
 
 ### Requirements
 
@@ -89,15 +89,15 @@ Storybook resolves `@sanity/themer-legacy` to its TypeScript source through the 
 
 ### Common scripts
 
-| Script              | What it does                                                 |
-| ------------------- | ------------------------------------------------------------ |
-| `pnpm build`        | Build `@sanity/themer-legacy`                                |
-| `pnpm test`         | Unit tests (`@sanity/themer-legacy` and `apps/v1`)           |
-| `pnpm test:browser` | Storybook browser tests (Chromium via Playwright)            |
-| `pnpm lint`         | Lint + type-check (oxlint)                                   |
-| `pnpm format`       | Format with oxfmt                                            |
-| `pnpm knip`         | Unused files / dependencies / exports                        |
-| `pnpm changeset`    | Add a changeset for a release                                |
+| Script              | What it does                                       |
+| ------------------- | -------------------------------------------------- |
+| `pnpm build`        | Build `@sanity/themer-legacy`                      |
+| `pnpm test`         | Unit tests (`@sanity/themer-legacy` and `apps/v1`) |
+| `pnpm test:browser` | Storybook browser tests (Chromium via Playwright)  |
+| `pnpm lint`         | Lint + type-check (oxlint)                         |
+| `pnpm format`       | Format with oxfmt                                  |
+| `pnpm knip`         | Unused files / dependencies / exports              |
+| `pnpm changeset`    | Add a changeset for a release                      |
 
 ## Contributing & releasing
 

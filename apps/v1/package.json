@@ -19,7 +19,7 @@
     "@sanity/client": "6.15.11",
     "@sanity/color": "2.2.5",
     "@sanity/icons": "2.11.7",
-    "@sanity/themer": "0.1.0",
+    "@sanity/themer-legacy": "workspace:*",
     "@sanity/ui": "2.1.1",
     "@sanity/vision": "3.37.1",
     "history": "5.3.0",

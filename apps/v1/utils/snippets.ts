@@ -9,13 +9,13 @@ export function snippet(id: 'studio-config-create-theme'): (first: string) => st
 export function snippet(id) {
   switch (id) {
     case 'theme-import':
-      return (first: string) => `import {buildThemeFromUrl} from '@sanity/themer/legacy'
+      return (first: string) => `import {buildThemeFromUrl} from '@sanity/themer-legacy'
 
 const theme = buildThemeFromUrl(${first})`
 
     case 'studio-config':
       return (first: string) => `// 1. Add the import
-import {buildThemeFromUrl} from '@sanity/themer/legacy'
+import {buildThemeFromUrl} from '@sanity/themer-legacy'
 
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
@@ -35,7 +35,7 @@ export default defineConfig({
         first: string,
       ) => `// Read the hues out of the URL to tweak them in code, no need to change the URL
 
-import {createTheme, parseHuesFromUrl} from '@sanity/themer/legacy'
+import {createTheme, parseHuesFromUrl} from '@sanity/themer-legacy'
 import {defineConfig} from 'sanity'
 import {structureTool} from 'sanity/structure'
 

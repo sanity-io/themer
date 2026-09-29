@@ -347,9 +347,9 @@ importers:
       '@sanity/icons':
         specifier: 2.11.7
         version: 2.11.7(react@18.2.0)
-      '@sanity/themer':
-        specifier: 0.1.0
-        version: 0.1.0(@emotion/is-prop-valid@1.4.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+      '@sanity/themer-legacy':
+        specifier: workspace:*
+        version: link:../../packages/themer-legacy
       '@sanity/ui':
         specifier: 2.1.1
         version: 2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
@@ -4056,19 +4056,6 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  '@sanity/themer@0.1.0':
-    resolution: {integrity: sha512-TIcB8oS7WQmyZhBAuzbSA6dnYNdk9zubDom5di88H1hJNxBYbxuIZdIfjbNamYWDqwaRgMEtkRCoREMCUlYYQg==}
-    engines: {node: '>=20.19 <22 || >=22.12'}
-    peerDependencies:
-      react: ^19
-      sanity: ^6
-      styled-components: ^6
-    peerDependenciesMeta:
-      sanity:
-        optional: true
-      styled-components:
-        optional: true
-
   '@sanity/tsdown-config@0.28.2':
     resolution: {integrity: sha512-yY9sjJNiEJH+DQm9Mc78P99AqHiku1ZXNogGDNp4Ex+DxcyGXCMnM0QRqp/MfXMcSNISBEirn5S6HVrHJt08TA==}
     engines: {node: ^22.18.0 || ^24.11.0 || >=26.0.0}
@@ -4118,14 +4105,6 @@ packages:
       react: ^18
       react-dom: ^18
       react-is: ^18
-      styled-components: ^5.2 || ^6
-
-  '@sanity/ui@3.5.0':
-    resolution: {integrity: sha512-V3uDrE5DLIwkOQIU5Rxa9DhUh/s4EySOzTqeQyM/4tPXBy5FtDGzWfvQXB06j/R0E8DCYlA+w73AC7EX2us38Q==}
-    engines: {node: '>=20.19 <22 || >=22.12'}
-    peerDependencies:
-      react: ^18 || >=19.0.0-0
-      react-dom: ^18 || >=19.0.0-0
       styled-components: ^5.2 || ^6
 
   '@sanity/ui@4.2.7':
@@ -6257,20 +6236,6 @@ packages:
       react-dom:
         optional: true
 
-  framer-motion@12.42.2:
-    resolution: {integrity: sha512-5XY9luDiu0oHfHBjpDthFMh0ES+122w6p/papSJBweMkO8Sn+PW2QaEgRblQBpWFnuvZS5qvarpt/hO2pjGmnw==}
-    peerDependencies:
-      '@emotion/is-prop-valid': '*'
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      '@emotion/is-prop-valid':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
-
   framer-motion@13.4.4:
     resolution: {integrity: sha512-lbsZO95NGbulo6apz70zEt6Vxf/anoRwQI2ECEc/EQYWO5CGbITtl7plDW8P/VXgXw6e8wrbhH4a9i+ygke0Mg==}
     peerDependencies:
@@ -7286,34 +7251,14 @@ packages:
   moment@2.30.1:
     resolution: {integrity: sha512-uEmtNhbDOrWPFS+hdjFCBfy9f2YoyzRpwcl+DqpC6taX21FzsTLQVbMV/W7PzNSX6x/bhC1zA3c2UQ5NzH6how==}
 
-  motion-dom@12.42.2:
-    resolution: {integrity: sha512-5gIMWLp/PycBtJRJWRgjxke5n8dlvkSn2DrYW+tr3XcqAZY1xZh6BJyooJXCM8wdfM7wfMjkBJNLge1CKPUIRA==}
-
   motion-dom@13.4.4:
     resolution: {integrity: sha512-z2qN3RUABSci4G7cr5aHTFhqPNCWJsEMMfRlzxqtANQsSCIbVJmHvMV288m5x7doEQBTYbRTWbKdztmquCn4Sw==}
-
-  motion-utils@12.39.0:
-    resolution: {integrity: sha512-8nadJAJjTtqRkmRF36FoJTrywK9nnFmnPwnSMyxaOCU7GDjN9RTMJIxx9De8ErM+vpPhMccr/6fo5WciyQLnMQ==}
 
   motion-utils@13.3.0:
     resolution: {integrity: sha512-sgSschQp7EseHInIlR7hBbMuvet3RA0bs28KPZAXJcGKGdxHGvh1ogpYDilY3bOMtl73EqPNmp75sAKHYPU5sg==}
 
   motion@10.17.0:
     resolution: {integrity: sha512-yBHYkrnJRiomuo88YQzG/v+nzFXKNlKw/Hh7uy8AV7nrYHnE07O6PEECShGbFmZvLrAOGc9qKzEDYmspDYjNWw==}
-
-  motion@12.42.2:
-    resolution: {integrity: sha512-Atvv11yUKIid41cVrRBDVX5m8tF8kNpExRSlbpt6APClhDjtwQssgFHhQzejxw7/7YYbjHSPKBVbHo05BuJT5Q==}
-    peerDependencies:
-      '@emotion/is-prop-valid': '*'
-      react: ^18.0.0 || ^19.0.0
-      react-dom: ^18.0.0 || ^19.0.0
-    peerDependenciesMeta:
-      '@emotion/is-prop-valid':
-        optional: true
-      react:
-        optional: true
-      react-dom:
-        optional: true
 
   motion@13.4.4:
     resolution: {integrity: sha512-lyX5kpAum2MmigecKWrFdIj3Sjn7pHek2EUrXY0WGZbOjJ1f5NfX0g4KQAb2Bp2EqL0a6dUzse11s1n7OYr5jg==}
@@ -12787,10 +12732,6 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  '@sanity/icons@5.2.2(react@18.2.0)':
-    dependencies:
-      react: 18.2.0
-
   '@sanity/icons@5.2.2(react@19.3.0)':
     dependencies:
       react: 19.3.0
@@ -13188,22 +13129,6 @@ snapshots:
     dependencies:
       yaml: 2.9.1
 
-  '@sanity/themer@0.1.0(@emotion/is-prop-valid@1.4.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))':
-    dependencies:
-      '@sanity/color': 3.0.8
-      '@sanity/icons': 5.2.2(react@18.2.0)
-      '@sanity/ui': 3.5.0(@emotion/is-prop-valid@1.4.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
-      react: 18.2.0
-      react-compiler-runtime: 1.0.0(react@18.2.0)
-      react-refractor: 4.0.0(react@18.2.0)
-      refractor: 5.0.0
-    optionalDependencies:
-      sanity: 3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2)
-      styled-components: 6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-    transitivePeerDependencies:
-      - '@emotion/is-prop-valid'
-      - react-dom
-
   '@sanity/tsdown-config@0.28.2(@babel/core@7.29.7(supports-color@8.1.1))(@rolldown/plugin-babel@0.2.4(@babel/core@7.29.7(supports-color@8.1.1))(@babel/runtime@7.29.7)(rolldown@1.2.11)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1)))(@types/node@24.19.0)(babel-plugin-macros@3.1.0)(oxc-transform-react@0.151.0)(tsdown@0.23.0(oxc-resolver@11.24.2)(publint@0.3.24)(typescript@7.0.2)(unrun@0.3.1))(typescript@7.0.2)(vite@8.3.1(@types/node@24.19.0)(esbuild@0.28.2)(jiti@2.7.0)(terser@5.51.2)(yaml@2.9.1))':
     dependencies:
       '@microsoft/api-extractor': 7.59.2(@types/node@24.19.0)
@@ -13266,24 +13191,6 @@ snapshots:
       react-is: 18.2.0
       react-refractor: 2.1.7(react@18.2.0)
       styled-components: 6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-
-  '@sanity/ui@3.5.0(@emotion/is-prop-valid@1.4.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))':
-    dependencies:
-      '@floating-ui/react-dom': 2.1.9(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      '@juggle/resize-observer': 3.4.0
-      '@sanity/color': 3.0.8
-      '@sanity/icons': 5.2.2(react@18.2.0)
-      csstype: 3.2.3
-      motion: 12.42.2(@emotion/is-prop-valid@1.4.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react: 18.2.0
-      react-compiler-runtime: 1.0.0(react@18.2.0)
-      react-dom: 18.2.0(react@18.2.0)
-      react-is: 19.3.0
-      react-refractor: 4.0.0(react@18.2.0)
-      styled-components: 6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      use-effect-event: 2.0.4(react@18.2.0)
-    transitivePeerDependencies:
-      - '@emotion/is-prop-valid'
 
   '@sanity/ui@4.2.7(react-dom@19.3.0(react@19.3.0))(react@19.3.0)(styled-components@6.5.3(css-to-react-native@3.2.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0))':
     dependencies:
@@ -15590,16 +15497,6 @@ snapshots:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
 
-  framer-motion@12.42.2(@emotion/is-prop-valid@1.4.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
-    dependencies:
-      motion-dom: 12.42.2
-      motion-utils: 12.39.0
-      tslib: 2.8.1
-    optionalDependencies:
-      '@emotion/is-prop-valid': 1.4.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-
   framer-motion@13.4.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
       motion-dom: 13.4.4
@@ -16588,15 +16485,9 @@ snapshots:
 
   moment@2.30.1: {}
 
-  motion-dom@12.42.2:
-    dependencies:
-      motion-utils: 12.39.0
-
   motion-dom@13.4.4:
     dependencies:
       motion-utils: 13.3.0
-
-  motion-utils@12.39.0: {}
 
   motion-utils@13.3.0: {}
 
@@ -16606,15 +16497,6 @@ snapshots:
       '@motionone/dom': 10.17.0
       '@motionone/types': 10.17.0
       '@motionone/utils': 10.17.0
-
-  motion@12.42.2(@emotion/is-prop-valid@1.4.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
-    dependencies:
-      framer-motion: 12.42.2(@emotion/is-prop-valid@1.4.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      tslib: 2.8.1
-    optionalDependencies:
-      '@emotion/is-prop-valid': 1.4.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
 
   motion@13.4.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
     dependencies:
@@ -17262,10 +17144,6 @@ snapshots:
       '@babel/runtime': 7.29.7
       react: 19.3.0
 
-  react-compiler-runtime@1.0.0(react@18.2.0):
-    dependencies:
-      react: 18.2.0
-
   react-compiler-runtime@1.0.0(react@19.3.0):
     dependencies:
       react: 19.3.0
@@ -17388,13 +17266,6 @@ snapshots:
       refractor: 3.6.0
       unist-util-filter: 2.0.3
       unist-util-visit-parents: 3.1.1
-
-  react-refractor@4.0.0(react@18.2.0):
-    dependencies:
-      react: 18.2.0
-      refractor: 5.0.0
-      unist-util-filter: 5.0.1
-      unist-util-visit-parents: 6.0.2
 
   react-refractor@4.0.0(react@19.3.0):
     dependencies:
@@ -18688,10 +18559,6 @@ snapshots:
   use-device-pixel-ratio@1.1.2(react@19.3.0):
     dependencies:
       react: 19.3.0
-
-  use-effect-event@2.0.4(react@18.2.0):
-    dependencies:
-      react: 18.2.0
 
   use-effect-event@2.0.4(react@19.3.0):
     dependencies:

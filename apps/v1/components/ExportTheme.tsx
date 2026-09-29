@@ -8,7 +8,7 @@ import {memo, useMemo} from 'react'
 import {shortenPresetSearchParams} from 'utils/shortenPresetSearchParams'
 import {snippet} from 'utils/snippets'
 
-const installCommand = 'npm install @sanity/themer'
+const installCommand = 'npm install @sanity/themer-legacy'
 
 interface Props {
   searchParams: URLSearchParams
@@ -17,7 +17,7 @@ interface Props {
   onClose: () => void
 }
 const ExportTheme = ({searchParams, open, onClose, onOpen}: Props) => {
-  // `@sanity/themer/legacy` reads the hues straight out of this URL, it never fetches it
+  // `@sanity/themer-legacy` reads the hues straight out of this URL, it never fetches it
   const themerUrl = useMemo(() => {
     const params = new URLSearchParams(searchParams)
     shortenPresetSearchParams(params)
@@ -66,8 +66,9 @@ const ExportTheme = ({searchParams, open, onClose, onOpen}: Props) => {
                 initial="sanity.config"
                 lead={
                   <>
-                    Install <FilenameBadge>@sanity/themer</FilenameBadge> and the same snippet works
-                    in every Studio, no matter how you build it. TypeScript typings are included.
+                    Install <FilenameBadge>@sanity/themer-legacy</FilenameBadge> and the same
+                    snippet works in every Studio, no matter how you build it. TypeScript typings
+                    are included.
                   </>
                 }
                 files={[

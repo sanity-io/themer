@@ -1,4 +1,4 @@
-import {createTheme, parseHuesFromUrl} from '@sanity/themer/legacy'
+import {createTheme, parseHuesFromUrl} from '@sanity/themer-legacy'
 import {
   Card,
   type CardTone,

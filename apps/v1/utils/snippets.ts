@@ -5,15 +5,11 @@ const dataset = JSON5.stringify(process.env.NEXT_PUBLIC_SANITY_DATASET)
 
 export function snippet(id: 'theme-import'): (first: string) => string
 export function snippet(id: 'studio-config'): (first: string) => string
-export function snippet(
-  id: 'studio-config-create-theme',
-): (first: string) => string
+export function snippet(id: 'studio-config-create-theme'): (first: string) => string
 export function snippet(id) {
   switch (id) {
     case 'theme-import':
-      return (
-        first: string,
-      ) => `import {buildThemeFromUrl} from '@sanity/themer-legacy'
+      return (first: string) => `import {buildThemeFromUrl} from '@sanity/themer-legacy'
 
 const theme = buildThemeFromUrl(${first})`
 
@@ -62,8 +58,4 @@ export default defineConfig({
   }
 }
 
-export const snippets = [
-  'theme-import',
-  'studio-config',
-  'studio-config-create-theme',
-] as const
+export const snippets = ['theme-import', 'studio-config', 'studio-config-create-theme'] as const

@@ -1,6 +1,6 @@
-import { Box, Grid, Skeleton } from '@sanity/ui'
-import { memo, type ReactNode } from 'react'
-import { styled } from 'styled-components'
+import {Box, Grid, Skeleton} from '@sanity/ui'
+import {memo, type ReactNode} from 'react'
+import {styled} from 'styled-components'
 
 interface Props {
   image: ReactNode
@@ -41,7 +41,7 @@ const ImageBox = styled(Box)`
 
 export default memo(ImageColorPaletteGrid)
 
-const ColorSkeleton = styled(Skeleton).attrs({ animated: true, radius: 1 })``
+const ColorSkeleton = styled(Skeleton).attrs({animated: true, radius: 1})``
 export const ImageColorPaletteGridSkeleton = () => (
   <ImageColorPaletteGrid
     image={<Skeleton animated radius={1} height="fill" />}

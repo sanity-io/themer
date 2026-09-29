@@ -1,21 +1,9 @@
-import {
-  Grid,
-  type ThemeColorSchemeKey,
-  ThemeProvider,
-  useElementRect,
-} from '@sanity/ui'
+import {Grid, type ThemeColorSchemeKey, ThemeProvider, useElementRect} from '@sanity/ui'
 import StudioPreview from 'components/StudioPreview'
-import { useMagicRouter } from 'hooks/useMagicRouter'
-import {
-  memo,
-  type TransitionStartFunction,
-  useCallback,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
-import { type StudioProviderProps, type WorkspaceOptions } from 'sanity'
-import { styled } from 'styled-components'
+import {useMagicRouter} from 'hooks/useMagicRouter'
+import {memo, type TransitionStartFunction, useCallback, useMemo, useRef, useState} from 'react'
+import {type StudioProviderProps, type WorkspaceOptions} from 'sanity'
+import {styled} from 'styled-components'
 
 export type View = 'default' | 'split'
 
@@ -76,9 +64,7 @@ export const StudioViewer = memo(function StudioViewer({
         // @TODO fix scroll on mobile split view
         style={{
           ['--ugly-hack-width' as any]:
-            uglyHackRef?.current && uglyHackRect?.width
-              ? `${uglyHackRect.width}px`
-              : undefined,
+            uglyHackRef?.current && uglyHackRect?.width ? `${uglyHackRect.width}px` : undefined,
           ['--ugly-hack-height' as any]:
             uglyHackRef?.current && uglyHackRect?.height
               ? `${
@@ -113,40 +99,33 @@ export const StudioViewer = memo(function StudioViewer({
   )
 })
 
-export const useStudioViewer = ({
-  startTransition,
-}: {
-  startTransition: TransitionStartFunction
-}) => {
+export const useStudioViewer = ({startTransition}: {startTransition: TransitionStartFunction}) => {
   const [view, setView] = useState<View>('default')
   const toggleView = useCallback(
-    () =>
-      startTransition(() =>
-        setView((view) => (view === 'default' ? 'split' : 'default')),
-      ),
+    () => startTransition(() => setView((view) => (view === 'default' ? 'split' : 'default'))),
     [startTransition],
   )
 
-  return { view, toggleView }
+  return {view, toggleView}
 }
 
 // Trying to impress Snorre with my 1337 CSS haxxor
 const ViewerGrid = styled(Grid)`
   position: relative;
   gap: 1px;
-  background-color: ${({ theme }) => theme.sanity.color.base.border};
+  background-color: ${({theme}) => theme.sanity.color.base.border};
   overflow: auto;
   height: 50vh;
   max-height: 50dvh;
 
-  @media (min-width: ${({ theme }) => theme.sanity.media[1]}px) {
+  @media (min-width: ${({theme}) => theme.sanity.media[1]}px) {
     height: 100vh;
     max-height: 100dvh;
   }
 
   & [data-ui='ToolScreen'] {
     /* @TODO investigate if it's safe to set overflow: hidden on these */
-    overflow: ${({ columns }) => (columns[1] === 1 ? 'visible' : 'hidden')};
+    overflow: ${({columns}) => (columns[1] === 1 ? 'visible' : 'hidden')};
   }
 
   & [data-ui='Navbar'] + div {

@@ -1,6 +1,6 @@
-import { COLOR_TINTS } from '@sanity/color'
-import { Card, type CardTone, Grid, Skeleton, Stack, Text } from '@sanity/ui'
-import { Label, RangeInput } from 'components/Sidebar.styles'
+import {COLOR_TINTS} from '@sanity/color'
+import {Card, type CardTone, Grid, Skeleton, Stack, Text} from '@sanity/ui'
+import {Label, RangeInput} from 'components/Sidebar.styles'
 import {
   type ChangeEventHandler,
   lazy,
@@ -13,11 +13,11 @@ import {
   useMemo,
   useState,
 } from 'react'
-import { styled } from 'styled-components'
-import { TONES } from 'utils/colors'
-import { isColor } from 'utils/parseHuesFromSearchParams'
-import { roundMidPoint } from 'utils/roundMidPoint'
-import type { Hue, Hues } from 'utils/types'
+import {styled} from 'styled-components'
+import {TONES} from 'utils/colors'
+import {isColor} from 'utils/parseHuesFromSearchParams'
+import {roundMidPoint} from 'utils/roundMidPoint'
+import type {Hue, Hues} from 'utils/types'
 
 import HueColorInput from './HueColorInput'
 
@@ -30,12 +30,7 @@ interface Props {
   startTransition: TransitionStartFunction
   prepareTransition: () => void
 }
-function HuesFields({
-  initialHues,
-  onChange,
-  startTransition,
-  prepareTransition,
-}: Props) {
+function HuesFields({initialHues, onChange, startTransition, prepareTransition}: Props) {
   return (
     <>
       {TONES.map((key) => {
@@ -73,9 +68,7 @@ const HueFields = memo(function HueFields({
   const [lightest, setLightest] = useState<string>(() => initialHue.lightest)
   const [mid, setMid] = useState<string>(() => initialHue.mid)
   const [darkest, setDarkest] = useState<string>(() => initialHue.darkest)
-  const [midPoint, setMidPoint] = useState<string>(
-    () => `${initialHue.midPoint}`,
-  )
+  const [midPoint, setMidPoint] = useState<string>(() => `${initialHue.midPoint}`)
   const midPointRounded = useMemo<Hue['midPoint']>(
     () => roundMidPoint(Number(midPoint)),
     [midPoint],
@@ -100,45 +93,41 @@ const HueFields = memo(function HueFields({
 
   const midChangeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event) => {
-      const { value } = event.target
+      const {value} = event.target
 
       setMid(value)
       prepareTransition()
       startTransition(() => {
         if (isColor(value)) {
-          setHue((hue) => ({ ...hue, mid: value }))
+          setHue((hue) => ({...hue, mid: value}))
         }
       })
     },
     [prepareTransition, startTransition],
   )
-  const lightestChangeHandler = useCallback<
-    ChangeEventHandler<HTMLInputElement>
-  >(
+  const lightestChangeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event) => {
-      const { value } = event.target
+      const {value} = event.target
 
       setLightest(value)
       prepareTransition()
       startTransition(() => {
         if (isColor(value)) {
-          setHue((hue) => ({ ...hue, lightest: value }))
+          setHue((hue) => ({...hue, lightest: value}))
         }
       })
     },
     [prepareTransition, startTransition],
   )
-  const darkestChangeHandler = useCallback<
-    ChangeEventHandler<HTMLInputElement>
-  >(
+  const darkestChangeHandler = useCallback<ChangeEventHandler<HTMLInputElement>>(
     (event) => {
-      const { value } = event.target
+      const {value} = event.target
 
       setDarkest(value)
       prepareTransition()
       startTransition(() => {
         if (isColor(value)) {
-          setHue((hue) => ({ ...hue, darkest: value }))
+          setHue((hue) => ({...hue, darkest: value}))
         }
       })
     },
@@ -150,7 +139,7 @@ const HueFields = memo(function HueFields({
     startTransition(() => {
       setHue((hue) => {
         if (hue.midPoint !== midPointRounded) {
-          return { ...hue, midPoint: midPointRounded }
+          return {...hue, midPoint: midPointRounded}
         }
         return hue
       })
@@ -164,7 +153,7 @@ const HueFields = memo(function HueFields({
     <Card padding={4} tone={tone} shadow={1}>
       <Stack space={4}>
         <Legend>{tone}</Legend>
-        <Grid columns={3} style={{ paddingLeft: 'env(safe-area-inset-left)' }}>
+        <Grid columns={3} style={{paddingLeft: 'env(safe-area-inset-left)'}}>
           <HueColorInput
             key="mid"
             label="Mid"
@@ -175,24 +164,16 @@ const HueFields = memo(function HueFields({
             key="lightest"
             label="Lightest"
             onChange={lightestChangeHandler}
-            value={
-              lightest.length === 4
-                ? `${lightest}${lightest.replace(/^#/, '')}`
-                : lightest
-            }
+            value={lightest.length === 4 ? `${lightest}${lightest.replace(/^#/, '')}` : lightest}
           />
           <HueColorInput
             key="darkest"
             label="Darkest"
             onChange={darkestChangeHandler}
-            value={
-              darkest.length === 4
-                ? `${darkest}${darkest.replace(/^#/, '')}`
-                : darkest
-            }
+            value={darkest.length === 4 ? `${darkest}${darkest.replace(/^#/, '')}` : darkest}
           />
         </Grid>
-        <Stack style={{ paddingLeft: 'env(safe-area-inset-left)' }} space={2}>
+        <Stack style={{paddingLeft: 'env(safe-area-inset-left)'}} space={2}>
           <label htmlFor={midRangeId}>
             <Label>Mid point ({midPointRounded})</Label>
           </label>
@@ -277,7 +258,7 @@ const HueFields = memo(function HueFields({
   )
 })
 
-const Legend = styled(Text).attrs({ size: 1, weight: 'medium' })`
+const Legend = styled(Text).attrs({size: 1, weight: 'medium'})`
   text-transform: capitalize;
   padding-left: env(safe-area-inset-left);
 `

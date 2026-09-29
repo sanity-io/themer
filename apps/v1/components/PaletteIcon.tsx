@@ -1,15 +1,10 @@
 // @TODO take a URL as input, output an SVG icon of what the palette looks like
 
-import { memo } from 'react'
+import {memo} from 'react'
 
 function PaletteIcon() {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 42 42"
-      height="1em"
-      width="1em"
-    >
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 42 42" height="1em" width="1em">
       <path
         fill="currentColor"
         fillRule="evenodd"

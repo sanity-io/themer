@@ -1,4 +1,4 @@
-import { defineType } from 'sanity'
+import {defineType} from 'sanity'
 
 export const crewMember = defineType({
   name: 'crewMember',
@@ -19,7 +19,7 @@ export const crewMember = defineType({
       name: 'person',
       title: 'Person',
       type: 'reference',
-      to: [{ type: 'person' }],
+      to: [{type: 'person'}],
     },
     {
       name: 'externalId',
@@ -40,7 +40,7 @@ export const crewMember = defineType({
       media: 'person.image',
     },
     prepare(selection) {
-      const { name, job, department, media } = selection
+      const {name, job, department, media} = selection
       return {
         title: name,
         subtitle: `${job} [${department}]`,

@@ -1,4 +1,4 @@
-import type { ColorHueConfig } from '@sanity/color'
+import type {ColorHueConfig} from '@sanity/color'
 import React from 'react'
 
 export interface Hue extends Omit<ColorHueConfig, 'title' | 'midPoint'> {

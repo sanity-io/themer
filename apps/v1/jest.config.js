@@ -3,7 +3,7 @@
 const nextJest = require('next/jest')
 
 // @ts-expect-error: next/jest is not callable
-const createJestConfig = nextJest({ dir: './' })
+const createJestConfig = nextJest({dir: './'})
 
 /**
  * @type {import('jest').Config}

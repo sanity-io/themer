@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "pnpm run build:edge",
     "build": "next build",
-    "prebuild:edge": "rimraf edge-utils",
     "build:edge": "node scripts/buildEdgeUtils.mjs",
     "build:snippets": "node scripts/compileCodeSnippets.mjs && oxfmt utils/snippets.ts",
-    "predev": "pnpm run build:edge",
     "dev": "PORT=3001 next dev",
     "format": "oxfmt . && pnpm run lint -- --fix",
     "lint": "next lint",
+    "prebuild": "pnpm run build:edge",
+    "prebuild:edge": "rimraf edge-utils",
+    "predev": "pnpm run build:edge",
     "start": "next start",
     "test": "jest"
   },

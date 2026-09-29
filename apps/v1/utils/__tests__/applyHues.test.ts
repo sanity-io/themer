@@ -1,5 +1,5 @@
-import { applyHues } from 'utils/applyHues'
-import type { Hues } from 'utils/types'
+import {applyHues} from 'utils/applyHues'
+import type {Hues} from 'utils/types'
 
 const defaultHues: Hues = {
   default: {
@@ -46,12 +46,12 @@ const mid = expect.any(String)
 const midPoint = expect.any(Number)
 test('produces valid defaults', () => {
   expect(applyHues({})).toEqual({
-    default: { lightest, darkest, mid, midPoint },
-    primary: { lightest, darkest, mid, midPoint },
-    transparent: { lightest, darkest, mid, midPoint },
-    positive: { lightest, darkest, mid, midPoint },
-    caution: { lightest, darkest, mid, midPoint },
-    critical: { lightest, darkest, mid, midPoint },
+    default: {lightest, darkest, mid, midPoint},
+    primary: {lightest, darkest, mid, midPoint},
+    transparent: {lightest, darkest, mid, midPoint},
+    positive: {lightest, darkest, mid, midPoint},
+    caution: {lightest, darkest, mid, midPoint},
+    critical: {lightest, darkest, mid, midPoint},
   })
 })
 
@@ -81,12 +81,12 @@ test('midPoints reset to 500 if not provided and mid changes', () => {
       defaultHues,
     ),
   ).toMatchObject({
-    default: { midPoint: 500 },
-    primary: { midPoint: 500 },
-    transparent: { midPoint: 500 },
-    positive: { midPoint: 500 },
-    caution: { midPoint: 500 },
-    critical: { midPoint: 500 },
+    default: {midPoint: 500},
+    primary: {midPoint: 500},
+    transparent: {midPoint: 500},
+    positive: {midPoint: 500},
+    caution: {midPoint: 500},
+    critical: {midPoint: 500},
   })
 })
 
@@ -122,12 +122,12 @@ test('midPoints are overridable even when reset', () => {
       defaultHues,
     ),
   ).toMatchObject({
-    default: { midPoint: 100 },
-    primary: { midPoint: 200 },
-    transparent: { midPoint: 300 },
-    positive: { midPoint: 600 },
-    caution: { midPoint: 700 },
-    critical: { midPoint: 800 },
+    default: {midPoint: 100},
+    primary: {midPoint: 200},
+    transparent: {midPoint: 300},
+    positive: {midPoint: 600},
+    caution: {midPoint: 700},
+    critical: {midPoint: 800},
   })
 })
 
@@ -172,11 +172,11 @@ test('undefined keys are handled', () => {
       },
     }),
   ).toMatchObject({
-    default: { lightest, darkest, mid, midPoint },
-    primary: { lightest, darkest, mid, midPoint },
-    transparent: { lightest, darkest, mid, midPoint },
-    positive: { lightest, darkest, mid, midPoint },
-    caution: { lightest, darkest, mid, midPoint },
-    critical: { lightest, darkest, mid, midPoint },
+    default: {lightest, darkest, mid, midPoint},
+    primary: {lightest, darkest, mid, midPoint},
+    transparent: {lightest, darkest, mid, midPoint},
+    positive: {lightest, darkest, mid, midPoint},
+    caution: {lightest, darkest, mid, midPoint},
+    critical: {lightest, darkest, mid, midPoint},
   })
 })

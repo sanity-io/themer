@@ -1,5 +1,5 @@
-import { MdLocalMovies as icon } from 'react-icons/md'
-import { defineType } from 'sanity'
+import {MdLocalMovies as icon} from 'react-icons/md'
+import {defineType} from 'sanity'
 
 export const movie = defineType({
   name: 'movie',
@@ -58,13 +58,13 @@ export const movie = defineType({
       name: 'castMembers',
       title: 'Cast Members',
       type: 'array',
-      of: [{ type: 'castMember' }],
+      of: [{type: 'castMember'}],
     },
     {
       name: 'crewMembers',
       title: 'Crew Members',
       type: 'array',
-      of: [{ type: 'crewMember' }],
+      of: [{type: 'crewMember'}],
     },
   ],
   preview: {
@@ -77,9 +77,7 @@ export const movie = defineType({
     },
     prepare(selection) {
       const year = selection.date && (selection.date as any).split('-')[0]
-      const cast = [selection.castName0, selection.castName1]
-        .filter(Boolean)
-        .join(', ')
+      const cast = [selection.castName0, selection.castName1].filter(Boolean).join(', ')
 
       return {
         title: `${selection.title} ${year ? `(${year})` : ''}`,

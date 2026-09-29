@@ -1,12 +1,12 @@
-import { InfoOutlineIcon } from '@sanity/icons'
-import { Box, Dialog, Stack } from '@sanity/ui'
+import {InfoOutlineIcon} from '@sanity/icons'
+import {Box, Dialog, Stack} from '@sanity/ui'
 import CopySnippetButton from 'components/CopySnippetButton'
-import { FilenameBadge, FilesViewer } from 'components/ExportTheme.styles'
-import { Button, Label } from 'components/Sidebar.styles'
+import {FilenameBadge, FilesViewer} from 'components/ExportTheme.styles'
+import {Button, Label} from 'components/Sidebar.styles'
 import JSON5 from 'json5'
-import { memo, useMemo } from 'react'
-import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
-import { snippet } from 'utils/snippets'
+import {memo, useMemo} from 'react'
+import {shortenPresetSearchParams} from 'utils/shortenPresetSearchParams'
+import {snippet} from 'utils/snippets'
 
 const installCommand = 'npm install @sanity/themer-legacy'
 
@@ -16,7 +16,7 @@ interface Props {
   onOpen: () => void
   onClose: () => void
 }
-const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
+const ExportTheme = ({searchParams, open, onClose, onOpen}: Props) => {
   // `@sanity/themer-legacy` reads the hues straight out of this URL, it never fetches it
   const themerUrl = useMemo(() => {
     const params = new URLSearchParams(searchParams)
@@ -25,10 +25,7 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
       params.delete('preset')
     }
     const search = decodeURIComponent(params.toString())
-    return new URL(
-      `/api/hues${search ? `?${search}` : ''}`,
-      location.origin,
-    ).toString()
+    return new URL(`/api/hues${search ? `?${search}` : ''}`, location.origin).toString()
   }, [searchParams])
   const themerUrlArg = useMemo(() => JSON5.stringify(themerUrl), [themerUrl])
 
@@ -69,9 +66,9 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
                 initial="sanity.config"
                 lead={
                   <>
-                    Install <FilenameBadge>@sanity/themer-legacy</FilenameBadge>{' '}
-                    and the same snippet works in every Studio, no matter how
-                    you build it. TypeScript typings are included.
+                    Install <FilenameBadge>@sanity/themer-legacy</FilenameBadge> and the same
+                    snippet works in every Studio, no matter how you build it. TypeScript typings
+                    are included.
                   </>
                 }
                 files={[
@@ -92,19 +89,16 @@ const ExportTheme = ({ searchParams, open, onClose, onOpen }: Props) => {
                 key="createTheme"
                 lead={
                   <>
-                    If you&#39;re quickly iterating on your theme in the comfort
-                    of your own Studio it&#39;s annoying to keep changing the
-                    URL to change your theme. You can read the hues out of the
-                    URL and tweak them in code instead.
+                    If you&#39;re quickly iterating on your theme in the comfort of your own Studio
+                    it&#39;s annoying to keep changing the URL to change your theme. You can read
+                    the hues out of the URL and tweak them in code instead.
                   </>
                 }
                 files={[
                   {
                     id: 'studio.config',
                     filename: 'sanity.config.ts',
-                    contents: snippet('studio-config-create-theme')(
-                      themerUrlArg,
-                    ),
+                    contents: snippet('studio-config-create-theme')(themerUrlArg),
                   },
                 ]}
               />

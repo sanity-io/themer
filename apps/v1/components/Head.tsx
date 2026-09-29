@@ -1,17 +1,17 @@
-import { useRootTheme } from '@sanity/ui'
+import {useRootTheme} from '@sanity/ui'
+import {NextStudioHead} from 'next-sanity/studio/head'
 import Head from 'next/head'
-import { NextStudioHead } from 'next-sanity/studio/head'
 import png from 'public/favicon.png'
 import svg from 'public/favicon.svg'
-import { memo } from 'react'
-import { createGlobalStyle, css } from 'styled-components'
+import {memo} from 'react'
+import {createGlobalStyle, css} from 'styled-components'
 
 interface NextStudioGlobalStyleProps {
   fontFamily?: string
   bg?: string
 }
 const NextStudioGlobalStyle = createGlobalStyle<NextStudioGlobalStyleProps>`
-${({ bg }) =>
+${({bg}) =>
   bg
     ? css`
         html {
@@ -29,7 +29,7 @@ body {
   overscroll-behavior: none;
   -webkit-font-smoothing: antialiased;
 }
-${({ fontFamily }) =>
+${({fontFamily}) =>
   fontFamily
     ? css`
         #__next {
@@ -43,9 +43,9 @@ const title = 'Themer | Create Sanity Studio v3 themes 🪄'
 interface Props {
   presetUrl: string
 }
-function CustomHead({ presetUrl }: Props) {
+function CustomHead({presetUrl}: Props) {
   const theme = useRootTheme().theme
-  const { light } = theme.color
+  const {light} = theme.color
 
   // @TODO find a better way to override the page title
   // Page title is overriden by StudioLayout
@@ -64,10 +64,7 @@ function CustomHead({ presetUrl }: Props) {
         <link rel="icon" type="image/svg" href={svg.src} />
         <link rel="icon" type="image/png" href={png.src} />
       </Head>
-      <NextStudioGlobalStyle
-        bg={light.default.base.bg}
-        fontFamily={theme.fonts.text.family}
-      />
+      <NextStudioGlobalStyle bg={light.default.base.bg} fontFamily={theme.fonts.text.family} />
     </>
   )
 }

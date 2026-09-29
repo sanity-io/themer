@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
-import type { Hue, Hues } from 'utils/types'
+import {useMemo} from 'react'
+import type {Hue, Hues} from 'utils/types'
 
 export function useMemoHues(hues: Hues): Hues {
   const defaultMemo = useMemoHue(hues.default)
@@ -19,22 +19,15 @@ export function useMemoHues(hues: Hues): Hues {
         caution: cautionMemo,
         critical: criticalMemo,
       }),
-    [
-      cautionMemo,
-      criticalMemo,
-      defaultMemo,
-      positiveMemo,
-      primaryMemo,
-      transparentMemo,
-    ],
+    [cautionMemo, criticalMemo, defaultMemo, positiveMemo, primaryMemo, transparentMemo],
   )
 
   return useMemo(() => JSON.parse(hashed), [hashed])
 }
 
-function useMemoHue({ mid, midPoint, lightest, darkest }: Hue): Hue {
+function useMemoHue({mid, midPoint, lightest, darkest}: Hue): Hue {
   const hashed = useMemo(
-    () => JSON.stringify({ mid, midPoint, lightest, darkest }),
+    () => JSON.stringify({mid, midPoint, lightest, darkest}),
     [darkest, lightest, mid, midPoint],
   )
 

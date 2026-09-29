@@ -1,6 +1,6 @@
-import { COLOR_TINTS, type ColorTints } from '@sanity/color'
-import { mix } from 'polished'
-import type { Hue, Hues } from 'utils/types'
+import {COLOR_TINTS, type ColorTints} from '@sanity/color'
+import {mix} from 'polished'
+import type {Hue, Hues} from 'utils/types'
 
 export function createTonesFromHues(hues: Hues): {
   default: ColorTints
@@ -38,7 +38,7 @@ export function createTintsFromHue(hue: Hue, title: string): ColorTints {
 // https://github.com/sanity-io/design/blob/804bf73dffb1c0ecb1c2e6758135784502768bfe/packages/%40sanity/color/scripts/generate.ts#L18-L58
 function getColorHex(
   // Making title optional as it's not used but we don't consider it a type error if it's provided
-  hue: Hue & { title?: string },
+  hue: Hue & {title?: string},
   tint: string,
 ): string {
   const tintNum = Number(tint)

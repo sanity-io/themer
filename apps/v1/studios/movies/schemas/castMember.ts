@@ -1,4 +1,4 @@
-import { defineType } from 'sanity'
+import {defineType} from 'sanity'
 
 export const castMember = defineType({
   name: 'castMember',
@@ -14,7 +14,7 @@ export const castMember = defineType({
       name: 'person',
       title: 'Actor',
       type: 'reference',
-      to: [{ type: 'person' }],
+      to: [{type: 'person'}],
     },
     {
       name: 'externalId',

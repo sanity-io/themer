@@ -18,9 +18,8 @@ on:
 
 permissions:
   contents: read
-  # Find the Vercel deployment of a commit, and Vercel's status while it builds
-  deployments: read
-  statuses: read
+  deployments: read # to find the Vercel deployment of a commit
+  statuses: read # to read Vercel's commit status while it builds
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}

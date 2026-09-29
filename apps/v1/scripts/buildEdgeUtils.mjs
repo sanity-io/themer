@@ -16,10 +16,7 @@ created by main.runService (cmd/esbuild/service.go:162)]
 // Maybe revisit this later if it becomes possible to run something like esbuild on the edge
 // https://github.com/stipsan/cv.cocody.dev/commit/afef6d2f2b96d38b402bc697b2191055f1a47bac#diff-fccff48487849dc062605deb0ddfffdc8702c1c90fdd65f22b257b69b254edb1
 
-// @TODO use stdout instead of using a temp file as proxy
-
 import esbuild from 'esbuild'
-import { replace } from 'esbuild-plugin-replace'
 import fs from 'node:fs/promises'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
@@ -45,15 +42,6 @@ const browserDefaults = {
   platform: 'browser',
   // @TODO figure out how to support source maps
   // sourcemap: 'external',
-  plugins: [
-    replace({
-      include: /@sanity\/ui\/src\/theme\/studioTheme\/theme\.ts$/,
-      delimiters: ['', ''],
-      values: {
-        'color,': '',
-      },
-    }),
-  ],
 }
 let target = 'node16'
 try {
@@ -70,56 +58,6 @@ const nodeDefaults = {
   ..._defaults,
   target,
   platform: 'node',
-}
-
-const buildTemplateString = async () => {
-  /**
-   * @type {import('esbuild').BuildOptions['stdin']}
-   **/
-  const stdin = {
-    contents: `
-  import {studioTheme} from './node_modules/@sanity/ui/src/core/_compat.ts'
-  import {themeFromHues} from 'utils/themeFromHues'
-  import {
-    multiply,
-    parseColor,
-    rgbToHex,
-    screen,
-    rgba,
-  } from './node_modules/@sanity/ui/src/theme/build/lib/color-fns/index.ts'
-  import {createColorTheme} from './node_modules/@sanity/ui/src/theme/build/_deprecated/color/factory.ts'
-
-export const hues = process.env.__HUES__
-  
-export const createTheme = (_hues) => themeFromHues({
-  createColorTheme,
-  hues: _hues, 
-  multiply,
-  parseColor,
-  rgba,
-  rgbToHex,
-  screen,
-  studioTheme,
-})
-
-export const theme = createTheme(hues)
-  `,
-    resolveDir,
-    loader: 'ts',
-  }
-
-  await esbuild.build({
-    ...browserDefaults,
-    minify: false,
-    outfile: path.resolve(resolveDir, 'edge-utils/themeFromHues.mjs'),
-    stdin,
-  })
-  await esbuild.build({
-    ...browserDefaults,
-    minify: true,
-    outfile: path.resolve(resolveDir, 'edge-utils/themeFromHues.min.mjs'),
-    stdin,
-  })
 }
 
 const buildSanityClient = async () => {
@@ -142,14 +80,19 @@ export {createClient}
   })
 }
 
+// Production Studios import the theme modules `/api/hues` serves, so these
+// have to stay byte-identical to what it has always served. Bundling them from
+// node_modules can't guarantee that, since the versions and the pnpm layout it
+// resolves change what esbuild emits, down to the paths the unminified build
+// prints as comments. Never edit or regenerate them.
+/** @param {string} file */
+const readFrozenTemplate = (file) =>
+  fs.readFile(path.resolve(resolveDir, 'frozen', file), 'utf8')
+
 const buildThemeFromHuesTemplate = async () => {
-  const prebuiltFromEsbuild = await fs.readFile(
-    path.resolve(resolveDir, 'edge-utils/themeFromHues.mjs'),
-    'utf8',
-  )
-  const minifiedPrebuiltFromEsbuild = await fs.readFile(
-    path.resolve(resolveDir, 'edge-utils/themeFromHues.min.mjs'),
-    'utf8',
+  const prebuiltFromEsbuild = await readFrozenTemplate('themeFromHues.mjs.txt')
+  const minifiedPrebuiltFromEsbuild = await readFrozenTemplate(
+    'themeFromHues.min.mjs.txt',
   )
 
   return esbuild.build({
@@ -179,10 +122,7 @@ export function themeFromHuesTemplate(hues, minified) {
   })
 }
 
-// Start by building the contents of the template string
-await buildTemplateString()
-
-// Next we need an edge-compatible version of the sanity client
+// We need an edge-compatible version of the sanity client
 await buildSanityClient()
 
 // Now we build the util used by the edge APIs that outputs ESM that can by dynamically imported

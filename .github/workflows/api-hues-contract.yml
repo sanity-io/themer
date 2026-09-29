@@ -18,6 +18,7 @@ on:
 
 permissions:
   contents: read
+  # Find the Vercel deployment of a commit, and Vercel's status while it builds
   deployments: read
   statuses: read
 

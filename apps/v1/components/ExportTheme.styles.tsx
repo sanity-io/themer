@@ -20,7 +20,7 @@ import { styled } from 'styled-components'
 type TransitionHeightProps = {
   children: ReactNode
 }
-const TransitionHeight = ({ children }: TransitionHeightProps) => {
+export const TransitionHeight = ({ children }: TransitionHeightProps) => {
   const [height, setHeight] = useState(0)
   const canOverflowClip = useRef(true)
   const animated = useRef<HTMLDivElement>(null)
@@ -60,7 +60,7 @@ const TransitionHeight = ({ children }: TransitionHeightProps) => {
 type TransitionMinHeightProps = {
   children: ReactNode
 }
-const TransitionMinHeight = ({ children }: TransitionMinHeightProps) => {
+export const TransitionMinHeight = ({ children }: TransitionMinHeightProps) => {
   const [minHeight, setMinHeight] = useState(0)
   const animated = useRef<HTMLDivElement>(null)
   const observed = useRef<HTMLDivElement>(null)

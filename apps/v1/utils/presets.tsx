@@ -63,7 +63,7 @@ const dugg: ThemePreset = {
   // https://cdn.sanity.io/images/32a3sayd/blog/994c6a38c71357af600e7d4856d5fd1340338f6c-2148x1611.png
 }
 
-const stereofidelic: ThemePreset = {
+export const stereofidelic: ThemePreset = {
   slug: 'stereofidelic',
   title: 'Stereofidelic',
   url: createApiUrl(
@@ -71,7 +71,7 @@ const stereofidelic: ThemePreset = {
   ),
 }
 
-const pixelart: ThemePreset = {
+export const pixelart: ThemePreset = {
   slug: 'pixel-art',
   title: 'Pixel Art',
   url: createApiUrl(
@@ -79,7 +79,7 @@ const pixelart: ThemePreset = {
   ),
 }
 
-const retrocolonial: ThemePreset = {
+export const retrocolonial: ThemePreset = {
   slug: 'retro-colonial',
   title: 'Retro Colonial',
   url: createApiUrl(

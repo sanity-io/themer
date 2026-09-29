@@ -53,11 +53,15 @@ Standard scripts live in the root `package.json` (`lint`, `test`, `build`,
   `pnpm --filter sanity-themer-storybook exec playwright install chromium`.
   The `tool/` stories import the plugin's internal components from
   `packages/themer-legacy/src/tool` by relative path.
-- `apps/v1` is frozen on `@sanity/ui` 2, React 18 and Next.js 14: its
-  `/api/hues` endpoint bundles the `@sanity/ui` 2 source it pins
-  (`scripts/buildEdgeUtils.mjs`, run by `prebuild`/`predev`), and those themes
-  are what `@sanity/themer-legacy` replicates. Don't upgrade its `@sanity/ui`
-  or `@sanity/color` (Renovate skips them). The rest of the workspace is on
+- `apps/v1` is frozen on `@sanity/ui` 2, React 18 and Next.js 14: its theme
+  previews run the `@sanity/ui` 2 source it pins, the same themes
+  `@sanity/themer-legacy` replicates. Don't upgrade its `@sanity/ui` or
+  `@sanity/color` (Renovate skips them). `/api/hues` serves the esbuild bundles
+  frozen in `apps/v1/frozen/` (wrapped by `scripts/buildEdgeUtils.mjs`, run by
+  `prebuild`/`predev`), byte for byte what production has always served. Never
+  edit or regenerate them: bundling them from `node_modules` again changes
+  their bytes whenever the resolved versions or the pnpm layout change, down to
+  the paths the `?min=0` build prints as comments. The rest of the workspace is on
   React 19, so unlike sanity-io/ui there are no workspace-wide `react`
   overrides, and dependency typings without their own `@types/react` resolve
   the hoisted React 19 one — in `apps/v1`, avoid spreading props typed with its

@@ -13,13 +13,7 @@
   // ESLint plugins loaded through oxlint's JS plugins support. Rules from these
   // plugins are enabled per-file-pattern in "overrides".
   "jsPlugins": ["eslint-plugin-storybook"],
-  "ignorePatterns": [
-    "**/.next/*",
-    "**/dist/*",
-    "**/edge-utils/*",
-    "**/etc/*",
-    "**/storybook-static/*"
-  ],
+  "ignorePatterns": ["**/.next/*", "**/dist/*", "**/edge-utils/*", "**/etc/*", "**/storybook-static/*"],
   "options": {
     "denyWarnings": true,
     "reportUnusedDisableDirectives": "error",

@@ -1,7 +1,7 @@
 // Uses requestIdleCallback to let the browser throttle the queue as needed, to reduce jank
 // Then uses startTransition to let React know other updates can interrupt this one
 
-import {startTransition as _startTransition, useCallback, useRef} from 'react'
+import { startTransition as _startTransition, useCallback, useRef } from 'react'
 
 const canIdle = typeof requestIdleCallback === 'function'
 
@@ -13,7 +13,7 @@ interface Props {
 }
 export function useIdleCallback(
   cb: (...args) => void,
-  {requestTransition, startTransition = _startTransition}: Props = {},
+  { requestTransition, startTransition = _startTransition }: Props = {},
 ) {
   // startTransition alone is not enough, so we use a combo of requestIdleCallback if available, with a fallback to requestAnimationFrame
   // This is to avoid as much main thread jank as we can, while keeping the color picking experience as fast and delightful as the hardware allows
@@ -28,7 +28,8 @@ export function useIdleCallback(
         cancelAnimationFrame(throttleRef.current)
       }
 
-      const scheduleTransition = () => void startTransition(() => void cb(...args))
+      const scheduleTransition = () =>
+        void startTransition(() => void cb(...args))
       if (canIdle) {
         throttleRef.current = requestIdleCallback(scheduleTransition)
       } else {

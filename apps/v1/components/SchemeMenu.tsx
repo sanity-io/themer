@@ -1,5 +1,13 @@
-import {DesktopIcon, MoonIcon, SelectIcon, SunIcon} from '@sanity/icons'
-import {Button, Card, Label, Menu, MenuButton, MenuItem, type ThemeColorSchemeKey} from '@sanity/ui'
+import { DesktopIcon, MoonIcon, SelectIcon, SunIcon } from '@sanity/icons'
+import {
+  Button,
+  Card,
+  Label,
+  Menu,
+  MenuButton,
+  MenuItem,
+  type ThemeColorSchemeKey,
+} from '@sanity/ui'
 import {
   type Dispatch,
   memo,
@@ -14,7 +22,11 @@ interface Props {
   setForceScheme: Dispatch<SetStateAction<ThemeColorSchemeKey>>
   startTransition: TransitionStartFunction
 }
-const SchemeMenu = ({forceScheme, startTransition, setForceScheme}: Props) => {
+const SchemeMenu = ({
+  forceScheme,
+  startTransition,
+  setForceScheme,
+}: Props) => {
   const [scheme, setScheme] = useState<ThemeColorSchemeKey>(forceScheme)
   const updateScheme = useCallback(
     (nextScheme: ThemeColorSchemeKey) => {
@@ -37,9 +49,21 @@ const SchemeMenu = ({forceScheme, startTransition, setForceScheme}: Props) => {
               paddingX={3}
               tone="default"
               mode="ghost"
-              icon={scheme === 'light' ? SunIcon : scheme === 'dark' ? MoonIcon : DesktopIcon}
+              icon={
+                scheme === 'light'
+                  ? SunIcon
+                  : scheme === 'dark'
+                    ? MoonIcon
+                    : DesktopIcon
+              }
               iconRight={SelectIcon}
-              text={scheme === 'light' ? 'Light' : scheme === 'dark' ? 'Dark' : 'System'}
+              text={
+                scheme === 'light'
+                  ? 'Light'
+                  : scheme === 'dark'
+                    ? 'Dark'
+                    : 'System'
+              }
             />
           }
           id="scheme"
@@ -78,7 +102,7 @@ const SchemeMenu = ({forceScheme, startTransition, setForceScheme}: Props) => {
             </Menu>
           }
           placement="bottom-start"
-          popover={{portal: true}}
+          popover={{ portal: true }}
         />
       </Card>
     </>

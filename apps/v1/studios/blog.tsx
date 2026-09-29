@@ -1,8 +1,8 @@
-import {BookIcon} from '@sanity/icons'
-import {visionTool} from '@sanity/vision'
-import {defineType, type WorkspaceOptions} from 'sanity'
-import {unsplashImageAsset} from 'sanity-plugin-asset-source-unsplash'
-import {deskTool} from 'sanity/desk'
+import { BookIcon } from '@sanity/icons'
+import { visionTool } from '@sanity/vision'
+import { defineType, type WorkspaceOptions } from 'sanity'
+import { deskTool } from 'sanity/desk'
+import { unsplashImageAsset } from 'sanity-plugin-asset-source-unsplash'
 import slugify from 'slugify'
 
 const projectId = process.env.NEXT_PUBLIC_SANITY_PROJECT_ID
@@ -21,7 +21,7 @@ const postType = defineType({
     {
       name: 'slug',
       type: 'slug',
-      options: {source: 'title'},
+      options: { source: 'title' },
       validation: (Rule) => {
         return Rule.required().custom(async (value: any) => {
           const currentSlug = value && value.current
@@ -33,7 +33,7 @@ const postType = defineType({
             return `Must be less than ${96} characters`
           }
 
-          if (currentSlug !== slugify(currentSlug, {lower: true})) {
+          if (currentSlug !== slugify(currentSlug, { lower: true })) {
             return 'Must be a valid slug'
           }
           return true
@@ -44,7 +44,7 @@ const postType = defineType({
       name: 'content',
       title: 'Content',
       type: 'array',
-      of: [{type: 'block'}],
+      of: [{ type: 'block' }],
     },
     {
       name: 'excerpt',
@@ -65,7 +65,7 @@ const postType = defineType({
       name: 'author',
       title: 'Author',
       type: 'reference',
-      to: [{type: 'author'}],
+      to: [{ type: 'author' }],
     },
   ],
 })
@@ -100,5 +100,5 @@ export const config: WorkspaceOptions = {
   projectId,
   dataset,
   plugins: [deskTool(), unsplashImageAsset(), visionTool()],
-  schema: {types},
+  schema: { types },
 }

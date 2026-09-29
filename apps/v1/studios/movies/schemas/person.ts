@@ -1,5 +1,5 @@
-import {MdPerson as icon} from 'react-icons/md'
-import {defineType} from 'sanity'
+import { MdPerson as icon } from 'react-icons/md'
+import { defineType } from 'sanity'
 
 export const person = defineType({
   name: 'person',
@@ -32,6 +32,6 @@ export const person = defineType({
     },
   ],
   preview: {
-    select: {title: 'name', media: 'image'},
+    select: { title: 'name', media: 'image' },
   },
 })

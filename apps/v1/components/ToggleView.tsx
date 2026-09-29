@@ -1,13 +1,13 @@
-import {CollapseIcon, SplitVerticalIcon} from '@sanity/icons'
-import {Button, Card, Label} from '@sanity/ui'
-import type {View} from 'components/StudioViewer'
-import {memo} from 'react'
+import { CollapseIcon, SplitVerticalIcon } from '@sanity/icons'
+import { Button, Card, Label } from '@sanity/ui'
+import type { View } from 'components/StudioViewer'
+import { memo } from 'react'
 
 interface Props {
   toggleView: () => void
   view: View
 }
-const ToggleView = ({toggleView, view}: Props) => {
+const ToggleView = ({ toggleView, view }: Props) => {
   return (
     <>
       <Label htmlFor="view" size={0} muted>

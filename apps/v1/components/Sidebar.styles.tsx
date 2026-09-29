@@ -1,6 +1,6 @@
-import {Button as UiButton, Text} from '@sanity/ui'
-import {transparentize} from 'polished'
-import {styled} from 'styled-components'
+import { Button as UiButton, Text } from '@sanity/ui'
+import { transparentize } from 'polished'
+import { styled } from 'styled-components'
 
 export const Button = styled(UiButton).attrs({
   fontSize: 1,
@@ -8,9 +8,9 @@ export const Button = styled(UiButton).attrs({
   paddingX: 3,
 })``
 
-export const Label = styled(Text).attrs({size: 0, weight: 'semibold'})``
+export const Label = styled(Text).attrs({ size: 0, weight: 'semibold' })``
 
-export const ColorInput = styled.input.attrs({type: 'color'})`
+export const ColorInput = styled.input.attrs({ type: 'color' })`
   cursor: pointer;
   box-sizing: border-box;
   background: var(--card-border-color);
@@ -23,7 +23,8 @@ export const ColorInput = styled.input.attrs({type: 'color'})`
   width: 8ch;
 
   &:hover {
-    box-shadow: 0 0 0 2px ${({theme}) => theme.sanity.color.card.hovered.border};
+    box-shadow: 0 0 0 2px
+      ${({ theme }) => theme.sanity.color.card.hovered.border};
   }
 
   &::-webkit-color-swatch-wrapper {
@@ -35,7 +36,7 @@ export const ColorInput = styled.input.attrs({type: 'color'})`
     border: 0 solid transparent;
     border-radius: 2px;
     box-shadow: inset 0 0 0 1px
-      ${({theme}) => transparentize(0.8, theme.sanity.color.card.enabled.fg)};
+      ${({ theme }) => transparentize(0.8, theme.sanity.color.card.enabled.fg)};
   }
 
   &::-moz-color-swatch {
@@ -43,11 +44,11 @@ export const ColorInput = styled.input.attrs({type: 'color'})`
     border: 0 solid transparent;
     border-radius: 2px;
     box-shadow: inset 0 0 0 1px
-      ${({theme}) => transparentize(0.8, theme.sanity.color.card.enabled.fg)};
+      ${({ theme }) => transparentize(0.8, theme.sanity.color.card.enabled.fg)};
   }
 `
 
-export const RangeInput = styled.input.attrs({type: 'range'})`
+export const RangeInput = styled.input.attrs({ type: 'range' })`
   accent-color: var(--card-focus-ring-color, currentColor);
   width: 100%;
 

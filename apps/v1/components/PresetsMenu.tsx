@@ -1,4 +1,4 @@
-import {MusicalNoteIcon} from '@heroicons/react/24/outline'
+import { MusicalNoteIcon } from '@heroicons/react/24/outline'
 import {
   DownloadIcon,
   DropIcon,
@@ -12,7 +12,17 @@ import {
   SelectIcon,
   UploadIcon,
 } from '@sanity/icons'
-import {Button, Card, Label, Menu, MenuButton, MenuItem, Tab, TabList, TabPanel} from '@sanity/ui'
+import {
+  Button,
+  Card,
+  Label,
+  Menu,
+  MenuButton,
+  MenuItem,
+  Tab,
+  TabList,
+  TabPanel,
+} from '@sanity/ui'
 import ExportTheme from 'components/ExportTheme'
 import ImportFromImage from 'components/ImportFromImage'
 import ShareTab from 'components/ShareTab'
@@ -24,10 +34,10 @@ import {
   useMemo,
   useState,
 } from 'react'
-import {styled} from 'styled-components'
-import {expandPresetSearchParams} from 'utils/expandPresetSearchParams'
-import {presets} from 'utils/presets'
-import type {Hues, ThemePreset} from 'utils/types'
+import { styled } from 'styled-components'
+import { expandPresetSearchParams } from 'utils/expandPresetSearchParams'
+import { presets } from 'utils/presets'
+import type { Hues, ThemePreset } from 'utils/types'
 
 const SynthWaveIcon = styled(MusicalNoteIcon)`
   transform: translateX(-1px);
@@ -36,7 +46,7 @@ const SynthWaveIcon = styled(MusicalNoteIcon)`
 `
 
 const TwLogo = (
-  <svg viewBox="0 0 52 31" style={{width: 16, transform: 'translateY(-3px)'}}>
+  <svg viewBox="0 0 52 31" style={{ width: 16, transform: 'translateY(-3px)' }}>
     <path
       fillRule="evenodd"
       clipRule="evenodd"
@@ -85,9 +95,9 @@ function PresetsMenu({
   setPreset,
   unstable_showParsedUrl,
 }: Props) {
-  const [open, setOpen] = useState<'import' | 'share' | 'export' | 'export-dialog' | false>(
-    'import',
-  )
+  const [open, setOpen] = useState<
+    'import' | 'share' | 'export' | 'export-dialog' | false
+  >('import')
 
   const searchParams = useMemo(() => {
     const searchParams = new URLSearchParams()
@@ -97,7 +107,7 @@ function PresetsMenu({
   }, [hues, selected.slug])
 
   return (
-    <Card style={{paddingLeft: 'env(safe-area-inset-left)'}}>
+    <Card style={{ paddingLeft: 'env(safe-area-inset-left)' }}>
       <Card paddingX={[4]} paddingBottom={2}>
         <Label htmlFor="presets" size={0} muted>
           Presets
@@ -120,7 +130,7 @@ function PresetsMenu({
             menu={
               <Menu>
                 {presets.map((_preset) => {
-                  const {slug, icon, title} = _preset
+                  const { slug, icon, title } = _preset
                   const active = selected.slug === slug
                   return (
                     <MenuItem
@@ -132,14 +142,16 @@ function PresetsMenu({
                       text={title}
                       tone={active ? 'primary' : 'default'}
                       selected={active}
-                      onClick={active ? undefined : () => void onChange(_preset)}
+                      onClick={
+                        active ? undefined : () => void onChange(_preset)
+                      }
                     />
                   )
                 })}
               </Menu>
             }
             placement="bottom-start"
-            popover={{portal: true}}
+            popover={{ portal: true }}
           />
         </Card>
       </Card>
@@ -155,7 +167,9 @@ function PresetsMenu({
               icon={UploadIcon}
               id="import-tab"
               label="Import"
-              onClick={() => setOpen((open) => (open === 'import' ? false : 'import'))}
+              onClick={() =>
+                setOpen((open) => (open === 'import' ? false : 'import'))
+              }
               selected={open === 'import'}
             />
             <Tab
@@ -164,7 +178,9 @@ function PresetsMenu({
               icon={PackageIcon}
               id="share-tab"
               label="Share"
-              onClick={() => setOpen((open) => (open === 'share' ? false : 'share'))}
+              onClick={() =>
+                setOpen((open) => (open === 'share' ? false : 'share'))
+              }
               selected={open === 'share'}
             />
             <Tab
@@ -173,12 +189,18 @@ function PresetsMenu({
               icon={DownloadIcon}
               id="export-tab"
               label="Export"
-              onClick={() => setOpen((open) => (open === 'export' ? false : 'export'))}
+              onClick={() =>
+                setOpen((open) => (open === 'export' ? false : 'export'))
+              }
               selected={open && open.startsWith('export')}
             />
           </TabList>
         </Card>
-        <TabPanel aria-labelledby="import-tab" hidden={open !== 'import'} id="import-panel">
+        <TabPanel
+          aria-labelledby="import-tab"
+          hidden={open !== 'import'}
+          id="import-panel"
+        >
           <Card marginY={2}>
             <ImportFromImage
               prepareTransition={prepareTransition}
@@ -188,7 +210,11 @@ function PresetsMenu({
             />
           </Card>
         </TabPanel>
-        <TabPanel aria-labelledby="share=panel" hidden={open !== 'share'} id="share-panel">
+        <TabPanel
+          aria-labelledby="share=panel"
+          hidden={open !== 'share'}
+          id="share-panel"
+        >
           <Card marginY={2}>
             <ShareTab searchParams={searchParams} />
           </Card>

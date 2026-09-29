@@ -1,5 +1,5 @@
-import {MdLocalPlay as icon} from 'react-icons/md'
-import {defineType} from 'sanity'
+import { MdLocalPlay as icon } from 'react-icons/md'
+import { defineType } from 'sanity'
 
 export const screening = defineType({
   name: 'screening',
@@ -17,14 +17,15 @@ export const screening = defineType({
       name: 'movie',
       title: 'Movie',
       type: 'reference',
-      to: [{type: 'movie'}],
+      to: [{ type: 'movie' }],
       description: 'Which movie are we screening',
     },
     {
       name: 'published',
       title: 'Published',
       type: 'boolean',
-      description: 'Set to published when this screening should be visible on a front-end',
+      description:
+        'Set to published when this screening should be visible on a front-end',
     },
     {
       name: 'location',
@@ -50,9 +51,9 @@ export const screening = defineType({
       type: 'string',
       options: {
         list: [
-          {title: 'Members', value: 'members'},
-          {title: 'Members and friends', value: 'friends'},
-          {title: 'Anyone', value: 'anyone'},
+          { title: 'Members', value: 'members' },
+          { title: 'Members and friends', value: 'friends' },
+          { title: 'Anyone', value: 'anyone' },
         ],
         layout: 'radio',
       },

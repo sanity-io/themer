@@ -1,8 +1,9 @@
-import type {ImagePalette} from 'sanity'
-import {suspend} from 'suspend-react'
+import type { ImagePalette } from 'sanity'
+import { suspend } from 'suspend-react'
 
 export type PaletteApi = `/api/palette/${string}/${string}/${string}`
-export type PaletteApiOnEdge = `/api/palette-on-edge/${string}/${string}/${string}`
+export type PaletteApiOnEdge =
+  `/api/palette-on-edge/${string}/${string}/${string}`
 export type PaletteApiResponse = ImagePalette | null
 export type PrettierApi = `/api/prettier?code=${string}`
 export type PrettierApiResponse = string

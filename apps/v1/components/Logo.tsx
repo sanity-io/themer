@@ -1,7 +1,7 @@
-import type {ThemeColorSchemeKey} from '@sanity/ui/theme'
-import {animate, spring} from 'motion'
-import {memo, useEffect, useRef} from 'react'
-import {styled} from 'styled-components'
+import type { ThemeColorSchemeKey } from '@sanity/ui/theme'
+import { animate, spring } from 'motion'
+import { memo, useEffect, useRef } from 'react'
+import { styled } from 'styled-components'
 
 const Svg = styled.svg`
   position: relative;
@@ -72,7 +72,7 @@ interface Props {
   spin: number
   transition: boolean
 }
-function Logo({spin, transition, scheme}: Props) {
+function Logo({ spin, transition, scheme }: Props) {
   const conicRainbowRef = useRef(null)
   const darkCircleRef = useRef(null)
 
@@ -82,7 +82,7 @@ function Logo({spin, transition, scheme}: Props) {
         const unit = 360 / 1.5
         const rewind = unit + Math.random() * unit
         const forward = unit + Math.random() * unit
-        const easing = spring({stiffness: 70})
+        const easing = spring({ stiffness: 70 })
         const animation = animate(
           conicRainbowRef.current,
           {
@@ -101,7 +101,7 @@ function Logo({spin, transition, scheme}: Props) {
             opacity: transition ? 0.7 : 0.6,
             scale: transition ? 1.08 : 1,
           },
-          {easing},
+          { easing },
         )
         return () => {
           if (transition) {

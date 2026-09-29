@@ -1,8 +1,11 @@
-import {type ThemeColorToneKey} from '@sanity/ui'
+import { type ThemeColorToneKey } from '@sanity/ui'
 import ImageColorPaletteGrid from 'components/ImageColorPaletteGrid'
-import {PaletteVariantsLayout, WarningMessage} from 'components/ImportFromImage.styles'
-import {Button, Label} from 'components/Sidebar.styles'
-import {parseToHsl, setLightness, setSaturation} from 'polished'
+import {
+  PaletteVariantsLayout,
+  WarningMessage,
+} from 'components/ImportFromImage.styles'
+import { Button, Label } from 'components/Sidebar.styles'
+import { parseToHsl, setLightness, setSaturation } from 'polished'
 import spacer from 'public/1x1.png'
 import {
   type Dispatch,
@@ -12,15 +15,15 @@ import {
   useCallback,
   useMemo,
 } from 'react'
-import {MediaPreview} from 'sanity'
-import {styled} from 'styled-components'
-import {suspend} from 'suspend-react'
-import {applyHues} from 'utils/applyHues'
-import {useFetcher} from 'utils/fetcher'
-import {getMidPointFromLuminance} from 'utils/getMidPointFromLuminance'
-import {defaultPreset} from 'utils/presets'
-import type {Hues, ThemePreset} from 'utils/types'
-import {widenColorHue} from 'utils/widenColorHue'
+import { MediaPreview } from 'sanity'
+import { styled } from 'styled-components'
+import { suspend } from 'suspend-react'
+import { applyHues } from 'utils/applyHues'
+import { useFetcher } from 'utils/fetcher'
+import { getMidPointFromLuminance } from 'utils/getMidPointFromLuminance'
+import { defaultPreset } from 'utils/presets'
+import type { Hues, ThemePreset } from 'utils/types'
+import { widenColorHue } from 'utils/widenColorHue'
 
 const imageSize = 75
 
@@ -53,7 +56,7 @@ const ColorMediaPreview = ({
   const subtitle = formatter.format(Math.max(population / 100, 0.0001))
   return (
     <MediaPreview
-      media={<ColorPreview style={{background: color}} />}
+      media={<ColorPreview style={{ background: color }} />}
       title={color}
       subtitle={dominant === color ? `${subtitle}, dominant` : subtitle}
       withRadius
@@ -61,7 +64,7 @@ const ColorMediaPreview = ({
   )
 }
 
-const PaletteImagePreview = ({url}: {url: string}) => {
+const PaletteImagePreview = ({ url }: { url: string }) => {
   suspend(async () => {
     const loadPromise = new Promise((resolve) => {
       const img = new Image()
@@ -133,7 +136,7 @@ function ImportFromSanityImageAsset({
       prepareTransition()
       startTransition(() =>
         // @TODO update the preset name and slug instead of re-using the existing one, show in the MenuDropdown that a custom preset is in effect
-        setPreset({...defaultPreset, url: `${url.pathname}${url.search}`}),
+        setPreset({ ...defaultPreset, url: `${url.pathname}${url.search}` }),
       )
     },
     [prepareTransition, setPreset, startTransition],
@@ -150,22 +153,43 @@ function ImportFromSanityImageAsset({
       const midPoint = getMidPointFromLuminance(_mid)
       const lightest = _lightest.replace(/^#/, '')
       const darkest = _darkest.replace(/^#/, '')
-      searchParams.set(tone, `${mid};${midPoint};lightest:${lightest};darkest:${darkest}`)
+      searchParams.set(
+        tone,
+        `${mid};${midPoint};lightest:${lightest};darkest:${darkest}`,
+      )
     },
     [],
   )
 
   const setPositiveCautionCritical = useCallback(
-    (url: URL, defaults: Hues, primary: string, lightest: string, darkest: string) => {
-      const {searchParams} = url
+    (
+      url: URL,
+      defaults: Hues,
+      primary: string,
+      lightest: string,
+      darkest: string,
+    ) => {
+      const { searchParams } = url
 
       const positiveMid = widenColorHue(defaults.positive.mid, primary, 12, 12)
       const cautionMid = widenColorHue(defaults.caution.mid, primary, 12, 12)
       const criticalMid = widenColorHue(defaults.critical.mid, primary, 12, 12)
 
-      setHueSearchParam('positive', positiveMid, lightest, darkest, searchParams)
+      setHueSearchParam(
+        'positive',
+        positiveMid,
+        lightest,
+        darkest,
+        searchParams,
+      )
       setHueSearchParam('caution', cautionMid, lightest, darkest, searchParams)
-      setHueSearchParam('critical', criticalMid, lightest, darkest, searchParams)
+      setHueSearchParam(
+        'critical',
+        criticalMid,
+        lightest,
+        darkest,
+        searchParams,
+      )
     },
     [setHueSearchParam],
   )
@@ -189,18 +213,25 @@ function ImportFromSanityImageAsset({
         transparentSaturation: number
       },
     ) => {
-      const {searchParams} = url
+      const { searchParams } = url
 
       const baseHsl = parseToHsl(muted)
-      const base = baseHsl.saturation > saturation ? setSaturation(saturation, muted) : muted
+      const base =
+        baseHsl.saturation > saturation
+          ? setSaturation(saturation, muted)
+          : muted
       const _lightest =
-        baseHsl.lightness < lightestLightness ? setLightness(lightestLightness, muted) : muted
+        baseHsl.lightness < lightestLightness
+          ? setLightness(lightestLightness, muted)
+          : muted
       const lightest =
         parseToHsl(_lightest).saturation > transparentSaturation
           ? setSaturation(transparentSaturation, _lightest)
           : _lightest
       const _darkest =
-        baseHsl.lightness > darkestLightness ? setLightness(darkestLightness, muted) : muted
+        baseHsl.lightness > darkestLightness
+          ? setLightness(darkestLightness, muted)
+          : muted
       const darkest =
         parseToHsl(_darkest).saturation > transparentSaturation
           ? setSaturation(transparentSaturation, _darkest)
@@ -213,7 +244,13 @@ function ImportFromSanityImageAsset({
 
       setHueSearchParam('default', base, lightest, darkest, searchParams)
       setHueSearchParam('primary', primaryMid, lightest, darkest, searchParams)
-      setHueSearchParam('transparent', transparent, lightest, darkest, searchParams)
+      setHueSearchParam(
+        'transparent',
+        transparent,
+        lightest,
+        darkest,
+        searchParams,
+      )
 
       setPositiveCautionCritical(url, defaults, primaryMid, lightest, darkest)
     },
@@ -443,7 +480,12 @@ function ImportFromSanityImageAsset({
       }
       label={<Label>Choose a variant</Label>}
     >
-      <Button text="Auto" style={{gridColumn: '1 / 3'}} tone="primary" onClick={autoTheme} />
+      <Button
+        text="Auto"
+        style={{ gridColumn: '1 / 3' }}
+        tone="primary"
+        onClick={autoTheme}
+      />
       {/* @TODO implement an experimental theme */}
       {/* <Button text="Experimental" tone="critical" onClick={experimentalTheme} /> */}
       <Button text="Muted" onClick={mutedTheme} />

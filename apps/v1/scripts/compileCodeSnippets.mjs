@@ -142,10 +142,12 @@ for (const [id, placeholders, snippet, format = 'typescript'] of snippets) {
   }
   console.group('template')
   console.group('dotenv')
-  code = code.replaceAll(projectId, '${projectId}').replaceAll(dataset, '${dataset}')
+  code = code
+    .replaceAll(projectId, '${projectId}')
+    .replaceAll(dataset, '${dataset}')
   console.groupEnd()
 
-  const {length} = placeholders
+  const { length } = placeholders
   const argsString = getArgs(length)
   const callback = `(${getArgs(length)}) => \`${code}\``
   overloads.push(`export function snippet(id: ${JSON5.stringify(id)}): (${argsString}) => string`)
@@ -174,7 +176,9 @@ export function snippet(id) {
   }
 }
 
-export const snippets = [${[...idsChecked].map((id) => JSON5.stringify(id)).join(',')}] as const;
+export const snippets = [${[...idsChecked]
+  .map((id) => JSON5.stringify(id))
+  .join(',')}] as const;
 `
 
 const dest = new URL('../utils/snippets.ts', import.meta.url)

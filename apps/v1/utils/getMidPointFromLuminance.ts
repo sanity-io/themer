@@ -1,4 +1,4 @@
-import {getLuminance} from 'polished'
+import { getLuminance } from 'polished'
 
 export function getMidPointFromLuminance(color: string): number {
   const luminance = getLuminance(color)

@@ -1,5 +1,5 @@
-import {ServerTiming} from 'utils/ServerTiming'
-import {expect, test} from 'vitest'
+import { expect, test } from 'vitest'
+import { ServerTiming } from 'utils/ServerTiming'
 
 const numberRegex = /([0-9]*[.])?[0-9]+/g
 
@@ -11,7 +11,9 @@ test('creates a Server-Timing header', async () => {
 
   const [dur] = serverTiming.toString().match(numberRegex)
   expect(Number(dur)).toBeGreaterThanOrEqual(90)
-  expect(`${serverTiming}`.replace(numberRegex, '100')).toMatchInlineSnapshot(`"handler;dur=100"`)
+  expect(`${serverTiming}`.replace(numberRegex, '100')).toMatchInlineSnapshot(
+    `"handler;dur=100"`,
+  )
 })
 
 test('Forgot to end a timing? We gotchu', async () => {

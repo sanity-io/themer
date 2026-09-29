@@ -1,10 +1,10 @@
-import {ShareIcon as _ShareIcon} from '@heroicons/react/24/outline'
-import {ClipboardIcon, LockIcon} from '@sanity/icons'
-import {Grid, Stack, useToast} from '@sanity/ui'
-import {Button, Label} from 'components/Sidebar.styles'
-import {memo, useLayoutEffect, useState} from 'react'
-import {styled} from 'styled-components'
-import {shortenPresetSearchParams} from 'utils/shortenPresetSearchParams'
+import { ShareIcon as _ShareIcon } from '@heroicons/react/24/outline'
+import { ClipboardIcon, LockIcon } from '@sanity/icons'
+import { Grid, Stack, useToast } from '@sanity/ui'
+import { Button, Label } from 'components/Sidebar.styles'
+import { memo, useLayoutEffect, useState } from 'react'
+import { styled } from 'styled-components'
+import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
 
 const ShareIcon = styled(_ShareIcon)`
   transform: translateX(-1px);
@@ -18,12 +18,12 @@ const text = 'Create Sanity Studio v3 Themes'
 interface Props {
   searchParams: URLSearchParams
 }
-const ShareTab = ({searchParams}: Props) => {
-  const {push: pushToast} = useToast()
+const ShareTab = ({ searchParams }: Props) => {
+  const { push: pushToast } = useToast()
   const [canShare, setCanShare] = useState(false)
 
   useLayoutEffect(() => {
-    if (navigator?.canShare?.({title, text, url: location.href})) {
+    if (navigator?.canShare?.({ title, text, url: location.href })) {
       setCanShare(true)
     }
   }, [])
@@ -44,7 +44,9 @@ const ShareTab = ({searchParams}: Props) => {
               }
               navigator.clipboard.writeText(
                 new URL(
-                  `${location.pathname}?${decodeURIComponent(params.toString())}`,
+                  `${location.pathname}?${decodeURIComponent(
+                    params.toString(),
+                  )}`,
                   location.origin,
                 ).toString(),
               )
@@ -71,7 +73,9 @@ const ShareTab = ({searchParams}: Props) => {
                     title,
                     text,
                     url: new URL(
-                      `${location.pathname}?${decodeURIComponent(params.toString())}`,
+                      `${location.pathname}?${decodeURIComponent(
+                        params.toString(),
+                      )}`,
                       location.origin,
                     ).toString(),
                   })

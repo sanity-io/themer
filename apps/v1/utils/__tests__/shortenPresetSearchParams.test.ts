@@ -1,7 +1,7 @@
-import {applyHuesFromPreset} from 'utils/applyHuesFromPreset'
-import {defaultPreset, getPreset} from 'utils/presets'
-import {shortenPresetSearchParams} from 'utils/shortenPresetSearchParams'
-import {expect, test} from 'vitest'
+import { expect, test } from 'vitest'
+import { applyHuesFromPreset } from 'utils/applyHuesFromPreset'
+import { defaultPreset, getPreset } from 'utils/presets'
+import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
 
 test('hoists duplicate lightest values', () => {
   let url = new URL(defaultPreset.url, 'http://localhost')
@@ -17,7 +17,10 @@ test('hoists duplicate lightest values', () => {
   searchParams.delete('lightest')
   searchParams.set('default', `${searchParams.get('default')};lightest:f00`)
   searchParams.set('primary', `${searchParams.get('primary')};lightest:f00`)
-  searchParams.set('transparent', `${searchParams.get('transparent')};lightest:f00`)
+  searchParams.set(
+    'transparent',
+    `${searchParams.get('transparent')};lightest:f00`,
+  )
   searchParams.set('positive', `${searchParams.get('positive')};lightest:f00`)
   // Give caution a different lightest, and don't modify critical
   searchParams.set('caution', `${searchParams.get('caution')};lightest:ff0`)
@@ -68,7 +71,10 @@ test('hoists duplicate darkest values', () => {
   searchParams.delete('darkest')
   searchParams.set('default', `${searchParams.get('default')};darkest:f00`)
   searchParams.set('primary', `${searchParams.get('primary')};darkest:f00`)
-  searchParams.set('transparent', `${searchParams.get('transparent')};darkest:f00`)
+  searchParams.set(
+    'transparent',
+    `${searchParams.get('transparent')};darkest:f00`,
+  )
   searchParams.set('positive', `${searchParams.get('positive')};darkest:f00`)
   // Give caution a different darkest, and don't modify critical
   searchParams.set('caution', `${searchParams.get('caution')};darkest:ff0`)
@@ -114,16 +120,17 @@ test('&lightest overrides preset values', () => {
   const lightest = '#effefe'
   expect(
     applyHuesFromPreset(
-      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost').searchParams,
+      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost')
+        .searchParams,
       searchParams,
     ),
   ).toMatchObject({
-    default: {lightest},
-    primary: {lightest},
-    transparent: {lightest},
-    positive: {lightest},
-    caution: {lightest},
-    critical: {lightest},
+    default: { lightest },
+    primary: { lightest },
+    transparent: { lightest },
+    positive: { lightest },
+    caution: { lightest },
+    critical: { lightest },
   })
 })
 
@@ -136,16 +143,17 @@ test('&darkest overrides preset values', () => {
   const darkest = '#264d61'
   expect(
     applyHuesFromPreset(
-      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost').searchParams,
+      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost')
+        .searchParams,
       searchParams,
     ),
   ).toMatchObject({
-    default: {darkest},
-    primary: {darkest},
-    transparent: {darkest},
-    positive: {darkest},
-    caution: {darkest},
-    critical: {darkest},
+    default: { darkest },
+    primary: { darkest },
+    transparent: { darkest },
+    positive: { darkest },
+    caution: { darkest },
+    critical: { darkest },
   })
 })
 
@@ -158,10 +166,11 @@ test('midPoint 500 is optional', () => {
   expect(searchParams.get('primary')).toBe('51b4d0')
   expect(
     applyHuesFromPreset(
-      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost').searchParams,
+      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost')
+        .searchParams,
       searchParams,
     ),
-  ).toMatchObject({primary: {mid: '#51b4d0', midPoint: 500}})
+  ).toMatchObject({ primary: { mid: '#51b4d0', midPoint: 500 } })
   searchParams.set('caution', 'fde047;300')
   shortenPresetSearchParams(searchParams)
   expect(decodeURIComponent(searchParams.toString())).toMatchInlineSnapshot(
@@ -170,10 +179,11 @@ test('midPoint 500 is optional', () => {
   expect(searchParams.get('caution')).toBe('fde047;300')
   expect(
     applyHuesFromPreset(
-      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost').searchParams,
+      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost')
+        .searchParams,
       searchParams,
     ),
-  ).toMatchObject({caution: {mid: '#fde047', midPoint: 300}})
+  ).toMatchObject({ caution: { mid: '#fde047', midPoint: 300 } })
 })
 
 test('hues that are equal to the preset are optional', () => {
@@ -181,19 +191,22 @@ test('hues that are equal to the preset are optional', () => {
     '?preset=dew&default=5e63b4;600&primary=d1a308;400&transparent=6c6fa7;500&positive=43D675;300&caution=fb9f24;400&critical=F03E2F;500',
   )
   shortenPresetSearchParams(searchParams)
-  expect(decodeURIComponent(searchParams.toString())).toMatchInlineSnapshot(`"preset=dew"`)
+  expect(decodeURIComponent(searchParams.toString())).toMatchInlineSnapshot(
+    `"preset=dew"`,
+  )
   expect(
     applyHuesFromPreset(
-      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost').searchParams,
+      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost')
+        .searchParams,
       searchParams,
     ),
   ).toMatchObject({
-    default: {mid: `#5e63b4`, midPoint: 600},
-    primary: {mid: '#d1a308', midPoint: 400},
-    transparent: {mid: '#6c6fa7', midPoint: 500},
-    positive: {mid: '#43d675', midPoint: 300},
-    caution: {mid: '#fb9f24', midPoint: 400},
-    critical: {mid: '#f03e2f', midPoint: 500},
+    default: { mid: `#5e63b4`, midPoint: 600 },
+    primary: { mid: '#d1a308', midPoint: 400 },
+    transparent: { mid: '#6c6fa7', midPoint: 500 },
+    positive: { mid: '#43d675', midPoint: 300 },
+    caution: { mid: '#fb9f24', midPoint: 400 },
+    critical: { mid: '#f03e2f', midPoint: 500 },
   })
 
   searchParams = new URLSearchParams(
@@ -205,16 +218,17 @@ test('hues that are equal to the preset are optional', () => {
   )
   expect(
     applyHuesFromPreset(
-      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost').searchParams,
+      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost')
+        .searchParams,
       searchParams,
     ),
   ).toMatchObject({
-    default: {mid: `#4e63b4`, midPoint: 600},
-    primary: {mid: '#d0a308', midPoint: 400},
-    transparent: {mid: '#5c6fa7', midPoint: 500},
-    positive: {mid: '#33d675', midPoint: 300},
-    caution: {mid: '#fb8f24', midPoint: 400},
-    critical: {mid: '#f02e2f', midPoint: 500},
+    default: { mid: `#4e63b4`, midPoint: 600 },
+    primary: { mid: '#d0a308', midPoint: 400 },
+    transparent: { mid: '#5c6fa7', midPoint: 500 },
+    positive: { mid: '#33d675', midPoint: 300 },
+    caution: { mid: '#fb8f24', midPoint: 400 },
+    critical: { mid: '#f02e2f', midPoint: 500 },
   })
 })
 
@@ -225,19 +239,22 @@ test('If hues are the same but midPoints have changed do not strip out the hue',
     '?preset=dew&default=5e63b4;600&primary=d1a308;400&transparent=6c6fa7;500&positive=43D675;300&caution=fb9f24;400&critical=F03E2F;500',
   )
   shortenPresetSearchParams(searchParams)
-  expect(decodeURIComponent(searchParams.toString())).toMatchInlineSnapshot(`"preset=dew"`)
+  expect(decodeURIComponent(searchParams.toString())).toMatchInlineSnapshot(
+    `"preset=dew"`,
+  )
   expect(
     applyHuesFromPreset(
-      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost').searchParams,
+      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost')
+        .searchParams,
       searchParams,
     ),
   ).toMatchObject({
-    default: {mid: `#5e63b4`, midPoint: 600},
-    primary: {mid: '#d1a308', midPoint: 400},
-    transparent: {mid: '#6c6fa7', midPoint: 500},
-    positive: {mid: '#43d675', midPoint: 300},
-    caution: {mid: '#fb9f24', midPoint: 400},
-    critical: {mid: '#f03e2f', midPoint: 500},
+    default: { mid: `#5e63b4`, midPoint: 600 },
+    primary: { mid: '#d1a308', midPoint: 400 },
+    transparent: { mid: '#6c6fa7', midPoint: 500 },
+    positive: { mid: '#43d675', midPoint: 300 },
+    caution: { mid: '#fb9f24', midPoint: 400 },
+    critical: { mid: '#f03e2f', midPoint: 500 },
   })
 
   searchParams = new URLSearchParams(
@@ -249,15 +266,16 @@ test('If hues are the same but midPoints have changed do not strip out the hue',
   )
   expect(
     applyHuesFromPreset(
-      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost').searchParams,
+      new URL(getPreset(searchParams.get('preset')).url, 'http://localhost')
+        .searchParams,
       searchParams,
     ),
   ).toMatchObject({
-    default: {mid: `#5e63b4`, midPoint: 500},
-    primary: {mid: '#d1a308', midPoint: 300},
-    transparent: {mid: '#6c6fa7', midPoint: 400},
-    positive: {mid: '#43d675', midPoint: 200},
-    caution: {mid: '#fb9f24', midPoint: 300},
-    critical: {mid: '#f03e2f', midPoint: 400},
+    default: { mid: `#5e63b4`, midPoint: 500 },
+    primary: { mid: '#d1a308', midPoint: 300 },
+    transparent: { mid: '#6c6fa7', midPoint: 400 },
+    positive: { mid: '#43d675', midPoint: 200 },
+    caution: { mid: '#fb9f24', midPoint: 300 },
+    critical: { mid: '#f03e2f', midPoint: 400 },
   })
 })

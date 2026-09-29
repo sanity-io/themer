@@ -7,15 +7,15 @@
 
 // Removes search params that match defaults specified in the preset
 
-import {applyHues} from 'utils/applyHues'
-import {TONES} from 'utils/colors'
-import {parseHuesFromSearchParams} from 'utils/parseHuesFromSearchParams'
-import {getPreset} from 'utils/presets'
-import {stringifyColorSearchParam} from 'utils/stringifyColorSearchParam'
+import { applyHues } from 'utils/applyHues'
+import { TONES } from 'utils/colors'
+import { parseHuesFromSearchParams } from 'utils/parseHuesFromSearchParams'
+import { getPreset } from 'utils/presets'
+import { stringifyColorSearchParam } from 'utils/stringifyColorSearchParam'
 
 export function shortenPresetSearchParams(searchParams: URLSearchParams) {
   const preset = getPreset(searchParams.get('preset'))
-  const {searchParams: presetParams} = new URL(preset.url, 'http://localhost')
+  const { searchParams: presetParams } = new URL(preset.url, 'http://localhost')
   // Get defaults from preset
   const defaults = applyHues(parseHuesFromSearchParams(presetParams))
 
@@ -30,14 +30,20 @@ export function shortenPresetSearchParams(searchParams: URLSearchParams) {
       if (!lightestMap.has(hues[tone].lightest)) {
         lightestMap.set(hues[tone].lightest, 0)
       } else {
-        lightestMap.set(hues[tone].lightest, lightestMap.get(hues[tone].lightest) + 1)
+        lightestMap.set(
+          hues[tone].lightest,
+          lightestMap.get(hues[tone].lightest) + 1,
+        )
       }
     }
     if (defaults[tone].darkest !== hues[tone].darkest) {
       if (!darkestMap.has(hues[tone].darkest)) {
         darkestMap.set(hues[tone].darkest, 0)
       } else {
-        darkestMap.set(hues[tone].darkest, darkestMap.get(hues[tone].darkest) + 1)
+        darkestMap.set(
+          hues[tone].darkest,
+          darkestMap.get(hues[tone].darkest) + 1,
+        )
       }
     }
   }
@@ -82,13 +88,18 @@ export function shortenPresetSearchParams(searchParams: URLSearchParams) {
     const shouldIncludeMidPoint =
       baseHue.mid !== hue.mid && hue.midPoint && hue.midPoint !== 500
         ? true
-        : baseHue.mid === hue.mid && baseHue.midPoint !== hue.midPoint && hue.midPoint !== 500
+        : baseHue.mid === hue.mid &&
+            baseHue.midPoint !== hue.midPoint &&
+            hue.midPoint !== 500
           ? true
           : baseHue.mid !== hue.mid && hue.midPoint !== 500
             ? true
-            : baseHue.mid === hue.mid && baseHue.midPoint !== 500 && hue.midPoint === 500
+            : baseHue.mid === hue.mid &&
+              baseHue.midPoint !== 500 &&
+              hue.midPoint === 500
     const param = [
-      (shouldIncludeMid || shouldIncludeMidPoint) && stringifyColorSearchParam(hue.mid),
+      (shouldIncludeMid || shouldIncludeMidPoint) &&
+        stringifyColorSearchParam(hue.mid),
       shouldIncludeMidPoint && hue.midPoint,
       shouldSkipLightest
         ? false

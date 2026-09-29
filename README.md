@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/81981/180262026-6b2c8243-8c47-4cac-84d
 Themer used to hand you an ESM URL to import straight into your Studio config:
 
 ```ts
-import {theme} from 'https://themer.sanity.build/api/hues?preset=verdant'
+import { theme } from 'https://themer.sanity.build/api/hues?preset=verdant'
 ```
 
 That endpoint keeps serving themes so existing Studios don't break, but it now logs a migration notice to the console on every load. The same colors are generated locally by [`@sanity/themer-legacy`](https://www.npmjs.com/package/@sanity/themer-legacy), with no network request and with TypeScript typings included:
@@ -19,9 +19,11 @@ npm install @sanity/themer-legacy
 ```
 
 ```ts
-import {buildThemeFromUrl} from '@sanity/themer-legacy'
+import { buildThemeFromUrl } from '@sanity/themer-legacy'
 
-const theme = buildThemeFromUrl('https://themer.sanity.build/api/hues?preset=verdant')
+const theme = buildThemeFromUrl(
+  'https://themer.sanity.build/api/hues?preset=verdant',
+)
 ```
 
 The URL is only a carrier for the hues, `buildThemeFromUrl` never fetches it. Keep using [themer.sanity.build](https://themer.sanity.build) to preview and tweak your theme, then paste the URL it gives you into `buildThemeFromUrl`.
@@ -56,14 +58,14 @@ If it still matches, delete whatever it finds. The setup snippets Themer used to
 
 pnpm workspace for the hosted Themer ([themer.sanity.build](https://themer.sanity.build)) and [`@sanity/themer-legacy`](packages/themer-legacy), the package that replicates it.
 
-| Package                                           | Description                                                                                 |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| [`@sanity/themer-legacy`](packages/themer-legacy) | The hosted Themer's theme generator as an npm package, and a Studio tool to edit its themes |
+| Package                                              | Description                                                                          |
+| ---------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| [`@sanity/themer-legacy`](packages/themer-legacy)    | The hosted Themer's theme generator as an npm package, and a Studio tool to edit its themes |
 
-| App                                | Description                                                                                                 |
-| ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| App                                | Description                                                                      |
+| ---------------------------------- | -------------------------------------------------------------------------------- |
 | [`apps/v1`](apps/v1)               | [themer.sanity.build](https://themer.sanity.build) (Next.js), including the deprecated `/api/hues` endpoint |
-| [`apps/storybook`](apps/storybook) | Storybook for `@sanity/themer-legacy` ([localhost:6006](http://localhost:6006) via `pnpm dev`)              |
+| [`apps/storybook`](apps/storybook) | Storybook for `@sanity/themer-legacy` ([localhost:6006](http://localhost:6006) via `pnpm dev`) |
 
 ### Requirements
 
@@ -87,15 +89,15 @@ Storybook resolves `@sanity/themer-legacy` to its TypeScript source through the 
 
 ### Common scripts
 
-| Script              | What it does                                       |
-| ------------------- | -------------------------------------------------- |
-| `pnpm build`        | Build `@sanity/themer-legacy`                      |
-| `pnpm test`         | Unit tests (`@sanity/themer-legacy` and `apps/v1`) |
-| `pnpm test:browser` | Storybook browser tests (Chromium via Playwright)  |
-| `pnpm lint`         | Lint + type-check (oxlint)                         |
-| `pnpm format`       | Format with oxfmt                                  |
-| `pnpm knip`         | Unused files / dependencies / exports              |
-| `pnpm changeset`    | Add a changeset for a release                      |
+| Script              | What it does                                                 |
+| ------------------- | ------------------------------------------------------------ |
+| `pnpm build`        | Build `@sanity/themer-legacy`                                |
+| `pnpm test`         | Unit tests (`@sanity/themer-legacy` and `apps/v1`)           |
+| `pnpm test:browser` | Storybook browser tests (Chromium via Playwright)            |
+| `pnpm lint`         | Lint + type-check (oxlint)                                   |
+| `pnpm format`       | Format with oxfmt                                            |
+| `pnpm knip`         | Unused files / dependencies / exports                        |
+| `pnpm changeset`    | Add a changeset for a release                                |
 
 ## Contributing & releasing
 

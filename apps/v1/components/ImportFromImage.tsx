@@ -1,8 +1,18 @@
-import {Card, Grid, Label as UiLabel, Stack, Text, TextInput} from '@sanity/ui'
-import {DiceIcon} from 'components/icons'
-import {SuspenseFallback, WarningMessage} from 'components/ImportFromImage.styles'
+import {
+  Card,
+  Grid,
+  Label as UiLabel,
+  Stack,
+  Text,
+  TextInput,
+} from '@sanity/ui'
+import { DiceIcon } from 'components/icons'
+import {
+  SuspenseFallback,
+  WarningMessage,
+} from 'components/ImportFromImage.styles'
 import ImportFromSanityImageAsset from 'components/ImportFromSanityImageAsset'
-import {Button, Label} from 'components/Sidebar.styles'
+import { Button, Label } from 'components/Sidebar.styles'
 import {
   type Dispatch,
   memo,
@@ -13,7 +23,7 @@ import {
   useMemo,
   useState,
 } from 'react'
-import type {ThemePreset} from 'utils/types'
+import type { ThemePreset } from 'utils/types'
 
 const exampleUrls = [
   'https://cdn.sanity.io/images/c8jibo38/themer-blog/f9cd353bf3077c93cadb2bc7eddcf5b9bfa8cfc9-2000x2666.jpg',
@@ -119,9 +129,9 @@ function ImportFromImage({
       const url = new URL(imageUrl)
       const [, , projectId, dataset, _id] = url.pathname.split('/')
       const id = `image-${_id.split('.').join('-')}`
-      return {projectId, dataset, id}
+      return { projectId, dataset, id }
     } catch {
-      return {projectId: '', dataset: '', id: ''}
+      return { projectId: '', dataset: '', id: '' }
     }
   }, [imageUrl])
 
@@ -148,7 +158,10 @@ function ImportFromImage({
             setUrl(event.currentTarget.value)
             prepareTransition()
 
-            if (!event.currentTarget.checkValidity() || !event.currentTarget.value) {
+            if (
+              !event.currentTarget.checkValidity() ||
+              !event.currentTarget.value
+            ) {
               setImageUrl('')
               return
             }
@@ -197,7 +210,14 @@ function ImportFromImage({
           }}
         />
         {unstable_showParsedUrl && (
-          <Card as="details" tone="transparent" muted radius={2} paddingX={2} paddingY={1}>
+          <Card
+            as="details"
+            tone="transparent"
+            muted
+            radius={2}
+            paddingX={2}
+            paddingY={1}
+          >
             <summary
               style={{
                 position: 'relative',

@@ -27,7 +27,7 @@ const jsonOptions = {
 
 const args = ['first', 'second']
 const dummies = {
-  // The URL is only a carrier for the hues, `@sanity/themer/legacy` parses it offline
+  // The URL is only a carrier for the hues, `@sanity/themer-legacy` parses it offline
   themerUrl: `/* @dummy */ ${JSON5.stringify('https://example.com/api/hues')}`,
 }
 const projectId = `'b5vzhxkv'`
@@ -38,7 +38,7 @@ const snippets = [
     'theme-import',
     ['themerUrl'],
     `
-import {buildThemeFromUrl} from '@sanity/themer/legacy'
+import {buildThemeFromUrl} from '@sanity/themer-legacy'
 
 const theme = buildThemeFromUrl(${dummies.themerUrl})
 `,
@@ -48,7 +48,7 @@ const theme = buildThemeFromUrl(${dummies.themerUrl})
     ['themerUrl'],
     `
 // 1. Add the import
-import {buildThemeFromUrl} from '@sanity/themer/legacy'
+import {buildThemeFromUrl} from '@sanity/themer-legacy'
 
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
@@ -70,7 +70,7 @@ export default defineConfig({
     ['themerUrl'],
     `// Read the hues out of the URL to tweak them in code, no need to change the URL
 
-import {createTheme, parseHuesFromUrl} from '@sanity/themer/legacy'
+import {createTheme, parseHuesFromUrl} from '@sanity/themer-legacy'
 import { defineConfig } from 'sanity'
 import { structureTool } from 'sanity/structure'
 

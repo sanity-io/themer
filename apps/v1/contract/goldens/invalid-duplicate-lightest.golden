@@ -1,0 +1,1 @@
+throw new TypeError("Duplicate params detected. Remove at least \"lightest:fff\" or \"lightest:000\" from the primary hue: \"2276fc;lightest:fff;lightest:000\"")

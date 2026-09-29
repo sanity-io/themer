@@ -8,12 +8,14 @@
     "prebuild:edge": "rimraf edge-utils",
     "build:edge": "node scripts/buildEdgeUtils.mjs",
     "build:snippets": "node scripts/compileCodeSnippets.mjs && prettier --write utils/snippets.ts",
+    "capture:goldens": "node contract/capture-goldens.mjs",
     "predev": "pnpm run build:edge",
     "dev": "PORT=3001 next dev",
     "format": "prettier --write . && pnpm run lint -- --fix",
     "lint": "next lint",
     "start": "next start",
-    "test": "jest"
+    "test": "jest",
+    "test:contract": "node --test --test-reporter=spec contract/api-hues.contract.mjs"
   },
   "prettier": {
     "semi": false,

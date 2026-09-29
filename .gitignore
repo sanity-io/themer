@@ -42,9 +42,6 @@ build/Release
 node_modules/
 jspm_packages/
 
-# TypeScript v1 declaration files
-typings/
-
 # TypeScript cache
 *.tsbuildinfo
 
@@ -106,7 +103,7 @@ dist
 .tern-port
 .vercel
 # Compiled stuff
-edge-utils
+/apps/v1/edge-utils
 
 .DS_Store
 .yalc

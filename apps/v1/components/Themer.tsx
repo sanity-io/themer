@@ -2,7 +2,7 @@ import {
   buildThemeFromUrl,
   createTheme,
   parseHuesFromUrl,
-} from '@sanity/themer/legacy'
+} from '@sanity/themer-legacy'
 import {
   Card,
   type CardTone,

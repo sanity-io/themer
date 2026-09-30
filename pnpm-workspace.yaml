@@ -19,7 +19,7 @@ catalogMode: prefer
 # serve the themes that `@sanity/themer-legacy` replicates byte-for-byte, so its
 # React 18 / Next.js 14 stack can't move to these ranges.
 catalog:
-  '@sanity/color': ^3.0.8
+  '@sanity/color': ^3.0.9
   '@sanity/tsdown-config': ^0.28.2
   '@sanity/ui': ^4.2.7
   '@types/node': ^24.19.0

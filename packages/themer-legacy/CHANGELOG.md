@@ -1,5 +1,11 @@
 # @sanity/themer-legacy
 
+## 0.2.2
+
+### Patch Changes
+
+- [#379](https://github.com/sanity-io/themer/pull/379) [`1a6e825`](https://github.com/sanity-io/themer/commit/1a6e825155f86494ee1c57eedae9a6f32729d710) Thanks [@stipsan](https://github.com/stipsan)! - `@sanity/themer-legacy` is now developed and published from the [sanity-io/themer](https://github.com/sanity-io/themer) repository (`packages/themer-legacy`), next to the hosted Themer service it replicates, instead of the sanity-io/ui monorepo. The package metadata points at the new repository; the generated themes and the public API are unchanged.
+
 ## 0.2.1
 
 ### Patch Changes

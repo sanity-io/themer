@@ -1,0 +1,1 @@
+throw new TypeError("Invalid number of params for the primary hue, it should be 4 or less instead it's 5: [\"2276fc\",\"500\",\"lightest:fff\",\"darkest:000\",\"fff\"]")

@@ -1,0 +1,2 @@
+# Byte-exact copies of what production serves: no line ending conversion
+*.golden -text linguist-generated

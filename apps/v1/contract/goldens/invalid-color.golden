@@ -1,0 +1,1 @@
+throw new TypeError("Invalid param for the primary hue: nothex")

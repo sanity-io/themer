@@ -21,7 +21,7 @@ catalogMode: prefer
 catalog:
   '@sanity/color': ^3.0.8
   '@sanity/tsdown-config': ^0.28.2
-  '@sanity/ui': ^4.2.7
+  '@sanity/ui': ^4.3.0
   '@types/node': ^24.19.0
   '@types/react': ^19.3.0
   '@types/react-dom': ^19.3.0

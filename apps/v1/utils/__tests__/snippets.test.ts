@@ -1,6 +1,6 @@
-import { describe, expect, test } from 'vitest'
 import JSON5 from 'json5'
 import {snippet, snippets} from 'utils/snippets'
+import {describe, expect, test} from 'vitest'
 
 // @TODO generate tests with inline snapshots instead, to workaround CI failing
 describe.skip('snippets', () => {

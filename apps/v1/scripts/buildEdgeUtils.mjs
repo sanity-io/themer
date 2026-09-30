@@ -16,10 +16,11 @@ created by main.runService (cmd/esbuild/service.go:162)]
 // Maybe revisit this later if it becomes possible to run something like esbuild on the edge
 // https://github.com/stipsan/cv.cocody.dev/commit/afef6d2f2b96d38b402bc697b2191055f1a47bac#diff-fccff48487849dc062605deb0ddfffdc8702c1c90fdd65f22b257b69b254edb1
 
-import esbuild from 'esbuild'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import {fileURLToPath} from 'node:url'
+
+import esbuild from 'esbuild'
 
 const resolveDir = path.resolve(fileURLToPath(import.meta.url), '../..')
 /**
@@ -29,7 +30,7 @@ const _defaults = {
   bundle: true,
   format: 'esm',
   minifySyntax: true,
-  outExtension: { '.js': '.mjs' },
+  outExtension: {'.js': '.mjs'},
 }
 /**
  * @type {import('esbuild').BuildOptions}
@@ -86,14 +87,11 @@ export {createClient}
 // resolves change what esbuild emits, down to the paths the unminified build
 // prints as comments. Never edit or regenerate them.
 /** @param {string} file */
-const readFrozenTemplate = (file) =>
-  fs.readFile(path.resolve(resolveDir, 'frozen', file), 'utf8')
+const readFrozenTemplate = (file) => fs.readFile(path.resolve(resolveDir, 'frozen', file), 'utf8')
 
 const buildThemeFromHuesTemplate = async () => {
   const prebuiltFromEsbuild = await readFrozenTemplate('themeFromHues.mjs.txt')
-  const minifiedPrebuiltFromEsbuild = await readFrozenTemplate(
-    'themeFromHues.min.mjs.txt',
-  )
+  const minifiedPrebuiltFromEsbuild = await readFrozenTemplate('themeFromHues.min.mjs.txt')
 
   return esbuild.build({
     ...nodeDefaults,

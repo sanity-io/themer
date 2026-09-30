@@ -8,10 +8,7 @@ const nextConfig = {
   // The workspace package resolves to its TypeScript source (package `exports`)
   transpilePackages: ['@sanity/themer-legacy'],
   images: {
-    remotePatterns: [
-      { hostname: 'cdn.sanity.io' },
-      { hostname: 'source.unsplash.com' },
-    ],
+    remotePatterns: [{hostname: 'cdn.sanity.io'}, {hostname: 'source.unsplash.com'}],
     formats: ['image/avif', 'image/webp'],
   },
 }

@@ -64,10 +64,7 @@
 
     // Prefer function components; error boundaries (getDerivedStateFromError /
     // componentDidCatch) remain allowed via allowErrorBoundary.
-    "react/prefer-function-component": [
-      "error",
-      { "allowErrorBoundary": true }
-    ],
+    "react/prefer-function-component": ["error", {"allowErrorBoundary": true}],
 
     // React Compiler: recommended rules live in `correctness`,
     // recommended-latest `void-use-memo` in `correctness`, and the
@@ -87,7 +84,7 @@
     "typescript/no-unnecessary-type-arguments": "error",
     "typescript/prefer-ts-expect-error": "error",
     "import/no-commonjs": "error",
-    "import/no-unassigned-import": ["error", { "allow": ["**/*.css"] }],
+    "import/no-unassigned-import": ["error", {"allow": ["**/*.css"]}],
     // Ban `export *` barrel files that pull in large module graphs; import
     // directly from the module that defines a symbol instead
     "oxc/no-barrel-file": "error",
@@ -120,7 +117,7 @@
     "react/exhaustive-deps": "error",
     "react/exhaustive-effect-dependencies": "off",
     "react/rules-of-hooks": "error",
-    "eslint/no-console": ["error", { "allow": ["warn", "error"] }],
+    "eslint/no-console": ["error", {"allow": ["warn", "error"]}],
     // Requires polyfills for older browsers
     "no-array-reverse": "off",
     "no-array-sort": "off",
@@ -179,10 +176,7 @@
       // The CSF rule set from eslint-plugin-storybook's flat/recommended config,
       // scoped to the same story file patterns (warn-level rules bumped to error
       // to match the rest of this config, which also runs with denyWarnings).
-      "files": [
-        "**/*.stories.{js,jsx,mjs,cjs,ts,tsx}",
-        "**/*.story.{js,jsx,mjs,cjs,ts,tsx}"
-      ],
+      "files": ["**/*.stories.{js,jsx,mjs,cjs,ts,tsx}", "**/*.story.{js,jsx,mjs,cjs,ts,tsx}"],
       "rules": {
         "storybook/await-interactions": "error",
         "storybook/context-in-play-function": "error",
@@ -204,7 +198,7 @@
       "rules": {
         "storybook/no-uninstalled-addons": [
           "error",
-          { "packageJsonLocation": "./apps/storybook/package.json" }
+          {"packageJsonLocation": "./apps/storybook/package.json"}
         ]
       }
     }

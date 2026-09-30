@@ -31,9 +31,7 @@ no build is required.
 Browser tests live in the Storybook app (`apps/storybook`) and use
 [Storybook's Vitest addon](https://storybook.js.org/docs/writing-tests/integrations/vitest-addon):
 every story is rendered as a smoke test in headless Chromium, and interaction tests are written
-as story [`play` functions](https://storybook.js.org/docs/writing-stories/play-function). Tests
-that need direct control over the browser (e.g. remounting the tool to reload a draft) live in
-`apps/storybook/tests/`.
+as story [`play` functions](https://storybook.js.org/docs/writing-stories/play-function).
 
 Install the Playwright-provided browser once with
 `pnpm --filter sanity-themer-storybook exec playwright install chromium`, then run

@@ -1,7 +1,6 @@
 import path from 'node:path'
 
 import {storybookTest} from '@storybook/addon-vitest/vitest-plugin'
-import viteReact from '@vitejs/plugin-react'
 import {playwright} from '@vitest/browser-playwright'
 import {defineConfig} from 'vitest/config'
 
@@ -27,26 +26,6 @@ export default defineConfig({
             provider: playwright(),
             instances: [{browser: 'chromium'}],
           },
-        },
-      },
-      {
-        // Browser tests that need direct control over the browser
-        plugins: [viteReact()],
-        test: {
-          name: 'tests',
-          include: ['tests/**/*.test.{ts,tsx}'],
-          // Keep maxWorkers identical to the storybook project — vitest
-          // refuses to schedule projects with different maxWorkers in the
-          // same sequence group
-          fileParallelism: false,
-          retry: process.env.CI ? 2 : 0,
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright(),
-            instances: [{browser: 'chromium'}],
-          },
-          setupFiles: ['./.storybook/vitest.setup.ts'],
         },
       },
     ],

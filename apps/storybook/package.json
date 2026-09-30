@@ -36,7 +36,6 @@
     "styled-components": "catalog:",
     "typescript": "catalog:",
     "vite": "catalog:",
-    "vitest": "catalog:",
-    "vitest-browser-react": "^2.3.0"
+    "vitest": "catalog:"
   }
 }

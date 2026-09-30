@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           cache: pnpm
           node-version: lts/*
@@ -52,7 +52,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           cache: pnpm
           node-version: lts/*
@@ -86,7 +86,7 @@ jobs:
           git config --global core.eol lf
       - uses: actions/checkout@v4
       - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           cache: pnpm
           node-version: ${{ matrix.node }}
@@ -106,7 +106,7 @@ jobs:
           # analyze every commit since last release
           fetch-depth: 0
       - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           cache: pnpm
           node-version: lts/*

@@ -53,9 +53,9 @@ Standard scripts live in the root `package.json` (`lint`, `test`, `build`,
   `pnpm --filter sanity-themer-storybook exec playwright install chromium`.
   The `tool/` stories import the plugin's internal components from
   `packages/themer-legacy/src/tool` by relative path.
-- `apps/v1` is frozen on `@sanity/ui` 2, React 18 and Next.js 14: its theme
-  previews run the `@sanity/ui` 2 source it pins, the same themes
-  `@sanity/themer-legacy` replicates. Don't upgrade its `@sanity/ui` or
+- `apps/v1` is frozen on `@sanity/ui` 2, React 18 and Next.js 14, which its UI
+  and the Sanity Studio v3 previews it embeds are built on (the themes it
+  previews come from `@sanity/themer-legacy`). Don't upgrade its `@sanity/ui` or
   `@sanity/color` (Renovate skips them). `/api/hues` serves the esbuild bundles
   frozen in `apps/v1/frozen/` (wrapped by `scripts/buildEdgeUtils.mjs`, run by
   `prebuild`/`predev`), byte for byte what production has always served. Never

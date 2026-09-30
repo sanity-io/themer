@@ -9,7 +9,7 @@
       "rangeStrategy": "bump"
     },
     {
-      "description": "apps/v1 previews themes with the source of the @sanity/ui 2 it pins, the stack its frozen /api/hues bundles were built from and @sanity/themer-legacy replicates byte-for-byte, so its theme generation stack stays where it is",
+      "description": "apps/v1's UI and embedded Studios are built on the @sanity/ui 2 it pins, the stack its frozen /api/hues bundles were built from and @sanity/themer-legacy replicates byte-for-byte, so it stays where it is",
       "matchFileNames": ["apps/v1/package.json"],
       "matchPackageNames": ["@sanity/color", "@sanity/ui"],
       "enabled": false

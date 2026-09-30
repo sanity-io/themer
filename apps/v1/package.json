@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "prebuild": "pnpm run build:edge",
     "build": "next build",
-    "prebuild:edge": "rimraf edge-utils",
     "build:edge": "node scripts/buildEdgeUtils.mjs",
-    "build:snippets": "node scripts/compileCodeSnippets.mjs && prettier --write utils/snippets.ts",
-    "predev": "pnpm run build:edge",
+    "build:snippets": "node scripts/compileCodeSnippets.mjs && oxfmt utils/snippets.ts",
+    "capture:goldens": "node contract/capture-goldens.mjs",
     "dev": "PORT=3001 next dev",
+    "prebuild": "pnpm run build:edge",
+    "prebuild:edge": "rimraf edge-utils",
+    "predev": "pnpm run build:edge",
     "start": "next start",
     "test": "vitest run",
-    "test:contract": "node --test --test-reporter=spec contract/api-hues.contract.mjs",
-    "capture:goldens": "node contract/capture-goldens.mjs"
+    "test:contract": "node --test --test-reporter=spec contract/api-hues.contract.mjs"
   },
   "dependencies": {
     "@heroicons/react": "2.1.3",

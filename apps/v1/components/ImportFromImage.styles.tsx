@@ -1,11 +1,11 @@
-import { WarningOutlineIcon } from '@sanity/icons'
-import { Box, Card, Grid, Skeleton, Stack, Text } from '@sanity/ui'
-import { ImageColorPaletteGridSkeleton } from 'components/ImageColorPaletteGrid'
-import { Label } from 'components/Sidebar.styles'
-import { memo, type ReactNode } from 'react'
-import { styled } from 'styled-components'
+import {WarningOutlineIcon} from '@sanity/icons'
+import {Box, Card, Grid, Skeleton, Stack, Text} from '@sanity/ui'
+import {ImageColorPaletteGridSkeleton} from 'components/ImageColorPaletteGrid'
+import {Label} from 'components/Sidebar.styles'
+import {memo, type ReactNode} from 'react'
+import {styled} from 'styled-components'
 
-const ButtonSkeleton = styled(Skeleton).attrs({ radius: 2, animated: true })`
+const ButtonSkeleton = styled(Skeleton).attrs({radius: 2, animated: true})`
   /* Magic number, equals 25px, the height of the variant buttons */
   padding-top: 1.563rem;
 `
@@ -44,7 +44,7 @@ export const SuspenseFallback = () => (
     paletteGrid={<ImageColorPaletteGridSkeleton />}
     label={<Label muted>Loading variants...</Label>}
   >
-    <ButtonSkeleton style={{ gridColumn: '1 / 3' }} />
+    <ButtonSkeleton style={{gridColumn: '1 / 3'}} />
     <ButtonSkeleton />
     <ButtonSkeleton />
     <ButtonSkeleton />
@@ -54,16 +54,16 @@ export const SuspenseFallback = () => (
   </PaletteVariantsLayout>
 )
 
-export const WarningMessage = ({ message }: { message: string }) => (
+export const WarningMessage = ({message}: {message: string}) => (
   <Card tone="caution">
     <Grid
       paddingX={1}
       paddingY={3}
       columns={2}
-      style={{ alignItems: 'center', gridTemplateColumns: '22px 1fr' }}
+      style={{alignItems: 'center', gridTemplateColumns: '22px 1fr'}}
     >
       <WarningOutlineIcon />
-      <Text size={0} style={{ wordBreak: 'break-word' }}>
+      <Text size={0} style={{wordBreak: 'break-word'}}>
         {message}
       </Text>
     </Grid>

@@ -4,25 +4,15 @@
 // for byte. The tests only send GET requests, to API_HUES_BASE_URL
 // (https://themer.sanity.build by default).
 import assert from 'node:assert/strict'
-import { createHash } from 'node:crypto'
-import { readdir, readFile } from 'node:fs/promises'
-import { test } from 'node:test'
-import { Worker } from 'node:worker_threads'
+import {createHash} from 'node:crypto'
+import {readdir, readFile} from 'node:fs/promises'
+import {test} from 'node:test'
+import {Worker} from 'node:worker_threads'
 
-import {
-  cases,
-  decode,
-  goldenUrl,
-  normalize,
-  PRODUCTION_URL,
-  request,
-} from './api-hues.mjs'
+import {cases, decode, goldenUrl, normalize, PRODUCTION_URL, request} from './api-hues.mjs'
 
-const baseUrl = (process.env.API_HUES_BASE_URL || PRODUCTION_URL).replace(
-  /\/+$/,
-  '',
-)
-const { origin } = new URL(baseUrl)
+const baseUrl = (process.env.API_HUES_BASE_URL || PRODUCTION_URL).replace(/\/+$/, '')
+const {origin} = new URL(baseUrl)
 
 // Browsers only evaluate a cross-origin module import that has a JavaScript
 // MIME type and CORS headers, and Studios revalidate the theme on every load
@@ -32,17 +22,8 @@ const HEADERS = {
   'content-type': 'application/javascript; charset=utf-8',
 }
 
-const HUES = [
-  'default',
-  'primary',
-  'transparent',
-  'positive',
-  'caution',
-  'critical',
-]
-const MIDPOINTS = new Set([
-  50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950,
-])
+const HUES = ['default', 'primary', 'transparent', 'positive', 'caution', 'critical']
+const MIDPOINTS = new Set([50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950])
 
 /**
  * The deprecation notice at the top of every theme module takes a different
@@ -52,20 +33,20 @@ const MIDPOINTS = new Set([
  * import can run after it has loaded, in a browser without `reportError`.
  */
 const environments = [
-  { name: 'server', logged: 2, reported: 0, listeners: [] },
+  {name: 'server', logged: 2, reported: 0, listeners: []},
   {
     name: 'browser, loading',
     logged: 1,
     reported: 1,
-    listeners: [{ type: 'load', options: { once: true } }],
+    listeners: [{type: 'load', options: {once: true}}],
   },
-  { name: 'browser, loaded', logged: 2, reported: 0, listeners: [] },
+  {name: 'browser, loaded', logged: 2, reported: 0, listeners: []},
 ]
 
 function evaluate(bytes, environment) {
   return new Promise((resolve, reject) => {
     const worker = new Worker(new URL('evaluate.mjs', import.meta.url), {
-      workerData: { bytes, environment },
+      workerData: {bytes, environment},
     })
     worker.once('message', (result) => {
       resolve(result)
@@ -82,8 +63,7 @@ function assertIdentical(served, golden) {
   if (served === golden) return
   let index = 0
   while (served[index] === golden[index]) index++
-  const excerpt = (text) =>
-    JSON.stringify(text.slice(Math.max(0, index - 100), index + 100))
+  const excerpt = (text) => JSON.stringify(text.slice(Math.max(0, index - 100), index + 100))
   assert.fail(
     `Differs from its golden at character ${index} (${served.length} served, ${golden.length} in the golden)\n` +
       `served: ${excerpt(served)}\ngolden: ${excerpt(golden)}`,
@@ -94,11 +74,7 @@ function assertHues(hues) {
   assert.deepEqual(Object.keys(hues), HUES)
   for (const name of HUES) {
     const hue = hues[name]
-    assert.deepEqual(
-      Object.keys(hue).sort(),
-      ['darkest', 'lightest', 'mid', 'midPoint'],
-      name,
-    )
+    assert.deepEqual(Object.keys(hue).sort(), ['darkest', 'lightest', 'mid', 'midPoint'], name)
     for (const key of ['lightest', 'darkest', 'mid']) {
       assert.match(hue[key], /^#(?:[0-9a-f]{3}){1,2}$/, `${name}.${key}`)
     }
@@ -106,27 +82,23 @@ function assertHues(hues) {
   }
 }
 
-function assertStudioImports(result, { name }) {
+function assertStudioImports(result, {name}) {
   assert.equal(result.importError, undefined, `${name}: the import throws`)
   assert.deepEqual(
     result.exports,
-    { createTheme: 'function', hues: 'object', theme: 'object' },
+    {createTheme: 'function', hues: 'object', theme: 'object'},
     `${name}: exports`,
   )
   assertHues(result.hues)
   // Studio reads `color`, `fonts` and `v2` off a custom theme, and swaps in
   // its own fonts for themes flagged `__themer`
-  const { theme } = result
+  const {theme} = result
   assert.equal(theme.__themer, true)
   assert.equal(typeof theme.color.light, 'object')
   assert.equal(typeof theme.color.dark, 'object')
   assert.equal(typeof theme.fonts, 'object')
   assert.equal(theme.v2, undefined)
-  assert.equal(
-    result.createThemeError,
-    undefined,
-    `${name}: createTheme throws`,
-  )
+  assert.equal(result.createThemeError, undefined, `${name}: createTheme throws`)
   assert.ok(
     JSON.stringify(result.recreated) === JSON.stringify(theme),
     'createTheme(hues) recreates theme',
@@ -135,23 +107,15 @@ function assertStudioImports(result, { name }) {
 }
 
 function assertNotice(result, environment) {
-  const { name } = environment
+  const {name} = environment
   assert.equal(result.logged.length, environment.logged, `${name}: logged`)
-  assert.equal(
-    result.reported.length,
-    environment.reported,
-    `${name}: reported`,
-  )
-  assert.deepEqual(
-    result.listeners,
-    environment.listeners,
-    `${name}: listeners`,
-  )
+  assert.equal(result.reported.length, environment.reported, `${name}: reported`)
+  assert.deepEqual(result.listeners, environment.listeners, `${name}: listeners`)
   const [notice] = result.logged[0]
   assert.match(notice, /is deprecated\.\nInstall @sanity\/themer-legacy/)
   for (const args of result.logged) assert.deepEqual(args, [notice], name)
   for (const error of result.reported) {
-    assert.deepEqual(error, { constructor: 'Error', message: notice }, name)
+    assert.deepEqual(error, {constructor: 'Error', message: notice}, name)
   }
 }
 
@@ -164,7 +128,7 @@ function describeResponse(response) {
 
 const responses = new Map(
   await Promise.all(
-    cases.map(async ({ name, query }) => [
+    cases.map(async ({name, query}) => [
       name,
       await request(baseUrl, query).catch((error) => error),
     ]),
@@ -178,7 +142,7 @@ function responseFor(name) {
 }
 
 test('every case has a golden, and every golden a case', async () => {
-  const names = cases.map(({ name }) => name)
+  const names = cases.map(({name}) => name)
   assert.equal(new Set(names).size, names.length, 'case names are unique')
   const goldens = (await readdir(new URL('goldens/', import.meta.url)))
     .filter((file) => file.endsWith('.golden'))
@@ -188,7 +152,7 @@ test('every case has a golden, and every golden a case', async () => {
 
 for (const testCase of cases) {
   const name = `${testCase.name}: GET /api/hues${testCase.query}`
-  test(name, { timeout: 60_000 }, async (t) => {
+  test(name, {timeout: 60_000}, async (t) => {
     const response = responseFor(testCase.name)
 
     await t.test('responds 200 with the headers Studios rely on', () => {
@@ -199,19 +163,17 @@ for (const testCase of cases) {
     })
 
     await t.test(
-      testCase.error
-        ? 'throws a TypeError when imported'
-        : 'exports what Studios import',
+      testCase.error ? 'throws a TypeError when imported' : 'exports what Studios import',
       async () => {
         const results = await Promise.all(
-          environments.map(({ name }) => evaluate(response.bytes, name)),
+          environments.map(({name}) => evaluate(response.bytes, name)),
         )
         for (const [index, environment] of environments.entries()) {
           const result = results[index]
           if (testCase.error) {
             assert.deepEqual(
               result.importError,
-              { constructor: 'TypeError', message: testCase.error },
+              {constructor: 'TypeError', message: testCase.error},
               environment.name,
             )
             assert.deepEqual(result.logged, [], environment.name)
@@ -230,23 +192,15 @@ for (const testCase of cases) {
   })
 }
 
-const { fixtures } = JSON.parse(
-  await readFile(
-    new URL('goldens/hosted-themes.json', import.meta.url),
-    'utf8',
-  ),
+const {fixtures} = JSON.parse(
+  await readFile(new URL('goldens/hosted-themes.json', import.meta.url), 'utf8'),
 )
 for (const fixture of fixtures) {
   const name = `resolves the theme captured on 2026-07-24: ${fixture.url}`
-  test(name, { timeout: 60_000 }, async () => {
-    const testCase = cases.find(
-      ({ query }) => `${PRODUCTION_URL}/api/hues${query}` === fixture.url,
-    )
+  test(name, {timeout: 60_000}, async () => {
+    const testCase = cases.find(({query}) => `${PRODUCTION_URL}/api/hues${query}` === fixture.url)
     assert.ok(testCase, `no case requests ${fixture.url}`)
-    const { hues, theme } = await evaluate(
-      responseFor(testCase.name).bytes,
-      'server',
-    )
+    const {hues, theme} = await evaluate(responseFor(testCase.name).bytes, 'server')
 
     assert.deepEqual(hues, fixture.hues)
     assert.equal(
@@ -256,9 +210,7 @@ for (const fixture of fixtures) {
       fixture.colorSha256,
     )
     for (const [path, expected] of Object.entries(fixture.samples)) {
-      const value = path
-        .split('.')
-        .reduce((node, key) => node[key], theme.color)
+      const value = path.split('.').reduce((node, key) => node[key], theme.color)
       assert.equal(value, expected, path)
     }
   })

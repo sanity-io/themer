@@ -9,7 +9,7 @@ https://user-images.githubusercontent.com/81981/180262026-6b2c8243-8c47-4cac-84d
 Themer used to hand you an ESM URL to import straight into your Studio config:
 
 ```ts
-import { theme } from 'https://themer.sanity.build/api/hues?preset=verdant'
+import {theme} from 'https://themer.sanity.build/api/hues?preset=verdant'
 ```
 
 That endpoint keeps serving themes so existing Studios don't break, but it now logs a migration notice to the console on every load. The same colors are generated locally by [`@sanity/themer-legacy`](https://www.npmjs.com/package/@sanity/themer-legacy), with no network request and with TypeScript typings included:
@@ -19,11 +19,9 @@ npm install @sanity/themer-legacy
 ```
 
 ```ts
-import { buildThemeFromUrl } from '@sanity/themer-legacy'
+import {buildThemeFromUrl} from '@sanity/themer-legacy'
 
-const theme = buildThemeFromUrl(
-  'https://themer.sanity.build/api/hues?preset=verdant',
-)
+const theme = buildThemeFromUrl('https://themer.sanity.build/api/hues?preset=verdant')
 ```
 
 The URL is only a carrier for the hues, `buildThemeFromUrl` never fetches it. Keep using [themer.sanity.build](https://themer.sanity.build) to preview and tweak your theme, then paste the URL it gives you into `buildThemeFromUrl`.
@@ -95,7 +93,7 @@ Storybook resolves `@sanity/themer-legacy` to its TypeScript source through the 
 | `pnpm test`         | Unit tests (`@sanity/themer-legacy` and `apps/v1`) |
 | `pnpm test:browser` | Storybook browser tests (Chromium via Playwright)  |
 | `pnpm lint`         | Lint + type-check (oxlint)                         |
-| `pnpm format`       | Format with prettier                               |
+| `pnpm format`       | Format with oxfmt                                  |
 | `pnpm changeset`    | Add a changeset for a release                      |
 
 ## Contributing & releasing

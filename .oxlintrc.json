@@ -169,14 +169,6 @@
       }
     },
     {
-      // main's prettier config, which stays as it is until the repository
-      // moves to oxfmt
-      "files": [".prettierrc.cjs"],
-      "rules": {
-        "import/no-commonjs": "off"
-      }
-    },
-    {
       // Build scripts report their progress on the console
       "files": ["apps/v1/scripts/**"],
       "rules": {

@@ -1,9 +1,9 @@
-import { themeFromHuesTemplate } from 'edge-utils/themeFromHuesTemplate.mjs'
-import type { NextRequest } from 'next/server'
-import { applyHuesFromPreset } from 'utils/applyHuesFromPreset'
-import { getPreset } from 'utils/presets'
-import { ServerTiming, type ServerTimingInstance } from 'utils/ServerTiming'
-import { ValidationError } from 'utils/ValidationError'
+import {themeFromHuesTemplate} from 'edge-utils/themeFromHuesTemplate.mjs'
+import type {NextRequest} from 'next/server'
+import {applyHuesFromPreset} from 'utils/applyHuesFromPreset'
+import {getPreset} from 'utils/presets'
+import {ServerTiming, type ServerTimingInstance} from 'utils/ServerTiming'
+import {ValidationError} from 'utils/ValidationError'
 
 export const config = {
   runtime: 'experimental-edge',
@@ -80,11 +80,11 @@ const headers = (serverTiming: ServerTimingInstance) => ({
 export default async function handler(req: NextRequest) {
   const serverTiming = new ServerTiming()
   serverTiming.start('handler')
-  const { searchParams } = new URL(req.url)
+  const {searchParams} = new URL(req.url)
 
   try {
     serverTiming.start('getPreset')
-    const { searchParams: presetParams } = new URL(
+    const {searchParams: presetParams} = new URL(
       getPreset(searchParams.get('preset')).url,
       'http://localhost',
     )
@@ -102,10 +102,9 @@ export default async function handler(req: NextRequest) {
     })
   } catch (err) {
     if (err instanceof ValidationError) {
-      return new Response(
-        `throw new TypeError(${JSON.stringify(err.message)})`,
-        { headers: headers(serverTiming) },
-      )
+      return new Response(`throw new TypeError(${JSON.stringify(err.message)})`, {
+        headers: headers(serverTiming),
+      })
     }
     throw err
   }

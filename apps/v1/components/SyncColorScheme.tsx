@@ -1,12 +1,12 @@
-import { type ThemeColorSchemeKey } from '@sanity/ui'
-import { memo, useLayoutEffect } from 'react'
-import { useColorScheme } from 'sanity'
+import {type ThemeColorSchemeKey} from '@sanity/ui'
+import {memo, useLayoutEffect} from 'react'
+import {useColorScheme} from 'sanity'
 
 interface Props {
   forceScheme: ThemeColorSchemeKey
 }
-const SyncColorScheme = ({ forceScheme }: Props) => {
-  const { scheme, setScheme } = useColorScheme()
+const SyncColorScheme = ({forceScheme}: Props) => {
+  const {scheme, setScheme} = useColorScheme()
 
   useLayoutEffect(() => {
     if (scheme !== forceScheme && setScheme) {

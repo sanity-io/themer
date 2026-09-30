@@ -1,10 +1,10 @@
-import { usePrefersDark } from '@sanity/ui'
+import {usePrefersDark} from '@sanity/ui'
 import Themer from 'components/Themer'
 import ThemerFallback from 'components/ThemerFallback'
-import { NextStudioNoScript } from 'next-sanity/studio'
-import { Suspense, useEffect, useState } from 'react'
-import { defaultPreset, presets } from 'utils/presets'
-import type { ThemePreset } from 'utils/types'
+import {NextStudioNoScript} from 'next-sanity/studio'
+import {Suspense, useEffect, useState} from 'react'
+import {defaultPreset, presets} from 'utils/presets'
+import type {ThemePreset} from 'utils/types'
 
 export default function Index() {
   const prefersDark = usePrefersDark()
@@ -19,12 +19,9 @@ export default function Index() {
       setUnstable_noAuthBoundary(false)
     }
 
-    const slug = initialParams.has('preset')
-      ? initialParams.get('preset')
-      : null
-    const inheritFrom =
-      presets.find((preset) => preset.slug === slug) || defaultPreset
-    const { pathname, searchParams } = new URL(inheritFrom.url, location.origin)
+    const slug = initialParams.has('preset') ? initialParams.get('preset') : null
+    const inheritFrom = presets.find((preset) => preset.slug === slug) || defaultPreset
+    const {pathname, searchParams} = new URL(inheritFrom.url, location.origin)
 
     const paramsAllowlist = [
       'lightest',
@@ -47,7 +44,7 @@ export default function Index() {
       `${pathname}?${decodeURIComponent(searchParams.toString())}`,
       location.origin,
     )
-    setPreset({ ...inheritFrom, url: url.toString() })
+    setPreset({...inheritFrom, url: url.toString()})
   }, [])
 
   if (!initialPreset)

@@ -1,4 +1,4 @@
-import { defineType } from 'sanity'
+import {defineType} from 'sanity'
 
 export const plotSummaries = defineType({
   title: 'Plot summaries',
@@ -14,7 +14,7 @@ export const plotSummaries = defineType({
       name: 'summaries',
       title: 'Summaries',
       type: 'array',
-      of: [{ type: 'plotSummary' }],
+      of: [{type: 'plotSummary'}],
     },
   ],
 })

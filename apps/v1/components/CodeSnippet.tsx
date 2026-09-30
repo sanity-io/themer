@@ -1,8 +1,8 @@
-import { ClipboardIcon } from '@sanity/icons'
-import { Box, Button, Card, Code, type CodeProps } from '@sanity/ui'
-import { useToast } from '@sanity/ui'
-import { memo } from 'react'
-import { styled } from 'styled-components'
+import {ClipboardIcon} from '@sanity/icons'
+import {Box, Button, Card, Code, type CodeProps} from '@sanity/ui'
+import {useToast} from '@sanity/ui'
+import {memo} from 'react'
+import {styled} from 'styled-components'
 
 const StyledCode = styled(Code)`
   padding-right: 2rem;
@@ -38,7 +38,7 @@ const CodeSnippet = ({
   toastTitle = 'Copied code to clipboard',
   language = 'ts',
 }: Props) => {
-  const { push: pushToast } = useToast()
+  const {push: pushToast} = useToast()
 
   return (
     <StyledBox>
@@ -58,13 +58,7 @@ const CodeSnippet = ({
           }}
         />
       </Tools>
-      <StyledCard
-        overflow="auto"
-        tone="transparent"
-        padding={4}
-        radius={2}
-        shadow={1}
-      >
+      <StyledCard overflow="auto" tone="transparent" padding={4} radius={2} shadow={1}>
         <StyledCode language={language}>{children}</StyledCode>
       </StyledCard>
     </StyledBox>

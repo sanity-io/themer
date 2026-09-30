@@ -1,0 +1,57 @@
+name: /api/hues contract
+
+# Production Studios import their theme from https://themer.sanity.build/api/hues,
+# so it has to keep serving exactly what it serves today (see AGENTS.md).
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    # Hourly, off the top of the hour, when GitHub delays scheduled runs the most
+    - cron: '17 * * * *'
+  workflow_dispatch:
+    inputs:
+      url:
+        description: Deployment to test instead of https://themer.sanity.build
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  deployments: read # to find the Vercel deployment of a commit
+  statuses: read # to read Vercel's commit status while it builds
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  api-hues-contract:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      PRODUCTION_URL: https://themer.sanity.build
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v7
+        with:
+          node-version: lts/*
+      # Pull requests test their Vercel preview, pushes to main test production
+      # once it serves the new deployment
+      - name: Wait for the Vercel deployment
+        id: deployment
+        if: github.event_name == 'pull_request' || github.event_name == 'push'
+        run: node apps/v1/contract/wait-for-deployment.mjs
+        env:
+          DEPLOYMENT_ENVIRONMENT: ${{ github.event_name == 'push' && 'Production' || 'Preview' }}
+          DEPLOYMENT_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
+          GITHUB_TOKEN: ${{ github.token }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+      - name: Test /api/hues
+        run: node --run test:contract
+        working-directory: apps/v1
+        env:
+          API_HUES_BASE_URL: ${{ steps.deployment.outputs.url || inputs.url || env.PRODUCTION_URL }}
+          VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}

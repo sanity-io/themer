@@ -4,10 +4,12 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "format": "oxfmt . --no-error-on-unmatched-pattern",
+    "knip": "knip --treat-config-hints-as-errors",
     "lint": "turbo run lint",
     "test": "turbo run test"
   },
   "devDependencies": {
+    "knip": "^6.38.0",
     "oxfmt": "^0.71.0",
     "turbo": "1.13.2"
   },

@@ -25,13 +25,7 @@ export function createTonesFromHues(hues: Hues): {
   }
 }
 
-/**
- * Generates the 50–950 tint ramp of a single hue, exactly like the hosted
- * Themer service did. `title` prefixes each tint's title (`"Primary 500"`).
- *
- * @internal
- */
-export function createTintsFromHue(hue: Hue, title: string): ColorTints {
+function createTintsFromHue(hue: Hue, title: string): ColorTints {
   const createTint = (tint: ColorTintKey): ColorTint => {
     return {
       title: `${title} ${tint}`,

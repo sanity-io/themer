@@ -20,7 +20,6 @@ catalogMode: prefer
 # React 18 / Next.js 14 stack can't move to these ranges.
 catalog:
   '@sanity/color': ^3.0.8
-  '@sanity/icons': ^5.2.2
   '@sanity/tsdown-config': ^0.28.2
   '@sanity/ui': ^4.2.7
   '@types/node': ^24.19.0
@@ -31,7 +30,6 @@ catalog:
   react: ^19.3.0
   react-dom: ^19.3.0
   rimraf: ^5.0.5
-  sanity: ^6.16.0
   styled-components: ^6.5.3
   tsdown: ^0.23.0
   typescript: 7.0.2

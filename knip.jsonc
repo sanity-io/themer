@@ -8,13 +8,5 @@
       // contain, which `@sanity/themer-legacy` ports and links to
       "entry": ["utils/themeFromHues.ts"],
     },
-    "packages/themer-legacy": {
-      "ignoreDependencies": [
-        // The React Compiler (oxc-transform-react, target '18') injects imports of
-        // this runtime package into the compiled dist output, so it is never
-        // imported in source
-        "react-compiler-runtime",
-      ],
-    },
   },
 }

@@ -1,13 +1,13 @@
-import type { ColorTints } from '@sanity/color'
+import type {ColorTints} from '@sanity/color'
 import type {
   PartialThemeColorBuilderOpts,
   RGB,
   ThemeColorSchemes,
   ThemeColorSpotKey,
 } from '@sanity/ui'
-import { BaseTheme } from '@sanity/ui/theme'
-import type { PartialDeep } from 'type-fest'
-import { applyHues } from 'utils/applyHues'
+import {BaseTheme} from '@sanity/ui/theme'
+import type {PartialDeep} from 'type-fest'
+import {applyHues} from 'utils/applyHues'
 import {
   blue,
   cyan,
@@ -20,22 +20,20 @@ import {
   red,
   yellow,
 } from 'utils/colors'
-import { createTonesFromHues } from 'utils/createTonesFromHues'
-import type { Hues } from 'utils/types'
+import {createTonesFromHues} from 'utils/createTonesFromHues'
+import type {Hues} from 'utils/types'
 
 interface Options {
   hues: PartialDeep<Hues>
   // if there's a color property on the studioTheme it will be overridden/ignored, thus we change the typing allowing it to be omitted
   // but at the same time not _enforcing_ it to be omitted and create unnecessary TS errors for those passing `import {studioTheme} from '@sanity/ui'` directly
-  studioTheme: Omit<BaseTheme, 'color'> & { color?: unknown }
+  studioTheme: Omit<BaseTheme, 'color'> & {color?: unknown}
   parseColor: (color: string) => RGB
   rgbToHex: (rgb: RGB) => string
   multiply: (bg: RGB, fg: RGB) => RGB
   screen: (bg: RGB, fg: RGB) => RGB
   rgba: (color: unknown, a: number) => string
-  createColorTheme: (
-    partialOpts: PartialThemeColorBuilderOpts,
-  ) => ThemeColorSchemes
+  createColorTheme: (partialOpts: PartialThemeColorBuilderOpts) => ThemeColorSchemes
 }
 
 function getTint(key: ThemeColorSpotKey): ColorTints {
@@ -97,8 +95,8 @@ export function themeFromHues({
   const hues = applyHues(partialHues)
   // These variables are made top-level to keep the body of createColorTheme largely the same.
   // This makes it much easier to sync it with new releases of @sanity/ui should its implementation details change.
-  const black = { title: 'Black', hex: hues.default.darkest }
-  const white = { title: 'white', hex: hues.default.lightest }
+  const black = {title: 'Black', hex: hues.default.darkest}
+  const white = {title: 'white', hex: hues.default.lightest}
 
   const tones = createTonesFromHues(hues)
   // @TODO: consider making these overridable as input
@@ -109,11 +107,9 @@ export function themeFromHues({
   // Generate colors :OOO
   // Based on https://github.com/sanity-io/design/blob/804bf73dffb1c0ecb1c2e6758135784502768bfe/packages/%40sanity/ui/src/theme/studioTheme/color.ts#L6-L637
   const color = createColorTheme({
-    base: ({ dark, name }) => {
+    base: ({dark, name}) => {
       if (name === 'default') {
-        const skeletonFrom = dark
-          ? tones.transparent[900].hex
-          : tones.transparent[100].hex
+        const skeletonFrom = dark ? tones.transparent[900].hex : tones.transparent[100].hex
 
         return {
           // @TODO: consider making this overridable
@@ -179,12 +175,11 @@ export function themeFromHues({
       }
     },
 
-    solid: ({ base, dark, name, state, tone }) => {
+    solid: ({base, dark, name, state, tone}) => {
       const mix = dark ? screen : multiply
       const mix2 = dark ? multiply : screen
       const defaultTints = tones[name] || tones.default
-      const isNeutral =
-        NEUTRAL_TONES.includes(name) && NEUTRAL_TONES.includes(tone)
+      const isNeutral = NEUTRAL_TONES.includes(name) && NEUTRAL_TONES.includes(tone)
 
       let tints = tones[tone === 'default' ? name : tone] || defaultTints
 
@@ -343,11 +338,10 @@ export function themeFromHues({
       }
     },
 
-    muted: ({ base, dark, name, state, tone }) => {
+    muted: ({base, dark, name, state, tone}) => {
       const mix = dark ? screen : multiply
       const defaultTints = tones[name] || tones.default
-      const isNeutral =
-        NEUTRAL_TONES.includes(name) && NEUTRAL_TONES.includes(tone)
+      const isNeutral = NEUTRAL_TONES.includes(name) && NEUTRAL_TONES.includes(tone)
 
       let tints = tones[tone === 'default' ? name : tone] || defaultTints
 
@@ -514,7 +508,7 @@ export function themeFromHues({
       }
     },
 
-    button: ({ base, mode, muted, solid }) => {
+    button: ({base, mode, muted, solid}) => {
       if (mode === 'bleed') {
         return {
           enabled: {
@@ -554,7 +548,7 @@ export function themeFromHues({
       return solid
     },
 
-    card: ({ base, dark, muted, name, solid, state }) => {
+    card: ({base, dark, muted, name, solid, state}) => {
       if (state === 'hovered') {
         return muted[name].hovered
       }
@@ -612,7 +606,7 @@ export function themeFromHues({
       }
     },
 
-    input: ({ base, dark, mode, state }) => {
+    input: ({base, dark, mode, state}) => {
       const mix = dark ? screen : multiply
 
       if (mode === 'invalid') {
@@ -666,7 +660,7 @@ export function themeFromHues({
       }
     },
 
-    selectable: ({ base, muted, tone, solid, state }) => {
+    selectable: ({base, muted, tone, solid, state}) => {
       if (state === 'enabled') {
         return {
           ...muted[tone].enabled,
@@ -700,13 +694,13 @@ export function themeFromHues({
       return muted[tone][state]
     },
 
-    spot: ({ base, dark, key }) => {
+    spot: ({base, dark, key}) => {
       const mix = dark ? screen : multiply
 
       return mix(base.bg, getTint(key)[dark ? 400 : 500].hex)
     },
 
-    syntax: ({ base, dark }) => {
+    syntax: ({base, dark}) => {
       const mix = dark ? screen : multiply
       const mainShade = dark ? 400 : 600
       const secondaryShade = dark ? 600 : 400
@@ -752,5 +746,5 @@ export function themeFromHues({
     },
   })
 
-  return { ...studioTheme, color, __themer: true, v2: undefined }
+  return {...studioTheme, color, __themer: true, v2: undefined}
 }

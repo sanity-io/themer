@@ -18,11 +18,12 @@ created by main.runService (cmd/esbuild/service.go:162)]
 
 // @TODO use stdout instead of using a temp file as proxy
 
-import esbuild from 'esbuild'
-import { replace } from 'esbuild-plugin-replace'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { fileURLToPath } from 'node:url'
+import {fileURLToPath} from 'node:url'
+
+import esbuild from 'esbuild'
+import {replace} from 'esbuild-plugin-replace'
 
 const resolveDir = path.resolve(fileURLToPath(import.meta.url), '../..')
 /**
@@ -32,7 +33,7 @@ const _defaults = {
   bundle: true,
   format: 'esm',
   minifySyntax: true,
-  outExtension: { '.js': '.mjs' },
+  outExtension: {'.js': '.mjs'},
 }
 /**
  * @type {import('esbuild').BuildOptions}

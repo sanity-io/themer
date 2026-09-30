@@ -1,14 +1,7 @@
-import {
-  Card,
-  Flex,
-  Spinner,
-  studioTheme,
-  Text,
-  ThemeProvider,
-} from '@sanity/ui'
+import {Card, Flex, Spinner, studioTheme, Text, ThemeProvider} from '@sanity/ui'
 import Head from 'components/Head'
-import { memo } from 'react'
-import { defaultPreset } from 'utils/presets'
+import {memo} from 'react'
+import {defaultPreset} from 'utils/presets'
 
 const ThemerFallback = () => (
   <ThemeProvider scheme="light" theme={studioTheme}>

@@ -1,8 +1,4 @@
-import {
-  buildThemeFromUrl,
-  createTheme,
-  parseHuesFromUrl,
-} from '@sanity/themer-legacy'
+import {buildThemeFromUrl, createTheme, parseHuesFromUrl} from '@sanity/themer-legacy'
 import {
   Card,
   type CardTone,
@@ -13,27 +9,27 @@ import {
   ToastProvider,
 } from '@sanity/ui'
 import Head from 'components/Head'
-import { HeaderCard, useHeaderCard } from 'components/HeaderCard'
+import {HeaderCard, useHeaderCard} from 'components/HeaderCard'
 import HuesFields from 'components/HuesFields'
 import PresetsMenu from 'components/PresetsMenu'
 import SchemeMenu from 'components/SchemeMenu'
-import { StudioViewer, useStudioViewer } from 'components/StudioViewer'
+import {StudioViewer, useStudioViewer} from 'components/StudioViewer'
 import ToggleView from 'components/ToggleView'
-import { useIdleCallback } from 'hooks/useIdleCallback'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import type { StudioProviderProps, StudioTheme } from 'sanity'
-import { config } from 'studios'
-import { styled } from 'styled-components'
-import { expandPresetSearchParams } from 'utils/expandPresetSearchParams'
-import { shortenPresetSearchParams } from 'utils/shortenPresetSearchParams'
-import type { Hue, Hues, ThemePreset } from 'utils/types'
+import {useIdleCallback} from 'hooks/useIdleCallback'
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
+import type {StudioProviderProps, StudioTheme} from 'sanity'
+import {config} from 'studios'
+import {styled} from 'styled-components'
+import {expandPresetSearchParams} from 'utils/expandPresetSearchParams'
+import {shortenPresetSearchParams} from 'utils/shortenPresetSearchParams'
+import type {Hue, Hues, ThemePreset} from 'utils/types'
 
 // @TODO read the media query from the theme context instead of hardcoding to 600px
 const StyledGrid = styled<any>(Grid)`
   row-gap: 1px;
   @media screen and (min-width: 600px) {
     && {
-      grid-template-columns: ${({ sidebarWidth }) => sidebarWidth}px 1fr;
+      grid-template-columns: ${({sidebarWidth}) => sidebarWidth}px 1fr;
     }
   }
 `
@@ -44,7 +40,7 @@ const Sidebar = styled(Card)`
   height: calc(50vh - 1px);
   max-height: calc(50dvh - 1px);
 
-  @media (min-width: ${({ theme }) => theme.sanity.media[1]}px) {
+  @media (min-width: ${({theme}) => theme.sanity.media[1]}px) {
     height: 100vh;
     max-height: 100dvh;
   }
@@ -77,9 +73,9 @@ export default function Themer({
   // used by useMemoHues, is updated by local state when syncing
   const [huesState, setHuesState] = useState(initialHues)
 
-  const { spin, spins, transition, startTransition } = useHeaderCard()
+  const {spin, spins, transition, startTransition} = useHeaderCard()
 
-  const { view, toggleView } = useStudioViewer({ startTransition })
+  const {view, toggleView} = useStudioViewer({startTransition})
 
   // Reset the Hues state when loading a preset on demand
   useEffect(() => {
@@ -107,24 +103,22 @@ export default function Themer({
       }
       window.history.replaceState({}, '', decodeURIComponent(url.href))
     }, [memoHues, preset.slug]),
-    { requestTransition: spin, startTransition },
+    {requestTransition: spin, startTransition},
   )
   useEffect(() => void backupToUrl(), [backupToUrl])
 
-  const [forceScheme, setForceScheme] = useState<ThemeColorSchemeKey | null>(
-    null,
-  )
+  const [forceScheme, setForceScheme] = useState<ThemeColorSchemeKey | null>(null)
   const scheme = forceScheme ?? systemScheme
 
   const onHuesChange = useIdleCallback(
     useCallback((tone: CardTone, hue: Hue) => {
-      setHuesState((prev) => ({ ...prev, [tone]: hue }))
+      setHuesState((prev) => ({...prev, [tone]: hue}))
     }, []),
-    { requestTransition: spin, startTransition },
+    {requestTransition: spin, startTransition},
   )
   const onChangePreset = useIdleCallback(
     useCallback((nextPreset: ThemePreset) => setPreset(nextPreset), []),
-    { requestTransition: spin, startTransition },
+    {requestTransition: spin, startTransition},
   )
 
   return (
@@ -134,29 +128,17 @@ export default function Themer({
       scheme={scheme}
     >
       <Head presetUrl={preset.url} />
-      <Card
-        height="fill"
-        tone="transparent"
-        style={{ ['color-scheme' as any]: scheme }}
-      >
-        <StyledGrid
-          columns={[1, 1]}
-          height="stretch"
-          sidebarWidth={sidebarWidth}
-        >
+      <Card height="fill" tone="transparent" style={{['color-scheme' as any]: scheme}}>
+        <StyledGrid columns={[1, 1]} height="stretch" sidebarWidth={sidebarWidth}>
           <ToastProvider paddingY={7} zOffset={Z_OFFSET.toast}>
             <LayerProvider>
               <Sidebar height="fill" overflow="auto" scheme={scheme}>
-                <HeaderCard
-                  scheme={scheme}
-                  spins={spins}
-                  transition={transition}
-                />
+                <HeaderCard scheme={scheme} spins={spins} transition={transition} />
                 <Card borderRight height="fill" tone="default">
                   <Grid
                     columns={[2]}
                     paddingBottom={2}
-                    style={{ paddingLeft: 'env(safe-area-inset-left)' }}
+                    style={{paddingLeft: 'env(safe-area-inset-left)'}}
                   >
                     <Card paddingLeft={[4]} paddingTop={4}>
                       <SchemeMenu

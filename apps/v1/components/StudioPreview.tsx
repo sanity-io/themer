@@ -3,19 +3,10 @@ import {
   // type ThemeProviderProps,
 } from '@sanity/ui'
 import SyncColorScheme from 'components/SyncColorScheme'
-import { memo, useMemo } from 'react'
-import {
-  StudioLayout,
-  StudioProvider,
-  type StudioProviderProps,
-  type WorkspaceOptions,
-} from 'sanity'
+import {memo, useMemo} from 'react'
+import {StudioLayout, StudioProvider, type StudioProviderProps, type WorkspaceOptions} from 'sanity'
 
-interface Props
-  extends Pick<
-    StudioProviderProps,
-    'unstable_history' | 'unstable_noAuthBoundary'
-  > {
+interface Props extends Pick<StudioProviderProps, 'unstable_history' | 'unstable_noAuthBoundary'> {
   config: WorkspaceOptions[]
   scheme: ThemeColorSchemeKey
   theme: WorkspaceOptions['theme']
@@ -29,7 +20,7 @@ const StudioPreview = ({
 }: Props) => {
   // It's necessary to add the theme to each workspace as it's used for toast notifications and more
   const config = useMemo(
-    () => _config.map((workspace) => ({ ...workspace, theme })),
+    () => _config.map((workspace) => ({...workspace, theme})),
     [_config, theme],
   )
 

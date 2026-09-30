@@ -1,5 +1,5 @@
 // Shared by the `/api/hues` contract tests and the script that captures their goldens.
-import { setTimeout as delay } from 'node:timers/promises'
+import {setTimeout as delay} from 'node:timers/promises'
 
 export const PRODUCTION_URL = 'https://themer.sanity.build'
 
@@ -21,20 +21,20 @@ const PRESETS = [
  * whose module throws a `TypeError` with that message when it's imported.
  */
 export const cases = [
-  { name: 'bare', query: '' },
+  {name: 'bare', query: ''},
   ...PRESETS.map((slug) => ({
     name: `preset-${slug}`,
     query: `?preset=${slug}`,
   })),
 
   // Only `min=0` serves the unminified build
-  { name: 'unminified', query: '?preset=verdant&min=0' },
-  { name: 'min-not-zero', query: '?preset=verdant&min=false' },
+  {name: 'unminified', query: '?preset=verdant&min=0'},
+  {name: 'min-not-zero', query: '?preset=verdant&min=false'},
 
-  { name: 'custom-primary', query: '?primary=22fca8' },
-  { name: 'custom-short-hex', query: '?primary=0af' },
-  { name: 'custom-uppercase-hex', query: '?primary=22FCA8' },
-  { name: 'custom-preset-primary', query: '?preset=verdant&primary=22fca8' },
+  {name: 'custom-primary', query: '?primary=22fca8'},
+  {name: 'custom-short-hex', query: '?primary=0af'},
+  {name: 'custom-uppercase-hex', query: '?primary=22FCA8'},
+  {name: 'custom-preset-primary', query: '?preset=verdant&primary=22fca8'},
   {
     name: 'custom-preset-midpoint',
     query: '?preset=pink-synth&primary=b595f9;400',
@@ -49,25 +49,25 @@ export const cases = [
     name: 'custom-hue-extremes',
     query: '?primary=2276fc;600;lightest:fcfcfd;darkest:0d0d15',
   },
-  { name: 'custom-mid-without-midpoint', query: '?caution=ff0000' },
+  {name: 'custom-mid-without-midpoint', query: '?caution=ff0000'},
 
-  { name: 'edge-unknown-preset', query: '?preset=does-not-exist' },
-  { name: 'edge-preset-case', query: '?preset=VERDANT' },
-  { name: 'edge-unknown-param', query: '?foo=bar' },
-  { name: 'edge-repeated-param', query: '?primary=22fca8&primary=ff0000' },
-  { name: 'edge-encoded-separator', query: '?primary=b595f9%3B400' },
-  { name: 'edge-empty-param', query: '?primary=' },
+  {name: 'edge-unknown-preset', query: '?preset=does-not-exist'},
+  {name: 'edge-preset-case', query: '?preset=VERDANT'},
+  {name: 'edge-unknown-param', query: '?foo=bar'},
+  {name: 'edge-repeated-param', query: '?primary=22fca8&primary=ff0000'},
+  {name: 'edge-encoded-separator', query: '?primary=b595f9%3B400'},
+  {name: 'edge-empty-param', query: '?primary='},
   // An empty `darkest` is ignored, an empty `lightest` is invalid
-  { name: 'edge-empty-darkest', query: '?darkest=' },
+  {name: 'edge-empty-darkest', query: '?darkest='},
   // Parsed as the hex color #500, not as a midpoint
-  { name: 'edge-numeric-color', query: '?primary=500' },
-  { name: 'edge-midpoint-rounding', query: '?primary=2276fc;123' },
-  { name: 'edge-midpoint-clamp', query: '?primary=2276fc;2000' },
-  { name: 'edge-inverted-extremes', query: '?lightest=000&darkest=fff' },
+  {name: 'edge-numeric-color', query: '?primary=500'},
+  {name: 'edge-midpoint-rounding', query: '?primary=2276fc;123'},
+  {name: 'edge-midpoint-clamp', query: '?primary=2276fc;2000'},
+  {name: 'edge-inverted-extremes', query: '?lightest=000&darkest=fff'},
   // The deprecation notice can't decode it and keeps it percent-encoded
-  { name: 'edge-malformed-escape', query: '?foo=%E0%A4%A' },
-  { name: 'edge-quotes-in-param', query: '?foo=%27%22%5C%60' },
-  { name: 'edge-unicode-param', query: '?foo=%F0%9F%8E%A8' },
+  {name: 'edge-malformed-escape', query: '?foo=%E0%A4%A'},
+  {name: 'edge-quotes-in-param', query: '?foo=%27%22%5C%60'},
+  {name: 'edge-unicode-param', query: '?foo=%F0%9F%8E%A8'},
 
   {
     name: 'invalid-color',
@@ -129,10 +129,9 @@ const ATTEMPTS = 3
  */
 export async function request(baseUrl, query, attempt = 1) {
   const url = `${baseUrl}/api/hues${query}`
-  const headers = { accept: '*/*', origin: 'https://example.sanity.studio' }
+  const headers = {accept: '*/*', origin: 'https://example.sanity.studio'}
   if (process.env.VERCEL_AUTOMATION_BYPASS_SECRET) {
-    headers['x-vercel-protection-bypass'] =
-      process.env.VERCEL_AUTOMATION_BYPASS_SECRET
+    headers['x-vercel-protection-bypass'] = process.env.VERCEL_AUTOMATION_BYPASS_SECRET
   }
 
   try {
@@ -142,17 +141,17 @@ export async function request(baseUrl, query, attempt = 1) {
       signal: AbortSignal.timeout(30_000),
     })
     const bytes = new Uint8Array(await response.arrayBuffer())
-    return { url, status: response.status, headers: response.headers, bytes }
+    return {url, status: response.status, headers: response.headers, bytes}
   } catch (error) {
     if (attempt === ATTEMPTS) {
-      throw new Error(`GET ${url} failed ${ATTEMPTS} times`, { cause: error })
+      throw new Error(`GET ${url} failed ${ATTEMPTS} times`, {cause: error})
     }
     await delay(attempt * 2_000)
     return request(baseUrl, query, attempt + 1)
   }
 }
 
-const decoder = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true })
+const decoder = new TextDecoder('utf-8', {fatal: true, ignoreBOM: true})
 
 /** Throws unless the bytes are valid UTF-8, and keeps a byte order mark. */
 export function decode(bytes) {
@@ -173,5 +172,4 @@ export function normalize(body, origin) {
     )
 }
 
-export const goldenUrl = (name) =>
-  new URL(`goldens/${name}.golden`, import.meta.url)
+export const goldenUrl = (name) => new URL(`goldens/${name}.golden`, import.meta.url)

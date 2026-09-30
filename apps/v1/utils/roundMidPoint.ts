@@ -1,4 +1,4 @@
-import type { Hue } from 'utils/types'
+import type {Hue} from 'utils/types'
 
 export function roundMidPoint(value: number): Hue['midPoint'] {
   if (value < 75) {

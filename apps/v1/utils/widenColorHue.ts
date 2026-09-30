@@ -5,14 +5,9 @@
  * Stage 2 requires integrtation tests.
  */
 
-import { parseToHsl, setHue } from 'polished'
+import {parseToHsl, setHue} from 'polished'
 
-export function widenColorHue(
-  a: string,
-  b: string,
-  lower: number,
-  upper: number,
-): string {
+export function widenColorHue(a: string, b: string, lower: number, upper: number): string {
   const aHsl = parseToHsl(a)
   const bHsl = parseToHsl(b)
 
@@ -22,7 +17,7 @@ export function widenColorHue(
     b,
     aHsl.hue,
     bHsl.hue,
-    { lower, upper },
+    {lower, upper},
     Math.max(aHsl.hue - lower, bHsl.hue),
     Math.min(aHsl.hue + upper, bHsl.hue),
     aHsl.hue < bHsl.hue + lower,

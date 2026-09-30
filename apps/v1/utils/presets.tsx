@@ -1,7 +1,7 @@
 // Handy list over all the preset themes
 // @TODO use TS template string types to enforce lower casing on slugs
 
-import type { ThemePreset } from 'utils/types'
+import type {ThemePreset} from 'utils/types'
 
 const createApiUrl = (search: string) => {
   const searchParams = new URLSearchParams(search)

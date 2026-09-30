@@ -3,15 +3,14 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "format": "prettier --cache --write .",
+    "format": "oxfmt . --no-error-on-unmatched-pattern",
     "knip": "knip --treat-config-hints-as-errors",
     "lint": "turbo run lint",
     "test": "turbo run test"
   },
   "devDependencies": {
     "knip": "^6.38.0",
-    "prettier": "3.2.5",
-    "prettier-plugin-packagejson": "2.4.14",
+    "oxfmt": "^0.71.0",
     "turbo": "1.13.2"
   },
   "packageManager": "pnpm@8.15.7"

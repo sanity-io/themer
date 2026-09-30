@@ -114,18 +114,14 @@ const getArgs = (argsLength) => {
   }
 }
 
-const idsList = `export [${[...idsChecked]
-  .map((id) => JSON5.stringify(id))
-  .join(',')}]`
+const idsList = `export [${[...idsChecked].map((id) => JSON5.stringify(id)).join(',')}]`
 
 console.group('snippets.map')
 const cases = []
 // Sequential so the generated overloads keep the order the snippets are declared in
 for (const [id, placeholders, snippet, format = 'typescript'] of snippets) {
   console.group('prettier')
-  let code = (
-    await prettier.format(snippet, format === 'json' ? jsonOptions : options)
-  ).trim()
+  let code = (await prettier.format(snippet, format === 'json' ? jsonOptions : options)).trim()
   console.log(code)
   console.groupEnd()
   // @ts-expect-error -- dunno what to do with the typing of placeholders, maybe try the `const snippets = as const` trick?
@@ -141,18 +137,14 @@ for (const [id, placeholders, snippet, format = 'typescript'] of snippets) {
   }
   console.group('template')
   console.group('dotenv')
-  code = code
-    .replaceAll(projectId, '${projectId}')
-    .replaceAll(dataset, '${dataset}')
+  code = code.replaceAll(projectId, '${projectId}').replaceAll(dataset, '${dataset}')
   console.groupEnd()
 
-  const { length } = placeholders
+  const {length} = placeholders
   const argsString = getArgs(length)
   const callback = `(${getArgs(length)}) => \`${code}\``
   overloads.push(
-    `export function snippet(id: ${JSON5.stringify(
-      id,
-    )}): ${`(${argsString}) => string`}`,
+    `export function snippet(id: ${JSON5.stringify(id)}): ${`(${argsString}) => string`}`,
   )
   const template = `
   case ${JSON5.stringify(id)}:
@@ -179,9 +171,7 @@ export function snippet(id) {
   }
 }
 
-export const snippets = [${[...idsChecked]
-  .map((id) => JSON5.stringify(id))
-  .join(',')}] as const;
+export const snippets = [${[...idsChecked].map((id) => JSON5.stringify(id)).join(',')}] as const;
 `
 
 const dest = new URL('../utils/snippets.ts', import.meta.url)

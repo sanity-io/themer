@@ -5,15 +5,13 @@
  * Stage 2 requires integrtation tests.
  */
 
-import type { PartialDeep } from 'type-fest'
-import { isMidPoint } from 'utils/isMidPoint'
-import { roundMidPoint } from 'utils/roundMidPoint'
-import type { Hue, Hues } from 'utils/types'
-import { ValidationError } from 'utils/ValidationError'
+import type {PartialDeep} from 'type-fest'
+import {isMidPoint} from 'utils/isMidPoint'
+import {roundMidPoint} from 'utils/roundMidPoint'
+import type {Hue, Hues} from 'utils/types'
+import {ValidationError} from 'utils/ValidationError'
 
-export function parseHuesFromSearchParams(
-  searchParams: URLSearchParams,
-): PartialDeep<Hues> {
+export function parseHuesFromSearchParams(searchParams: URLSearchParams): PartialDeep<Hues> {
   const lightest = searchParams.has('lightest')
     ? assertValidColor(`#${searchParams.get('lightest').toLowerCase()}`)
     : undefined
@@ -42,7 +40,7 @@ function parseHue(
   defaultDarkest: string | null,
 ): ParsedHue {
   if (!searchParams.has(key)) {
-    return { lightest: defaultLightest, darkest: defaultDarkest }
+    return {lightest: defaultLightest, darkest: defaultDarkest}
   }
   const input = searchParams.get(key).toLowerCase()
 
@@ -117,8 +115,7 @@ function assertValidColor(input: string) {
   }
   throw new ValidationError(`Invalid color: ${input}`)
 }
-export const isColor = (input: string) =>
-  Boolean(input.match(/^#(?:[0-9a-f]{3}){1,2}$/i))
+export const isColor = (input: string) => Boolean(input.match(/^#(?:[0-9a-f]{3}){1,2}$/i))
 
 function assertValidMidPoint(input: number): Hue['midPoint'] {
   if (isMidPoint(input)) {

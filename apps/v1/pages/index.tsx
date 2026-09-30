@@ -1,7 +1,7 @@
 import {usePrefersDark} from '@sanity/ui'
+import {NextStudioNoScript} from 'components/NextStudioNoScript'
 import Themer from 'components/Themer'
 import ThemerFallback from 'components/ThemerFallback'
-import {NextStudioNoScript} from 'next-sanity/studio'
 import {Suspense, useEffect, useState} from 'react'
 import {defaultPreset, presets} from 'utils/presets'
 import type {ThemePreset} from 'utils/types'

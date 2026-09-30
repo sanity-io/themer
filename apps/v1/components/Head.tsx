@@ -1,5 +1,5 @@
 import {useRootTheme} from '@sanity/ui'
-import {NextStudioHead} from 'next-sanity/studio/head'
+import {NextStudioHead} from 'components/NextStudioHead'
 import Head from 'next/head'
 import png from 'public/favicon.png'
 import svg from 'public/favicon.svg'
@@ -60,7 +60,7 @@ function CustomHead(_props: Props) {
     <>
       <Head>
         <title>{title}</title>
-        <NextStudioHead favicons={false} />
+        <NextStudioHead />
         <link rel="icon" type="image/svg" href={svg.src} />
         <link rel="icon" type="image/png" href={png.src} />
       </Head>

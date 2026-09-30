@@ -47,6 +47,20 @@ jobs:
       - run: pnpm build --filter=@sanity/themer
         if: github.event.inputs.test != 'false'
 
+  knip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@a3252b78c470c02df07e9d59298aecedc3ccdd6d # v3.0.0
+      - uses: actions/setup-node@v4
+        with:
+          cache: pnpm
+          node-version: lts/*
+      - run: corepack enable && pnpm --version
+      - run: pnpm install
+      - name: Run Knip
+        run: pnpm knip --reporter github-actions
+
   test:
     needs: build
     # The test matrix can be skipped, in case a new release needs to be fast-tracked and tests are already passing on main

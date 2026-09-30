@@ -1,0 +1,11 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "workspaces": {
+    ".": {},
+    "apps/v1": {
+      // `scripts/buildEdgeUtils.mjs` bundles the `/api/hues` theme generator
+      // with esbuild from an inline `stdin` module, which knip can't follow
+      "entry": ["utils/themeFromHues.ts"],
+    },
+  },
+}

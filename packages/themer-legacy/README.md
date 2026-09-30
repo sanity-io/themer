@@ -1,28 +1,12 @@
 # @sanity/themer-legacy
 
-The hosted Themer service ([themer.sanity.build](https://themer.sanity.build)) as an npm package: the exact same [Sanity Studio](https://www.sanity.io/studio) theme generator, running locally, and a Studio tool to edit its themes.
+The hosted Themer service ([themer.sanity.build](https://themer.sanity.build)) as an npm package: the exact same [Sanity Studio](https://www.sanity.io/studio) theme generator, running locally.
 
 ```sh
 npm install @sanity/themer-legacy
 ```
 
-## The Studio tool
-
-`themerTool` from `@sanity/themer-legacy/tool` re-hosts the Themer's editor inside your own Studio, so the theme previews on your real content instead of a demo:
-
-```ts
-import {themerTool} from '@sanity/themer-legacy/tool'
-import {defineConfig} from 'sanity'
-
-export default defineConfig({
-  plugins: [themerTool()],
-  // ...rest of the config
-})
-```
-
-A toggle in the navbar opens the sidebar with the hosted presets and the six hue editors — the mid, lightest and darkest colors, the mid-point slider that places `mid` on the 50–950 ramp, and the generated tints (click one to copy its hex). Every change applies to the whole Studio while you browse around. The preview follows the Studio's appearance setting, or shows light and dark side by side with **Split-screen**. Drafts are kept in `localStorage`, so they survive reloads; **Reset** returns to the theme the Studio is configured with.
-
-The plugin is named `themer-legacy` and titled "Themer (Legacy)", so it can be installed next to `themerTool` from [`@sanity/themer/tool`](https://www.npmjs.com/package/@sanity/themer), which edits the current `buildTheme` themes.
+`@sanity/ui` is its only peer dependency, so the themes are built with the `@sanity/ui` your Studio already has. It supports `@sanity/ui` 2, 3 and 4, one of which every Studio since `sanity` 3.25 ships with, and all three generate the same colors as the hosted service.
 
 ## Migrating from themer.sanity.build
 
@@ -69,7 +53,7 @@ const theme = buildThemeFromUrl('?preset=verdant')
 
 Once migrated, remove any `themer.d.ts` module declarations and `urlImports` config that the URL imports needed.
 
-The generated theme carries no `__themer` flag, which is the one intentional difference from the hosted module. Sanity Studio uses that flag to throw away the fonts the hosted module bundled, because they had drifted from the Studio's own; here the fonts come from the `@sanity/ui` this package depends on, so there is nothing to throw away.
+The generated theme carries no `__themer` flag, which is the one intentional difference from the hosted module. Sanity Studio uses that flag to throw away the fonts the hosted module bundled, because they had drifted from the Studio's own; here the fonts come from the Studio's own `@sanity/ui`, so there is nothing to throw away.
 
 ## Migrating from `@sanity/themer/legacy`
 

@@ -4,15 +4,14 @@
 
 This is the Sanity Themer repository, structured as a pnpm monorepo set up like
 sanity-io/ui: the published `@sanity/themer-legacy` package (the hosted
-themer.sanity.build `/api/hues` generator replicated byte-for-byte, plus a
-`/tool` subpath with the `themerTool` Studio plugin, moved here from the
-sanity-io/ui monorepo) lives in `packages/themer-legacy`, its Storybook in
-`apps/storybook`, and the hosted Themer itself (themer.sanity.build, a Next.js
-14 pages-router app deployed through Vercel) in `apps/v1`
-(`pnpm-workspace.yaml`). The root `package.json` is a private workspace root
-whose scripts orchestrate via pnpm filters. Package manager is pnpm
-(`packageManager` pin in `package.json`); developing in this repo requires Node
-`>=22.13`.
+themer.sanity.build `/api/hues` generator replicated byte-for-byte, moved here
+from the sanity-io/ui monorepo) lives in `packages/themer-legacy`, its
+Storybook in `apps/storybook`, and the hosted Themer itself
+(themer.sanity.build, a Next.js 14 pages-router app deployed through Vercel)
+in `apps/v1` (`pnpm-workspace.yaml`). The root `package.json` is a private
+workspace root whose scripts orchestrate via pnpm filters. Package manager is
+pnpm (`packageManager` pin in `package.json`); developing in this repo requires
+Node `>=22.13`.
 
 Standard scripts live in the root `package.json` (`lint`, `test`, `build`,
 `dev`). Notes that are not obvious from the scripts:
@@ -39,9 +38,12 @@ Standard scripts live in the root `package.json` (`lint`, `test`, `build`,
   `exports` live under `publishConfig`. tsdown loads `tsdown.config.mts`
   through Node's native TypeScript support, so `pnpm build` needs Node
   `>=22.18` (CI uses the current LTS).
-- Cross-repo dependencies (`@sanity/ui`, `@sanity/color`, `@sanity/icons`) come
-  from npm through the pnpm catalog. `@sanity/ui` stays on a v4 range, so the
-  generated themes stay byte-identical to the hosted ones.
+- Cross-repo dependencies (`@sanity/ui`, `@sanity/color`) come from npm through
+  the pnpm catalog. `@sanity/ui` is `@sanity/themer-legacy`'s only peer
+  dependency, at `^2 || ^3 || ^4`: the generator builds its themes with the
+  Studio's own `@sanity/ui`, and all three majors generate the hosted colors
+  byte for byte. The workspace develops and tests against the catalog's v4
+  range.
 - `@sanity/ui` from npm doesn't import its own CSS, so
   `apps/storybook/.storybook/preview.tsx` imports `@sanity/ui/styles.css`.
 - `pnpm test` runs the unit tests with vitest: `packages/themer-legacy` (in
@@ -50,11 +52,8 @@ Standard scripts live in the root `package.json` (`lint`, `test`, `build`,
   environment its `/api/*` routes run in).
 - `pnpm test:browser` runs the Storybook tests (`apps/storybook`): vitest
   renders every story in headless Chromium via `@storybook/addon-vitest` and
-  executes story `play` interactions, plus the browser tests in
-  `apps/storybook/tests/`. Install the browser once via
+  executes story `play` interactions. Install the browser once via
   `pnpm --filter sanity-themer-storybook exec playwright install chromium`.
-  The `tool/` stories import the plugin's internal components from
-  `packages/themer-legacy/src/tool` by relative path.
 - `apps/v1` is frozen on `@sanity/ui` 2, React 18 and Next.js 14, which its UI
   and the Sanity Studio v3 previews it embeds are built on (the themes it
   previews come from `@sanity/themer-legacy`). Don't upgrade its `@sanity/ui` or

@@ -21,7 +21,7 @@ const STATE_TONES = ['default', 'primary', 'positive', 'caution', 'critical'] as
 const capitalize: React.CSSProperties = {textTransform: 'capitalize'}
 
 /** A sample of `@sanity/ui` components, in whatever theme surrounds them */
-export function ThemeSample(props: {title?: string}) {
+function ThemeSample(props: {title?: string}) {
   const {title} = props
 
   return (

@@ -56,9 +56,9 @@ If it still matches, delete whatever it finds. The setup snippets Themer used to
 
 pnpm workspace for the hosted Themer ([themer.sanity.build](https://themer.sanity.build)) and [`@sanity/themer-legacy`](packages/themer-legacy), the package that replicates it.
 
-| Package                                           | Description                                                                                 |
-| ------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| [`@sanity/themer-legacy`](packages/themer-legacy) | The hosted Themer's theme generator as an npm package, and a Studio tool to edit its themes |
+| Package                                           | Description                                           |
+| ------------------------------------------------- | ----------------------------------------------------- |
+| [`@sanity/themer-legacy`](packages/themer-legacy) | The hosted Themer's theme generator as an npm package |
 
 | App                                | Description                                                                                                 |
 | ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |

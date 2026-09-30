@@ -6,6 +6,7 @@
     "build": "next build",
     "build:edge": "node scripts/buildEdgeUtils.mjs",
     "build:snippets": "node scripts/compileCodeSnippets.mjs && oxfmt utils/snippets.ts",
+    "capture:goldens": "node contract/capture-goldens.mjs",
     "dev": "PORT=3001 next dev",
     "format": "oxfmt . && pnpm run lint -- --fix",
     "lint": "next lint",
@@ -14,8 +15,7 @@
     "predev": "pnpm run build:edge",
     "start": "next start",
     "test": "jest",
-    "test:contract": "node --test --test-reporter=spec contract/api-hues.contract.mjs",
-    "capture:goldens": "node contract/capture-goldens.mjs"
+    "test:contract": "node --test --test-reporter=spec contract/api-hues.contract.mjs"
   },
   "dependencies": {
     "@heroicons/react": "2.1.3",

@@ -1,10 +1,10 @@
-import type { ResizeObserverEntry } from '@juggle/resize-observer'
-import { ResizeObserver } from '@juggle/resize-observer'
-import { Badge, Box, Card, Flex, Text } from '@sanity/ui'
+import type {ResizeObserverEntry} from '@juggle/resize-observer'
+import {ResizeObserver} from '@juggle/resize-observer'
+import {Badge, Box, Card, Flex, Text} from '@sanity/ui'
 import CodeSnippet from 'components/CodeSnippet'
-import { Button } from 'components/Sidebar.styles'
-import { useIdleCallback } from 'hooks/useIdleCallback'
-import { animate } from 'motion'
+import {Button} from 'components/Sidebar.styles'
+import {useIdleCallback} from 'hooks/useIdleCallback'
+import {animate} from 'motion'
 import {
   type ReactNode,
   useCallback,
@@ -15,12 +15,12 @@ import {
   useState,
 } from 'react'
 import scrollIntoView from 'scroll-into-view-if-needed'
-import { styled } from 'styled-components'
+import {styled} from 'styled-components'
 
 type TransitionHeightProps = {
   children: ReactNode
 }
-const TransitionHeight = ({ children }: TransitionHeightProps) => {
+const TransitionHeight = ({children}: TransitionHeightProps) => {
   const [height, setHeight] = useState(0)
   const canOverflowClip = useRef(true)
   const animated = useRef<HTMLDivElement>(null)
@@ -38,7 +38,7 @@ const TransitionHeight = ({ children }: TransitionHeightProps) => {
       setHeight(entries[0].borderBoxSize[0].blockSize)
     }
     const resizeObserver = new ResizeObserver(handleResize)
-    resizeObserver.observe(observed.current, { box: 'border-box' })
+    resizeObserver.observe(observed.current, {box: 'border-box'})
 
     return () => resizeObserver.disconnect()
   }, [])
@@ -47,7 +47,7 @@ const TransitionHeight = ({ children }: TransitionHeightProps) => {
     if (!canOverflowClip.current) {
       animated.current.scrollTop = 0
     }
-    animate(animated.current, { height: `${height}px`, opacity: 1 })
+    animate(animated.current, {height: `${height}px`, opacity: 1})
   }, [height])
 
   return (
@@ -60,26 +60,25 @@ const TransitionHeight = ({ children }: TransitionHeightProps) => {
 type TransitionMinHeightProps = {
   children: ReactNode
 }
-const TransitionMinHeight = ({ children }: TransitionMinHeightProps) => {
+const TransitionMinHeight = ({children}: TransitionMinHeightProps) => {
   const [minHeight, setMinHeight] = useState(0)
   const animated = useRef<HTMLDivElement>(null)
   const observed = useRef<HTMLDivElement>(null)
   const handleResize = useIdleCallback(
     useCallback(
-      (entries: ResizeObserverEntry[]) =>
-        setMinHeight(entries[0].borderBoxSize[0].blockSize),
+      (entries: ResizeObserverEntry[]) => setMinHeight(entries[0].borderBoxSize[0].blockSize),
       [],
     ),
   )
   const startAnimation = useIdleCallback(
     useCallback(() => {
-      animate(animated.current, { minHeight: `${minHeight}px` })
+      animate(animated.current, {minHeight: `${minHeight}px`})
     }, [minHeight]),
   )
 
   useEffect(() => {
     const resizeObserver = new ResizeObserver(handleResize)
-    resizeObserver.observe(observed.current, { box: 'border-box' })
+    resizeObserver.observe(observed.current, {box: 'border-box'})
 
     return () => resizeObserver.disconnect()
   }, [handleResize])
@@ -104,10 +103,10 @@ interface FilesViewerProps {
   initial?: string
   lead: ReactNode
 }
-export const FilesViewer = ({ lead, files, initial }: FilesViewerProps) => {
+export const FilesViewer = ({lead, files, initial}: FilesViewerProps) => {
   const [open, setOpen] = useState(initial)
   const active = useMemo(
-    () => files.find(({ filename, id = filename }) => id === open),
+    () => files.find(({filename, id = filename}) => id === open),
     [files, open],
   )
   const selectedRef = useRef<HTMLButtonElement>(null)
@@ -134,21 +133,15 @@ export const FilesViewer = ({ lead, files, initial }: FilesViewerProps) => {
       <Box>
         <TransitionMinHeight>
           <Text size={1}>
-            <Flex
-              paddingTop={1}
-              paddingBottom={3}
-              gap={1}
-              wrap="wrap"
-              align="center"
-            >
+            <Flex paddingTop={1} paddingBottom={3} gap={1} wrap="wrap" align="center">
               {lead}
             </Flex>
           </Text>
         </TransitionMinHeight>
         <Card tone="transparent" border radius={2}>
           <Card tone="default" radius={2} overflow="auto" padding={3}>
-            <Flex style={{ width: 'fit-content' }} gap={1}>
-              {files.map(({ filename, id = filename }) => (
+            <Flex style={{width: 'fit-content'}} gap={1}>
+              {files.map(({filename, id = filename}) => (
                 <Button
                   key={id}
                   ref={id === open ? selectedRef : undefined}
@@ -174,7 +167,7 @@ export const FilesViewer = ({ lead, files, initial }: FilesViewerProps) => {
   )
 }
 
-export const FilenameBadge = styled(Badge).attrs({ fontSize: 0 })`
+export const FilenameBadge = styled(Badge).attrs({fontSize: 0})`
   span {
     text-transform: none;
   }

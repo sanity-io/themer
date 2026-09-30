@@ -235,7 +235,9 @@ const HueFields = memo(function HueFields({
           />
           <datalist id={midRangeListId}>
             {COLOR_TINTS.map((tint) => (
-              <option key={tint} value={tint} label={tint} />
+              <option key={tint} value={tint} label={tint}>
+                {tint}
+              </option>
             ))}
           </datalist>
         </Stack>

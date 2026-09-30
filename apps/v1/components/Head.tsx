@@ -43,7 +43,7 @@ const title = 'Themer | Create Sanity Studio v3 themes 🪄'
 interface Props {
   presetUrl: string
 }
-function CustomHead({presetUrl}: Props) {
+function CustomHead(_props: Props) {
   const theme = useRootTheme().theme
   const {light} = theme.color
 

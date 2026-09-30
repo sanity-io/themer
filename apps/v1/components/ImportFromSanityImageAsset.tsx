@@ -6,15 +6,13 @@ import {parseToHsl, setLightness, setSaturation} from 'polished'
 import spacer from 'public/1x1.png'
 import {
   type Dispatch,
-  JSXElementConstructor,
   memo,
-  ReactElement,
   type SetStateAction,
   type TransitionStartFunction,
   useCallback,
   useMemo,
 } from 'react'
-import {MediaPreview, type PreviewLayoutKey, type PreviewProps} from 'sanity'
+import {MediaPreview} from 'sanity'
 import {styled} from 'styled-components'
 import {suspend} from 'suspend-react'
 import {applyHues} from 'utils/applyHues'
@@ -67,8 +65,8 @@ const PaletteImagePreview = ({url}: {url: string}) => {
   suspend(async () => {
     const loadPromise = new Promise((resolve) => {
       const img = new Image()
-      img.onload = resolve
-      img.onerror = resolve
+      img.addEventListener('load', resolve)
+      img.addEventListener('error', resolve)
       img.src = url
     })
     // @TODO run timeout race
@@ -222,9 +220,6 @@ function ImportFromSanityImageAsset({
     [setHueSearchParam, setPositiveCautionCritical],
   )
 
-  const experimentalTheme = useCallback(() => {
-    // @TODO https://tympanus.net/codrops/2021/12/07/coloring-with-code-a-programmatic-approach-to-design/
-  }, [])
   const mutedTheme = useCallback(() => {
     const [url, defaults] = createNextPreset()
 

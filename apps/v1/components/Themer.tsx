@@ -1,4 +1,4 @@
-import {buildThemeFromUrl, createTheme, parseHuesFromUrl} from '@sanity/themer-legacy'
+import {createTheme, parseHuesFromUrl} from '@sanity/themer-legacy'
 import {
   Card,
   type CardTone,
@@ -16,13 +16,13 @@ import SchemeMenu from 'components/SchemeMenu'
 import {StudioViewer, useStudioViewer} from 'components/StudioViewer'
 import ToggleView from 'components/ToggleView'
 import {useIdleCallback} from 'hooks/useIdleCallback'
-import {useCallback, useEffect, useMemo, useRef, useState} from 'react'
-import type {StudioProviderProps, StudioTheme} from 'sanity'
+import {useCallback, useEffect, useMemo, useState} from 'react'
+import type {StudioProviderProps} from 'sanity'
 import {config} from 'studios'
 import {styled} from 'styled-components'
 import {expandPresetSearchParams} from 'utils/expandPresetSearchParams'
 import {shortenPresetSearchParams} from 'utils/shortenPresetSearchParams'
-import type {Hue, Hues, ThemePreset} from 'utils/types'
+import type {Hue, ThemePreset} from 'utils/types'
 
 // @TODO read the media query from the theme context instead of hardcoding to 600px
 const StyledGrid = styled<any>(Grid)`

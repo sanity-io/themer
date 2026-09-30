@@ -1,0 +1,2 @@
+# Byte-exact copies of the modules production serves: no line ending conversion
+*.txt -text linguist-generated

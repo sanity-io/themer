@@ -1,5 +1,6 @@
 import {applyHues} from 'utils/applyHues'
 import type {Hues} from 'utils/types'
+import {expect, test} from 'vitest'
 
 const defaultHues: Hues = {
   default: {

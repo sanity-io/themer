@@ -3,9 +3,18 @@
   "workspaces": {
     ".": {},
     "apps/v1": {
-      // `scripts/buildEdgeUtils.mjs` bundles the `/api/hues` theme generator
-      // with esbuild from an inline `stdin` module, which knip can't follow
+      // Nothing imports it anymore, because the `/api/hues` bundles in
+      // `frozen/` are prebuilt from it. It stays as the theme generator they
+      // contain, which `@sanity/themer-legacy` ports and links to
       "entry": ["utils/themeFromHues.ts"],
+    },
+    "packages/themer-legacy": {
+      "ignoreDependencies": [
+        // The React Compiler (oxc-transform-react, target '18') injects imports of
+        // this runtime package into the compiled dist output, so it is never
+        // imported in source
+        "react-compiler-runtime",
+      ],
     },
   },
 }

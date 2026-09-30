@@ -26,7 +26,7 @@ const theme = buildThemeFromUrl('https://themer.sanity.build/api/hues?preset=ver
 
 The URL is only a carrier for the hues, `buildThemeFromUrl` never fetches it. Keep using [themer.sanity.build](https://themer.sanity.build) to preview and tweak your theme, then paste the URL it gives you into `buildThemeFromUrl`.
 
-The full guide lives in the [`@sanity/themer-legacy` README](https://github.com/sanity-io/ui/blob/main/packages/themer-legacy/README.md#migrating-from-themersanitybuild). It covers the `createTheme` + `hues` variant (now `createTheme` + `parseHuesFromUrl`), preset-only URLs like `'?preset=verdant'`, and the one intentional difference from the hosted module (the `__themer` font flag).
+The full guide lives in the [`@sanity/themer-legacy` README](packages/themer-legacy/README.md#migrating-from-themersanitybuild). It covers the `createTheme` + `hues` variant (now `createTheme` + `parseHuesFromUrl`), preset-only URLs like `'?preset=verdant'`, and the one intentional difference from the hosted module (the `__themer` font flag).
 
 If you already migrated to `@sanity/themer/legacy`, that subpath keeps working as a deprecated re-export of `@sanity/themer-legacy` until `@sanity/themer@1.0` removes it. Swap the import to finish the move:
 
@@ -51,3 +51,55 @@ If it still matches, delete whatever it finds. The setup snippets Themer used to
 - `experimental.urlImports` in `next.config.js`.
 - The custom `_document.tsx` / `_document.js` that only existed to add `<link rel="modulepreload" href="https://themer.sanity.build/api/hues?...">`.
 - A downloaded `theme.js` next to `sanity.config.ts`.
+
+## Repository
+
+pnpm workspace for the hosted Themer ([themer.sanity.build](https://themer.sanity.build)) and [`@sanity/themer-legacy`](packages/themer-legacy), the package that replicates it.
+
+| Package                                           | Description                                                                                 |
+| ------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| [`@sanity/themer-legacy`](packages/themer-legacy) | The hosted Themer's theme generator as an npm package, and a Studio tool to edit its themes |
+
+| App                                | Description                                                                                                 |
+| ---------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| [`apps/v1`](apps/v1)               | [themer.sanity.build](https://themer.sanity.build) (Next.js), including the deprecated `/api/hues` endpoint |
+| [`apps/storybook`](apps/storybook) | Storybook for `@sanity/themer-legacy` ([localhost:6006](http://localhost:6006) via `pnpm dev`)              |
+
+### Requirements
+
+- Node.js `>=22.13`
+- [pnpm](https://pnpm.io) `12` (pinned via `packageManager` in `package.json`)
+
+### Getting started
+
+```sh
+pnpm install
+pnpm build
+pnpm test
+```
+
+```sh
+pnpm dev      # Storybook at http://localhost:6006
+pnpm dev:v1   # themer.sanity.build at http://localhost:3001
+```
+
+Storybook resolves `@sanity/themer-legacy` to its TypeScript source through the package `exports`, so it hot-reloads package edits without a rebuild.
+
+### Common scripts
+
+| Script              | What it does                                       |
+| ------------------- | -------------------------------------------------- |
+| `pnpm build`        | Build `@sanity/themer-legacy`                      |
+| `pnpm test`         | Unit tests (`@sanity/themer-legacy` and `apps/v1`) |
+| `pnpm test:browser` | Storybook browser tests (Chromium via Playwright)  |
+| `pnpm lint`         | Lint + type-check (oxlint)                         |
+| `pnpm format`       | Format with oxfmt                                  |
+| `pnpm changeset`    | Add a changeset for a release                      |
+
+## Contributing & releasing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Releases use [Changesets](https://github.com/changesets/changesets): add a changeset on your PR; merging to `main` opens a “Version Packages” PR that publishes to npm when merged.
+
+## License
+
+MIT — see [LICENSE](LICENSE).

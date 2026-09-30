@@ -1,6 +1,7 @@
 import {applyHuesFromPreset} from 'utils/applyHuesFromPreset'
 import {defaultPreset, getPreset} from 'utils/presets'
 import {shortenPresetSearchParams} from 'utils/shortenPresetSearchParams'
+import {expect, test} from 'vitest'
 
 test('hoists duplicate lightest values', () => {
   let url = new URL(defaultPreset.url, 'http://localhost')

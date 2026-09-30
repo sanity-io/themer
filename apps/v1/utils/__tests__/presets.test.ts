@@ -1,6 +1,7 @@
 import {applyHues} from 'utils/applyHues'
 import {parseHuesFromSearchParams} from 'utils/parseHuesFromSearchParams'
 import {defaultPreset, getPreset} from 'utils/presets'
+import {describe, expect, test} from 'vitest'
 
 test('Default preset URL is in sync with hue defaults', () => {
   const {searchParams} = new URL(defaultPreset.url, 'http://localhost')

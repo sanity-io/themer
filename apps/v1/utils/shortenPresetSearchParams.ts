@@ -87,8 +87,6 @@ export function shortenPresetSearchParams(searchParams: URLSearchParams) {
           : baseHue.mid !== hue.mid && hue.midPoint !== 500
             ? true
             : baseHue.mid === hue.mid && baseHue.midPoint !== 500 && hue.midPoint === 500
-              ? true
-              : false
     const param = [
       (shouldIncludeMid || shouldIncludeMidPoint) && stringifyColorSearchParam(hue.mid),
       shouldIncludeMidPoint && hue.midPoint,

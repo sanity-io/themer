@@ -1,0 +1,206 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "typescript",
+    "unicorn",
+    "react",
+    "react-perf",
+    "oxc",
+    "import",
+    "jsx-a11y",
+    "promise"
+  ],
+  // ESLint plugins loaded through oxlint's JS plugins support. Rules from these
+  // plugins are enabled per-file-pattern in "overrides".
+  "jsPlugins": ["eslint-plugin-storybook"],
+  "ignorePatterns": [
+    "**/.next/*",
+    "**/dist/*",
+    "**/edge-utils/*",
+    "**/etc/*",
+    "**/storybook-static/*"
+  ],
+  "options": {
+    "denyWarnings": true,
+    "reportUnusedDisableDirectives": "error",
+    "typeAware": true,
+    "typeCheck": true
+  },
+  "categories": {
+    "correctness": "error",
+    "suspicious": "error",
+    "perf": "error"
+  },
+  "rules": {
+    "no-underscore-dangle": "off",
+    "consistent-function-scoping": "off",
+    "eslint/no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          {
+            "name": "styled-components",
+            "importNames": ["default"],
+            "message": "Please use `import {styled} from \"styled-components\"` instead."
+          },
+          {
+            "name": "react",
+            "importNames": ["forwardRef"],
+            "message": "React 19 passes `ref` as a regular prop — write a plain function component that reads `props.ref` instead of wrapping it in `forwardRef`."
+          },
+          {
+            "name": "react",
+            "importNames": ["createRef"],
+            "message": "Use `useRef` instead of `createRef`."
+          },
+          {
+            "name": "react",
+            "importNames": ["createElement"],
+            "message": "Use JSX instead of `createElement`."
+          }
+        ]
+      }
+    ],
+
+    // Prefer function components; error boundaries (getDerivedStateFromError /
+    // componentDidCatch) remain allowed via allowErrorBoundary.
+    "react/prefer-function-component": ["error", {"allowErrorBoundary": true}],
+
+    // React Compiler: recommended rules live in `correctness`,
+    // recommended-latest `void-use-memo` in `correctness`, and the
+    // off-by-default compiler rules in `suspicious`/`perf` — all already
+    // enabled via `categories` above. `react/react-compiler` was removed
+    // in oxlint 1.79 in favor of these per-category rules.
+    // Restriction-category compiler rules are off unless listed here:
+    "react/unsupported-syntax": "error",
+    "react/invariant": "error",
+    "react/rule-suppression": "error",
+    "react/syntax": "error",
+    "react/todo": "error",
+
+    "typescript/ban-ts-comment": "error",
+    "typescript/no-deprecated": "error",
+    "typescript/no-unnecessary-type-assertion": "error",
+    "typescript/no-unnecessary-type-arguments": "error",
+    "typescript/prefer-ts-expect-error": "error",
+    "import/no-commonjs": "error",
+    "import/no-unassigned-import": ["error", {"allow": ["**/*.css"]}],
+    // Ban `export *` barrel files that pull in large module graphs; import
+    // directly from the module that defines a symbol instead
+    "oxc/no-barrel-file": "error",
+    "no-restricted-globals": [
+      "error",
+      {
+        "name": "__dirname",
+        "message": "Use path.dirname(fileURLToPath(import.meta.url)) instead"
+      },
+      {
+        "name": "__filename",
+        "message": "Use fileURLToPath(import.meta.url) instead"
+      }
+    ],
+    "react/jsx-key": "error",
+    "unicorn/no-abusive-eslint-disable": "error",
+    // Not relevant as we use the modern jsx-runtime transform
+    "react-in-jsx-scope": "off",
+    // Not relevant due to React Compiler
+    "react_perf/jsx-no-new-array-as-prop": "off",
+    "react_perf/jsx-no-new-object-as-prop": "off",
+    "react_perf/jsx-no-new-function-as-prop": "off",
+    "react_perf/jsx-no-jsx-as-prop": "off",
+    // False negatives
+    "jsx_a11y/anchor-is-valid": "off",
+    "jsx_a11y/no-autofocus": "off",
+    // Keep the established Hooks rule, which checks effects, memos, callbacks,
+    // and configured custom hooks. The compiler rule only checks effects and
+    // duplicates this coverage.
+    "react/exhaustive-deps": "error",
+    "react/exhaustive-effect-dependencies": "off",
+    "react/rules-of-hooks": "error",
+    "eslint/no-console": ["error", {"allow": ["warn", "error"]}],
+    // Requires polyfills for older browsers
+    "no-array-reverse": "off",
+    "no-array-sort": "off",
+    // Too noisy, common in callbacks/closures
+    "no-shadow": "off"
+  },
+  "settings": {
+    "next": {
+      "rootDir": "apps/v1/"
+    }
+  },
+  "overrides": [
+    {
+      // apps/v1 is a Next.js app; enable the Next.js rules on top of the
+      // base plugins (override plugins extend the base `plugins` set).
+      "files": ["apps/v1/**"],
+      "plugins": ["nextjs"],
+      "rules": {
+        // The app isn't built with the React Compiler, so the compiler's
+        // diagnostics about code it would bail out on don't apply
+        "react/no-deriving-state-in-effects": "off",
+        "react/preserve-manual-memoization": "off",
+        "react/refs": "off",
+        "react/set-state-in-effect": "off",
+        "react/todo": "off",
+        // The app is frozen on the `@sanity/ui` 2 and Sanity Studio 3 APIs, as
+        // `/api/hues` serves the themes `createColorTheme` and `studioTheme`
+        // from `@sanity/ui` 2 generate, so it can't move off their deprecations
+        "typescript/no-deprecated": "off",
+        // These need `strictNullChecks`, which the app's tsconfig doesn't enable
+        "typescript/no-unnecessary-boolean-literal-compare": "off",
+        "typescript/no-useless-default-assignment": "off",
+        // The app predates type-aware linting (and builds with `strict: false`):
+        // these flag patterns throughout its code, and rewriting them would churn
+        // the hosted service (including the error messages `/api/hues` serves)
+        // without changing what it does
+        "typescript/consistent-return": "off",
+        "typescript/no-base-to-string": "off",
+        "typescript/no-floating-promises": "off",
+        "typescript/no-meaningless-void-operator": "off",
+        "typescript/no-unnecessary-template-expression": "off",
+        "typescript/no-unnecessary-type-assertion": "off",
+        "typescript/no-unsafe-type-assertion": "off",
+        "typescript/restrict-template-expressions": "off",
+        "typescript/unbound-method": "off"
+      }
+    },
+    {
+      // Build scripts report their progress on the console
+      "files": ["apps/v1/scripts/**"],
+      "rules": {
+        "eslint/no-console": "off"
+      }
+    },
+    {
+      // The CSF rule set from eslint-plugin-storybook's flat/recommended config,
+      // scoped to the same story file patterns (warn-level rules bumped to error
+      // to match the rest of this config, which also runs with denyWarnings).
+      "files": ["**/*.stories.{js,jsx,mjs,cjs,ts,tsx}", "**/*.story.{js,jsx,mjs,cjs,ts,tsx}"],
+      "rules": {
+        "storybook/await-interactions": "error",
+        "storybook/context-in-play-function": "error",
+        "storybook/default-exports": "error",
+        "storybook/hierarchy-separator": "error",
+        "storybook/no-redundant-story-name": "error",
+        "storybook/no-renderer-packages": "error",
+        "storybook/prefer-pascal-case": "error",
+        "storybook/story-exports": "error",
+        "storybook/use-storybook-expect": "error",
+        "storybook/use-storybook-testing-library": "error"
+      }
+    },
+    {
+      // no-uninstalled-addons resolves its packageJsonLocation option relative to
+      // the working directory (the repo root when run via `pnpm lint`), so point
+      // it at the storybook app's manifest where the addons are installed.
+      "files": ["**/.storybook/main.{js,cjs,mjs,ts}"],
+      "rules": {
+        "storybook/no-uninstalled-addons": [
+          "error",
+          {"packageJsonLocation": "./apps/storybook/package.json"}
+        ]
+      }
+    }
+  ]
+}

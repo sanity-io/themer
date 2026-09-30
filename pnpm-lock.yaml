@@ -336,8 +336,8 @@ importers:
         specifier: 2.2.5
         version: 2.2.5
       '@sanity/icons':
-        specifier: 2.11.7
-        version: 2.11.7(react@18.2.0)
+        specifier: 5.2.3
+        version: 5.2.3(react@18.2.0)
       '@sanity/themer-legacy':
         specifier: workspace:*
         version: link:../../packages/themer-legacy
@@ -361,7 +361,7 @@ importers:
         version: 14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-sanity:
         specifier: 6.1.4
-        version: 6.1.4(@sanity/client@6.15.11)(@sanity/icons@2.11.7(react@18.2.0))(@sanity/types@3.99.0(@types/react@18.2.75))(@sanity/ui@2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(@types/react@18.2.75)(next@14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 6.1.4(@sanity/client@6.15.11)(@sanity/icons@5.2.3(react@18.2.0))(@sanity/types@3.99.0(@types/react@18.2.75))(@sanity/ui@2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(@types/react@18.2.75)(next@14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       polished:
         specifier: 4.3.1
         version: 4.3.1
@@ -3153,8 +3153,8 @@ packages:
     peerDependencies:
       react: ^18
 
-  '@sanity/icons@5.2.2':
-    resolution: {integrity: sha512-v+5dMjYJ6pC4x8IS/4O/GvQBet5GqsXsqJxBiiS6WHZt21EgntpW+q5hxU3dO4q/njiyR8O1JsdLAs3NranoXA==}
+  '@sanity/icons@5.2.3':
+    resolution: {integrity: sha512-10nE7IiuXIPIf6ufSKyNwnOE75wghEollUYzkjPUAX+5oenyE5qDFUrMD5MeC+8gxZ8KS61o8sH1mpmhpWx++w==}
     engines: {node: '>=20.19 <22 || >=22.12'}
     peerDependencies:
       react: ^18 || ^19
@@ -10040,7 +10040,11 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  '@sanity/icons@5.2.2(react@19.3.0)':
+  '@sanity/icons@5.2.3(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+
+  '@sanity/icons@5.2.3(react@19.3.0)':
     dependencies:
       react: 19.3.0
 
@@ -10246,7 +10250,7 @@ snapshots:
     dependencies:
       '@floating-ui/react-dom': 2.1.9(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@sanity/color': 3.0.8
-      '@sanity/icons': 5.2.2(react@19.3.0)
+      '@sanity/icons': 5.2.3(react@19.3.0)
       '@vanilla-extract/dynamic': 2.1.5
       clsx: 2.1.1
       csstype: 3.2.3
@@ -12954,10 +12958,10 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next-sanity@6.1.4(@sanity/client@6.15.11)(@sanity/icons@2.11.7(react@18.2.0))(@sanity/types@3.99.0(@types/react@18.2.75))(@sanity/ui@2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(@types/react@18.2.75)(next@14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+  next-sanity@6.1.4(@sanity/client@6.15.11)(@sanity/icons@5.2.3(react@18.2.0))(@sanity/types@3.99.0(@types/react@18.2.75))(@sanity/ui@2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(@types/react@18.2.75)(next@14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
       '@sanity/client': 6.15.11
-      '@sanity/icons': 2.11.7(react@18.2.0)
+      '@sanity/icons': 5.2.3(react@18.2.0)
       '@sanity/preview-kit': 4.0.3(@sanity/client@6.15.11)(@types/react@18.2.75)(react@18.2.0)
       '@sanity/types': 3.99.0(@types/react@18.2.75)
       '@sanity/ui': 2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))

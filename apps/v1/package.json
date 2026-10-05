@@ -48,7 +48,7 @@
     "@types/prettier": "3.0.0",
     "@types/react": "18.2.75",
     "esbuild": "0.20.2",
-    "prettier": "3.2.5",
+    "prettier": "3.9.9",
     "type-fest": "4.15.0",
     "typescript": "5.4.2",
     "vitest": "catalog:"

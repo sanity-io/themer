@@ -336,8 +336,8 @@ importers:
         specifier: 2.2.5
         version: 2.2.5
       '@sanity/icons':
-        specifier: 2.11.7
-        version: 2.11.7(react@18.2.0)
+        specifier: 5.3.0
+        version: 5.3.0(react@18.2.0)
       '@sanity/themer-legacy':
         specifier: workspace:*
         version: link:../../packages/themer-legacy
@@ -361,7 +361,7 @@ importers:
         version: 14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
       next-sanity:
         specifier: 6.1.4
-        version: 6.1.4(@sanity/client@6.15.11)(@sanity/icons@2.11.7(react@18.2.0))(@sanity/types@3.99.0(@types/react@18.2.75))(@sanity/ui@2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(@types/react@18.2.75)(next@14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
+        version: 6.1.4(@sanity/client@6.15.11)(@sanity/icons@5.3.0(react@18.2.0))(@sanity/types@3.99.0(@types/react@18.2.75))(@sanity/ui@2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(@types/react@18.2.75)(next@14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))
       polished:
         specifier: 4.3.1
         version: 4.3.1
@@ -3153,8 +3153,8 @@ packages:
     peerDependencies:
       react: ^18
 
-  '@sanity/icons@5.2.2':
-    resolution: {integrity: sha512-v+5dMjYJ6pC4x8IS/4O/GvQBet5GqsXsqJxBiiS6WHZt21EgntpW+q5hxU3dO4q/njiyR8O1JsdLAs3NranoXA==}
+  '@sanity/icons@5.3.0':
+    resolution: {integrity: sha512-8zPOrlK1TgCEj4c60jJ/Lljlro6S8DRfotiPaW1uTXwOjLWk2TSyqBdUaWCVDgWuHgw4jhijg2pBf7o23KFNMA==}
     engines: {node: '>=20.19 <22 || >=22.12'}
     peerDependencies:
       react: ^18 || ^19
@@ -3279,6 +3279,7 @@ packages:
   '@sanity/ui@4.2.7':
     resolution: {integrity: sha512-P/np7nq69M3bmCjzbs2c60M06R4lga2z68ttFV6VFvMFcyw+3aa3qIb73L37e9GkhQS3vEWjnO1G3tcm5OI8sw==}
     engines: {node: '>=22.12'}
+    deprecated: Class names collide with @sanity/ui 4.4.4 (shipped in sanity@6.19.0) when both load on one page, breaking styles. Upgrade to @sanity/ui@^4.4.4.
     peerDependencies:
       react: ^19.2
       react-dom: ^19.2
@@ -3950,133 +3951,157 @@ packages:
     resolution: {integrity: sha512-2VPBU9fRGRAQ2xPAvghnec3oou5Nrxm2Bezhf+13UMspAxQSkF/32r+ySKXSwIPA5/RivumDJDxAxc301Sgicw==}
     cpu: [arm64]
     os: [android]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-android-arm64@0.11.0':
     resolution: {integrity: sha512-jqlfj6xjjhC/T81db1HMuzYrCy/rXqFWM0sHLQ63R93CfyApBVKVB8iK5siIaqw5wTs8sGEFN2mM09GNqM1R1g==}
     cpu: [arm64]
     os: [android]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-darwin-arm64@0.10.2':
     resolution: {integrity: sha512-LD+PMZE51tCYTOss5HBkm3/AE39MvcMDBfWJx7A4yDcjfNbAQDnHZKtzSOuqrswx+TQHY0ws5xn6+fWOwtmfBA==}
     cpu: [arm64]
     os: [darwin]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-darwin-arm64@0.11.0':
     resolution: {integrity: sha512-kWwHiaiU7VcdFr0MOI+pWZ4NgRo0gGw1ycE5dvhlr6XLMR0YSL+Ov8MseCwGkzUtOZ8cyFCOeXOwCa7mjMffMQ==}
     cpu: [arm64]
     os: [darwin]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-darwin-x64@0.10.2':
     resolution: {integrity: sha512-mmZ8cND+AoIIMRERyMinlg5ApHxP23B9jH2B5wT7T+dliPa9rubLxneB/SUjFwyUjGaFnB5G7t4YvpfbO5zbkQ==}
     cpu: [x64]
     os: [darwin]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-darwin-x64@0.11.0':
     resolution: {integrity: sha512-Gy1pHdOWyXRJMbB0auuTTf+lbDOLuxWxqnU9cpf4vOrozfTDplXNrGuNbLgfZZ9UOgKz9iBnEx2YJ5fTbtvtLQ==}
     cpu: [x64]
     os: [darwin]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-freebsd-x64@0.10.2':
     resolution: {integrity: sha512-gVIjaaIddbRfAhHlC8N809wQWml7mxfSVnzaLtzGXObTeFTPAg/YVnQXt1UOhPM1ah5eG/8Y0RUlNpB4GVe7eQ==}
     cpu: [x64]
     os: [freebsd]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-freebsd-x64@0.11.0':
     resolution: {integrity: sha512-QQ9kdjL/5IknqYYVlbBheQB8ibpbtCQH44KHnz0Iu9c+l4Cbml/bwtV8NntyDe7uOaTpjBbCzlYEdZinT5dw6A==}
     cpu: [x64]
     os: [freebsd]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-arm-gnu@0.10.2':
     resolution: {integrity: sha512-q/XPPQQAPdlw05aPj30ygBhekmQryGOwxVraBgApjKK8yY1kNQgqq6XCYLF1WHSee+lhxclrTO7W0/bt7dR1GA==}
     cpu: [arm]
     os: [linux]
     libc: [glibc]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-arm-gnu@0.11.0':
     resolution: {integrity: sha512-F0MNggsSsLIqF1Os4joWikO5VUwmSSHIBUjVDOrJMllQODXfZfyEsLd9rMQbuvqUlXUr1qBMvjaHcJgnF/uaLA==}
     cpu: [arm]
     os: [linux]
     libc: [glibc]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-arm-musl@0.10.2':
     resolution: {integrity: sha512-A+Cb0I1hFF4wilTQpWs79k1aNnj4B2tkrHx3zsuUNF9BtVY2zPZ4yeQEM/zjXrS/qJlNMZVK9NrWJjwdpnTrfg==}
     cpu: [arm]
     os: [linux]
     libc: [musl]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-arm-musl@0.11.0':
     resolution: {integrity: sha512-2QfhRxHPO5hPkblvJNUMyB0PRw/az4Y0YuvLsbcpQtXqPQXL2kL0x8k1MPWtvrWQQPcezsHen3uIhe/2U82QaQ==}
     cpu: [arm]
     os: [linux]
     libc: [musl]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-arm64-gnu@0.10.2':
     resolution: {integrity: sha512-aGNSzqIqqphFwAdIFwVvKIyXD1Iy3CxrEJVIZAT87Ecyi4vCmmDD2v2l9h+Gd3/wSy3JZlOI792LJbKAjyy9rQ==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-arm64-gnu@0.11.0':
     resolution: {integrity: sha512-6qRv2khbDlIYjWjWjkzxdJTkF4EGQvS+Q5WWwh1azACFUexzCr0gU5Krb/JxvQdTbO6sp9QM3Ybfa7iOD3qthg==}
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-arm64-musl@0.10.2':
     resolution: {integrity: sha512-Ddl1sF0rtuCXyHGSOV6dcmdx+ETv1iD+IVFqQuOjzkJZWclxJxdBWX6ZJMRtTiGqGUTbqLEKiTXxpR/Bvqk+2A==}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-arm64-musl@0.11.0':
     resolution: {integrity: sha512-3olnRYJgIHPtap+Ruc7wlC5Ex5uA2Y7mBECqDLmeUNv0VCt6LmSd5tem5HuItrwREVfPtTmuuFaStYbuE0/Amw==}
     cpu: [arm64]
     os: [linux]
     libc: [musl]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-x64-gnu@0.10.2':
     resolution: {integrity: sha512-/nlcpR6IF5U+0m5L9wvAIXeQa2DT+BXuvqKDsTcOTlcc0B4dHNyqE5hTXsS4hAyimpy2ZK8A1zMNF5hTrjg2cg==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-x64-gnu@0.11.0':
     resolution: {integrity: sha512-xOoQ/wX1CECcBu+u2uVdZ/5jQpDuyfpMST73AsZV/9rFXHMoV4dzpMvFL/LlcOt0ZvI+ec9dou1qHgLpuWE1gw==}
     cpu: [x64]
     os: [linux]
     libc: [glibc]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-x64-musl@0.10.2':
     resolution: {integrity: sha512-GX80dxTQD/M/OryyuxJcFzFENzry3cDFPvCFTyWogNWQH3fSHfMrNfpwpl1YzMos1eV9NygK5GSDG7VArQlb4w==}
     cpu: [x64]
     os: [linux]
     libc: [musl]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-linux-x64-musl@0.11.0':
     resolution: {integrity: sha512-rQfgYpctPVlFsEmEdJsgyV/gX38Pih8Jc+UDd5v2ae+Me0ufUSMsqbZAsFv/pYTqYw3ddF+/0UXoutEYbnnuUg==}
     cpu: [x64]
     os: [linux]
     libc: [musl]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-win32-arm64@0.10.2':
     resolution: {integrity: sha512-agePQBV4VHewiGU0ACSjscZ/hJd283f9JfAF19Gf1rI5+wy5tTgx4GS36i0b3xim15AQ4RCpDRosEvhLZ4zAOw==}
     cpu: [arm64]
     os: [win32]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-win32-arm64@0.11.0':
     resolution: {integrity: sha512-kUhOMR/SKASx9vD+BOkduLQC8nO/0jBygIpnLHrqSwhZocCprtKyRUSiU1hjI9QfVKotmES3ViYY2FALrFsCYQ==}
     cpu: [arm64]
     os: [win32]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-win32-x64@0.10.2':
     resolution: {integrity: sha512-s8//CMpgL5+y1lvDCdyh1rwGI5+ytDJywFJRe1vnhI7n0j+caxshNucurikYLLVeQ2SYFex6aPrzgQxkabBQRA==}
     cpu: [x64]
     os: [win32]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-parser/binding-win32-x64@0.11.0':
     resolution: {integrity: sha512-+aWJefFA/FBeL/SeC4nYmw3HB2kXWAYHTNY/BXi3N1ex/CVUPJHn3cCYK1T3M31nsO98ENqllNzWfv9arf6X0w==}
     cpu: [x64]
     os: [win32]
+    deprecated: yuku-parser runs on yuku-core since 0.14
 
   '@yuku-toolchain/types@0.10.2':
     resolution: {integrity: sha512-sSeo4SSSToiS+sSD+bwn/s94EEcaLJ7tG5LCp8gFYC1G5VzxzX7fqB6m9RU1yMD8KTpu6zdU/I1NlQf8hVBJ9Q==}
@@ -10040,7 +10065,11 @@ snapshots:
     dependencies:
       react: 18.2.0
 
-  '@sanity/icons@5.2.2(react@19.3.0)':
+  '@sanity/icons@5.3.0(react@18.2.0)':
+    dependencies:
+      react: 18.2.0
+
+  '@sanity/icons@5.3.0(react@19.3.0)':
     dependencies:
       react: 19.3.0
 
@@ -10246,7 +10275,7 @@ snapshots:
     dependencies:
       '@floating-ui/react-dom': 2.1.9(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       '@sanity/color': 3.0.8
-      '@sanity/icons': 5.2.2(react@19.3.0)
+      '@sanity/icons': 5.3.0(react@19.3.0)
       '@vanilla-extract/dynamic': 2.1.5
       clsx: 2.1.1
       csstype: 3.2.3
@@ -12954,10 +12983,10 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  next-sanity@6.1.4(@sanity/client@6.15.11)(@sanity/icons@2.11.7(react@18.2.0))(@sanity/types@3.99.0(@types/react@18.2.75))(@sanity/ui@2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(@types/react@18.2.75)(next@14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
+  next-sanity@6.1.4(@sanity/client@6.15.11)(@sanity/icons@5.3.0(react@18.2.0))(@sanity/types@3.99.0(@types/react@18.2.75))(@sanity/ui@2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)))(@types/react@18.2.75)(next@14.2.35(@babel/core@7.29.7(supports-color@8.1.1))(@playwright/test@1.63.0)(babel-plugin-macros@3.1.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(react@18.2.0)(sanity@3.37.1(@types/node@24.19.0)(@types/react@18.2.75)(lightningcss@1.33.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))(supports-color@8.1.1)(terser@5.51.2))(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0)):
     dependencies:
       '@sanity/client': 6.15.11
-      '@sanity/icons': 2.11.7(react@18.2.0)
+      '@sanity/icons': 5.3.0(react@18.2.0)
       '@sanity/preview-kit': 4.0.3(@sanity/client@6.15.11)(@types/react@18.2.75)(react@18.2.0)
       '@sanity/types': 3.99.0(@types/react@18.2.75)
       '@sanity/ui': 2.1.1(react-dom@18.2.0(react@18.2.0))(react-is@18.2.0)(react@18.2.0)(styled-components@6.1.8(react-dom@18.2.0(react@18.2.0))(react@18.2.0))

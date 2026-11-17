@@ -1,7 +1,11 @@
 {
   "$schema": "https://unpkg.com/knip@6/schema.json",
   "workspaces": {
-    ".": {},
+    ".": {
+      // oxlint loads it as its type-aware backend, without declaring it as a
+      // peer dependency the way it does `oxlint-tsgolint`
+      "ignoreDependencies": ["tsrs"],
+    },
     "apps/v1": {
       // Nothing imports it anymore, because the `/api/hues` bundles in
       // `frozen/` are prebuilt from it. It stays as the theme generator they
